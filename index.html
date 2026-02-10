@@ -128,11 +128,23 @@
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
-      /* SWAP: Replace with video element or background-image */
-      background: linear-gradient(135deg, var(--navy) 0%, #0D2137 40%, #0A2A1F 100%);
+    }
+    .hero-bg-img {
+      position: absolute; inset: -20px; z-index: 0;
+      background: url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=1920&q=80') center center / cover no-repeat;
+      animation: kenBurns 25s ease-in-out infinite alternate;
+    }
+    @keyframes kenBurns {
+      0% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.08) translate(-1%, -1%); }
+      100% { transform: scale(1.12) translate(1%, 0.5%); }
+    }
+    .hero-bg-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(10,22,40,0.82) 0%, rgba(10,22,40,0.7) 40%, rgba(10,42,31,0.75) 100%);
     }
     .hero-bg::after {
-      content: ''; position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0; z-index: 2;
       background: radial-gradient(ellipse at 30% 50%, var(--green-glow) 0%, transparent 60%),
                   radial-gradient(ellipse at 70% 80%, rgba(255,107,53,0.08) 0%, transparent 50%);
     }
@@ -173,16 +185,28 @@
     .text-center { text-align: center; }
 
     /* ── SERVICES ── */
-    .services { background: var(--gray-50); }
+    .services { background: var(--navy); color: white; }
+    .services .section-subtitle { color: rgba(255,255,255,0.6); }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
     .service-card {
-      background: white; border-radius: 16px; padding: 2.5rem 2rem; text-align: center;
-      border: 1px solid var(--gray-100); transition: all 0.3s; position: relative; overflow: hidden;
+      border-radius: 16px; padding: 2.5rem 2rem; text-align: center;
+      transition: all 0.3s; position: relative; overflow: hidden;
+      min-height: 340px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+      background-size: cover; background-position: center; border: none;
     }
-    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); border-color: var(--green); }
-    .service-icon { width: 72px; height: 72px; margin: 0 auto 1.5rem; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: var(--green-glow); }
-    .service-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
-    .service-card p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; }
+    .service-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.6) 40%, rgba(10,22,40,0.25) 100%);
+      z-index: 1; transition: all 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .service-card:hover::before { background: linear-gradient(to top, rgba(0,200,83,0.85) 0%, rgba(10,22,40,0.5) 50%, rgba(10,22,40,0.2) 100%); }
+    .service-icon { width: 72px; height: 72px; margin: 0 auto 1.5rem; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: rgba(0,200,83,0.2); position: relative; z-index: 2; backdrop-filter: blur(8px); }
+    .service-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: white; position: relative; z-index: 2; }
+    .service-card p { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 2; }
+    .service-card:hover h3 { color: var(--navy); }
+    .service-card:hover p { color: rgba(10,22,40,0.8); }
+    .service-card:hover .service-icon { background: rgba(10,22,40,0.3); }
 
     /* ── PROCESS ── */
     .process { background: var(--navy); color: white; }
@@ -371,7 +395,8 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <!-- SWAP: Add <video> element here for hero background video -->
+      <div class="hero-bg-img"></div>
+      <div class="hero-bg-overlay"></div>
     </div>
     <div class="hero-lines"></div>
     <div class="hero-content">
@@ -397,22 +422,22 @@
       <h2 class="section-title fade-up">Court Construction & Resurfacing</h2>
       <p class="section-subtitle fade-up">From the fastest-growing sport in America to classic backyard basketball, we build courts that perform and last.</p>
       <div class="services-grid">
-        <div class="service-card fade-up">
+        <div class="service-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80');">
           <div class="service-icon">🏓</div>
           <h3>Pickleball Courts</h3>
           <p>Purpose-built pickleball courts with proper dimensions, surfacing, and net systems. Residential or commercial — built for precision and fun.</p>
         </div>
-        <div class="service-card fade-up">
+        <div class="service-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=600&q=80');">
           <div class="service-icon">🎾</div>
           <h3>Tennis Courts</h3>
           <p>Professional-grade tennis courts crafted to help you perform on the best surfaces. New builds or complete resurfacing.</p>
         </div>
-        <div class="service-card fade-up">
+        <div class="service-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80');">
           <div class="service-icon">🏀</div>
           <h3>Basketball Courts</h3>
           <p>Slam-dunk surfaces for players of all ages. Custom sizing, color schemes, and multi-sport line options available.</p>
         </div>
-        <div class="service-card fade-up">
+        <div class="service-card fade-up" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80');">
           <div class="service-icon">🎨</div>
           <h3>Custom & Multi-Sport</h3>
           <p>Tailored multi-sport courts, unique designs, and custom color schemes. If you can dream it, we can build it.</p>
