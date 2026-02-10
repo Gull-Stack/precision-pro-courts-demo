@@ -9,21 +9,15 @@
   <meta name="author" content="Precision Pro Courts">
   <meta name="geo.region" content="US-UT">
   <link rel="canonical" href="https://precisionprocourts.com/">
-
-  <!-- Open Graph -->
   <meta property="og:title" content="Precision Pro Courts | Beautiful Courts. Affordable Prices.">
   <meta property="og:description" content="Utah's premier sport court construction & resurfacing. Pickleball, tennis, basketball & custom courts. Free consultation!">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://precisionprocourts.com">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Precision Pro Courts">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Precision Pro Courts | Utah Sport Court Builder">
   <meta name="twitter:description" content="Beautiful courts. Affordable prices. Serving all of Utah.">
-
-  <!-- Schema: LocalBusiness -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,351 +38,34 @@
       "@type": "OfferCatalog",
       "name": "Court Services",
       "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pickleball Court Construction", "description": "Professional pickleball court design and construction"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tennis Court Construction & Resurfacing", "description": "Tennis court building and resurfacing services"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Basketball Court Construction", "description": "Custom basketball court installation"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Court Resurfacing", "description": "Professional sport court resurfacing and repair"}}
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pickleball Court Construction"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tennis Court Construction & Resurfacing"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Basketball Court Construction"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Court Resurfacing"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Court Fencing"}}
       ]
     },
-    "priceRange": "$$",
-    "sameAs": []
+    "priceRange": "$$"
   }
   </script>
-
-  <!-- Schema: FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type": "Question", "name": "How long does it take to build a sport court?", "acceptedAnswer": {"@type": "Answer", "text": "Most residential courts take 2-4 weeks from start to finish, depending on size and complexity. We'll give you a detailed timeline during your free consultation."}},
-      {"@type": "Question", "name": "What areas do you serve?", "acceptedAnswer": {"@type": "Answer", "text": "We serve Utah County, Salt Lake County, Davis County, Weber County, Juab County, and Washington County."}},
-      {"@type": "Question", "name": "How much does a sport court cost?", "acceptedAnswer": {"@type": "Answer", "text": "Costs vary based on court type, size, and features. We pride ourselves on affordable pricing — contact us for a free, no-obligation quote."}},
-      {"@type": "Question", "name": "Do you offer court resurfacing?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! We specialize in resurfacing existing tennis, basketball, and pickleball courts to restore them to like-new condition."}},
-      {"@type": "Question", "name": "Can I customize my court colors and design?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely! We offer full customization including colors, logos, line markings, and multi-sport configurations."}}
-    ]
-  }
-  </script>
-
-  <!-- Favicon placeholder -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏀</text></svg>">
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --navy: #29457c;
-      --navy-light: #3a5a9a;
-      --green: #5694ff;
-      --green-dark: #4080e8;
-      --green-glow: rgba(86, 148, 255, 0.15);
-      --white: #FFFFFF;
-      --gray-50: #F8FAFB;
-      --gray-100: #EEF2F5;
-      --gray-200: #D8DEE4;
-      --gray-400: #8896A6;
-      --gray-600: #4A5568;
-      --gray-800: #1A202C;
-      --orange: #FF6B35;
-      --font-heading: 'Space Grotesk', sans-serif;
-      --font-body: 'Inter', sans-serif;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--gray-800); line-height: 1.6; overflow-x: hidden; }
-    h1,h2,h3,h4,h5,h6 { font-family: var(--font-heading); font-weight: 700; line-height: 1.15; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-    img { max-width: 100%; height: auto; }
-
-    /* ── NAV ── */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(10, 22, 40, 0.95); backdrop-filter: blur(12px);
-      padding: 0.75rem 2rem; transition: all 0.3s;
-    }
-    .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
-    .nav-inner { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .nav-logo { color: var(--white); text-decoration: none; font-family: var(--font-heading); font-weight: 700; font-size: 1.35rem; display: flex; align-items: center; gap: 0.5rem; }
-    .nav-logo .logo-accent { color: var(--green); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.03em; transition: color 0.3s; }
-    .nav-links a:hover { color: var(--green); }
-    .nav-cta-btn { background: var(--green); color: var(--navy) !important; padding: 0.6rem 1.4rem; border-radius: 6px; font-weight: 700 !important; font-size: 0.8rem !important; letter-spacing: 0.05em; text-transform: uppercase; }
-    .nav-cta-btn:hover { background: var(--white); }
-    .mobile-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden; color: white; text-align: center;
-    }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-    }
-    .hero-bg-img {
-      position: absolute; inset: -20px; z-index: 0;
-      background: url('https://precisionprocourts.com/wp-content/uploads/2025/01/IMG_0942-scaled.jpeg') center center / cover no-repeat;
-      animation: kenBurns 25s ease-in-out infinite alternate;
-    }
-    @keyframes kenBurns {
-      0% { transform: scale(1) translate(0, 0); }
-      50% { transform: scale(1.08) translate(-1%, -1%); }
-      100% { transform: scale(1.12) translate(1%, 0.5%); }
-    }
-    .hero-bg-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(135deg, rgba(10,22,40,0.82) 0%, rgba(10,22,40,0.7) 40%, rgba(10,42,31,0.75) 100%);
-    }
-    .hero-bg::after {
-      content: ''; position: absolute; inset: 0; z-index: 2;
-      background: radial-gradient(ellipse at 30% 50%, var(--green-glow) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 80%, rgba(255,107,53,0.08) 0%, transparent 50%);
-    }
-    /* Court lines decoration */
-    .hero-lines {
-      position: absolute; inset: 0; z-index: 1; opacity: 0.06;
-      background-image:
-        linear-gradient(0deg, white 1px, transparent 1px),
-        linear-gradient(90deg, white 1px, transparent 1px);
-      background-size: 80px 80px;
-    }
-    .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 1.5rem; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(0, 200, 83, 0.12); border: 1px solid rgba(0, 200, 83, 0.3);
-      padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
-      color: var(--green); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;
-    }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
-    .hero h1 .highlight { color: var(--green); }
-    .hero p { font-size: clamp(1rem, 2vw, 1.25rem); color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto 2.5rem; font-weight: 300; }
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; transition: all 0.3s; cursor: pointer; border: 2px solid transparent; }
-    .btn-primary { background: var(--green); color: var(--navy); border-color: var(--green); }
-    .btn-primary:hover { background: transparent; color: var(--green); }
-    .btn-outline-light { background: transparent; color: white; border-color: rgba(255,255,255,0.3); }
-    .btn-outline-light:hover { background: white; color: var(--navy); border-color: white; }
-    .hero-stats { display: flex; gap: 3rem; justify-content: center; margin-top: 4rem; }
-    .hero-stat { text-align: center; }
-    .hero-stat .num { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; color: var(--green); }
-    .hero-stat .label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem; }
-
-    /* ── SECTION STYLES ── */
-    section { padding: 6rem 0; }
-    .section-label { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; }
-    .section-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
-    .section-subtitle { font-size: 1.1rem; color: var(--gray-600); max-width: 600px; margin: 0 auto 3rem; }
-    .text-center { text-align: center; }
-
-    /* ── SERVICES ── */
-    .services { background: var(--navy); color: white; }
-    .services .section-subtitle { color: rgba(255,255,255,0.6); }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-    .service-card {
-      border-radius: 16px; padding: 2.5rem 2rem; text-align: center;
-      transition: all 0.3s; position: relative; overflow: hidden;
-      min-height: 340px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-      background-size: cover; background-position: center; border: none;
-    }
-    .service-card::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.6) 40%, rgba(10,22,40,0.25) 100%);
-      z-index: 1; transition: all 0.3s;
-    }
-    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-    .service-card:hover::before { background: linear-gradient(to top, rgba(0,200,83,0.85) 0%, rgba(10,22,40,0.5) 50%, rgba(10,22,40,0.2) 100%); }
-    .service-icon { width: 72px; height: 72px; margin: 0 auto 1.5rem; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: rgba(0,200,83,0.2); position: relative; z-index: 2; backdrop-filter: blur(8px); }
-    .service-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: white; position: relative; z-index: 2; }
-    .service-card p { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 2; }
-    .service-card:hover h3 { color: var(--navy); }
-    .service-card:hover p { color: rgba(10,22,40,0.8); }
-    .service-card:hover .service-icon { background: rgba(10,22,40,0.3); }
-
-    /* ── PROCESS ── */
-    .process { background: var(--navy); color: white; }
-    .process .section-subtitle { color: rgba(255,255,255,0.6); }
-    .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; }
-    .process-steps::before {
-      content: ''; position: absolute; top: 40px; left: 15%; right: 15%; height: 2px;
-      background: linear-gradient(90deg, var(--green), var(--orange));
-    }
-    .step { text-align: center; position: relative; }
-    .step-num {
-      width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800;
-      background: var(--navy-light); border: 3px solid var(--green); color: var(--green);
-      position: relative; z-index: 1;
-    }
-    .step h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
-    .step p { color: rgba(255,255,255,0.6); font-size: 0.9rem; max-width: 280px; margin: 0 auto; }
-
-    /* ── ABOUT / TRUST ── */
-    .about { background: white; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .about-image {
-      border-radius: 20px; overflow: hidden; aspect-ratio: 4/3;
-      background: var(--navy);
-      display: flex; align-items: center; justify-content: center; color: var(--green);
-      font-size: 4rem; position: relative;
-    }
-    .about-image video {
-      width: 100%; height: 100%; object-fit: cover; border-radius: 20px;
-    }
-    .about-image::after {
-      content: ''; position: absolute; inset: 0;
-      border: 2px solid var(--green); border-radius: 20px; opacity: 0.3;
-      transform: translate(12px, 12px); z-index: -1;
-    }
-    .about-content h2 { font-size: 2.5rem; margin-bottom: 1.25rem; }
-    .about-content p { color: var(--gray-600); margin-bottom: 1.5rem; font-size: 1.05rem; }
-    .trust-badges { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
-    .trust-badge { display: flex; align-items: center; gap: 0.75rem; }
-    .trust-badge .icon { width: 48px; height: 48px; border-radius: 12px; background: var(--green-glow); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
-    .trust-badge .info .num { font-family: var(--font-heading); font-weight: 800; font-size: 1.2rem; }
-    .trust-badge .info .desc { font-size: 0.75rem; color: var(--gray-400); }
-
-    /* ── SERVICE AREAS ── */
-    .areas { background: var(--gray-50); }
-    .areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
-    .area-card {
-      background: white; border-radius: 12px; padding: 1.5rem; text-align: center;
-      border: 1px solid var(--gray-100); transition: all 0.3s;
-    }
-    .area-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
-    .area-card .pin { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .area-card h3 { font-size: 1rem; font-weight: 600; }
-
-    /* ── GALLERY ── */
-    .gallery { background: white; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-    .gallery-item {
-      aspect-ratio: 16/10; border-radius: 12px; overflow: hidden;
-      background: var(--gray-100); position: relative; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; color: var(--gray-400); transition: all 0.3s;
-    }
-    .gallery-item:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
-
-    /* ── REVIEWS ── */
-    .reviews { background: var(--navy); color: white; }
-    .reviews .section-subtitle { color: rgba(255,255,255,0.6); }
-    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-    .review-card {
-      background: var(--navy-light); border-radius: 16px; padding: 2rem;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .review-stars { color: #FFD700; font-size: 1.1rem; margin-bottom: 1rem; letter-spacing: 2px; }
-    .review-text { color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
-    .review-author { display: flex; align-items: center; gap: 0.75rem; }
-    .review-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--navy); font-size: 0.9rem; }
-    .review-name { font-weight: 600; font-size: 0.9rem; }
-    .review-date { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
-    .google-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem; padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.05); border-radius: 50px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
-
-    /* ── FAQ ── */
-    .faq { background: var(--gray-50); }
-    .faq-list { max-width: 800px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid var(--gray-200); }
-    .faq-q {
-      width: 100%; background: none; border: none; padding: 1.5rem 0; text-align: left;
-      font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; color: var(--gray-800);
-      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-    }
-    .faq-q::after { content: '+'; font-size: 1.5rem; color: var(--green); transition: transform 0.3s; flex-shrink: 0; }
-    .faq-q.active::after { content: '−'; }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
-    .faq-a.open { max-height: 300px; padding-bottom: 1.5rem; }
-    .faq-a p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.8; }
-
-    /* ── CTA SECTION ── */
-    .cta-section {
-      background: linear-gradient(135deg, var(--navy) 0%, #0D2137 50%, #0A2A1F 100%);
-      color: white; text-align: center; padding: 6rem 0; position: relative; overflow: hidden;
-    }
-    .cta-section::before {
-      content: ''; position: absolute; inset: 0; opacity: 0.05;
-      background-image: linear-gradient(0deg, white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .cta-section .container { position: relative; z-index: 1; }
-    .cta-section h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1rem; }
-    .cta-section p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 550px; margin: 0 auto 2.5rem; }
-    .cta-contact-info { display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem; }
-    .cta-contact-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.7); }
-    .cta-contact-item .icon { font-size: 1.2rem; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy); color: rgba(255,255,255,0.5); padding: 3rem 0 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .footer-logo { color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; }
-    .footer-logo .accent { color: var(--green); }
-    footer p { font-size: 0.8rem; }
-    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
-    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
-    .footer-links a:hover { color: var(--green); }
-
-    /* ── STICKY CTA BAR ── */
-    .sticky-cta {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
-      background: var(--green); padding: 0.75rem 2rem;
-      transform: translateY(100%); transition: transform 0.4s ease;
-      box-shadow: 0 -4px 30px rgba(0,0,0,0.2);
-    }
-    .sticky-cta.visible { transform: translateY(0); }
-    .sticky-cta-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .sticky-cta-text { font-weight: 700; color: var(--navy); font-size: 0.95rem; }
-    .sticky-cta-text span { font-weight: 400; opacity: 0.7; display: none; }
-    .sticky-cta-btn {
-      background: var(--navy); color: white; padding: 0.6rem 1.5rem; border-radius: 6px;
-      text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em;
-      text-transform: uppercase; transition: all 0.3s; border: none; cursor: pointer;
-    }
-    .sticky-cta-btn:hover { background: white; color: var(--navy); }
-
-    /* ── ANIMATIONS ── */
-    .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--navy); flex-direction: column; justify-content: center; align-items: center; gap: 2rem; }
-      .nav-links.open { display: flex; }
-      .mobile-toggle { display: block; }
-      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-      .hero-stat .num { font-size: 2rem; }
-      .process-steps { grid-template-columns: 1fr; }
-      .process-steps::before { display: none; }
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .sticky-cta-text span { display: none; }
-      section { padding: 4rem 0; }
-    }
-    @media (min-width: 769px) {
-      .sticky-cta-text span { display: inline; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/precision-pro-courts_white_500.png" alt="Precision Pro Courts" style="height:40px;"></a>
+      <a href="index.html" class="nav-logo"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/precision-pro-courts_white_500.png" alt="Precision Pro Courts" style="height:40px;"></a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#areas">Areas</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact" class="nav-cta-btn">Free Quote</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta-btn">Free Quote</a></li>
       </ul>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
     </div>
@@ -406,8 +83,8 @@
       <h1>Beautiful Courts.<br><span class="highlight">Affordable Prices.</span></h1>
       <p>Expert pickleball, tennis, and basketball court construction and resurfacing across Utah. From backyard dreams to municipal projects.</p>
       <div class="hero-btns">
-        <a href="#contact" class="btn btn-primary">Get a Free Quote →</a>
-        <a href="#services" class="btn btn-outline-light">Our Services</a>
+        <a href="contact.html" class="btn btn-primary">Get a Free Quote →</a>
+        <a href="services.html" class="btn btn-outline-light">Our Services</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num" data-count="500">0</div><div class="label">Courts Built</div></div>
@@ -417,33 +94,36 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
+  <!-- SERVICES OVERVIEW -->
+  <section class="services-section" id="services">
     <div class="container text-center">
       <span class="section-label fade-up">What We Build</span>
       <h2 class="section-title fade-up">Court Construction & Resurfacing</h2>
       <p class="section-subtitle fade-up">From the fastest-growing sport in America to classic backyard basketball, we build courts that perform and last.</p>
       <div class="services-grid">
-        <div class="service-card fade-up" style="background-image: url('https://precisionprocourts.com/wp-content/uploads/2025/01/backyard-pickleball-construction-scaled.jpg');">
+        <a href="services.html#pickleball" class="service-card fade-up" style="background-image: url('https://precisionprocourts.com/wp-content/uploads/2025/01/backyard-pickleball-construction-scaled.jpg');">
           <div class="service-icon">🏓</div>
           <h3>Pickleball Courts</h3>
-          <p>Purpose-built pickleball courts with proper dimensions, surfacing, and net systems. Residential or commercial — built for precision and fun.</p>
-        </div>
-        <div class="service-card fade-up" style="background-image: url('https://precisionprocourts.com/wp-content/uploads/2025/01/pickleball-courts.jpg');">
+          <p>Purpose-built courts with proper dimensions, surfacing, and net systems.</p>
+        </a>
+        <a href="services.html#tennis" class="service-card fade-up" style="background-image: url('https://precisionprocourts.com/wp-content/uploads/2025/01/pickleball-courts.jpg');">
           <div class="service-icon">🎾</div>
           <h3>Tennis Courts</h3>
-          <p>Professional-grade tennis courts crafted to help you perform on the best surfaces. New builds or complete resurfacing.</p>
-        </div>
-        <div class="service-card fade-up" style="background-image: url('https://precisionprocourts.com/wp-content/uploads/2025/01/basketball-pickleball.jpg');">
+          <p>Professional-grade tennis courts. New builds or complete resurfacing.</p>
+        </a>
+        <a href="services.html#basketball" class="service-card fade-up" style="background-image: url('https://precisionprocourts.com/wp-content/uploads/2025/01/basketball-pickleball.jpg');">
           <div class="service-icon">🏀</div>
           <h3>Basketball Courts</h3>
-          <p>Slam-dunk surfaces for players of all ages. Custom sizing, color schemes, and multi-sport line options available.</p>
-        </div>
-        <div class="service-card fade-up" style="background-image: url('https://precisionprocourts.com/wp-content/uploads/2025/01/garage-court-2-pickleball-basketball.jpg');">
+          <p>Custom sizing, color schemes, and multi-sport line options.</p>
+        </a>
+        <a href="services.html#custom" class="service-card fade-up" style="background-image: url('https://precisionprocourts.com/wp-content/uploads/2025/01/garage-court-2-pickleball-basketball.jpg');">
           <div class="service-icon">🎨</div>
           <h3>Custom & Multi-Sport</h3>
-          <p>Tailored multi-sport courts, unique designs, and custom color schemes. If you can dream it, we can build it.</p>
-        </div>
+          <p>If you can dream it, we can build it. Unique designs & multi-sport layouts.</p>
+        </a>
+      </div>
+      <div style="margin-top:2.5rem;" class="fade-up">
+        <a href="services.html" class="btn btn-primary">View All Services →</a>
       </div>
     </div>
   </section>
@@ -453,41 +133,39 @@
     <div class="container text-center">
       <span class="section-label fade-up">How It Works</span>
       <h2 class="section-title fade-up">Your Dream Court in 3 Steps</h2>
-      <p class="section-subtitle fade-up">We make the process simple, transparent, and stress-free from start to finish.</p>
+      <p class="section-subtitle fade-up">Simple, transparent, and stress-free from start to finish.</p>
       <div class="process-steps">
         <div class="step fade-up">
           <div class="step-num">1</div>
           <h3>Free Consultation</h3>
-          <p>Tell us about your vision. We'll assess your space, discuss options, and provide a detailed, no-obligation quote.</p>
+          <p>Tell us your vision. We'll assess your space and provide a detailed, no-obligation quote.</p>
         </div>
         <div class="step fade-up">
           <div class="step-num">2</div>
           <h3>Custom Design</h3>
-          <p>Collaborate with our team on layout, colors, and features. Use our interactive court designer to see it come to life.</p>
+          <p>Collaborate on layout, colors, and features. See it come to life before we build.</p>
         </div>
         <div class="step fade-up">
           <div class="step-num">3</div>
           <h3>Expert Build</h3>
-          <p>Watch your dream court take shape. Professional installation with premium materials and meticulous attention to detail.</p>
+          <p>Professional installation with premium materials and meticulous attention to detail.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
+  <!-- ABOUT TEASER -->
+  <section class="about-section" id="about">
     <div class="container">
       <div class="about-grid">
         <div class="about-image fade-up">
           <video autoplay muted loop playsinline poster="https://precisionprocourts.com/wp-content/uploads/2025/01/st-george-pickleball-basketball-courts.jpg">
             <source src="https://videos.pexels.com/video-files/8224201/8224201-uhd_2560_1440_30fps.mp4" type="video/mp4">
-            <!-- Fallback: Pexels free pickleball/sport court video. Replace with Sam's own video when available -->
           </video>
         </div>
         <div class="about-content fade-up">
           <span class="section-label">Why Precision Pro</span>
           <h2>Utah Families Trust Us With Their Courts</h2>
-          <p>Precision Pro Courts has helped countless Utah families, businesses, and municipalities create beautiful athletic courts that inspire play and bring communities together.</p>
           <p>We combine years of hands-on experience with premium materials and genuine care for every project — whether it's a backyard pickleball court or a full municipal complex.</p>
           <div class="trust-badges">
             <div class="trust-badge">
@@ -503,41 +181,10 @@
               <div class="info"><div class="num">Free Quotes</div><div class="desc">No obligation ever</div></div>
             </div>
           </div>
+          <div style="margin-top:2rem;">
+            <a href="about.html" class="btn btn-outline">Learn More About Us →</a>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICE AREAS -->
-  <section class="areas" id="areas">
-    <div class="container text-center">
-      <span class="section-label fade-up">Where We Work</span>
-      <h2 class="section-title fade-up">Proudly Serving Utah Communities</h2>
-      <p class="section-subtitle fade-up">From the Wasatch Front to Southern Utah, we're ready to build your perfect court.</p>
-      <div class="areas-grid">
-        <div class="area-card fade-up"><div class="pin">📍</div><h3>Utah County</h3></div>
-        <div class="area-card fade-up"><div class="pin">📍</div><h3>Salt Lake County</h3></div>
-        <div class="area-card fade-up"><div class="pin">📍</div><h3>Davis County</h3></div>
-        <div class="area-card fade-up"><div class="pin">📍</div><h3>Weber County</h3></div>
-        <div class="area-card fade-up"><div class="pin">📍</div><h3>Juab County</h3></div>
-        <div class="area-card fade-up"><div class="pin">📍</div><h3>Washington County</h3></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="gallery" id="gallery">
-    <div class="container text-center">
-      <span class="section-label fade-up">Our Work</span>
-      <h2 class="section-title fade-up">Project Gallery</h2>
-      <p class="section-subtitle fade-up">See the quality and craftsmanship that goes into every Precision Pro court.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item fade-up"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/backyard-pickleball-construction-scaled.jpg" alt="Backyard Pickleball Court Construction" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="gallery-item fade-up"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/st-george-pickleball-basketball-courts.jpg" alt="St. George Pickleball & Basketball Courts" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="gallery-item fade-up"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/IMG_0946-scaled.jpeg" alt="Sport Court Project" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="gallery-item fade-up"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/15581_933545046698418_1389731074255140663_n.jpeg" alt="Court Construction" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="gallery-item fade-up"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/pickleball-courts-office.jpg" alt="Pickleball Courts Office" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="gallery-item fade-up"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/basketball-yard-sall.jpg" alt="Basketball Yard Court" style="width:100%;height:100%;object-fit:cover;"></div>
       </div>
     </div>
   </section>
@@ -549,7 +196,6 @@
       <h2 class="section-title fade-up">Trusted by Utah Homeowners</h2>
       <p class="section-subtitle fade-up">Don't just take our word for it — hear from our happy customers.</p>
       <div class="reviews-grid">
-        <!-- SWAP: Replace with real Google reviews when available -->
         <div class="review-card fade-up">
           <div class="review-stars">★★★★★</div>
           <p class="review-text">"Precision Pro Courts built us an amazing pickleball court in our backyard. The whole family loves it! Professional crew, fair price, and the quality is outstanding."</p>
@@ -582,60 +228,17 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="container text-center">
-      <span class="section-label fade-up">FAQ</span>
-      <h2 class="section-title fade-up">Common Questions</h2>
-      <p class="section-subtitle fade-up">Everything you need to know about building your dream court.</p>
-    </div>
-    <div class="container">
-      <div class="faq-list">
-        <div class="faq-item fade-up">
-          <button class="faq-q">How long does it take to build a sport court?</button>
-          <div class="faq-a"><p>Most residential courts take 2-4 weeks from start to finish, depending on size and complexity. We'll give you a detailed timeline during your free consultation.</p></div>
-        </div>
-        <div class="faq-item fade-up">
-          <button class="faq-q">How much does a sport court cost?</button>
-          <div class="faq-a"><p>Costs vary based on court type, size, surface material, and additional features. We pride ourselves on offering beautiful courts at affordable prices — contact us for a free, no-obligation quote tailored to your project.</p></div>
-        </div>
-        <div class="faq-item fade-up">
-          <button class="faq-q">Do you offer court resurfacing?</button>
-          <div class="faq-a"><p>Absolutely! We specialize in resurfacing existing tennis, basketball, and pickleball courts to restore them to like-new condition. It's a cost-effective way to breathe new life into an aging court.</p></div>
-        </div>
-        <div class="faq-item fade-up">
-          <button class="faq-q">Can I customize my court colors and design?</button>
-          <div class="faq-a"><p>Yes! We offer full customization including court colors, logos, line markings, and multi-sport configurations. Our interactive design process lets you see your vision come to life before we break ground.</p></div>
-        </div>
-        <div class="faq-item fade-up">
-          <button class="faq-q">What areas do you serve?</button>
-          <div class="faq-a"><p>We proudly serve Utah County, Salt Lake County, Davis County, Weber County, Juab County, and Washington County. Whether you're in the heart of Salt Lake or down in St. George, we've got you covered.</p></div>
-        </div>
-        <div class="faq-item fade-up">
-          <button class="faq-q">Do I need a permit to build a sport court?</button>
-          <div class="faq-a"><p>Permit requirements vary by city and county. Don't worry — we handle the entire permitting process for you as part of our full-service approach.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA / CONTACT -->
+  <!-- CTA -->
   <section class="cta-section" id="contact">
     <div class="container">
       <h2 class="fade-up">Ready to Build Your<br>Dream Court?</h2>
       <p class="fade-up">Get a free, no-obligation consultation and quote. Let's bring your vision to life.</p>
       <div class="fade-up">
-        <a href="mailto:precisionprocourts@gmail.com" class="btn btn-primary" style="font-size: 1rem; padding: 1.2rem 3rem;">Get Your Free Quote →</a>
+        <a href="contact.html" class="btn btn-primary" style="font-size: 1rem; padding: 1.2rem 3rem;">Get Your Free Quote →</a>
       </div>
       <div class="cta-contact-info fade-up">
-        <div class="cta-contact-item">
-          <span class="icon">📧</span>
-          <a href="mailto:precisionprocourts@gmail.com" style="color: rgba(255,255,255,0.7); text-decoration: none;">precisionprocourts@gmail.com</a>
-        </div>
-        <div class="cta-contact-item">
-          <span class="icon">🌐</span>
-          <a href="https://precisionprocourts.com" target="_blank" style="color: rgba(255,255,255,0.7); text-decoration: none;">precisionprocourts.com</a>
-        </div>
+        <div class="cta-contact-item"><span class="icon">📧</span><a href="mailto:precisionprocourts@gmail.com">precisionprocourts@gmail.com</a></div>
+        <div class="cta-contact-item"><span class="icon">🌐</span><a href="https://precisionprocourts.com" target="_blank">precisionprocourts.com</a></div>
       </div>
     </div>
   </section>
@@ -643,82 +246,83 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/precision-pro-courts_white_500.png" alt="Precision Pro Courts" style="height: 30px;"></div>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="https://precisionprocourts.com/wp-content/uploads/2025/01/precision-pro-courts_white_500.png" alt="Precision Pro Courts" style="height:35px; margin-bottom:1rem;">
+          <p>Utah's premier sport court construction and resurfacing company. Beautiful courts. Affordable prices.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#pickleball">Pickleball Courts</a></li>
+            <li><a href="services.html#tennis">Tennis Courts</a></li>
+            <li><a href="services.html#basketball">Basketball Courts</a></li>
+            <li><a href="services/coatings.html">Coatings</a></li>
+            <li><a href="services/fencing.html">Fencing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Service Areas</h4>
+          <ul>
+            <li><a href="contact.html#areas">Utah County</a></li>
+            <li><a href="contact.html#areas">Salt Lake County</a></li>
+            <li><a href="contact.html#areas">Davis County</a></li>
+            <li><a href="contact.html#areas">Weber County</a></li>
+            <li><a href="contact.html#areas">Washington County</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-logo"><img src="https://precisionprocourts.com/wp-content/uploads/2025/01/precision-pro-courts_white_500.png" alt="Precision Pro Courts" style="height:25px;"></div>
         <p>&copy; 2026 Precision Pro Courts. All rights reserved.</p>
-        <ul class="footer-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#areas">Areas</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
       </div>
     </div>
   </footer>
 
-  <!-- STICKY CTA BAR -->
+  <!-- STICKY CTA -->
   <div class="sticky-cta" id="stickyCta">
     <div class="sticky-cta-inner">
       <div class="sticky-cta-text">🏆 Free Court Consultation <span>— No obligation, expert advice</span></div>
-      <a href="#contact" class="sticky-cta-btn">Get Quote</a>
+      <a href="contact.html" class="sticky-cta-btn">Get Quote</a>
     </div>
   </div>
 
-  <script>
-    // Mobile nav
-    document.getElementById('mobileToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
-    });
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
-    });
+  <!-- CHATBOT -->
+  <button class="chatbot-bubble" id="chatBubble" aria-label="Chat with us">💬</button>
+  <div class="chatbot-panel" id="chatPanel">
+    <div class="chatbot-header">
+      <div class="chatbot-header-avatar">🏀</div>
+      <div class="chatbot-header-info">
+        <h4>Precision Pro Courts</h4>
+        <p>Typically replies instantly</p>
+      </div>
+      <button class="chatbot-header-close" id="chatClose">✕</button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="chat-msg bot">Hi! 👋 Welcome to Precision Pro Courts. How can I help you today?</div>
+    </div>
+    <div class="chatbot-prompts">
+      <button class="chatbot-prompt">Get a free quote</button>
+      <button class="chatbot-prompt">What sports do you build for?</button>
+      <button class="chatbot-prompt">Service areas?</button>
+      <button class="chatbot-prompt">How much does it cost?</button>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Type a message...">
+      <button id="chatSend">➤</button>
+    </div>
+  </div>
 
-    // Nav scroll effect
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    // Sticky CTA bar (show after scrolling past hero)
-    const stickyCta = document.getElementById('stickyCta');
-    const hero = document.getElementById('hero');
-    const stickyObserver = new IntersectionObserver(([e]) => {
-      stickyCta.classList.toggle('visible', !e.isIntersecting);
-    }, { threshold: 0.1 });
-    stickyObserver.observe(hero);
-
-    // Fade-up on scroll
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObserver.unobserve(e.target); }});
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
-
-    // Animated counters
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const el = e.target;
-          const target = parseInt(el.dataset.count);
-          const suffix = el.textContent.replace(/[0-9]/g, '');
-          let current = 0;
-          const step = Math.max(1, Math.floor(target / 40));
-          const timer = setInterval(() => {
-            current += step;
-            if (current >= target) { current = target; clearInterval(timer); }
-            el.textContent = current + suffix;
-          }, 30);
-          counterObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
-
-    // FAQ accordion
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const wasActive = btn.classList.contains('active');
-        document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('active'); b.nextElementSibling.classList.remove('open'); });
-        if (!wasActive) { btn.classList.add('active'); btn.nextElementSibling.classList.add('open'); }
-      });
-    });
-  </script>
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
 </body>
 </html>
