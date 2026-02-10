@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://precisionprocourts.com/sitemap.xml
