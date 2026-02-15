@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Court Designer | Precision Pro Courts - Design Your Dream Court</title>
+    <meta name="description" content="Design your perfect pickleball, tennis, or basketball court with our free interactive Court Designer. Choose colors, preview your design, and download a PNG.">
+    <link rel="canonical" href="https://precisionprocourts.com/court-designer.html">
+    <meta property="og:title" content="Court Designer | Precision Pro Courts">
+    <meta property="og:description" content="Design your perfect sport court with our free interactive tool. Choose colors and download your custom design.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #29457c;
+            --navy-dark: #1a2d52;
+            --navy-light: #3a5a9a;
+            --blue: #5694ff;
+            --blue-dark: #4080e8;
+            --orange: #FF6B35;
+            --white: #ffffff;
+            --gray-50: #F8FAFB;
+            --gray-100: #EEF2F5;
+            --gray-200: #D8DEE4;
+            --gray-400: #8896A6;
+            --gray-600: #4A5568;
+            --gray-800: #1A202C;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            color: var(--white); 
+            min-height: 100vh; 
+        }
+        
+        /* Header */
+        header { 
+            background: rgba(255,255,255,0.98); 
+            padding: 1rem 2rem; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+        }
+        .header-inner { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo img { height: 40px; }
+        .back-link { 
+            color: var(--gray-600); 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--blue); }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        
+        /* Page Title */
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        h1 { 
+            font-family: 'Space Grotesk', sans-serif; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        .subtitle { 
+            color: rgba(255,255,255,0.7); 
+            font-size: 1.1rem;
+        }
+        
+        /* Designer Grid */
+        .designer-grid { 
+            display: grid; 
+            grid-template-columns: 320px 1fr; 
+            gap: 2rem; 
+        }
+        @media (max-width: 968px) { 
+            .designer-grid { grid-template-columns: 1fr; } 
+        }
+        
+        /* Controls Panel */
+        .controls { 
+            background: rgba(255,255,255,0.08); 
+            backdrop-filter: blur(12px);
+            border-radius: 16px; 
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .control-section { margin-bottom: 1.5rem; }
+        .control-label { 
+            font-weight: 700; 
+            font-size: 0.8rem; 
+            margin-bottom: 0.75rem; 
+            display: block; 
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        
+        /* Sport Buttons */
+        .sport-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+        .sport-btn { 
+            background: rgba(255,255,255,0.08); 
+            border: 2px solid transparent; 
+            padding: 0.85rem 0.5rem; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            text-align: center; 
+            transition: all 0.25s; 
+            color: var(--white); 
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .sport-btn:hover { background: rgba(255,255,255,0.12); }
+        .sport-btn.active { 
+            border-color: var(--blue); 
+            background: rgba(86, 148, 255, 0.2);
+            box-shadow: 0 0 20px rgba(86, 148, 255, 0.3);
+        }
+        .sport-btn span { display: block; font-size: 1.75rem; margin-bottom: 0.35rem; }
+        
+        /* Color Selection */
+        .color-section { margin-bottom: 1rem; }
+        .color-row { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            margin-bottom: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .color-row:hover { background: rgba(255,255,255,0.05); }
+        .color-row.active { background: rgba(86, 148, 255, 0.15); }
+        .color-row label { 
+            font-size: 0.85rem; 
+            width: 75px; 
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+        }
+        .color-preview { 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 8px; 
+            border: 3px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .color-row.active .color-preview {
+            border-color: var(--blue);
+            box-shadow: 0 0 12px rgba(86, 148, 255, 0.5);
+        }
+        .color-name { 
+            font-size: 0.8rem; 
+            color: rgba(255,255,255,0.6); 
+            flex: 1; 
+        }
+        
+        /* Color Palette */
+        .palette-grid { 
+            display: grid; 
+            grid-template-columns: repeat(8, 1fr); 
+            gap: 5px; 
+            margin-top: 0.75rem; 
+        }
+        .swatch { 
+            width: 100%; 
+            aspect-ratio: 1; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            border: 2px solid transparent; 
+            transition: all 0.15s;
+            position: relative;
+        }
+        .swatch:hover { 
+            transform: scale(1.15); 
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .swatch.selected { 
+            border-color: var(--white); 
+            box-shadow: 0 0 0 2px var(--blue), 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        /* Presets */
+        .preset-section { 
+            margin-top: 1.5rem; 
+            padding-top: 1.5rem; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+        }
+        .preset-btn { 
+            width: 100%; 
+            background: rgba(255,255,255,0.08); 
+            border: none; 
+            padding: 0.7rem 1rem; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            color: var(--white); 
+            font-size: 0.85rem; 
+            font-weight: 500;
+            margin-bottom: 0.5rem; 
+            text-align: left; 
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .preset-btn:hover { 
+            background: rgba(255,255,255,0.12);
+            transform: translateX(4px);
+        }
+        
+        /* Preview Area */
+        .preview-area { 
+            background: rgba(0,0,0,0.3); 
+            border-radius: 16px; 
+            padding: 1.5rem; 
+            display: flex; 
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .preview-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 1rem; 
+        }
+        .preview-title { 
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+        }
+        .download-btn { 
+            background: var(--blue); 
+            color: var(--navy); 
+            border: none; 
+            padding: 0.75rem 1.5rem; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 700; 
+            font-size: 0.9rem; 
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .download-btn:hover { 
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(86, 148, 255, 0.3);
+        }
+        
+        .canvas-container { 
+            flex: 1; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 450px;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
+            border-radius: 12px;
+        }
+        #courtCanvas { 
+            background: #0a0f18; 
+            border-radius: 12px; 
+            max-width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        
+        /* Credit */
+        .ppc-credit { 
+            text-align: center; 
+            margin-top: 1.5rem; 
+            padding-top: 1rem; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+        }
+        .ppc-credit p { 
+            font-size: 0.8rem; 
+            color: rgba(255,255,255,0.5); 
+        }
+        .ppc-credit a {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .ppc-credit a:hover { text-decoration: underline; }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .cta-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--orange);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.25s;
+        }
+        .cta-btn:hover {
+            background: #ff8555;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .palette-grid { grid-template-columns: repeat(6, 1fr); }
+            .sport-buttons { grid-template-columns: 1fr 1fr; }
+            .canvas-container { min-height: 300px; }
+            header { padding: 0.75rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="/assets/images/logos/logo-white-lg.png" alt="Precision Pro Courts" style="filter: invert(25%) sepia(60%) saturate(500%) hue-rotate(190deg);">
+            </a>
+            <a href="index.html" class="back-link">
+                <span>←</span> Back to Home
+            </a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="page-header">
+            <h1>🎨 Court Designer</h1>
+            <p class="subtitle">Design your dream court. Pick your colors. Download your vision.</p>
+        </div>
+        
+        <div class="designer-grid">
+            <div class="controls">
+                <div class="control-section">
+                    <span class="control-label">Sport Type</span>
+                    <div class="sport-buttons">
+                        <button class="sport-btn" data-sport="pickleball"><span>🏓</span>Pickleball</button>
+                        <button class="sport-btn active" data-sport="tennis"><span>🎾</span>Tennis</button>
+                        <button class="sport-btn" data-sport="basketball"><span>🏀</span>Basketball</button>
+                        <button class="sport-btn" data-sport="multi"><span>🏅</span>Multi-Sport</button>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <span class="control-label">Court Colors</span>
+                    <div class="color-section">
+                        <div class="color-row active" id="playRow" onclick="setColorTarget('play')">
+                            <label>Playing:</label>
+                            <div class="color-preview" id="playColor" style="background: #1a66b3;"></div>
+                            <span class="color-name" id="playColorName">Standard Blue</span>
+                        </div>
+                        <div class="color-row" id="surroundRow" onclick="setColorTarget('surround')">
+                            <label>Surround:</label>
+                            <div class="color-preview" id="surroundColor" style="background: #2d6a4f;"></div>
+                            <span class="color-name" id="surroundColorName">Competition Green</span>
+                        </div>
+                        <div class="color-row" id="lineRow" onclick="setColorTarget('line')">
+                            <label>Lines:</label>
+                            <div class="color-preview" id="lineColor" style="background: #ffffff;"></div>
+                            <span class="color-name" id="lineColorName">White</span>
+                        </div>
+                    </div>
+                    
+                    <span class="control-label" style="margin-top: 1rem;">Color Palette</span>
+                    <div class="palette-grid" id="paletteGrid"></div>
+                </div>
+                
+                <div class="preset-section">
+                    <span class="control-label">Quick Presets</span>
+                    <button class="preset-btn" data-preset="ppa">🏆 PPA Tour (Blue/Green)</button>
+                    <button class="preset-btn" data-preset="usopen">🎾 US Open Blue</button>
+                    <button class="preset-btn" data-preset="clay">🟤 Red Clay Classic</button>
+                    <button class="preset-btn" data-preset="ppc">💙 PPC Signature</button>
+                    <button class="preset-btn" data-preset="sunset">🌅 Sunset Orange</button>
+                </div>
+            </div>
+            
+            <div class="preview-area">
+                <div class="preview-header">
+                    <span class="preview-title">Live Preview</span>
+                    <button class="download-btn" id="downloadBtn">
+                        <span>📥</span> Download PNG
+                    </button>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="courtCanvas" width="850" height="530"></canvas>
+                </div>
+                <div class="ppc-credit">
+                    <p>Designed with ❤️ by <a href="index.html">Precision Pro Courts</a> — Utah's Premier Court Builder</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Love Your Design?</h2>
+            <p>Let's make it real. Get a free quote for your custom court installation.</p>
+            <a href="contact.html" class="cta-btn">
+                Get a Free Quote →
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Court surface colors (common industry colors)
+        const COURT_COLORS = [
+            { name: 'Competition Green', hex: '#2d6a4f' },
+            { name: 'Performance Green', hex: '#3a8f5c' },
+            { name: 'Field Green', hex: '#4a7c3f' },
+            { name: 'Forest Green', hex: '#1b4332' },
+            { name: 'Irish Green', hex: '#009a44' },
+            { name: 'Kiwi', hex: '#7ab648' },
+            { name: 'Lime', hex: '#a4d65e' },
+            { name: 'Sea Green', hex: '#00a78e' },
+            { name: 'Light Blue', hex: '#6ba3d6' },
+            { name: 'Standard Blue', hex: '#1a66b3' },
+            { name: 'Competition Blue', hex: '#0d4f8b' },
+            { name: 'Frost Blue', hex: '#a0c4e8' },
+            { name: 'Sky Blue', hex: '#5bb7e8' },
+            { name: 'Caribbean Blue', hex: '#00a3b4' },
+            { name: 'Navy', hex: '#1c2951' },
+            { name: 'PPC Blue', hex: '#5694ff' },
+            { name: 'Sandstone', hex: '#c2a97e' },
+            { name: 'Beige', hex: '#d4c5a9' },
+            { name: 'Terracotta', hex: '#c1440e' },
+            { name: 'Orange', hex: '#e87722' },
+            { name: 'PPC Orange', hex: '#FF6B35' },
+            { name: 'Classic Red', hex: '#b22234' },
+            { name: 'Crimson', hex: '#9b1b30' },
+            { name: 'Bright Red', hex: '#e03c31' },
+            { name: 'Coral', hex: '#ef6c5b' },
+            { name: 'Slate', hex: '#6b7b8d' },
+            { name: 'Gray', hex: '#8e9196' },
+            { name: 'Charcoal', hex: '#3d3d3d' },
+            { name: 'Black', hex: '#1a1a1a' },
+            { name: 'White', hex: '#ffffff' },
+            { name: 'Pro Purple', hex: '#6b3fa0' },
+            { name: 'Ultra Violet', hex: '#5f2580' },
+        ];
+        
+        const PRESETS = {
+            ppa: { play: '#1a66b3', surround: '#2d6a4f', line: '#ffffff', playName: 'Standard Blue', surroundName: 'Competition Green' },
+            usopen: { play: '#3a7fd5', surround: '#0d4f8b', line: '#ffffff', playName: 'US Open Blue', surroundName: 'Competition Blue' },
+            clay: { play: '#c1440e', surround: '#2d6a4f', line: '#ffffff', playName: 'Terracotta', surroundName: 'Competition Green' },
+            ppc: { play: '#5694ff', surround: '#29457c', line: '#ffffff', playName: 'PPC Blue', surroundName: 'Navy' },
+            sunset: { play: '#FF6B35', surround: '#1c2951', line: '#ffffff', playName: 'PPC Orange', surroundName: 'Navy' },
+        };
+        
+        const COURT_DIMS = {
+            tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120 },
+            pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64 },
+            basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100 },
+            multi: { courtW: 60, courtL: 120, totalW: 64, totalL: 124 },
+        };
+        
+        let state = {
+            sport: 'tennis',
+            playColor: '#1a66b3',
+            surroundColor: '#2d6a4f',
+            lineColor: '#ffffff',
+            activeColorTarget: 'play'
+        };
+        
+        const canvas = document.getElementById('courtCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Build palette grid
+        const paletteGrid = document.getElementById('paletteGrid');
+        COURT_COLORS.forEach((color) => {
+            const swatch = document.createElement('div');
+            swatch.className = 'swatch';
+            swatch.style.background = color.hex;
+            swatch.title = color.name;
+            swatch.dataset.hex = color.hex;
+            swatch.dataset.name = color.name;
+            swatch.addEventListener('click', () => selectColor(color.hex, color.name));
+            paletteGrid.appendChild(swatch);
+        });
+        
+        function setColorTarget(target) {
+            state.activeColorTarget = target;
+            document.querySelectorAll('.color-row').forEach(el => el.classList.remove('active'));
+            document.getElementById(target + 'Row').classList.add('active');
+        }
+        
+        function selectColor(hex, name) {
+            if (!state.activeColorTarget) state.activeColorTarget = 'play';
+            
+            if (state.activeColorTarget === 'play') {
+                state.playColor = hex;
+                document.getElementById('playColor').style.background = hex;
+                document.getElementById('playColorName').textContent = name;
+            } else if (state.activeColorTarget === 'surround') {
+                state.surroundColor = hex;
+                document.getElementById('surroundColor').style.background = hex;
+                document.getElementById('surroundColorName').textContent = name;
+            } else if (state.activeColorTarget === 'line') {
+                state.lineColor = hex;
+                document.getElementById('lineColor').style.background = hex;
+                document.getElementById('lineColorName').textContent = name;
+            }
+            
+            drawCourt();
+        }
+        
+        // Sport buttons
+        document.querySelectorAll('.sport-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.sport-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                state.sport = btn.dataset.sport;
+                drawCourt();
+            });
+        });
+        
+        // Presets
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const preset = PRESETS[btn.dataset.preset];
+                state.playColor = preset.play;
+                state.surroundColor = preset.surround;
+                state.lineColor = preset.line;
+                document.getElementById('playColor').style.background = preset.play;
+                document.getElementById('surroundColor').style.background = preset.surround;
+                document.getElementById('lineColor').style.background = preset.line;
+                document.getElementById('playColorName').textContent = preset.playName;
+                document.getElementById('surroundColorName').textContent = preset.surroundName;
+                document.getElementById('lineColorName').textContent = 'White';
+                drawCourt();
+            });
+        });
+        
+        // Download
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = `precision-pro-courts-${state.sport}-design.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+        
+        function drawCourt() {
+            const dims = COURT_DIMS[state.sport];
+            const padding = 50;
+            const scale = Math.min((canvas.width - padding * 2) / dims.totalW, (canvas.height - padding * 2) / dims.totalL);
+            const offX = (canvas.width - dims.totalW * scale) / 2;
+            const offY = (canvas.height - dims.totalL * scale) / 2;
+            
+            // Clear with gradient
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#0a0f18');
+            gradient.addColorStop(1, '#121a28');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Surround area with subtle texture
+            ctx.fillStyle = state.surroundColor;
+            ctx.fillRect(offX, offY, dims.totalW * scale, dims.totalL * scale);
+            
+            // Add subtle grain texture
+            ctx.globalAlpha = 0.03;
+            for (let i = 0; i < 500; i++) {
+                ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
+                ctx.fillRect(
+                    offX + Math.random() * dims.totalW * scale,
+                    offY + Math.random() * dims.totalL * scale,
+                    1, 1
+                );
+            }
+            ctx.globalAlpha = 1;
+            
+            // Playing area
+            const courtOffX = offX + ((dims.totalW - dims.courtW) / 2) * scale;
+            const courtOffY = offY + ((dims.totalL - dims.courtL) / 2) * scale;
+            ctx.fillStyle = state.playColor;
+            ctx.fillRect(courtOffX, courtOffY, dims.courtW * scale, dims.courtL * scale);
+            
+            // Add subtle grain to playing area
+            ctx.globalAlpha = 0.03;
+            for (let i = 0; i < 300; i++) {
+                ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
+                ctx.fillRect(
+                    courtOffX + Math.random() * dims.courtW * scale,
+                    courtOffY + Math.random() * dims.courtL * scale,
+                    1, 1
+                );
+            }
+            ctx.globalAlpha = 1;
+            
+            // Draw lines based on sport
+            ctx.strokeStyle = state.lineColor;
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            const hw = (dims.courtW * scale) / 2;
+            const hl = (dims.courtL * scale) / 2;
+            
+            // Court outline
+            ctx.strokeRect(courtOffX, courtOffY, dims.courtW * scale, dims.courtL * scale);
+            
+            if (state.sport === 'tennis') {
+                const singlesW = (27 * scale) / 2;
+                const serviceDist = 21 * scale;
+                
+                // Singles lines
+                ctx.beginPath();
+                ctx.moveTo(cx - singlesW, cy - hl);
+                ctx.lineTo(cx - singlesW, cy + hl);
+                ctx.moveTo(cx + singlesW, cy - hl);
+                ctx.lineTo(cx + singlesW, cy + hl);
+                ctx.stroke();
+                
+                // Net
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(cx - hw, cy);
+                ctx.lineTo(cx + hw, cy);
+                ctx.stroke();
+                ctx.lineWidth = 3;
+                
+                // Service lines
+                ctx.beginPath();
+                ctx.moveTo(cx - singlesW, cy - serviceDist);
+                ctx.lineTo(cx + singlesW, cy - serviceDist);
+                ctx.moveTo(cx - singlesW, cy + serviceDist);
+                ctx.lineTo(cx + singlesW, cy + serviceDist);
+                ctx.stroke();
+                
+                // Center service line
+                ctx.beginPath();
+                ctx.moveTo(cx, cy - serviceDist);
+                ctx.lineTo(cx, cy + serviceDist);
+                ctx.stroke();
+                
+                // Center marks
+                ctx.beginPath();
+                ctx.moveTo(cx, cy - hl);
+                ctx.lineTo(cx, cy - hl + 8);
+                ctx.moveTo(cx, cy + hl);
+                ctx.lineTo(cx, cy + hl - 8);
+                ctx.stroke();
+                
+            } else if (state.sport === 'pickleball') {
+                const kitchen = 7 * scale;
+                
+                // Net
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(cx - hw, cy);
+                ctx.lineTo(cx + hw, cy);
+                ctx.stroke();
+                ctx.lineWidth = 3;
+                
+                // Kitchen (Non-Volley Zone) lines
+                ctx.beginPath();
+                ctx.moveTo(cx - hw, cy - kitchen);
+                ctx.lineTo(cx + hw, cy - kitchen);
+                ctx.moveTo(cx - hw, cy + kitchen);
+                ctx.lineTo(cx + hw, cy + kitchen);
+                ctx.stroke();
+                
+                // Center lines (service areas)
+                ctx.beginPath();
+                ctx.moveTo(cx, cy - hl);
+                ctx.lineTo(cx, cy - kitchen);
+                ctx.moveTo(cx, cy + hl);
+                ctx.lineTo(cx, cy + kitchen);
+                ctx.stroke();
+                
+            } else if (state.sport === 'basketball') {
+                // Center circle
+                ctx.beginPath();
+                ctx.arc(cx, cy, 6 * scale, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                // Center line
+                ctx.beginPath();
+                ctx.moveTo(cx - hw, cy);
+                ctx.lineTo(cx + hw, cy);
+                ctx.stroke();
+                
+                // Free throw areas
+                const ftWidth = 12 * scale;
+                const ftDepth = 19 * scale;
+                
+                // Top (left basket)
+                ctx.strokeRect(cx - ftWidth / 2, cy - hl, ftWidth, ftDepth);
+                ctx.beginPath();
+                ctx.arc(cx, cy - hl + ftDepth, ftWidth / 2, 0, Math.PI);
+                ctx.stroke();
+                
+                // Bottom (right basket)
+                ctx.strokeRect(cx - ftWidth / 2, cy + hl - ftDepth, ftWidth, ftDepth);
+                ctx.beginPath();
+                ctx.arc(cx, cy + hl - ftDepth, ftWidth / 2, Math.PI, Math.PI * 2);
+                ctx.stroke();
+                
+                // Three-point arcs
+                ctx.beginPath();
+                ctx.arc(cx, cy - hl + 5.25 * scale, 22 * scale, 0.35, Math.PI - 0.35);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(cx, cy + hl - 5.25 * scale, 22 * scale, Math.PI + 0.35, -0.35);
+                ctx.stroke();
+                
+                // Three-point corners
+                ctx.beginPath();
+                ctx.moveTo(cx - hw + 3 * scale, cy - hl);
+                ctx.lineTo(cx - hw + 3 * scale, cy - hl + 14 * scale);
+                ctx.moveTo(cx + hw - 3 * scale, cy - hl);
+                ctx.lineTo(cx + hw - 3 * scale, cy - hl + 14 * scale);
+                ctx.moveTo(cx - hw + 3 * scale, cy + hl);
+                ctx.lineTo(cx - hw + 3 * scale, cy + hl - 14 * scale);
+                ctx.moveTo(cx + hw - 3 * scale, cy + hl);
+                ctx.lineTo(cx + hw - 3 * scale, cy + hl - 14 * scale);
+                ctx.stroke();
+                
+                // Restricted areas (circles under basket)
+                ctx.beginPath();
+                ctx.arc(cx, cy - hl + 5.25 * scale, 4 * scale, 0, Math.PI);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(cx, cy + hl - 5.25 * scale, 4 * scale, Math.PI, Math.PI * 2);
+                ctx.stroke();
+                
+            } else if (state.sport === 'multi') {
+                // Multi-sport with combined lines
+                ctx.lineWidth = 2;
+                
+                // Outer boundary already drawn
+                // Center line
+                ctx.beginPath();
+                ctx.moveTo(cx - hw, cy);
+                ctx.lineTo(cx + hw, cy);
+                ctx.stroke();
+                
+                // Pickleball courts (2 side by side)
+                const pbW = 10 * scale;
+                const pbL = 22 * scale;
+                const kitchen = 3.5 * scale;
+                
+                // Left pickleball court
+                ctx.strokeRect(cx - pbW * 2 - 2 * scale, cy - pbL, pbW * 2, pbL * 2);
+                ctx.beginPath();
+                ctx.moveTo(cx - pbW * 2 - 2 * scale, cy - kitchen);
+                ctx.lineTo(cx - 2 * scale, cy - kitchen);
+                ctx.moveTo(cx - pbW * 2 - 2 * scale, cy + kitchen);
+                ctx.lineTo(cx - 2 * scale, cy + kitchen);
+                ctx.stroke();
+                
+                // Right pickleball court
+                ctx.strokeRect(cx + 2 * scale, cy - pbL, pbW * 2, pbL * 2);
+                ctx.beginPath();
+                ctx.moveTo(cx + 2 * scale, cy - kitchen);
+                ctx.lineTo(cx + pbW * 2 + 2 * scale, cy - kitchen);
+                ctx.moveTo(cx + 2 * scale, cy + kitchen);
+                ctx.lineTo(cx + pbW * 2 + 2 * scale, cy + kitchen);
+                ctx.stroke();
+            }
+            
+            // Add watermark
+            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            ctx.font = 'bold 13px Inter, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText('precisionprocourts.com', canvas.width - 25, canvas.height - 18);
+        }
+        
+        // Initial draw
+        drawCourt();
+    </script>
+</body>
+</html>
