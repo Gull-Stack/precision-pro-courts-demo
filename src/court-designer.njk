@@ -10,7 +10,12 @@ permalink: /court-designer/
     body { 
         background: linear-gradient(135deg, #1a2d52 0%, #29457c 100%);
     }
-    .nav { background: rgba(255,255,255,0.98); }
+    /* Make nav readable on dark page */
+    .nav { background: rgba(255,255,255,0.98); box-shadow: 0 4px 30px rgba(0,0,0,0.15); }
+    .nav-logo { color: #29457c !important; }
+    .nav-links a { color: #4A5568 !important; }
+    .nav-links a:hover, .nav-links a.active { color: #5694ff !important; }
+    .mobile-toggle { color: #29457c !important; }
     
     .designer-container { 
         max-width: 1400px; 
