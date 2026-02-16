@@ -1,4 +1,6 @@
-module.exports = function(eleventyConfig) {
+module.exports = function(eleventyConfig, config = {}) {
+  // Support pathPrefix from environment or config
+  const pathPrefix = process.env.PATH_PREFIX || config.pathPrefix || "/";
   // Pass through static assets
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
@@ -14,6 +16,7 @@ module.exports = function(eleventyConfig) {
   });
 
   return {
+    pathPrefix: pathPrefix,
     dir: {
       input: "src",
       output: "_site",

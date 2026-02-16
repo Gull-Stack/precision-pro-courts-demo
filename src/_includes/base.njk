@@ -56,7 +56,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="{{ '/css/styles.css' | url }}">
 </head>
 <body>
 
@@ -72,7 +72,7 @@
   <div class="sticky-cta" id="stickyCta">
     <div class="sticky-cta-inner">
       <div class="sticky-cta-text">🏆 Free Court Consultation <span>— No obligation, expert advice</span></div>
-      <a href="/contact/" class="sticky-cta-btn">Get Quote</a>
+      <a href="{{ '/contact/' | url }}" class="sticky-cta-btn">Get Quote</a>
     </div>
   </div>
 
@@ -102,8 +102,8 @@
     </div>
   </div>
 
-  <script src="/js/main.js"></script>
-  <script src="/js/chatbot.js"></script>
+  <script src="{{ '/js/main.js' | url }}"></script>
+  <script src="{{ '/js/chatbot.js' | url }}"></script>
   
   <!-- PODIUM WIDGET -->
   <script>

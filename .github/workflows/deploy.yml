@@ -20,6 +20,8 @@ jobs:
       
       - run: npm ci
       - run: npm run build
+        env:
+          PATH_PREFIX: /precision-pro-courts-demo/
       - run: touch _site/.nojekyll
       
       - name: Deploy to gh-pages
