@@ -104,5 +104,21 @@
 
   <script src="/js/main.js"></script>
   <script src="/js/chatbot.js"></script>
+  
+  <!-- PODIUM WIDGET -->
+  <script>
+    (function(w,d,l,t){
+        try {
+            var h = d.getElementsByTagName("head")[0];
+            var s = d.createElement("script");
+            s.id = "podium-widget";
+            s.defer = true;
+            s.async = true;
+            s.setAttribute('data-organization-api-token', t);
+            s.setAttribute("src", l);
+            h.appendChild(s);
+        } catch (e) {}
+    })(window, document, "https://connect.podium.com/widget.js", "ca776e02-9895-4cf8-ba9a-e28463c53105");
+  </script>
 </body>
 </html>
