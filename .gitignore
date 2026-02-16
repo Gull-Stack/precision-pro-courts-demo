@@ -1,1 +1,4 @@
+node_modules/
+_site/
 .vercel
+.DS_Store

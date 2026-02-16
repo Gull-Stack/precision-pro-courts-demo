@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  {% if site.gaId %}
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gaId }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.gaId }}');
+  </script>
+  {% endif %}
+  
+  <title>{{ title | default(site.name + " | " + site.tagline) }}</title>
+  <meta name="description" content="{{ description | default(site.description) }}">
+  <meta name="author" content="{{ site.name }}">
+  <meta name="geo.region" content="US-UT">
+  
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  
+  <meta property="og:title" content="{{ ogTitle | default(title) | default(site.name) }}">
+  <meta property="og:description" content="{{ ogDescription | default(description) | default(site.description) }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="{{ site.name }}">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title | default(site.name) }}">
+  <meta name="twitter:description" content="{{ description | default(site.description) }}">
+  
+  {% block schema %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "{{ site.name }}",
+    "url": "{{ site.url }}",
+    "email": "{{ site.email }}",
+    "description": "{{ site.description }}",
+    "areaServed": [
+      {% for area in site.serviceAreas %}
+      {"@type": "AdministrativeArea", "name": "{{ area }}, UT"}{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ],
+    "priceRange": "$$"
+  }
+  </script>
+  {% endblock %}
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏀</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  {% include "header.njk" %}
+
+  {% block content %}
+  {{ content | safe }}
+  {% endblock %}
+
+  {% include "footer.njk" %}
+
+  <!-- STICKY CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-inner">
+      <div class="sticky-cta-text">🏆 Free Court Consultation <span>— No obligation, expert advice</span></div>
+      <a href="/contact/" class="sticky-cta-btn">Get Quote</a>
+    </div>
+  </div>
+
+  <!-- CHATBOT -->
+  <button class="chatbot-bubble" id="chatBubble" aria-label="Chat with us">💬</button>
+  <div class="chatbot-panel" id="chatPanel">
+    <div class="chatbot-header">
+      <div class="chatbot-header-avatar">🏀</div>
+      <div class="chatbot-header-info">
+        <h4>{{ site.name }}</h4>
+        <p>Typically replies instantly</p>
+      </div>
+      <button class="chatbot-header-close" id="chatClose">✕</button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="chat-msg bot">Hi! 👋 Welcome to {{ site.name }}. How can I help you today?</div>
+    </div>
+    <div class="chatbot-prompts">
+      <button class="chatbot-prompt">Get a free quote</button>
+      <button class="chatbot-prompt">What sports do you build for?</button>
+      <button class="chatbot-prompt">Service areas?</button>
+      <button class="chatbot-prompt">How much does it cost?</button>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Type a message...">
+      <button id="chatSend">➤</button>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/chatbot.js"></script>
+</body>
+</html>

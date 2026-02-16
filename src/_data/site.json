@@ -1,0 +1,21 @@
+{
+  "name": "Precision Pro Courts",
+  "tagline": "Beautiful Courts. Affordable Prices.",
+  "description": "Utah's top-rated sport court construction & resurfacing. Pickleball, tennis, basketball courts built with precision.",
+  "url": "https://precisionprocourts.com",
+  "email": "precisionprocourts@gmail.com",
+  "phone": "",
+  "address": {
+    "city": "Utah",
+    "state": "UT"
+  },
+  "gaId": "",
+  "serviceAreas": [
+    "Utah County",
+    "Salt Lake County",
+    "Davis County",
+    "Weber County",
+    "Juab County",
+    "Washington County"
+  ]
+}

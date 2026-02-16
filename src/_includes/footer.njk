@@ -1,0 +1,42 @@
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>{{ site.name }}</h4>
+        <p>Utah's premier sport court construction and resurfacing company. Quality craftsmanship, honest pricing.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services/#pickleball">Pickleball Courts</a></li>
+          <li><a href="/services/#tennis">Tennis Courts</a></li>
+          <li><a href="/services/#basketball">Basketball Courts</a></li>
+          <li><a href="/services/#resurfacing">Resurfacing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/gallery/">Gallery</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Areas</h4>
+        <ul>
+          {% for area in site.serviceAreas %}
+          <li><a href="/contact/#areas">{{ area }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo"><img src="/assets/images/logos/logo-white-lg.png" alt="{{ site.name }}" style="height:25px;"></div>
+      <p>&copy; 2026 {{ site.name }}. All rights reserved.</p>
+      <p style="margin-top:0.5rem;font-size:0.8rem;opacity:0.7;">Marketing by <a href="https://gullstack.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">GullStack</a></p>
+    </div>
+  </div>
+</footer>
