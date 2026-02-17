@@ -19,50 +19,90 @@ permalink: /contact/
         <div>
           <h2 style="font-size:2rem;margin-bottom:0.5rem;">Get Your Free Quote</h2>
           <p style="color:var(--gray-600);margin-bottom:2rem;">Fill out the form below and we'll get back to you within 24 hours with a detailed estimate.</p>
-          <form class="contact-form" id="contactForm" action="mailto:precisionprocourts@gmail.com" method="post" enctype="text/plain">
+          <form class="contact-form" id="contactForm">
+            <!-- Honeypot -->
+            <input type="text" name="fax_number" id="fax_number" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
+            <!-- Timestamp token (bot detection) -->
+            <input type="hidden" name="_timestamp" id="_timestamp" value="">
             <div class="form-row">
               <div class="form-group">
-                <label for="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" required>
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" required>
               </div>
-              <div class="form-group">
-                <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" required>
-              </div>
-            </div>
-            <div class="form-row">
               <div class="form-group">
                 <label for="email">Email *</label>
                 <input type="email" id="email" name="email" required>
               </div>
+            </div>
+            <div class="form-row">
               <div class="form-group">
                 <label for="phone">Phone</label>
                 <input type="tel" id="phone" name="phone">
               </div>
-            </div>
-            <div class="form-group">
-              <label for="courtType">Court Type</label>
-              <select id="courtType" name="courtType">
-                <option value="">Select a court type...</option>
-                <option value="pickleball">Pickleball Court</option>
-                <option value="tennis">Tennis Court</option>
-                <option value="basketball">Basketball Court</option>
-                <option value="multi-sport">Multi-Sport Court</option>
-                <option value="resurfacing">Court Resurfacing</option>
-                <option value="fencing">Court Fencing</option>
-                <option value="other">Other / Not Sure</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="location">City / County</label>
-              <input type="text" id="location" name="location" placeholder="e.g., Provo, Utah County">
+              <div class="form-group">
+                <label for="service">Service Needed</label>
+                <select id="service" name="service">
+                  <option value="">Select a service...</option>
+                  <option value="pickleball">Pickleball Court</option>
+                  <option value="tennis">Tennis Court</option>
+                  <option value="basketball">Basketball Court</option>
+                  <option value="multi-sport">Multi-Sport Court</option>
+                  <option value="resurfacing">Court Resurfacing</option>
+                  <option value="other">Other / Not Sure</option>
+                </select>
+              </div>
             </div>
             <div class="form-group">
               <label for="message">Tell Us About Your Project</label>
               <textarea id="message" name="message" placeholder="Describe your ideal court, space dimensions, timeline, etc."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message →</button>
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="align-self:flex-start;">Send Message →</button>
+            <div id="formStatus" style="display:none;padding:1rem;border-radius:8px;margin-top:1rem;"></div>
           </form>
+          <script>
+            document.getElementById('_timestamp').value = Date.now();
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+              e.preventDefault();
+              const btn = document.getElementById('submitBtn');
+              const status = document.getElementById('formStatus');
+              btn.disabled = true;
+              btn.textContent = 'Sending...';
+              status.style.display = 'none';
+              const formData = {
+                name: this.name.value,
+                email: this.email.value,
+                phone: this.phone.value,
+                service: this.service.value,
+                message: this.message.value,
+                fax_number: this.fax_number.value,
+                _timestamp: this._timestamp.value
+              };
+              try {
+                const res = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(formData)
+                });
+                const data = await res.json();
+                if (res.ok) {
+                  status.style.background = '#dcfce7';
+                  status.style.color = '#166534';
+                  status.textContent = '✓ Message sent! We\'ll be in touch soon.';
+                  this.reset();
+                  document.getElementById('_timestamp').value = Date.now();
+                } else {
+                  throw new Error(data.error || 'Failed to send');
+                }
+              } catch (err) {
+                status.style.background = '#fee2e2';
+                status.style.color = '#991b1b';
+                status.textContent = '✗ Something went wrong. Please email us directly.';
+              }
+              status.style.display = 'block';
+              btn.disabled = false;
+              btn.textContent = 'Send Message →';
+            });
+          </script>
         </div>
 
         <div class="contact-info-sidebar">

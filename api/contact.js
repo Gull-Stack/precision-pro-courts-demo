@@ -2,6 +2,30 @@ const sgMail = require('@sendgrid/mail');
 
 sgMail.setApiKey((process.env.SENDGRID_API_KEY || '').trim());
 
+// === SPAM PROTECTION ===
+function isGibberish(text) {
+  if (!text || text.length < 2) return false;
+  const cleaned = text.toLowerCase().replace(/[^a-z]/g, '');
+  if (cleaned.length < 2) return false;
+  const vowels = cleaned.match(/[aeiou]/g);
+  if (!vowels || vowels.length < cleaned.length * 0.15) return true;
+  if (/[^aeiou]{5,}/i.test(cleaned)) return true;
+  return false;
+}
+
+function looksLikeSpam(data) {
+  const { name, fax_number, _timestamp } = data;
+  if (fax_number) return 'honeypot';
+  if (_timestamp) {
+    const elapsed = Date.now() - parseInt(_timestamp, 10);
+    if (elapsed < 3000) return 'too_fast';
+  }
+  if (isGibberish(name)) return 'gibberish_name';
+  if (name && name.trim().length < 2) return 'short_name';
+  return false;
+}
+// === END SPAM PROTECTION ===
+
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -10,14 +34,21 @@ module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { name, email, phone, service, message } = req.body;
+  const { name, email, phone, service, message, fax_number, _timestamp } = req.body;
+
+  // === SPAM CHECK ===
+  const spamReason = looksLikeSpam({ name, fax_number, _timestamp });
+  if (spamReason) {
+    console.log(`[SPAM BLOCKED] reason=${spamReason} name="${name}" email="${email}"`);
+    return res.status(200).json({ success: true, message: 'Message sent successfully!' });
+  }
+  // === END SPAM CHECK ===
 
   if (!name || !email) {
     return res.status(400).json({ error: 'Name and email are required.' });
   }
 
   try {
-    // Email to business
     const notificationEmail = {
       to: 'precisionprocourts@gmail.com',
       from: { email: 'noreply@gullstack.com', name: 'Precision Pro Courts Website' },
@@ -37,16 +68,13 @@ module.exports = async (req, res) => {
             </table>
             <div style="margin-top: 24px;">
               <h3 style="margin: 0 0 12px 0; font-size: 16px;">Message</h3>
-              <div style="background: white; padding: 16px; border-radius: 8px; border: 1px solid #e5e5e5;">
-                ${(message || 'No message').replace(/\n/g, '<br>')}
-              </div>
+              <div style="background: white; padding: 16px; border-radius: 8px; border: 1px solid #e5e5e5;">${(message || 'No message').replace(/\n/g, '<br>')}</div>
             </div>
           </div>
         </div>
       `
     };
 
-    // Auto-reply to customer
     const autoReplyEmail = {
       to: email,
       from: { email: 'noreply@gullstack.com', name: 'Precision Pro Courts' },
@@ -70,11 +98,7 @@ module.exports = async (req, res) => {
       `
     };
 
-    await Promise.all([
-      sgMail.send(notificationEmail),
-      sgMail.send(autoReplyEmail)
-    ]);
-
+    await Promise.all([sgMail.send(notificationEmail), sgMail.send(autoReplyEmail)]);
     return res.status(200).json({ success: true, message: 'Message sent successfully!' });
   } catch (error) {
     console.error('SendGrid error:', error.message);
