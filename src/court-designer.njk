@@ -277,7 +277,7 @@ permalink: /court-designer/
                 </button>
             </div>
             <div class="canvas-container">
-                <canvas id="courtCanvas" width="550" height="700"></canvas>
+                <canvas id="courtCanvas" width="330" height="660"></canvas>
             </div>
             <div class="ppc-credit">
                 <p>Designed with ❤️ by <a href="/">Precision Pro Courts</a> — Utah's Premier Court Builder</p>
@@ -328,10 +328,10 @@ permalink: /court-designer/
     };
     
     const COURT_DIMS = {
-        tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120, canvasW: 550, canvasH: 700 },
-        pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64, canvasW: 500, canvasH: 650 },
-        basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100, canvasW: 600, canvasH: 680 },
-        multi: { courtW: 60, courtL: 120, totalW: 64, totalL: 124, canvasW: 550, canvasH: 700 },
+        tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120 },
+        pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64 },
+        basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100 },
+        multi: { courtW: 60, courtL: 120, totalW: 64, totalL: 124 },
     };
     
     let state = {
@@ -418,28 +418,25 @@ permalink: /court-designer/
     function drawCourt() {
         const dims = COURT_DIMS[state.sport];
         
-        // Resize canvas to fit sport's aspect ratio
-        canvas.width = dims.canvasW;
-        canvas.height = dims.canvasH;
+        // Resize canvas to fit sport's aspect ratio - now based on total court dimensions
+        const baseScale = 5.5;
+        canvas.width = dims.totalW * baseScale;
+        canvas.height = dims.totalL * baseScale;
         
-        const padding = 25;
+        const padding = 8;
         const scale = Math.min((canvas.width - padding * 2) / dims.totalW, (canvas.height - padding * 2) / dims.totalL);
         const offX = (canvas.width - dims.totalW * scale) / 2;
         const offY = (canvas.height - dims.totalL * scale) / 2;
         
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, '#0a0f18');
-        gradient.addColorStop(1, '#121a28');
-        ctx.fillStyle = gradient;
+        // Fill entire canvas with surround color - no dark blue background
+        ctx.fillStyle = state.surroundColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        ctx.fillStyle = state.surroundColor;
-        ctx.fillRect(offX, offY, dims.totalW * scale, dims.totalL * scale);
-        
+        // Subtle texture on surround
         ctx.globalAlpha = 0.03;
         for (let i = 0; i < 500; i++) {
             ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
-            ctx.fillRect(offX + Math.random() * dims.totalW * scale, offY + Math.random() * dims.totalL * scale, 1, 1);
+            ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 1);
         }
         ctx.globalAlpha = 1;
         
