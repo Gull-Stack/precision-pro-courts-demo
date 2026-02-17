@@ -104,7 +104,7 @@ permalink: /court-designer/
     }
     .color-name { font-size: 0.8rem; color: rgba(255,255,255,0.6); flex: 1; }
     
-    .palette-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; margin-top: 0.75rem; }
+    .palette-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 0.75rem; }
     .swatch { 
         width: 100%; 
         aspect-ratio: 1; 
@@ -211,7 +211,7 @@ permalink: /court-designer/
     @media (max-width: 600px) {
         .designer-container { padding: 1rem; }
         .page-header h1 { font-size: 1.75rem; }
-        .palette-grid { grid-template-columns: repeat(6, 1fr); }
+        .palette-grid { grid-template-columns: repeat(4, 1fr); }
         .sport-buttons { grid-template-columns: 1fr 1fr; }
         .canvas-container { min-height: 300px; }
     }
@@ -240,13 +240,13 @@ permalink: /court-designer/
                 <div class="color-section">
                     <div class="color-row active" id="playRow" onclick="setColorTarget('play')">
                         <label>Playing:</label>
-                        <div class="color-preview" id="playColor" style="background: #1a66b3;"></div>
-                        <span class="color-name" id="playColorName">Standard Blue</span>
+                        <div class="color-preview" id="playColor" style="background: #3b7dbc;"></div>
+                        <span class="color-name" id="playColorName">Blue</span>
                     </div>
                     <div class="color-row" id="surroundRow" onclick="setColorTarget('surround')">
                         <label>Surround:</label>
-                        <div class="color-preview" id="surroundColor" style="background: #2d6a4f;"></div>
-                        <span class="color-name" id="surroundColorName">Competition Green</span>
+                        <div class="color-preview" id="surroundColor" style="background: #38613b;"></div>
+                        <span class="color-name" id="surroundColorName">Dark Green</span>
                     </div>
                     <div class="color-row" id="lineRow" onclick="setColorTarget('line')">
                         <label>Lines:</label>
@@ -261,10 +261,10 @@ permalink: /court-designer/
             
             <div class="preset-section">
                 <span class="control-label">Quick Presets</span>
-                <button class="preset-btn" data-preset="ppa">🏆 PPA Tour (Blue/Green)</button>
-                <button class="preset-btn" data-preset="usopen">🎾 US Open Blue</button>
-                <button class="preset-btn" data-preset="clay">🟤 Red Clay Classic</button>
-                <button class="preset-btn" data-preset="ppc">💙 PPC Signature</button>
+                <button class="preset-btn" data-preset="classic">🏆 Classic Blue/Green</button>
+                <button class="preset-btn" data-preset="forest">🌲 Forest Green</button>
+                <button class="preset-btn" data-preset="clay">🟤 Red Clay</button>
+                <button class="preset-btn" data-preset="coastal">🌊 Coastal Blue</button>
                 <button class="preset-btn" data-preset="sunset">🌅 Sunset Orange</button>
             </div>
         </div>
@@ -295,47 +295,36 @@ permalink: /court-designer/
 </div>
 
 <script>
+    // Player's Choice Colors only (from old site)
     const COURT_COLORS = [
-        { name: 'Competition Green', hex: '#2d6a4f' },
-        { name: 'Performance Green', hex: '#3a8f5c' },
-        { name: 'Field Green', hex: '#4a7c3f' },
-        { name: 'Forest Green', hex: '#1b4332' },
-        { name: 'Irish Green', hex: '#009a44' },
-        { name: 'Kiwi', hex: '#7ab648' },
-        { name: 'Lime', hex: '#a4d65e' },
-        { name: 'Sea Green', hex: '#00a78e' },
-        { name: 'Light Blue', hex: '#6ba3d6' },
-        { name: 'Standard Blue', hex: '#1a66b3' },
-        { name: 'Competition Blue', hex: '#0d4f8b' },
-        { name: 'Frost Blue', hex: '#a0c4e8' },
-        { name: 'Sky Blue', hex: '#5bb7e8' },
-        { name: 'Caribbean Blue', hex: '#00a3b4' },
-        { name: 'Navy', hex: '#1c2951' },
-        { name: 'PPC Blue', hex: '#5694ff' },
-        { name: 'Sandstone', hex: '#c2a97e' },
-        { name: 'Beige', hex: '#d4c5a9' },
-        { name: 'Terracotta', hex: '#c1440e' },
-        { name: 'Orange', hex: '#e87722' },
-        { name: 'PPC Orange', hex: '#FF6B35' },
-        { name: 'Classic Red', hex: '#b22234' },
-        { name: 'Crimson', hex: '#9b1b30' },
-        { name: 'Bright Red', hex: '#e03c31' },
-        { name: 'Coral', hex: '#ef6c5b' },
-        { name: 'Slate', hex: '#6b7b8d' },
-        { name: 'Gray', hex: '#8e9196' },
-        { name: 'Charcoal', hex: '#3d3d3d' },
-        { name: 'Black', hex: '#1a1a1a' },
+        // Row 1 - Greens & Tan
+        { name: 'Dark Green', hex: '#38613b' },
+        { name: 'Forest Green', hex: '#516f4a' },
+        { name: 'Olive Green', hex: '#5a5e41' },
+        { name: 'Khaki', hex: '#c4b68a' },
+        // Row 2 - Grays & Navy
+        { name: 'Dark Gray', hex: '#4b4d4c' },
+        { name: 'Medium Gray', hex: '#7d7f7e' },
+        { name: 'Navy Blue', hex: '#1a3366' },
+        { name: 'Dark Blue', hex: '#2d4470' },
+        // Row 3 - Blues & Browns
+        { name: 'Blue', hex: '#3b7dbc' },
+        { name: 'Light Blue', hex: '#6eb5e0' },
+        { name: 'Brown', hex: '#6b5e41' },
+        { name: 'Sand', hex: '#c4a76c' },
+        // Row 4 - Reds, Orange & White
+        { name: 'Rust', hex: '#d17b45' },
+        { name: 'Crimson', hex: '#8b3534' },
+        { name: 'Orange', hex: '#e07b30' },
         { name: 'White', hex: '#ffffff' },
-        { name: 'Pro Purple', hex: '#6b3fa0' },
-        { name: 'Ultra Violet', hex: '#5f2580' },
     ];
     
     const PRESETS = {
-        ppa: { play: '#1a66b3', surround: '#2d6a4f', line: '#ffffff', playName: 'Standard Blue', surroundName: 'Competition Green' },
-        usopen: { play: '#3a7fd5', surround: '#0d4f8b', line: '#ffffff', playName: 'US Open Blue', surroundName: 'Competition Blue' },
-        clay: { play: '#c1440e', surround: '#2d6a4f', line: '#ffffff', playName: 'Terracotta', surroundName: 'Competition Green' },
-        ppc: { play: '#5694ff', surround: '#29457c', line: '#ffffff', playName: 'PPC Blue', surroundName: 'Navy' },
-        sunset: { play: '#FF6B35', surround: '#1c2951', line: '#ffffff', playName: 'PPC Orange', surroundName: 'Navy' },
+        classic: { play: '#3b7dbc', surround: '#38613b', line: '#ffffff', playName: 'Blue', surroundName: 'Dark Green' },
+        forest: { play: '#516f4a', surround: '#38613b', line: '#ffffff', playName: 'Forest Green', surroundName: 'Dark Green' },
+        clay: { play: '#8b3534', surround: '#38613b', line: '#ffffff', playName: 'Crimson', surroundName: 'Dark Green' },
+        coastal: { play: '#6eb5e0', surround: '#1a3366', line: '#ffffff', playName: 'Light Blue', surroundName: 'Navy Blue' },
+        sunset: { play: '#e07b30', surround: '#4b4d4c', line: '#ffffff', playName: 'Orange', surroundName: 'Dark Gray' },
     };
     
     const COURT_DIMS = {
@@ -347,8 +336,8 @@ permalink: /court-designer/
     
     let state = {
         sport: 'tennis',
-        playColor: '#1a66b3',
-        surroundColor: '#2d6a4f',
+        playColor: '#3b7dbc',
+        surroundColor: '#38613b',
         lineColor: '#ffffff',
         activeColorTarget: 'play'
     };
