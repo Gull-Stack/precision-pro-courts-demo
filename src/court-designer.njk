@@ -168,12 +168,12 @@ permalink: /court-designer/
         display: flex; 
         align-items: center; 
         justify-content: center; 
-        min-height: 550px;
+        min-height: 500px;
         background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
         border-radius: 12px;
-        padding: 1rem;
+        padding: 0.5rem;
     }
-    #courtCanvas { background: #0a0f18; border-radius: 12px; max-width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    #courtCanvas { background: #0a0f18; border-radius: 12px; max-width: 100%; height: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
     
     .ppc-credit { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
     .ppc-credit p { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
@@ -277,7 +277,7 @@ permalink: /court-designer/
                 </button>
             </div>
             <div class="canvas-container">
-                <canvas id="courtCanvas" width="950" height="620"></canvas>
+                <canvas id="courtCanvas" width="550" height="700"></canvas>
             </div>
             <div class="ppc-credit">
                 <p>Designed with ❤️ by <a href="/">Precision Pro Courts</a> — Utah's Premier Court Builder</p>
@@ -328,10 +328,10 @@ permalink: /court-designer/
     };
     
     const COURT_DIMS = {
-        tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120 },
-        pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64 },
-        basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100 },
-        multi: { courtW: 60, courtL: 120, totalW: 64, totalL: 124 },
+        tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120, canvasW: 550, canvasH: 700 },
+        pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64, canvasW: 500, canvasH: 650 },
+        basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100, canvasW: 600, canvasH: 680 },
+        multi: { courtW: 60, courtL: 120, totalW: 64, totalL: 124, canvasW: 550, canvasH: 700 },
     };
     
     let state = {
@@ -417,7 +417,12 @@ permalink: /court-designer/
     
     function drawCourt() {
         const dims = COURT_DIMS[state.sport];
-        const padding = 50;
+        
+        // Resize canvas to fit sport's aspect ratio
+        canvas.width = dims.canvasW;
+        canvas.height = dims.canvasH;
+        
+        const padding = 25;
         const scale = Math.min((canvas.width - padding * 2) / dims.totalW, (canvas.height - padding * 2) / dims.totalL);
         const offX = (canvas.width - dims.totalW * scale) / 2;
         const offY = (canvas.height - dims.totalL * scale) / 2;
