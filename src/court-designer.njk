@@ -345,6 +345,11 @@ permalink: /court-designer/
     const canvas = document.getElementById('courtCanvas');
     const ctx = canvas.getContext('2d');
     
+    // Preload logo for watermark
+    const logoImg = new Image();
+    logoImg.src = '/assets/images/logos/logo-white-lg.png';
+    logoImg.onload = () => drawCourt(); // Redraw when logo loads
+    
     const paletteGrid = document.getElementById('paletteGrid');
     COURT_COLORS.forEach((color) => {
         const swatch = document.createElement('div');
@@ -579,10 +584,20 @@ permalink: /court-designer/
             ctx.stroke();
         }
         
+        // Draw logo in bottom left
+        if (logoImg.complete && logoImg.naturalWidth > 0) {
+            const logoHeight = 35;
+            const logoWidth = (logoImg.naturalWidth / logoImg.naturalHeight) * logoHeight;
+            ctx.globalAlpha = 0.85;
+            ctx.drawImage(logoImg, 15, canvas.height - logoHeight - 12, logoWidth, logoHeight);
+            ctx.globalAlpha = 1;
+        }
+        
+        // URL in bottom right
         ctx.fillStyle = 'rgba(255,255,255,0.4)';
         ctx.font = 'bold 13px Inter, sans-serif';
         ctx.textAlign = 'right';
-        ctx.fillText('precisionprocourts.com', canvas.width - 25, canvas.height - 18);
+        ctx.fillText('precisionprocourts.com', canvas.width - 15, canvas.height - 18);
     }
     
     drawCourt();
