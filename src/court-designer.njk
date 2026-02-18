@@ -303,7 +303,7 @@ permalink: /court-designer/
                     </div>
                     <div class="color-row bball-lines-row" id="bballLineRow" onclick="setColorTarget('bballLine')">
                         <label>Bball Lines:</label>
-                        <div class="color-preview" id="bballLineColor" style="background: #7d7f7e;"></div>
+                        <div class="color-preview" id="bballLineColor" style="background: #a1a1aa;"></div>
                         <span class="color-name" id="bballLineColorName">Medium Gray</span>
                     </div>
                 </div>
@@ -359,7 +359,7 @@ permalink: /court-designer/
         { name: 'Khaki', hex: '#c4b68a' },
         // Row 2 - Grays & Navy
         { name: 'Dark Gray', hex: '#4b4d4c' },
-        { name: 'Medium Gray', hex: '#7d7f7e' },
+        { name: 'Medium Gray', hex: '#a1a1aa' },
         { name: 'Navy Blue', hex: '#1a3366' },
         { name: 'Dark Blue', hex: '#2d4470' },
         // Row 3 - Blues & Browns
@@ -375,11 +375,11 @@ permalink: /court-designer/
     ];
     
     const PRESETS = {
-        classic: { play: '#3b7dbc', kitchen: '#3b7dbc', surround: '#38613b', line: '#ffffff', bballLine: '#7d7f7e', playName: 'Blue', kitchenName: 'Blue', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
-        forest: { play: '#516f4a', kitchen: '#516f4a', surround: '#38613b', line: '#ffffff', bballLine: '#7d7f7e', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
-        clay: { play: '#8b3534', kitchen: '#8b3534', surround: '#38613b', line: '#ffffff', bballLine: '#7d7f7e', playName: 'Crimson', kitchenName: 'Crimson', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
+        classic: { play: '#3b7dbc', kitchen: '#3b7dbc', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Blue', kitchenName: 'Blue', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
+        forest: { play: '#516f4a', kitchen: '#516f4a', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
+        clay: { play: '#8b3534', kitchen: '#8b3534', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Crimson', kitchenName: 'Crimson', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
         coastal: { play: '#6eb5e0', kitchen: '#6eb5e0', surround: '#1a3366', line: '#ffffff', bballLine: '#4b4d4c', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Navy Blue', bballLineName: 'Dark Gray' },
-        sunset: { play: '#e07b30', kitchen: '#e07b30', surround: '#4b4d4c', line: '#ffffff', bballLine: '#7d7f7e', playName: 'Orange', kitchenName: 'Orange', surroundName: 'Dark Gray', bballLineName: 'Medium Gray' },
+        sunset: { play: '#e07b30', kitchen: '#e07b30', surround: '#4b4d4c', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Orange', kitchenName: 'Orange', surroundName: 'Dark Gray', bballLineName: 'Medium Gray' },
     };
     
     const COURT_DIMS = {
@@ -395,7 +395,7 @@ permalink: /court-designer/
         kitchenColor: '#3b7dbc',
         surroundColor: '#38613b',
         lineColor: '#ffffff',
-        bballLineColor: '#7d7f7e',
+        bballLineColor: '#a1a1aa',
         activeColorTarget: null
     };
     
@@ -767,60 +767,60 @@ permalink: /court-designer/
             ctx.lineTo(cx, cy + kitchen);
             ctx.stroke();
             
-            // Half-court basketball overlay (grey lines by default)
+            // Half-court basketball overlay (rotated 90° - hoop on right sideline)
             ctx.strokeStyle = state.bballLineColor;
             ctx.lineWidth = 2;
             
-            // Basketball half-court boundary (extends beyond pickleball)
-            const bballHW = 12.5 * scale; // half of 25ft width
-            const bballHL = 23.5 * scale; // half of 47ft length (half court)
+            // Basketball half-court dimensions (rotated)
+            const bballHW = 23.5 * scale; // half-court length (now horizontal)
+            const bballHH = 12.5 * scale; // court half-width (now vertical)
             
-            // Half court line at top
+            // Half court line (left side)
             ctx.beginPath();
-            ctx.moveTo(cx - bballHW, cy - bballHL);
-            ctx.lineTo(cx + bballHW, cy - bballHL);
+            ctx.moveTo(cx - bballHW, cy - bballHH);
+            ctx.lineTo(cx - bballHW, cy + bballHH);
             ctx.stroke();
             
-            // Side lines
+            // Top and bottom sidelines
             ctx.beginPath();
-            ctx.moveTo(cx - bballHW, cy - bballHL);
-            ctx.lineTo(cx - bballHW, cy + bballHL);
-            ctx.moveTo(cx + bballHW, cy - bballHL);
-            ctx.lineTo(cx + bballHW, cy + bballHL);
+            ctx.moveTo(cx - bballHW, cy - bballHH);
+            ctx.lineTo(cx + bballHW, cy - bballHH);
+            ctx.moveTo(cx - bballHW, cy + bballHH);
+            ctx.lineTo(cx + bballHW, cy + bballHH);
             ctx.stroke();
             
-            // Baseline
+            // Baseline (right side - where hoop is)
             ctx.beginPath();
-            ctx.moveTo(cx - bballHW, cy + bballHL);
-            ctx.lineTo(cx + bballHW, cy + bballHL);
+            ctx.moveTo(cx + bballHW, cy - bballHH);
+            ctx.lineTo(cx + bballHW, cy + bballHH);
             ctx.stroke();
             
-            // Free throw lane (key) - at bottom
-            const ftW = 6 * scale; // lane width
-            const ftD = 9.5 * scale; // lane depth (19ft / 2)
-            ctx.strokeRect(cx - ftW, cy + bballHL - ftD * 2, ftW * 2, ftD * 2);
+            // Free throw lane (key) - on right side
+            const ftW = 6 * scale; // lane half-width
+            const ftD = 9.5 * scale; // lane depth
+            ctx.strokeRect(cx + bballHW - ftD * 2, cy - ftW, ftD * 2, ftW * 2);
             
-            // Free throw circle
+            // Free throw circle (facing left)
             ctx.beginPath();
-            ctx.arc(cx, cy + bballHL - ftD * 2, ftW, Math.PI, Math.PI * 2);
+            ctx.arc(cx + bballHW - ftD * 2, cy, ftW, Math.PI * 0.5, Math.PI * 1.5);
             ctx.stroke();
             
-            // 3-point arc
+            // 3-point arc (facing left)
             ctx.beginPath();
-            ctx.arc(cx, cy + bballHL - 2.5 * scale, 11.5 * scale, Math.PI + 0.4, -0.4);
+            ctx.arc(cx + bballHW - 2.5 * scale, cy, 11.5 * scale, Math.PI * 0.5 + 0.4, Math.PI * 1.5 - 0.4);
             ctx.stroke();
             
             // 3-point corners
             ctx.beginPath();
-            ctx.moveTo(cx - bballHW + 1.5 * scale, cy + bballHL);
-            ctx.lineTo(cx - bballHW + 1.5 * scale, cy + bballHL - 7 * scale);
-            ctx.moveTo(cx + bballHW - 1.5 * scale, cy + bballHL);
-            ctx.lineTo(cx + bballHW - 1.5 * scale, cy + bballHL - 7 * scale);
+            ctx.moveTo(cx + bballHW, cy - bballHH + 1.5 * scale);
+            ctx.lineTo(cx + bballHW - 7 * scale, cy - bballHH + 1.5 * scale);
+            ctx.moveTo(cx + bballHW, cy + bballHH - 1.5 * scale);
+            ctx.lineTo(cx + bballHW - 7 * scale, cy + bballHH - 1.5 * scale);
             ctx.stroke();
             
             // Restricted area arc
             ctx.beginPath();
-            ctx.arc(cx, cy + bballHL - 2.5 * scale, 2 * scale, Math.PI, Math.PI * 2);
+            ctx.arc(cx + bballHW - 2.5 * scale, cy, 2 * scale, Math.PI * 0.5, Math.PI * 1.5);
             ctx.stroke();
         }
         
