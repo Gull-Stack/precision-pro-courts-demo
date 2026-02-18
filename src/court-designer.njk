@@ -104,18 +104,62 @@ permalink: /court-designer/
     }
     .color-name { font-size: 0.8rem; color: rgba(255,255,255,0.6); flex: 1; }
     
-    .palette-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 0.75rem; }
+    /* Hide kitchen row by default, show only for pickleball/multi */
+    .color-row.kitchen-row { display: none; }
+    .color-row.kitchen-row.show { display: flex; }
+    
+    /* Hide basketball lines row by default, show only for multi-sport */
+    .color-row.bball-lines-row { display: none; }
+    .color-row.bball-lines-row.show { display: flex; }
+    
+    /* Hide palette by default, show when a color is being edited */
+    .palette-section { display: none; }
+    .palette-section.show { display: block; }
+    
+    .palette-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 0.75rem; }
     .swatch { 
         width: 100%; 
         aspect-ratio: 1; 
-        border-radius: 6px; 
+        border-radius: 8px; 
         cursor: pointer; 
-        border: 2px solid transparent; 
+        border: 2px solid rgba(255,255,255,0.15); 
         transition: all 0.15s;
         position: relative;
+        box-shadow: 
+            0 4px 8px rgba(0,0,0,0.4),
+            0 2px 4px rgba(0,0,0,0.3),
+            inset 0 1px 0 rgba(255,255,255,0.25),
+            inset 0 -2px 4px rgba(0,0,0,0.2);
     }
-    .swatch:hover { transform: scale(1.15); z-index: 1; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-    .swatch.selected { border-color: white; box-shadow: 0 0 0 2px #5694ff, 0 4px 12px rgba(0,0,0,0.3); }
+    .swatch::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 10%;
+        right: 10%;
+        height: 30%;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+        border-radius: 4px 4px 50% 50%;
+        pointer-events: none;
+    }
+    .swatch:hover { 
+        transform: scale(1.12) translateY(-2px); 
+        z-index: 1; 
+        box-shadow: 
+            0 8px 16px rgba(0,0,0,0.5),
+            0 4px 8px rgba(0,0,0,0.3),
+            inset 0 1px 0 rgba(255,255,255,0.3),
+            inset 0 -2px 4px rgba(0,0,0,0.2);
+        border-color: rgba(255,255,255,0.3);
+    }
+    .swatch.selected { 
+        border-color: white; 
+        box-shadow: 
+            0 0 0 2px #5694ff, 
+            0 6px 12px rgba(0,0,0,0.4),
+            inset 0 1px 0 rgba(255,255,255,0.3),
+            inset 0 -2px 4px rgba(0,0,0,0.2);
+    }
     
     .preset-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
     .preset-btn { 
@@ -168,12 +212,11 @@ permalink: /court-designer/
         display: flex; 
         align-items: center; 
         justify-content: center; 
-        min-height: 500px;
-        background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
+        min-height: 400px;
         border-radius: 12px;
-        padding: 0.5rem;
+        padding: 0;
     }
-    #courtCanvas { background: #0a0f18; border-radius: 12px; max-width: 100%; height: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    #courtCanvas { border-radius: 12px; max-width: 100%; height: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
     
     .ppc-credit { text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
     .ppc-credit p { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
@@ -238,10 +281,15 @@ permalink: /court-designer/
             <div class="control-section">
                 <span class="control-label">Court Colors</span>
                 <div class="color-section">
-                    <div class="color-row active" id="playRow" onclick="setColorTarget('play')">
+                    <div class="color-row" id="playRow" onclick="setColorTarget('play')">
                         <label>Playing:</label>
                         <div class="color-preview" id="playColor" style="background: #3b7dbc;"></div>
                         <span class="color-name" id="playColorName">Blue</span>
+                    </div>
+                    <div class="color-row kitchen-row" id="kitchenRow" onclick="setColorTarget('kitchen')">
+                        <label>Kitchen:</label>
+                        <div class="color-preview" id="kitchenColor" style="background: #3b7dbc;"></div>
+                        <span class="color-name" id="kitchenColorName">Blue</span>
                     </div>
                     <div class="color-row" id="surroundRow" onclick="setColorTarget('surround')">
                         <label>Surround:</label>
@@ -253,10 +301,17 @@ permalink: /court-designer/
                         <div class="color-preview" id="lineColor" style="background: #ffffff;"></div>
                         <span class="color-name" id="lineColorName">White</span>
                     </div>
+                    <div class="color-row bball-lines-row" id="bballLineRow" onclick="setColorTarget('bballLine')">
+                        <label>Bball Lines:</label>
+                        <div class="color-preview" id="bballLineColor" style="background: #7d7f7e;"></div>
+                        <span class="color-name" id="bballLineColorName">Medium Gray</span>
+                    </div>
                 </div>
                 
-                <span class="control-label" style="margin-top: 1rem;">Color Palette</span>
-                <div class="palette-grid" id="paletteGrid"></div>
+                <div class="palette-section" id="paletteSection">
+                    <span class="control-label" style="margin-top: 1rem;">Color Palette</span>
+                    <div class="palette-grid" id="paletteGrid"></div>
+                </div>
             </div>
             
             <div class="preset-section">
@@ -320,26 +375,28 @@ permalink: /court-designer/
     ];
     
     const PRESETS = {
-        classic: { play: '#3b7dbc', surround: '#38613b', line: '#ffffff', playName: 'Blue', surroundName: 'Dark Green' },
-        forest: { play: '#516f4a', surround: '#38613b', line: '#ffffff', playName: 'Forest Green', surroundName: 'Dark Green' },
-        clay: { play: '#8b3534', surround: '#38613b', line: '#ffffff', playName: 'Crimson', surroundName: 'Dark Green' },
-        coastal: { play: '#6eb5e0', surround: '#1a3366', line: '#ffffff', playName: 'Light Blue', surroundName: 'Navy Blue' },
-        sunset: { play: '#e07b30', surround: '#4b4d4c', line: '#ffffff', playName: 'Orange', surroundName: 'Dark Gray' },
+        classic: { play: '#3b7dbc', kitchen: '#3b7dbc', surround: '#38613b', line: '#ffffff', bballLine: '#7d7f7e', playName: 'Blue', kitchenName: 'Blue', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
+        forest: { play: '#516f4a', kitchen: '#516f4a', surround: '#38613b', line: '#ffffff', bballLine: '#7d7f7e', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
+        clay: { play: '#8b3534', kitchen: '#8b3534', surround: '#38613b', line: '#ffffff', bballLine: '#7d7f7e', playName: 'Crimson', kitchenName: 'Crimson', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
+        coastal: { play: '#6eb5e0', kitchen: '#6eb5e0', surround: '#1a3366', line: '#ffffff', bballLine: '#4b4d4c', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Navy Blue', bballLineName: 'Dark Gray' },
+        sunset: { play: '#e07b30', kitchen: '#e07b30', surround: '#4b4d4c', line: '#ffffff', bballLine: '#7d7f7e', playName: 'Orange', kitchenName: 'Orange', surroundName: 'Dark Gray', bballLineName: 'Medium Gray' },
     };
     
     const COURT_DIMS = {
         tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120 },
         pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64 },
         basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100 },
-        multi: { courtW: 60, courtL: 120, totalW: 64, totalL: 124 },
+        multi: { courtW: 30, courtL: 60, totalW: 42, totalL: 72 }, // Pickleball court with room for half-court basketball
     };
     
     let state = {
         sport: 'tennis',
         playColor: '#3b7dbc',
+        kitchenColor: '#3b7dbc',
         surroundColor: '#38613b',
         lineColor: '#ffffff',
-        activeColorTarget: 'play'
+        bballLineColor: '#7d7f7e',
+        activeColorTarget: null
     };
     
     const canvas = document.getElementById('courtCanvas');
@@ -366,15 +423,51 @@ permalink: /court-designer/
         state.activeColorTarget = target;
         document.querySelectorAll('.color-row').forEach(el => el.classList.remove('active'));
         document.getElementById(target + 'Row').classList.add('active');
+        
+        // Show palette when a color is selected
+        document.getElementById('paletteSection').classList.add('show');
+    }
+    
+    function updateColorRowVisibility() {
+        const kitchenRow = document.getElementById('kitchenRow');
+        const bballLineRow = document.getElementById('bballLineRow');
+        
+        // Kitchen shows for pickleball and multi-sport
+        if (state.sport === 'pickleball' || state.sport === 'multi') {
+            kitchenRow.classList.add('show');
+        } else {
+            kitchenRow.classList.remove('show');
+            if (state.activeColorTarget === 'kitchen') {
+                state.activeColorTarget = null;
+                kitchenRow.classList.remove('active');
+                document.getElementById('paletteSection').classList.remove('show');
+            }
+        }
+        
+        // Basketball lines only shows for multi-sport
+        if (state.sport === 'multi') {
+            bballLineRow.classList.add('show');
+        } else {
+            bballLineRow.classList.remove('show');
+            if (state.activeColorTarget === 'bballLine') {
+                state.activeColorTarget = null;
+                bballLineRow.classList.remove('active');
+                document.getElementById('paletteSection').classList.remove('show');
+            }
+        }
     }
     
     function selectColor(hex, name) {
-        if (!state.activeColorTarget) state.activeColorTarget = 'play';
+        if (!state.activeColorTarget) return; // Don't do anything if no target selected
         
         if (state.activeColorTarget === 'play') {
             state.playColor = hex;
             document.getElementById('playColor').style.background = hex;
             document.getElementById('playColorName').textContent = name;
+        } else if (state.activeColorTarget === 'kitchen') {
+            state.kitchenColor = hex;
+            document.getElementById('kitchenColor').style.background = hex;
+            document.getElementById('kitchenColorName').textContent = name;
         } else if (state.activeColorTarget === 'surround') {
             state.surroundColor = hex;
             document.getElementById('surroundColor').style.background = hex;
@@ -383,6 +476,10 @@ permalink: /court-designer/
             state.lineColor = hex;
             document.getElementById('lineColor').style.background = hex;
             document.getElementById('lineColorName').textContent = name;
+        } else if (state.activeColorTarget === 'bballLine') {
+            state.bballLineColor = hex;
+            document.getElementById('bballLineColor').style.background = hex;
+            document.getElementById('bballLineColorName').textContent = name;
         }
         
         drawCourt();
@@ -393,6 +490,7 @@ permalink: /court-designer/
             document.querySelectorAll('.sport-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             state.sport = btn.dataset.sport;
+            updateColorRowVisibility();
             drawCourt();
         });
     });
@@ -401,14 +499,20 @@ permalink: /court-designer/
         btn.addEventListener('click', () => {
             const preset = PRESETS[btn.dataset.preset];
             state.playColor = preset.play;
+            state.kitchenColor = preset.kitchen;
             state.surroundColor = preset.surround;
             state.lineColor = preset.line;
+            state.bballLineColor = preset.bballLine;
             document.getElementById('playColor').style.background = preset.play;
+            document.getElementById('kitchenColor').style.background = preset.kitchen;
             document.getElementById('surroundColor').style.background = preset.surround;
             document.getElementById('lineColor').style.background = preset.line;
+            document.getElementById('bballLineColor').style.background = preset.bballLine;
             document.getElementById('playColorName').textContent = preset.playName;
+            document.getElementById('kitchenColorName').textContent = preset.kitchenName;
             document.getElementById('surroundColorName').textContent = preset.surroundName;
             document.getElementById('lineColorName').textContent = 'White';
+            document.getElementById('bballLineColorName').textContent = preset.bballLineName;
             drawCourt();
         });
     });
@@ -423,15 +527,21 @@ permalink: /court-designer/
     function drawCourt() {
         const dims = COURT_DIMS[state.sport];
         
-        // Resize canvas to fit sport's aspect ratio - now based on total court dimensions
-        const baseScale = 5.5;
-        canvas.width = dims.totalW * baseScale;
-        canvas.height = dims.totalL * baseScale;
+        // Fixed canvas size to fill the preview area consistently
+        const maxWidth = 500;
+        const maxHeight = 650;
         
-        const padding = 8;
-        const scale = Math.min((canvas.width - padding * 2) / dims.totalW, (canvas.height - padding * 2) / dims.totalL);
-        const offX = (canvas.width - dims.totalW * scale) / 2;
-        const offY = (canvas.height - dims.totalL * scale) / 2;
+        // Calculate scale to fit court while maximizing space
+        const scaleByWidth = maxWidth / dims.totalW;
+        const scaleByHeight = maxHeight / dims.totalL;
+        const scale = Math.min(scaleByWidth, scaleByHeight);
+        
+        // Size canvas to exactly fit the court (no extra padding)
+        canvas.width = dims.totalW * scale;
+        canvas.height = dims.totalL * scale;
+        
+        const offX = 0;
+        const offY = 0;
         
         // Fill entire canvas with surround color - no dark blue background
         ctx.fillStyle = state.surroundColor;
@@ -501,6 +611,22 @@ permalink: /court-designer/
             ctx.stroke();
         } else if (state.sport === 'pickleball') {
             const kitchen = 7 * scale;
+            
+            // Fill kitchen zones (non-volley zones) with kitchen color
+            ctx.fillStyle = state.kitchenColor;
+            ctx.fillRect(cx - hw, cy - kitchen, hw * 2, kitchen); // top kitchen
+            ctx.fillRect(cx - hw, cy, hw * 2, kitchen); // bottom kitchen
+            
+            // Add texture to kitchen
+            ctx.globalAlpha = 0.03;
+            for (let i = 0; i < 100; i++) {
+                ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
+                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy - kitchen + Math.random() * kitchen, 1, 1);
+                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy + Math.random() * kitchen, 1, 1);
+            }
+            ctx.globalAlpha = 1;
+            
+            ctx.strokeStyle = state.lineColor;
             ctx.lineWidth = 4;
             ctx.beginPath();
             ctx.moveTo(cx - hw, cy);
@@ -520,67 +646,181 @@ permalink: /court-designer/
             ctx.lineTo(cx, cy + kitchen);
             ctx.stroke();
         } else if (state.sport === 'basketball') {
+            // Center circle
             ctx.beginPath();
             ctx.arc(cx, cy, 6 * scale, 0, Math.PI * 2);
             ctx.stroke();
+            
+            // Half court line
             ctx.beginPath();
             ctx.moveTo(cx - hw, cy);
             ctx.lineTo(cx + hw, cy);
             ctx.stroke();
-            const ftWidth = 12 * scale;
-            const ftDepth = 19 * scale;
-            ctx.strokeRect(cx - ftWidth / 2, cy - hl, ftWidth, ftDepth);
+            
+            const ftWidth = 6 * scale; // half of 12ft lane width
+            const ftDepth = 19 * scale; // 19ft from baseline
+            const basketDist = 5.25 * scale; // basket center from baseline
+            const threeRadius = 23.75 * scale; // 3pt arc radius
+            const threeCornerDist = 3 * scale; // corner 3 distance from sideline
+            
+            // TOP END
+            // Free throw lane (key)
+            ctx.strokeRect(cx - ftWidth, cy - hl, ftWidth * 2, ftDepth);
+            
+            // Free throw semicircle (facing down toward basket)
             ctx.beginPath();
-            ctx.arc(cx, cy - hl + ftDepth, ftWidth / 2, 0, Math.PI);
+            ctx.arc(cx, cy - hl + ftDepth, ftWidth, 0, Math.PI);
             ctx.stroke();
-            ctx.strokeRect(cx - ftWidth / 2, cy + hl - ftDepth, ftWidth, ftDepth);
+            
+            // 3-point arc (facing down)
             ctx.beginPath();
-            ctx.arc(cx, cy + hl - ftDepth, ftWidth / 2, Math.PI, Math.PI * 2);
+            ctx.arc(cx, cy - hl + basketDist, threeRadius, 0.41, Math.PI - 0.41);
             ctx.stroke();
+            
+            // 3-point corner lines (connect sideline to arc)
             ctx.beginPath();
-            ctx.arc(cx, cy - hl + 5.25 * scale, 22 * scale, 0.35, Math.PI - 0.35);
+            ctx.moveTo(cx - hw + threeCornerDist, cy - hl);
+            ctx.lineTo(cx - hw + threeCornerDist, cy - hl + 14 * scale);
+            ctx.moveTo(cx + hw - threeCornerDist, cy - hl);
+            ctx.lineTo(cx + hw - threeCornerDist, cy - hl + 14 * scale);
             ctx.stroke();
+            
+            // Restricted area (4ft radius facing down)
             ctx.beginPath();
-            ctx.arc(cx, cy + hl - 5.25 * scale, 22 * scale, Math.PI + 0.35, -0.35);
+            ctx.arc(cx, cy - hl + basketDist, 4 * scale, 0, Math.PI);
             ctx.stroke();
+            
+            // BOTTOM END
+            // Free throw lane (key)
+            ctx.strokeRect(cx - ftWidth, cy + hl - ftDepth, ftWidth * 2, ftDepth);
+            
+            // Free throw semicircle (facing up toward basket)
             ctx.beginPath();
-            ctx.moveTo(cx - hw + 3 * scale, cy - hl);
-            ctx.lineTo(cx - hw + 3 * scale, cy - hl + 14 * scale);
-            ctx.moveTo(cx + hw - 3 * scale, cy - hl);
-            ctx.lineTo(cx + hw - 3 * scale, cy - hl + 14 * scale);
-            ctx.moveTo(cx - hw + 3 * scale, cy + hl);
-            ctx.lineTo(cx - hw + 3 * scale, cy + hl - 14 * scale);
-            ctx.moveTo(cx + hw - 3 * scale, cy + hl);
-            ctx.lineTo(cx + hw - 3 * scale, cy + hl - 14 * scale);
+            ctx.arc(cx, cy + hl - ftDepth, ftWidth, Math.PI, Math.PI * 2);
             ctx.stroke();
+            
+            // 3-point arc (facing up)
             ctx.beginPath();
-            ctx.arc(cx, cy - hl + 5.25 * scale, 4 * scale, 0, Math.PI);
+            ctx.arc(cx, cy + hl - basketDist, threeRadius, Math.PI + 0.41, -0.41);
             ctx.stroke();
+            
+            // 3-point corner lines
             ctx.beginPath();
-            ctx.arc(cx, cy + hl - 5.25 * scale, 4 * scale, Math.PI, Math.PI * 2);
+            ctx.moveTo(cx - hw + threeCornerDist, cy + hl);
+            ctx.lineTo(cx - hw + threeCornerDist, cy + hl - 14 * scale);
+            ctx.moveTo(cx + hw - threeCornerDist, cy + hl);
+            ctx.lineTo(cx + hw - threeCornerDist, cy + hl - 14 * scale);
+            ctx.stroke();
+            
+            // Restricted area (4ft radius facing up)
+            ctx.beginPath();
+            ctx.arc(cx, cy + hl - basketDist, 4 * scale, Math.PI, Math.PI * 2);
             ctx.stroke();
         } else if (state.sport === 'multi') {
+            // Multi-sport: Pickleball court with half-court basketball overlay
+            const pbW = 10 * scale; // pickleball half-width (20ft total)
+            const pbL = 22 * scale; // pickleball half-length (44ft total)
+            const kitchen = 7 * scale; // kitchen zone depth
+            
+            // Draw pickleball kitchen zones
+            ctx.fillStyle = state.kitchenColor;
+            ctx.fillRect(cx - pbW, cy - kitchen, pbW * 2, kitchen); // top kitchen
+            ctx.fillRect(cx - pbW, cy, pbW * 2, kitchen); // bottom kitchen
+            
+            // Add texture to kitchen
+            ctx.globalAlpha = 0.03;
+            for (let i = 0; i < 80; i++) {
+                ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
+                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy - kitchen + Math.random() * kitchen, 1, 1);
+                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy + Math.random() * kitchen, 1, 1);
+            }
+            ctx.globalAlpha = 1;
+            
+            // Pickleball lines (white)
+            ctx.strokeStyle = state.lineColor;
+            ctx.lineWidth = 3;
+            
+            // Outer pickleball boundary
+            ctx.strokeRect(cx - pbW, cy - pbL, pbW * 2, pbL * 2);
+            
+            // Center line (net)
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(cx - pbW, cy);
+            ctx.lineTo(cx + pbW, cy);
+            ctx.stroke();
+            
+            // Kitchen lines
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(cx - pbW, cy - kitchen);
+            ctx.lineTo(cx + pbW, cy - kitchen);
+            ctx.moveTo(cx - pbW, cy + kitchen);
+            ctx.lineTo(cx + pbW, cy + kitchen);
+            ctx.stroke();
+            
+            // Centerlines in service areas
+            ctx.beginPath();
+            ctx.moveTo(cx, cy - pbL);
+            ctx.lineTo(cx, cy - kitchen);
+            ctx.moveTo(cx, cy + pbL);
+            ctx.lineTo(cx, cy + kitchen);
+            ctx.stroke();
+            
+            // Half-court basketball overlay (grey lines by default)
+            ctx.strokeStyle = state.bballLineColor;
             ctx.lineWidth = 2;
+            
+            // Basketball half-court boundary (extends beyond pickleball)
+            const bballHW = 12.5 * scale; // half of 25ft width
+            const bballHL = 23.5 * scale; // half of 47ft length (half court)
+            
+            // Half court line at top
             ctx.beginPath();
-            ctx.moveTo(cx - hw, cy);
-            ctx.lineTo(cx + hw, cy);
+            ctx.moveTo(cx - bballHW, cy - bballHL);
+            ctx.lineTo(cx + bballHW, cy - bballHL);
             ctx.stroke();
-            const pbW = 10 * scale;
-            const pbL = 22 * scale;
-            const kitchen = 3.5 * scale;
-            ctx.strokeRect(cx - pbW * 2 - 2 * scale, cy - pbL, pbW * 2, pbL * 2);
+            
+            // Side lines
             ctx.beginPath();
-            ctx.moveTo(cx - pbW * 2 - 2 * scale, cy - kitchen);
-            ctx.lineTo(cx - 2 * scale, cy - kitchen);
-            ctx.moveTo(cx - pbW * 2 - 2 * scale, cy + kitchen);
-            ctx.lineTo(cx - 2 * scale, cy + kitchen);
+            ctx.moveTo(cx - bballHW, cy - bballHL);
+            ctx.lineTo(cx - bballHW, cy + bballHL);
+            ctx.moveTo(cx + bballHW, cy - bballHL);
+            ctx.lineTo(cx + bballHW, cy + bballHL);
             ctx.stroke();
-            ctx.strokeRect(cx + 2 * scale, cy - pbL, pbW * 2, pbL * 2);
+            
+            // Baseline
             ctx.beginPath();
-            ctx.moveTo(cx + 2 * scale, cy - kitchen);
-            ctx.lineTo(cx + pbW * 2 + 2 * scale, cy - kitchen);
-            ctx.moveTo(cx + 2 * scale, cy + kitchen);
-            ctx.lineTo(cx + pbW * 2 + 2 * scale, cy + kitchen);
+            ctx.moveTo(cx - bballHW, cy + bballHL);
+            ctx.lineTo(cx + bballHW, cy + bballHL);
+            ctx.stroke();
+            
+            // Free throw lane (key) - at bottom
+            const ftW = 6 * scale; // lane width
+            const ftD = 9.5 * scale; // lane depth (19ft / 2)
+            ctx.strokeRect(cx - ftW, cy + bballHL - ftD * 2, ftW * 2, ftD * 2);
+            
+            // Free throw circle
+            ctx.beginPath();
+            ctx.arc(cx, cy + bballHL - ftD * 2, ftW, Math.PI, Math.PI * 2);
+            ctx.stroke();
+            
+            // 3-point arc
+            ctx.beginPath();
+            ctx.arc(cx, cy + bballHL - 2.5 * scale, 11.5 * scale, Math.PI + 0.4, -0.4);
+            ctx.stroke();
+            
+            // 3-point corners
+            ctx.beginPath();
+            ctx.moveTo(cx - bballHW + 1.5 * scale, cy + bballHL);
+            ctx.lineTo(cx - bballHW + 1.5 * scale, cy + bballHL - 7 * scale);
+            ctx.moveTo(cx + bballHW - 1.5 * scale, cy + bballHL);
+            ctx.lineTo(cx + bballHW - 1.5 * scale, cy + bballHL - 7 * scale);
+            ctx.stroke();
+            
+            // Restricted area arc
+            ctx.beginPath();
+            ctx.arc(cx, cy + bballHL - 2.5 * scale, 2 * scale, Math.PI, Math.PI * 2);
             ctx.stroke();
         }
         
@@ -600,5 +840,7 @@ permalink: /court-designer/
         ctx.fillText('precisionprocourts.com', canvas.width - 15, canvas.height - 18);
     }
     
+    // Initialize
+    updateColorRowVisibility();
     drawCourt();
 </script>
