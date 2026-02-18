@@ -50,7 +50,7 @@ module.exports = async (req, res) => {
 
   try {
     const notificationEmail = {
-      to: 'precisionprocourts@gmail.com',
+      to: 'team@precisionprocourts.com',
       from: { email: 'noreply@gullstack.com', name: 'Precision Pro Courts Website' },
       replyTo: email,
       subject: `New Lead: ${name}${service ? ` - ${service}` : ''}`,
@@ -78,7 +78,7 @@ module.exports = async (req, res) => {
     const autoReplyEmail = {
       to: email,
       from: { email: 'noreply@gullstack.com', name: 'Precision Pro Courts' },
-      replyTo: 'precisionprocourts@gmail.com',
+      replyTo: 'team@precisionprocourts.com',
       subject: 'Thanks for contacting Precision Pro Courts!',
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto;">
