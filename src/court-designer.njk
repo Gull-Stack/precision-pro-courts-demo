@@ -271,7 +271,7 @@ permalink: /court-designer/
             <div class="control-section">
                 <span class="control-label">Sport Type</span>
                 <div class="sport-buttons">
-                    <button class="sport-btn" data-sport="pickleball"><span>🏓</span>Pickleball</button>
+                    <button class="sport-btn" data-sport="pickleball"><span>🥒</span>Pickleball</button>
                     <button class="sport-btn active" data-sport="tennis"><span>🎾</span>Tennis</button>
                     <button class="sport-btn" data-sport="basketball"><span>🏀</span>Basketball</button>
                     <button class="sport-btn" data-sport="multi"><span>🏅</span>Multi-Sport</button>
@@ -386,7 +386,7 @@ permalink: /court-designer/
         tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120 },
         pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64 },
         basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100 },
-        multi: { courtW: 30, courtL: 60, totalW: 42, totalL: 72 }, // Pickleball court with room for half-court basketball
+        multi: { courtW: 20, courtL: 44, totalW: 50, totalL: 54 }, // Pickleball + basketball overlay (no sidelines)
     };
     
     let state = {
@@ -527,9 +527,9 @@ permalink: /court-designer/
     function drawCourt() {
         const dims = COURT_DIMS[state.sport];
         
-        // Fixed canvas size to fill the preview area consistently
-        const maxWidth = 500;
-        const maxHeight = 650;
+        // Fixed canvas size to fill the preview area consistently (2x size)
+        const maxWidth = 700;
+        const maxHeight = 900;
         
         // Calculate scale to fit court while maximizing space
         const scaleByWidth = maxWidth / dims.totalW;
@@ -767,60 +767,48 @@ permalink: /court-designer/
             ctx.lineTo(cx, cy + kitchen);
             ctx.stroke();
             
-            // Half-court basketball overlay (rotated 90° - hoop on right sideline)
+            // Basketball overlay (just baseline, 3pt, key, free throw - no sidelines)
             ctx.strokeStyle = state.bballLineColor;
             ctx.lineWidth = 2;
             
-            // Basketball half-court dimensions (rotated)
-            const bballHW = 23.5 * scale; // half-court length (now horizontal)
-            const bballHH = 12.5 * scale; // court half-width (now vertical)
+            // Position: baseline on right edge of surround, shifted right ~15%
+            const baselineX = cx + hw + 4 * scale; // shifted 6ft further right
+            const basketX = baselineX - 4 * scale; // basket 4ft from baseline
             
-            // Half court line (left side)
+            // Baseline
             ctx.beginPath();
-            ctx.moveTo(cx - bballHW, cy - bballHH);
-            ctx.lineTo(cx - bballHW, cy + bballHH);
+            ctx.moveTo(baselineX, cy - hl);
+            ctx.lineTo(baselineX, cy + hl);
             ctx.stroke();
             
-            // Top and bottom sidelines
+            // Free throw lane (key) - 12ft wide, 19ft deep
+            const ftHalfW = 6 * scale;
+            const ftD = 19 * scale;
+            ctx.strokeRect(baselineX - ftD, cy - ftHalfW, ftD, ftHalfW * 2);
+            
+            // Free throw line/circle (facing left)
             ctx.beginPath();
-            ctx.moveTo(cx - bballHW, cy - bballHH);
-            ctx.lineTo(cx + bballHW, cy - bballHH);
-            ctx.moveTo(cx - bballHW, cy + bballHH);
-            ctx.lineTo(cx + bballHW, cy + bballHH);
+            ctx.arc(baselineX - ftD, cy, ftHalfW, Math.PI * 0.5, Math.PI * 1.5);
             ctx.stroke();
             
-            // Baseline (right side - where hoop is)
+            // 3-point arc - 23.75ft radius
+            const threeRadius = 23.75 * scale;
             ctx.beginPath();
-            ctx.moveTo(cx + bballHW, cy - bballHH);
-            ctx.lineTo(cx + bballHW, cy + bballHH);
+            ctx.arc(basketX, cy, threeRadius, Math.PI * 0.5 + 0.35, Math.PI * 1.5 - 0.35);
             ctx.stroke();
             
-            // Free throw lane (key) - on right side
-            const ftW = 6 * scale; // lane half-width
-            const ftD = 9.5 * scale; // lane depth
-            ctx.strokeRect(cx + bballHW - ftD * 2, cy - ftW, ftD * 2, ftW * 2);
-            
-            // Free throw circle (facing left)
+            // 3-point corners (connect to baseline)
+            const cornerY = Math.sqrt(threeRadius * threeRadius - (baselineX - basketX) * (baselineX - basketX));
             ctx.beginPath();
-            ctx.arc(cx + bballHW - ftD * 2, cy, ftW, Math.PI * 0.5, Math.PI * 1.5);
+            ctx.moveTo(baselineX, cy - cornerY);
+            ctx.lineTo(baselineX - 14 * scale, cy - cornerY);
+            ctx.moveTo(baselineX, cy + cornerY);
+            ctx.lineTo(baselineX - 14 * scale, cy + cornerY);
             ctx.stroke();
             
-            // 3-point arc (facing left)
+            // Restricted area arc (4ft radius)
             ctx.beginPath();
-            ctx.arc(cx + bballHW - 2.5 * scale, cy, 11.5 * scale, Math.PI * 0.5 + 0.4, Math.PI * 1.5 - 0.4);
-            ctx.stroke();
-            
-            // 3-point corners
-            ctx.beginPath();
-            ctx.moveTo(cx + bballHW, cy - bballHH + 1.5 * scale);
-            ctx.lineTo(cx + bballHW - 7 * scale, cy - bballHH + 1.5 * scale);
-            ctx.moveTo(cx + bballHW, cy + bballHH - 1.5 * scale);
-            ctx.lineTo(cx + bballHW - 7 * scale, cy + bballHH - 1.5 * scale);
-            ctx.stroke();
-            
-            // Restricted area arc
-            ctx.beginPath();
-            ctx.arc(cx + bballHW - 2.5 * scale, cy, 2 * scale, Math.PI * 0.5, Math.PI * 1.5);
+            ctx.arc(basketX, cy, 4 * scale, Math.PI * 0.5, Math.PI * 1.5);
             ctx.stroke();
         }
         
