@@ -444,35 +444,49 @@ footer .footer-bottom p { font-size: 0.8rem; }
     position: fixed; 
     top: 0; 
     left: 0; 
-    right: 0; 
-    bottom: 0;
-    background: rgba(10, 22, 40, 0.97); 
-    backdrop-filter: blur(20px);
+    width: 100vw;
+    height: 100vh;
+    background: #0a1628;
     flex-direction: column; 
     justify-content: center;
     align-items: center; 
     gap: 2rem;
     padding: 2rem;
-    z-index: 9999;
+    z-index: 99999;
+    overflow: hidden;
   }
   .nav-links.open { 
     display: flex !important; 
   }
+  .nav-links::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #0a1628 0%, #1a2d52 100%);
+    z-index: -1;
+  }
   .nav-links a {
-    font-size: 1.2rem !important;
+    font-size: 1.3rem !important;
     font-weight: 600 !important;
-    padding: 1.2rem 2rem;
+    padding: 1.5rem 2.5rem;
     border-radius: 12px;
     transition: all 0.3s;
-    min-width: 200px;
+    min-width: 220px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9) !important;
+    position: relative;
+    z-index: 1;
   }
   .nav-links a:hover {
     background: rgba(86, 148, 255, 0.2);
-    color: var(--blue);
-    transform: translateY(-2px);
+    color: var(--blue) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(86, 148, 255, 0.2);
   }
   .nav-cta-btn {
     background: var(--blue) !important;
@@ -482,6 +496,14 @@ footer .footer-bottom p { font-size: 0.8rem; }
   .nav-cta-btn:hover {
     background: var(--white) !important;
     color: var(--navy) !important;
+  }
+  
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
   }
   .mobile-toggle { display: block; }
   .hero-stats { gap: 1.5rem; flex-wrap: wrap; }

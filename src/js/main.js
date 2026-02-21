@@ -2,13 +2,18 @@
 document.getElementById('mobileToggle').addEventListener('click', () => {
   const links = document.getElementById('navLinks');
   const toggle = document.getElementById('mobileToggle');
+  const body = document.body;
+  
   links.classList.toggle('open');
+  body.classList.toggle('menu-open', links.classList.contains('open'));
   toggle.textContent = links.classList.contains('open') ? '✕' : '☰';
 });
+
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => {
     document.getElementById('navLinks').classList.remove('open');
     document.getElementById('mobileToggle').textContent = '☰';
+    document.body.classList.remove('menu-open');
   });
 });
 
