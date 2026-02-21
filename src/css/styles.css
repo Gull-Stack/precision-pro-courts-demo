@@ -440,31 +440,47 @@ footer .footer-bottom p { font-size: 0.8rem; }
 /* ── MOBILE ── */
 @media (max-width: 768px) {
   .nav-links {
-    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(10, 22, 40, 0.98); 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background: rgba(10, 22, 40, 0.97); 
     backdrop-filter: blur(20px);
     flex-direction: column; 
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center; 
-    gap: 1.5rem;
-    padding-top: 25vh; /* Push items down from top to avoid status bar cutoff */
-    border-bottom: 2px solid var(--blue);
+    gap: 2rem;
+    padding: 2rem;
+    z-index: 9999;
   }
-  .nav-links.open { display: flex; z-index: 1000; }
+  .nav-links.open { 
+    display: flex !important; 
+  }
   .nav-links a {
-    font-size: 1.1rem !important;
-    padding: 1rem 2rem;
-    border-radius: 8px;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    padding: 1.2rem 2rem;
+    border-radius: 12px;
     transition: all 0.3s;
-    min-width: 150px;
+    min-width: 200px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   .nav-links a:hover {
-    background: rgba(86, 148, 255, 0.15);
+    background: rgba(86, 148, 255, 0.2);
     color: var(--blue);
+    transform: translateY(-2px);
   }
   .nav-cta-btn {
     background: var(--blue) !important;
+    color: var(--navy) !important;
+    font-weight: 700 !important;
+  }
+  .nav-cta-btn:hover {
+    background: var(--white) !important;
     color: var(--navy) !important;
   }
   .mobile-toggle { display: block; }
