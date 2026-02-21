@@ -308,17 +308,17 @@ permalink: /court-designer/
                 <div class="color-section">
                     <div class="color-row" id="playRow" onclick="setColorTarget('play')">
                         <label>Playing:</label>
-                        <div class="color-preview" id="playColor" style="background: #1565c0;"></div>
+                        <div class="color-preview" id="playColor" style="background: #1e3a8a;"></div>
                         <span class="color-name" id="playColorName">Comp Blue</span>
                     </div>
                     <div class="color-row kitchen-row" id="kitchenRow" onclick="setColorTarget('kitchen')">
                         <label>Kitchen:</label>
-                        <div class="color-preview" id="kitchenColor" style="background: #1565c0;"></div>
+                        <div class="color-preview" id="kitchenColor" style="background: #1e3a8a;"></div>
                         <span class="color-name" id="kitchenColorName">Comp Blue</span>
                     </div>
                     <div class="color-row" id="surroundRow" onclick="setColorTarget('surround')">
                         <label>Surround:</label>
-                        <div class="color-preview" id="surroundColor" style="background: #4caf50;"></div>
+                        <div class="color-preview" id="surroundColor" style="background: #38613b;"></div>
                         <span class="color-name" id="surroundColorName">Comp Green</span>
                     </div>
                     <div class="color-row" id="lineRow" onclick="setColorTarget('line')">
@@ -383,7 +383,7 @@ permalink: /court-designer/
     // Player's Choice Colors only (from old site)
     const COURT_COLORS = [
         // Row 1 - Greens & Tan
-        { name: 'Dark Green', hex: '#38613b' },
+        { name: 'Comp Green', hex: '#38613b' },
         { name: 'Forest Green', hex: '#516f4a' },
         { name: 'Olive Green', hex: '#5a5e41' },
         { name: 'Khaki', hex: '#c4b68a' },
@@ -405,11 +405,11 @@ permalink: /court-designer/
     ];
     
     const PRESETS = {
-        classic: { play: '#1565c0', kitchen: '#1565c0', surround: '#4caf50', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Comp Green', bballLineName: 'Grey' },
+        classic: { play: '#1e3a8a', kitchen: '#1e3a8a', surround: '#38613b', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Comp Green', bballLineName: 'Grey' },
         forest: { play: '#2e7d32', kitchen: '#2e7d32', surround: '#1b5e20', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Green', bballLineName: 'Grey' },
         lightblue: { play: '#42a5f5', kitchen: '#42a5f5', surround: '#9e9e9e', line: '#ffffff', bballLine: '#757575', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Grey', bballLineName: 'Dark Grey' },
-        coastal: { play: '#1565c0', kitchen: '#42a5f5', surround: '#4caf50', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Comp Blue', kitchenName: 'Light Blue', surroundName: 'Comp Green', bballLineName: 'Grey' },
-        popular: { play: '#1565c0', kitchen: '#1565c0', surround: '#9e9e9e', line: '#ffffff', bballLine: '#757575', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Grey', bballLineName: 'Dark Grey' },
+        coastal: { play: '#1e3a8a', kitchen: '#42a5f5', surround: '#38613b', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Comp Blue', kitchenName: 'Light Blue', surroundName: 'Comp Green', bballLineName: 'Grey' },
+        popular: { play: '#1e3a8a', kitchen: '#1e3a8a', surround: '#9e9e9e', line: '#ffffff', bballLine: '#757575', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Grey', bballLineName: 'Dark Grey' },
     };
     
     const COURT_DIMS = {
@@ -421,9 +421,9 @@ permalink: /court-designer/
     
     let state = {
         sport: 'tennis',
-        playColor: '#1565c0',
-        kitchenColor: '#1565c0',
-        surroundColor: '#4caf50',
+        playColor: '#1e3a8a',
+        kitchenColor: '#1e3a8a',
+        surroundColor: '#38613b',
         lineColor: '#ffffff',
         bballLineColor: '#9e9e9e',
         activeColorTarget: null
