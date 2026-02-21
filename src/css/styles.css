@@ -304,6 +304,84 @@ section { padding: 6rem 0; }
 .content-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 .content-two-col img { border-radius: 16px; width: 100%; }
 
+/* ── SERVICE AREAS ── */
+.service-areas { padding: 5rem 0; background: var(--light-gray); }
+
+.areas-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 2rem; 
+  margin-top: 3rem; 
+}
+
+.area-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.area-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  border-color: var(--blue);
+}
+
+.area-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.area-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.area-card p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.area-cta {
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.area-card:hover .area-cta {
+  color: var(--accent);
+}
+
+.text-link {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .areas-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .area-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
 /* ── SOCIAL SECTION ── */
 .social-section { padding: 5rem 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
 .social-cta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 800px; margin: 2.5rem auto 0; }
