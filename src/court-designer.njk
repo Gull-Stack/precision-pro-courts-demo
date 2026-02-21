@@ -844,20 +844,22 @@ permalink: /court-designer/
             ctx.lineTo(cx, cy + kitchen);
             ctx.stroke();
             
-            // Basketball half-court from LEFT sideline
+            // Basketball half-court from LEFT sideline (shifted right 15%)
             ctx.strokeStyle = state.bballLineColor;
             ctx.lineWidth = 4;
             
-            const basketX = offX; // Basket at left edge of canvas
+            const courtWidth = (offX + hw) - offX; // Total court width
+            const rightShift = courtWidth * 0.15; // 15% shift to the right
+            const basketX = offX + rightShift; // Basket shifted 15% from left edge
             const threeRadius = 23.75 * scale; // 3-point arc radius
             const ftDistance = 15 * scale; // Free throw line distance from basket
             
-            // 3-point arc (half circle from left edge)
+            // 3-point arc (half circle, shifted right)
             ctx.beginPath();
             ctx.arc(basketX, cy, threeRadius, -Math.PI * 0.5, Math.PI * 0.5);
             ctx.stroke();
             
-            // Free throw line (vertical line)
+            // Free throw line (vertical line, shifted right)
             ctx.beginPath();
             ctx.moveTo(basketX + ftDistance, cy - 6 * scale);
             ctx.lineTo(basketX + ftDistance, cy + 6 * scale);
