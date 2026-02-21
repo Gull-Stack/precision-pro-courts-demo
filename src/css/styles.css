@@ -39,6 +39,7 @@ a { color: var(--blue); }
 .nav-cta-btn { background: var(--blue); color: var(--navy) !important; padding: 0.6rem 1.4rem; border-radius: 6px; font-weight: 700 !important; font-size: 0.8rem !important; letter-spacing: 0.05em; text-transform: uppercase; }
 .nav-cta-btn:hover { background: var(--white); }
 .mobile-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 1001; }
+.mobile-close { display: none; }
 
 /* ── BUTTONS ── */
 .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; transition: all 0.3s; cursor: pointer; border: 2px solid transparent; }
@@ -481,6 +482,33 @@ footer .footer-bottom p { font-size: 0.8rem; }
     color: rgba(255, 255, 255, 0.9) !important;
     position: relative;
     z-index: 1;
+  }
+  
+  .nav-links .mobile-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    min-width: auto;
+    padding: 0;
+  }
+  
+  .nav-links .mobile-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--blue);
+    transform: rotate(90deg);
   }
   .nav-links a:hover {
     background: rgba(86, 148, 255, 0.2);

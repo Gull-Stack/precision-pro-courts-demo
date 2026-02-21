@@ -3,6 +3,8 @@
   <div class="nav-inner">
     <a href="{{ '/' | url }}" class="nav-logo"><img src="{{ '/assets/images/logos/logo-white-lg.png' | url }}" alt="{{ site.name }}" style="height:40px;"></a>
     <ul class="nav-links" id="navLinks">
+      <li><button class="mobile-close" id="mobileClose" aria-label="Close Menu">✕</button></li>
+      <li><a href="{{ '/' | url }}"{% if page.url == "/" %} class="active"{% endif %}>🏠 Home</a></li>
       <li><a href="{{ '/services/' | url }}"{% if page.url == "/services/" %} class="active"{% endif %}>Services</a></li>
       <li><a href="{{ '/gallery/' | url }}"{% if page.url == "/gallery/" %} class="active"{% endif %}>Gallery</a></li>
       <li><a href="{{ '/court-designer/' | url }}"{% if page.url == "/court-designer/" %} class="active"{% endif %}>🎨 Designer</a></li>
