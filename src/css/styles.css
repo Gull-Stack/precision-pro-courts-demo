@@ -382,6 +382,127 @@ section { padding: 6rem 0; }
   }
 }
 
+/* ── LANDING PAGE STYLES ── */
+.cities-served { margin: 2.5rem 0; }
+.cities-list { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  gap: 0.5rem; 
+  margin: 1rem 0;
+  list-style: none;
+  padding: 0;
+}
+.cities-list li { 
+  background: var(--light-gray); 
+  padding: 0.5rem 1rem; 
+  border-radius: 8px; 
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.services-grid, .benefits-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 2rem; 
+  margin-top: 2.5rem; 
+}
+
+.service-item, .benefit-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.service-icon, .benefit-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.project-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-info h3 {
+  margin-bottom: 0.5rem;
+  color: var(--navy);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.testimonial {
+  background: var(--light-gray);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.testimonial .stars {
+  color: var(--yellow);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.author {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.local-expertise, .climate-expertise, .desert-expertise {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--light-gray);
+  border-radius: 12px;
+}
+
+.local-cta {
+  background: var(--navy);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.cta-content h2 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
 /* ── SOCIAL SECTION ── */
 .social-section { padding: 5rem 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
 .social-cta-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 800px; margin: 2.5rem auto 0; }
