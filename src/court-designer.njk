@@ -252,11 +252,19 @@ permalink: /court-designer/
     footer { background: #1a2d52 !important; }
     
     @media (max-width: 600px) {
-        .designer-container { padding: 1rem; }
+        .designer-container { 
+            padding: 1rem; 
+            padding-top: 120px; /* Keep content below fixed header on mobile */
+        }
         .page-header h1 { font-size: 1.75rem; }
+        .page-header .subtitle { font-size: 1rem; }
         .palette-grid { grid-template-columns: repeat(4, 1fr); }
         .sport-buttons { grid-template-columns: 1fr 1fr; }
         .canvas-container { min-height: 300px; }
+        .controls { 
+            margin-bottom: 2rem; 
+            padding: 1.25rem; 
+        }
     }
 </style>
 
