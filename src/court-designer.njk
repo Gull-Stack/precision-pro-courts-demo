@@ -725,7 +725,7 @@ permalink: /court-designer/
             ctx.arc(cx, cy + hl - basketDist, 4 * scale, Math.PI, Math.PI * 2);
             ctx.stroke();
         } else if (state.sport === 'multi') {
-            // Multi-sport: Pickleball court with subtle basketball 3-point arcs on both ends
+            // Multi-sport: Pickleball court with basketball half-court from sideline
             const pbW = 10 * scale; // pickleball half-width (20ft total)
             const pbL = 22 * scale; // pickleball half-length (44ft total)  
             const kitchen = 7 * scale; // kitchen zone depth
@@ -775,21 +775,23 @@ permalink: /court-designer/
             ctx.lineTo(cx, cy + kitchen);
             ctx.stroke();
             
-            // Simple basketball 3-point arcs on both ends (subtle, matches your reference image)
+            // Basketball half-court from LEFT sideline
             ctx.strokeStyle = state.bballLineColor;
             ctx.lineWidth = 2;
             
+            const basketX = offX; // Basket at left edge of canvas
             const threeRadius = 23.75 * scale; // 3-point arc radius
-            const basketOffset = 4 * scale; // basket distance from end
+            const ftDistance = 15 * scale; // Free throw line distance from basket
             
-            // Top 3-point arc 
+            // 3-point arc (half circle from left edge)
             ctx.beginPath();
-            ctx.arc(cx, cy - pbL + basketOffset, threeRadius, 0.4, Math.PI - 0.4);
+            ctx.arc(basketX, cy, threeRadius, -Math.PI * 0.5, Math.PI * 0.5);
             ctx.stroke();
             
-            // Bottom 3-point arc
+            // Free throw line (vertical line)
             ctx.beginPath();
-            ctx.arc(cx, cy + pbL - basketOffset, threeRadius, Math.PI + 0.4, -0.4);
+            ctx.moveTo(basketX + ftDistance, cy - 6 * scale);
+            ctx.lineTo(basketX + ftDistance, cy + 6 * scale);
             ctx.stroke();
         }
         
