@@ -283,18 +283,18 @@ permalink: /court-designer/
                 <div class="color-section">
                     <div class="color-row" id="playRow" onclick="setColorTarget('play')">
                         <label>Playing:</label>
-                        <div class="color-preview" id="playColor" style="background: #3b7dbc;"></div>
-                        <span class="color-name" id="playColorName">Blue</span>
+                        <div class="color-preview" id="playColor" style="background: #1565c0;"></div>
+                        <span class="color-name" id="playColorName">Comp Blue</span>
                     </div>
                     <div class="color-row kitchen-row" id="kitchenRow" onclick="setColorTarget('kitchen')">
                         <label>Kitchen:</label>
-                        <div class="color-preview" id="kitchenColor" style="background: #3b7dbc;"></div>
-                        <span class="color-name" id="kitchenColorName">Blue</span>
+                        <div class="color-preview" id="kitchenColor" style="background: #1565c0;"></div>
+                        <span class="color-name" id="kitchenColorName">Comp Blue</span>
                     </div>
                     <div class="color-row" id="surroundRow" onclick="setColorTarget('surround')">
                         <label>Surround:</label>
-                        <div class="color-preview" id="surroundColor" style="background: #38613b;"></div>
-                        <span class="color-name" id="surroundColorName">Dark Green</span>
+                        <div class="color-preview" id="surroundColor" style="background: #4caf50;"></div>
+                        <span class="color-name" id="surroundColorName">Comp Green</span>
                     </div>
                     <div class="color-row" id="lineRow" onclick="setColorTarget('line')">
                         <label>Lines:</label>
@@ -303,8 +303,8 @@ permalink: /court-designer/
                     </div>
                     <div class="color-row bball-lines-row" id="bballLineRow" onclick="setColorTarget('bballLine')">
                         <label>Bball Lines:</label>
-                        <div class="color-preview" id="bballLineColor" style="background: #a1a1aa;"></div>
-                        <span class="color-name" id="bballLineColorName">Medium Gray</span>
+                        <div class="color-preview" id="bballLineColor" style="background: #9e9e9e;"></div>
+                        <span class="color-name" id="bballLineColorName">Grey</span>
                     </div>
                 </div>
                 
@@ -316,11 +316,11 @@ permalink: /court-designer/
             
             <div class="preset-section">
                 <span class="control-label">Quick Presets</span>
-                <button class="preset-btn" data-preset="classic">🏆 Classic Blue/Green</button>
+                <button class="preset-btn" data-preset="classic">🏆 Comp Blue/Green</button>
                 <button class="preset-btn" data-preset="forest">🌲 Forest Green</button>
-                <button class="preset-btn" data-preset="clay">🟤 Red Clay</button>
-                <button class="preset-btn" data-preset="coastal">🌊 Coastal Blue</button>
-                <button class="preset-btn" data-preset="sunset">🌅 Sunset Orange</button>
+                <button class="preset-btn" data-preset="lightblue">💙 Light Blue/Grey</button>
+                <button class="preset-btn" data-preset="coastal">🌊 Mixed Blue/Green</button>
+                <button class="preset-btn" data-preset="popular">⭐ Most Popular</button>
             </div>
         </div>
         
@@ -375,11 +375,11 @@ permalink: /court-designer/
     ];
     
     const PRESETS = {
-        classic: { play: '#3b7dbc', kitchen: '#3b7dbc', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Blue', kitchenName: 'Blue', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
-        forest: { play: '#516f4a', kitchen: '#516f4a', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
-        clay: { play: '#8b3534', kitchen: '#8b3534', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Crimson', kitchenName: 'Crimson', surroundName: 'Dark Green', bballLineName: 'Medium Gray' },
-        coastal: { play: '#6eb5e0', kitchen: '#6eb5e0', surround: '#1a3366', line: '#ffffff', bballLine: '#4b4d4c', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Navy Blue', bballLineName: 'Dark Gray' },
-        sunset: { play: '#e07b30', kitchen: '#e07b30', surround: '#4b4d4c', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Orange', kitchenName: 'Orange', surroundName: 'Dark Gray', bballLineName: 'Medium Gray' },
+        classic: { play: '#1565c0', kitchen: '#1565c0', surround: '#4caf50', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Comp Green', bballLineName: 'Grey' },
+        forest: { play: '#2e7d32', kitchen: '#2e7d32', surround: '#1b5e20', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Green', bballLineName: 'Grey' },
+        lightblue: { play: '#42a5f5', kitchen: '#42a5f5', surround: '#9e9e9e', line: '#ffffff', bballLine: '#757575', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Grey', bballLineName: 'Dark Grey' },
+        coastal: { play: '#1565c0', kitchen: '#42a5f5', surround: '#4caf50', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Comp Blue', kitchenName: 'Light Blue', surroundName: 'Comp Green', bballLineName: 'Grey' },
+        popular: { play: '#1565c0', kitchen: '#1565c0', surround: '#9e9e9e', line: '#ffffff', bballLine: '#757575', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Grey', bballLineName: 'Dark Grey' },
     };
     
     const COURT_DIMS = {
@@ -391,11 +391,11 @@ permalink: /court-designer/
     
     let state = {
         sport: 'tennis',
-        playColor: '#3b7dbc',
-        kitchenColor: '#3b7dbc',
-        surroundColor: '#38613b',
+        playColor: '#1565c0',
+        kitchenColor: '#1565c0',
+        surroundColor: '#4caf50',
         lineColor: '#ffffff',
-        bballLineColor: '#a1a1aa',
+        bballLineColor: '#9e9e9e',
         activeColorTarget: null
     };
     
