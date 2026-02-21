@@ -717,12 +717,12 @@ permalink: /court-designer/
             ctx.arc(cx, cy + hl - basketDist, 4 * scale, Math.PI, Math.PI * 2);
             ctx.stroke();
         } else if (state.sport === 'multi') {
-            // Multi-sport: Pickleball court with half-court basketball overlay
+            // Multi-sport: Pickleball court in center with basketball hoops on both ends
             const pbW = 10 * scale; // pickleball half-width (20ft total)
-            const pbL = 22 * scale; // pickleball half-length (44ft total)
+            const pbL = 22 * scale; // pickleball half-length (44ft total)  
             const kitchen = 7 * scale; // kitchen zone depth
             
-            // Draw pickleball kitchen zones
+            // Draw pickleball kitchen zones with different color
             ctx.fillStyle = state.kitchenColor;
             ctx.fillRect(cx - pbW, cy - kitchen, pbW * 2, kitchen); // top kitchen
             ctx.fillRect(cx - pbW, cy, pbW * 2, kitchen); // bottom kitchen
@@ -767,48 +767,39 @@ permalink: /court-designer/
             ctx.lineTo(cx, cy + kitchen);
             ctx.stroke();
             
-            // Basketball overlay (just baseline, 3pt, key, free throw - no sidelines)
+            // Basketball hoops on BOTH ends (top and bottom)
             ctx.strokeStyle = state.bballLineColor;
             ctx.lineWidth = 2;
             
-            // Position: baseline on right edge of surround, shifted right ~15%
-            const baselineX = cx + hw + 4 * scale; // shifted 6ft further right
-            const basketX = baselineX - 4 * scale; // basket 4ft from baseline
+            // Basketball dimensions
+            const basketOffsetFromEdge = 4 * scale; // basket 4ft from baseline
+            const threeRadius = 23.75 * scale; // 3-point arc radius
+            const ftCircleRadius = 6 * scale; // free throw circle radius
             
-            // Baseline
+            // TOP BASKETBALL HOOP
+            const topBasketY = cy - hl + basketOffsetFromEdge;
+            
+            // Top 3-point arc
             ctx.beginPath();
-            ctx.moveTo(baselineX, cy - hl);
-            ctx.lineTo(baselineX, cy + hl);
+            ctx.arc(cx, topBasketY, threeRadius, 0.3, Math.PI - 0.3);
             ctx.stroke();
             
-            // Free throw lane (key) - 12ft wide, 19ft deep
-            const ftHalfW = 6 * scale;
-            const ftD = 19 * scale;
-            ctx.strokeRect(baselineX - ftD, cy - ftHalfW, ftD, ftHalfW * 2);
-            
-            // Free throw line/circle (facing left)
+            // Top free throw circle
             ctx.beginPath();
-            ctx.arc(baselineX - ftD, cy, ftHalfW, Math.PI * 0.5, Math.PI * 1.5);
+            ctx.arc(cx, topBasketY + 19 * scale, ftCircleRadius, 0, Math.PI);
             ctx.stroke();
             
-            // 3-point arc - 23.75ft radius
-            const threeRadius = 23.75 * scale;
+            // BOTTOM BASKETBALL HOOP  
+            const bottomBasketY = cy + hl - basketOffsetFromEdge;
+            
+            // Bottom 3-point arc
             ctx.beginPath();
-            ctx.arc(basketX, cy, threeRadius, Math.PI * 0.5 + 0.35, Math.PI * 1.5 - 0.35);
+            ctx.arc(cx, bottomBasketY, threeRadius, Math.PI + 0.3, -0.3);
             ctx.stroke();
             
-            // 3-point corners (connect to baseline)
-            const cornerY = Math.sqrt(threeRadius * threeRadius - (baselineX - basketX) * (baselineX - basketX));
+            // Bottom free throw circle
             ctx.beginPath();
-            ctx.moveTo(baselineX, cy - cornerY);
-            ctx.lineTo(baselineX - 14 * scale, cy - cornerY);
-            ctx.moveTo(baselineX, cy + cornerY);
-            ctx.lineTo(baselineX - 14 * scale, cy + cornerY);
-            ctx.stroke();
-            
-            // Restricted area arc (4ft radius)
-            ctx.beginPath();
-            ctx.arc(basketX, cy, 4 * scale, Math.PI * 0.5, Math.PI * 1.5);
+            ctx.arc(cx, bottomBasketY - 19 * scale, ftCircleRadius, Math.PI, 2 * Math.PI);
             ctx.stroke();
         }
         
