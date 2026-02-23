@@ -51,6 +51,7 @@ module.exports = async (req, res) => {
   try {
     const notificationEmail = {
       to: 'team@precisionprocourts.com',
+      cc: 'bryce@gullstack.com',
       from: { email: 'noreply@gullstack.com', name: 'Precision Pro Courts Website' },
       replyTo: email,
       subject: `New Lead: ${name}${service ? ` - ${service}` : ''}`,

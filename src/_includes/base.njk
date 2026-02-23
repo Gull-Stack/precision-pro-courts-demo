@@ -26,6 +26,7 @@
   <meta property="og:description" content="{{ ogDescription | default(description) | default(site.description) }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ '/assets/images/gallery/drone-aerial.jpg' | url }}">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="{{ site.name }}">
   
@@ -76,34 +77,7 @@
     </div>
   </div>
 
-  <!-- CHATBOT -->
-  <button class="chatbot-bubble" id="chatBubble" aria-label="Chat with us">💬</button>
-  <div class="chatbot-panel" id="chatPanel">
-    <div class="chatbot-header">
-      <div class="chatbot-header-avatar">🏀</div>
-      <div class="chatbot-header-info">
-        <h4>{{ site.name }}</h4>
-        <p>Typically replies instantly</p>
-      </div>
-      <button class="chatbot-header-close" id="chatClose">✕</button>
-    </div>
-    <div class="chatbot-messages" id="chatMessages">
-      <div class="chat-msg bot">Hi! 👋 Welcome to {{ site.name }}. How can I help you today?</div>
-    </div>
-    <div class="chatbot-prompts">
-      <button class="chatbot-prompt">Get a free quote</button>
-      <button class="chatbot-prompt">What sports do you build for?</button>
-      <button class="chatbot-prompt">Service areas?</button>
-      <button class="chatbot-prompt">How much does it cost?</button>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" id="chatInput" placeholder="Type a message...">
-      <button id="chatSend">➤</button>
-    </div>
-  </div>
-
   <script src="{{ '/js/main.js' | url }}"></script>
-  <script src="{{ '/js/chatbot.js' | url }}"></script>
   
   <!-- PODIUM WIDGET -->
   <script>
