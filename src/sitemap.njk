@@ -4,39 +4,13 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for page in collections.all %}
+{%- if page.url and page.url != "/sitemap.xml" and page.url != "/robots.txt" %}
   <url>
-    <loc>https://precisionprocourts.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>{{ site.url }}{{ page.url }}</loc>
+    <changefreq>{% if page.url == "/" %}weekly{% elif "county" in page.url or "vegas" in page.url %}monthly{% else %}monthly{% endif %}</changefreq>
+    <priority>{% if page.url == "/" %}1.0{% elif page.url == "/services/" %}0.9{% elif page.url == "/contact/" or page.url == "/gallery/" or page.url == "/court-designer/" %}0.8{% elif "county" in page.url or "vegas" in page.url %}0.8{% elif page.url == "/privacy-policy/" %}0.3{% else %}0.7{% endif %}</priority>
   </url>
-  <url>
-    <loc>https://precisionprocourts.com/services/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://precisionprocourts.com/gallery/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://precisionprocourts.com/court-designer/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://precisionprocourts.com/about/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://precisionprocourts.com/contact/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://precisionprocourts.com/privacy-policy/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+{%- endif %}
+{%- endfor %}
 </urlset>
