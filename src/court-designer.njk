@@ -821,9 +821,9 @@ permalink: /court-designer/
             ctx.arc(cx, cy - hl + ftDepth, ftWidth, 0, Math.PI);
             ctx.stroke();
             
-            // 3-point arc (facing down)
+            // 3-point arc (facing down) - smoother curve
             ctx.beginPath();
-            ctx.arc(cx, cy - hl + basketDist, threeRadius, 0.41, Math.PI - 0.41);
+            ctx.arc(cx, cy - hl + basketDist, threeRadius, 0.3, Math.PI - 0.3);
             ctx.stroke();
             
             // 3-point corner lines (connect sideline to arc)
@@ -832,11 +832,6 @@ permalink: /court-designer/
             ctx.lineTo(cx - hw + threeCornerDist, cy - hl + 14 * scale);
             ctx.moveTo(cx + hw - threeCornerDist, cy - hl);
             ctx.lineTo(cx + hw - threeCornerDist, cy - hl + 14 * scale);
-            ctx.stroke();
-            
-            // Restricted area (4ft radius facing down)
-            ctx.beginPath();
-            ctx.arc(cx, cy - hl + basketDist, 4 * scale, 0, Math.PI);
             ctx.stroke();
             
             // BOTTOM END
@@ -848,9 +843,9 @@ permalink: /court-designer/
             ctx.arc(cx, cy + hl - ftDepth, ftWidth, Math.PI, Math.PI * 2);
             ctx.stroke();
             
-            // 3-point arc (facing up)
+            // 3-point arc (facing up) - smoother curve
             ctx.beginPath();
-            ctx.arc(cx, cy + hl - basketDist, threeRadius, Math.PI + 0.41, -0.41);
+            ctx.arc(cx, cy + hl - basketDist, threeRadius, Math.PI + 0.3, -0.3);
             ctx.stroke();
             
             // 3-point corner lines
@@ -859,11 +854,6 @@ permalink: /court-designer/
             ctx.lineTo(cx - hw + threeCornerDist, cy + hl - 14 * scale);
             ctx.moveTo(cx + hw - threeCornerDist, cy + hl);
             ctx.lineTo(cx + hw - threeCornerDist, cy + hl - 14 * scale);
-            ctx.stroke();
-            
-            // Restricted area (4ft radius facing up)
-            ctx.beginPath();
-            ctx.arc(cx, cy + hl - basketDist, 4 * scale, Math.PI, Math.PI * 2);
             ctx.stroke();
         } else if (state.sport === 'multi') {
             // Multi-sport: Pickleball court with basketball half-court from sideline
