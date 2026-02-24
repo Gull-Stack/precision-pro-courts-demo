@@ -825,6 +825,12 @@ permalink: /court-designer/
             ctx.lineTo(cx + ftWidth, cy - hl);
             ctx.stroke();
             
+            // Free throw line (horizontal line at top of key)
+            ctx.beginPath();
+            ctx.moveTo(cx - ftWidth, cy - hl + ftDepth);
+            ctx.lineTo(cx + ftWidth, cy - hl + ftDepth);
+            ctx.stroke();
+            
             // Free throw semicircle (facing down toward basket)
             ctx.beginPath();
             ctx.arc(cx, cy - hl + ftDepth, ftWidth, 0, Math.PI);
@@ -852,6 +858,12 @@ permalink: /court-designer/
             ctx.lineTo(cx - ftWidth, cy + hl);
             ctx.moveTo(cx + ftWidth, cy + hl - ftDepth);
             ctx.lineTo(cx + ftWidth, cy + hl);
+            ctx.stroke();
+            
+            // Free throw line (horizontal line at top of key)
+            ctx.beginPath();
+            ctx.moveTo(cx - ftWidth, cy + hl - ftDepth);
+            ctx.lineTo(cx + ftWidth, cy + hl - ftDepth);
             ctx.stroke();
             
             // Free throw semicircle (facing up toward basket)
