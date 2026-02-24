@@ -813,6 +813,7 @@ permalink: /court-designer/
             const ftWidth = 6 * scale; // half of 12ft lane width
             const ftDepth = 19 * scale; // 19ft from baseline
             const basketDist = 5.25 * scale; // basket center from baseline
+            const threeRadius = 23.75 * scale; // 3pt arc radius
             const threeCornerDist = 3 * scale; // corner 3 distance from sideline
             
             // TOP END
@@ -835,26 +836,28 @@ permalink: /court-designer/
             ctx.arc(cx, cy - hl + ftDepth, ftWidth, 0, Math.PI);
             ctx.stroke();
             
-            // 3-point line geometry (HS regulation: 19'9" radius)
-            // Corner lines are 3ft from sideline, straight from baseline to where the arc naturally meets them
-            const cornerX = hw - threeCornerDist; // horizontal distance from court center to corner line
-            const threeR = 19.75 * scale; // HS 3pt radius
-            // Y-distance from arc center (basket) to where arc intersects the corner line
-            const arcMeetY = Math.sqrt(threeR * threeR - cornerX * cornerX);
-            // Length of straight corner line from baseline
-            const cornerLen = basketDist + arcMeetY;
-            // Angle at which arc meets the corner straight line (measured from +Y axis / downward)
-            const meetAngle = Math.asin(cornerX / threeR);
+            // Regulation 3-point calculations - proper math for smooth connections
+            const hsThreeRadius = 19.75 * scale;
+            const hsThreeCornerDist = 5.25 * scale; // 5'3" from corner
+            const cornerLineX = cx - hw + hsThreeCornerDist; // Position of corner line
+            const distFromCenter = Math.abs(cornerLineX - cx); // Distance from center to corner line
+            const startAngle = Math.acos(distFromCenter / hsThreeRadius); // Arc start angle
             
-            // TOP COURT - single continuous 3-point path: left corner → arc → right corner
+            // TOP COURT - 3-point arc and corner lines
+            const topArcCenterY = cy - hl + basketDist;
+            const topIntersectionY = topArcCenterY + Math.sqrt(hsThreeRadius * hsThreeRadius - distFromCenter * distFromCenter);
+            
+            // Top 3-point arc
             ctx.beginPath();
-            ctx.moveTo(cx - cornerX, cy - hl);
-            ctx.lineTo(cx - cornerX, cy - hl + cornerLen);
-            // Arc from left corner to right corner, sweeping "below" the basket (toward midcourt)
-            // In canvas coords, arc center is at (cx, cy - hl + basketDist)
-            // Left meet point is at angle (PI/2 + meetAngle), right is at (PI/2 - meetAngle)
-            ctx.arc(cx, cy - hl + basketDist, threeR, Math.PI / 2 + meetAngle, Math.PI / 2 - meetAngle, true);
-            ctx.lineTo(cx + cornerX, cy - hl);
+            ctx.arc(cx, topArcCenterY, hsThreeRadius, startAngle, Math.PI - startAngle);
+            ctx.stroke();
+            
+            // Top corner lines - meet arc smoothly
+            ctx.beginPath();
+            ctx.moveTo(cx - hw + hsThreeCornerDist, cy - hl);
+            ctx.lineTo(cx - hw + hsThreeCornerDist, topIntersectionY);
+            ctx.moveTo(cx + hw - hsThreeCornerDist, cy - hl);
+            ctx.lineTo(cx + hw - hsThreeCornerDist, topIntersectionY);
             ctx.stroke();
             
             // BOTTOM END
@@ -877,13 +880,21 @@ permalink: /court-designer/
             ctx.arc(cx, cy + hl - ftDepth, ftWidth, Math.PI, Math.PI * 2);
             ctx.stroke();
             
-            // BOTTOM COURT - single continuous 3-point path
+            // BOTTOM COURT - 3-point arc and corner lines
+            const bottomArcCenterY = cy + hl - basketDist;
+            const bottomIntersectionY = bottomArcCenterY - Math.sqrt(hsThreeRadius * hsThreeRadius - distFromCenter * distFromCenter);
+            
+            // Bottom 3-point arc
             ctx.beginPath();
-            ctx.moveTo(cx - cornerX, cy + hl);
-            ctx.lineTo(cx - cornerX, cy + hl - cornerLen);
-            // Arc sweeps "above" the basket (toward midcourt)
-            ctx.arc(cx, cy + hl - basketDist, threeR, -(Math.PI / 2 + meetAngle), -(Math.PI / 2 - meetAngle));
-            ctx.lineTo(cx + cornerX, cy + hl);
+            ctx.arc(cx, bottomArcCenterY, hsThreeRadius, Math.PI + startAngle, -startAngle);
+            ctx.stroke();
+            
+            // Bottom corner lines - meet arc smoothly
+            ctx.beginPath();
+            ctx.moveTo(cx - hw + hsThreeCornerDist, cy + hl);
+            ctx.lineTo(cx - hw + hsThreeCornerDist, bottomIntersectionY);
+            ctx.moveTo(cx + hw - hsThreeCornerDist, cy + hl);
+            ctx.lineTo(cx + hw - hsThreeCornerDist, bottomIntersectionY);
             ctx.stroke();
         } else if (state.sport === 'multi') {
             // Multi-sport: Pickleball court with basketball half-court from sideline
