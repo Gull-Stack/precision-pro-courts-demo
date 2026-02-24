@@ -836,19 +836,28 @@ permalink: /court-designer/
             ctx.arc(cx, cy - hl + ftDepth, ftWidth, 0, Math.PI);
             ctx.stroke();
             
-            // Regulation 3-point arc (19'9" high school) - simplified approach
+            // Regulation 3-point calculations - proper math for smooth connections
             const hsThreeRadius = 19.75 * scale;
             const hsThreeCornerDist = 5.25 * scale; // 5'3" from corner
+            const cornerLineX = cx - hw + hsThreeCornerDist; // Position of corner line
+            const distFromCenter = Math.abs(cornerLineX - cx); // Distance from center to corner line
+            const startAngle = Math.acos(distFromCenter / hsThreeRadius); // Arc start angle
+            
+            // TOP COURT - 3-point arc and corner lines
+            const topArcCenterY = cy - hl + basketDist;
+            const topIntersectionY = topArcCenterY + Math.sqrt(hsThreeRadius * hsThreeRadius - distFromCenter * distFromCenter);
+            
+            // Top 3-point arc
             ctx.beginPath();
-            ctx.arc(cx, cy - hl + basketDist, hsThreeRadius, 0.28, Math.PI - 0.28);
+            ctx.arc(cx, topArcCenterY, hsThreeRadius, startAngle, Math.PI - startAngle);
             ctx.stroke();
             
-            // 3-point corner lines (regulation)
+            // Top corner lines - meet arc smoothly
             ctx.beginPath();
             ctx.moveTo(cx - hw + hsThreeCornerDist, cy - hl);
-            ctx.lineTo(cx - hw + hsThreeCornerDist, cy - hl + 14 * scale);
+            ctx.lineTo(cx - hw + hsThreeCornerDist, topIntersectionY);
             ctx.moveTo(cx + hw - hsThreeCornerDist, cy - hl);
-            ctx.lineTo(cx + hw - hsThreeCornerDist, cy - hl + 14 * scale);
+            ctx.lineTo(cx + hw - hsThreeCornerDist, topIntersectionY);
             ctx.stroke();
             
             // BOTTOM END
@@ -871,17 +880,21 @@ permalink: /court-designer/
             ctx.arc(cx, cy + hl - ftDepth, ftWidth, Math.PI, Math.PI * 2);
             ctx.stroke();
             
-            // Regulation 3-point arc (19'9" high school) - simplified approach
+            // BOTTOM COURT - 3-point arc and corner lines
+            const bottomArcCenterY = cy + hl - basketDist;
+            const bottomIntersectionY = bottomArcCenterY - Math.sqrt(hsThreeRadius * hsThreeRadius - distFromCenter * distFromCenter);
+            
+            // Bottom 3-point arc
             ctx.beginPath();
-            ctx.arc(cx, cy + hl - basketDist, hsThreeRadius, Math.PI + 0.28, -0.28);
+            ctx.arc(cx, bottomArcCenterY, hsThreeRadius, Math.PI + startAngle, -startAngle);
             ctx.stroke();
             
-            // 3-point corner lines (regulation)
+            // Bottom corner lines - meet arc smoothly
             ctx.beginPath();
             ctx.moveTo(cx - hw + hsThreeCornerDist, cy + hl);
-            ctx.lineTo(cx - hw + hsThreeCornerDist, cy + hl - 14 * scale);
+            ctx.lineTo(cx - hw + hsThreeCornerDist, bottomIntersectionY);
             ctx.moveTo(cx + hw - hsThreeCornerDist, cy + hl);
-            ctx.lineTo(cx + hw - hsThreeCornerDist, cy + hl - 14 * scale);
+            ctx.lineTo(cx + hw - hsThreeCornerDist, bottomIntersectionY);
             ctx.stroke();
         } else if (state.sport === 'multi') {
             // Multi-sport: Pickleball court with basketball half-court from sideline
