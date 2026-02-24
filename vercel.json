@@ -3,5 +3,37 @@
   "outputDirectory": "_site",
   "installCommand": "npm install",
   "framework": null,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/coatings",
+      "destination": "/services/coatings",
+      "permanent": true
+    },
+    {
+      "source": "/coatings/",
+      "destination": "/services/coatings/",
+      "permanent": true
+    },
+    {
+      "source": "/fencing",
+      "destination": "/services/fencing",
+      "permanent": true
+    },
+    {
+      "source": "/fencing/",
+      "destination": "/services/fencing/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy-2",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy-2/",
+      "destination": "/privacy-policy/",
+      "permanent": true
+    }
+  ]
 }
