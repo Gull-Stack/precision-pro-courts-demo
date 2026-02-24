@@ -305,13 +305,13 @@ permalink: /court-designer/
                 <div class="color-section">
                     <div class="color-row" id="playRow" onclick="setColorTarget('play')">
                         <label>Playing:</label>
-                        <div class="color-preview" id="playColor" style="background: #3b7dbc;"></div>
-                        <span class="color-name" id="playColorName">Blue</span>
+                        <div class="color-preview" id="playColor" style="background: #1a3366;"></div>
+                        <span class="color-name" id="playColorName">Comp Blue</span>
                     </div>
                     <div class="color-row kitchen-row" id="kitchenRow" onclick="setColorTarget('kitchen')">
                         <label>Kitchen:</label>
-                        <div class="color-preview" id="kitchenColor" style="background: #3b7dbc;"></div>
-                        <span class="color-name" id="kitchenColorName">Blue</span>
+                        <div class="color-preview" id="kitchenColor" style="background: #1a3366;"></div>
+                        <span class="color-name" id="kitchenColorName">Comp Blue</span>
                     </div>
                     <div class="color-row" id="surroundRow" onclick="setColorTarget('surround')">
                         <label>Surround:</label>
@@ -387,7 +387,7 @@ permalink: /court-designer/
         // Row 2 - Grays & Navy
         { name: 'Dark Gray', hex: '#4b4d4c' },
         { name: 'Medium Gray', hex: '#a1a1aa' },
-        { name: 'Navy Blue', hex: '#1a3366' },
+        { name: 'Comp Blue', hex: '#1a3366' },
         { name: 'Dark Blue', hex: '#2d4470' },
         // Row 3 - Blues & Browns
         { name: 'Blue', hex: '#3b7dbc' },
@@ -402,11 +402,11 @@ permalink: /court-designer/
     ];
     
     const PRESETS = {
-        classic: { play: '#3b7dbc', kitchen: '#3b7dbc', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Blue', kitchenName: 'Blue', surroundName: 'Comp Green', bballLineName: 'Medium Gray' },
+        classic: { play: '#1a3366', kitchen: '#1a3366', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Comp Green', bballLineName: 'Medium Gray' },
         forest: { play: '#355E3B', kitchen: '#355E3B', surround: '#2F4F2F', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Forest Green', bballLineName: 'Medium Gray' },
         lightblue: { play: '#6eb5e0', kitchen: '#6eb5e0', surround: '#a1a1aa', line: '#ffffff', bballLine: '#4b4d4c', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Medium Gray', bballLineName: 'Dark Gray' },
-        coastal: { play: '#1a3366', kitchen: '#6eb5e0', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Navy Blue', kitchenName: 'Light Blue', surroundName: 'Comp Green', bballLineName: 'Medium Gray' },
-        popular: { play: '#3b7dbc', kitchen: '#3b7dbc', surround: '#4b4d4c', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Blue', kitchenName: 'Blue', surroundName: 'Dark Gray', bballLineName: 'Medium Gray' },
+        coastal: { play: '#1a3366', kitchen: '#6eb5e0', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Comp Blue', kitchenName: 'Light Blue', surroundName: 'Comp Green', bballLineName: 'Medium Gray' },
+        popular: { play: '#1a3366', kitchen: '#1a3366', surround: '#4b4d4c', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Dark Gray', bballLineName: 'Medium Gray' },
     };
     
     const COURT_DIMS = {
@@ -418,8 +418,8 @@ permalink: /court-designer/
     
     let state = {
         sport: 'tennis',
-        playColor: '#3b7dbc',
-        kitchenColor: '#3b7dbc',
+        playColor: '#1a3366',
+        kitchenColor: '#1a3366',
         surroundColor: '#38613b',
         lineColor: '#ffffff',
         bballLineColor: '#a1a1aa',
