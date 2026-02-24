@@ -26,11 +26,8 @@ permalink: /court-designer/
         font-size: 2.5rem; 
         font-weight: 700; 
         margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
         color: white;
+        text-align: center;
     }
     .page-header .subtitle { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
     
@@ -287,7 +284,7 @@ permalink: /court-designer/
 
 <div class="designer-container">
     <div class="page-header">
-        <h1>🎨 Court Designer</h1>
+        <h1>Court Designer</h1>
         <p class="subtitle">Design your dream court. Pick your colors. Download your vision.</p>
     </div>
     
@@ -416,7 +413,7 @@ permalink: /court-designer/
         tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120 },
         pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64 },
         basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100 },
-        multi: { courtW: 20, courtL: 44, totalW: 50, totalL: 60 }, // Pickleball + basketball overlay (zoomed out to show full court)
+        multi: { courtW: 20, courtL: 44, totalW: 30, totalL: 50 }, // Pickleball + basketball overlay (tight fit, basketball centered)
     };
     
     let state = {
@@ -919,25 +916,23 @@ permalink: /court-designer/
             ctx.lineTo(cx, cy + kitchen);
             ctx.stroke();
             
-            // Basketball half-court from LEFT sideline (shifted right 15%)
+            // Basketball half-court centered with pickleball court
             ctx.strokeStyle = state.bballLineColor;
             ctx.lineWidth = 4;
             
-            const courtWidth = (offX + hw) - offX; // Total court width
-            const rightShift = courtWidth * 0.15; // 15% shift to the right
-            const basketX = offX + rightShift; // Basket shifted 15% from left edge
-            const threeRadius = 23.75 * scale; // 3-point arc radius
+            const basketX = cx - (4.5 * scale); // Basket positioned so free throw line aligns with center
+            const threeRadius = 23.75 * scale; // 3-point arc radius  
             const ftDistance = 15 * scale; // Free throw line distance from basket
             
-            // 3-point arc (half circle, shifted right)
+            // 3-point arc (half circle, extends to near canvas edges)
             ctx.beginPath();
             ctx.arc(basketX, cy, threeRadius, -Math.PI * 0.5, Math.PI * 0.5);
             ctx.stroke();
             
-            // Free throw line (vertical line, shifted right)
+            // Free throw line (vertical line at pickleball center)
             ctx.beginPath();
-            ctx.moveTo(basketX + ftDistance, cy - 6 * scale);
-            ctx.lineTo(basketX + ftDistance, cy + 6 * scale);
+            ctx.moveTo(cx, cy - 6 * scale);
+            ctx.lineTo(cx, cy + 6 * scale);
             ctx.stroke();
         }
         
