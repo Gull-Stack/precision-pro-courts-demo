@@ -58,7 +58,8 @@ module.exports = async (req, res) => {
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: #1a1a2e; color: white; padding: 24px; text-align: center;">
-            <h1 style="margin: 0; font-size: 24px;">🏀 New Contact Form Submission</h1>
+            <img src="https://precisionprocourts.com/assets/images/logos/logo-white-lg.png" alt="Precision Pro Courts" style="max-width: 240px; height: auto;" />
+            <p style="margin: 8px 0 0 0; font-size: 14px; opacity: 0.7;">New Contact Form Submission</p>
           </div>
           <div style="padding: 32px; background: #f9f9f9;">
             <table style="width: 100%; border-collapse: collapse;">
@@ -84,7 +85,7 @@ module.exports = async (req, res) => {
       html: `
         <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: #1a1a2e; color: white; padding: 24px; text-align: center;">
-            <h1 style="margin: 0; font-size: 24px;">🏀 Precision Pro Courts</h1>
+            <img src="https://precisionprocourts.com/assets/images/logos/logo-white-lg.png" alt="Precision Pro Courts" style="max-width: 240px; height: auto;" />
           </div>
           <div style="padding: 32px;">
             <p style="font-size: 18px; margin: 0 0 16px 0;">Hi ${name.split(' ')[0]},</p>
