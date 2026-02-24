@@ -817,6 +817,14 @@ permalink: /court-designer/
             const threeCornerDist = 3 * scale; // corner 3 distance from sideline
             
             // TOP END
+            // Free throw lane lines (sides of the key, no rectangle)
+            ctx.beginPath();
+            ctx.moveTo(cx - ftWidth, cy - hl + ftDepth);
+            ctx.lineTo(cx - ftWidth, cy - hl);
+            ctx.moveTo(cx + ftWidth, cy - hl + ftDepth);
+            ctx.lineTo(cx + ftWidth, cy - hl);
+            ctx.stroke();
+            
             // Free throw semicircle (facing down toward basket)
             ctx.beginPath();
             ctx.arc(cx, cy - hl + ftDepth, ftWidth, 0, Math.PI);
@@ -838,6 +846,14 @@ permalink: /court-designer/
             ctx.stroke();
             
             // BOTTOM END
+            // Free throw lane lines (sides of the key, no rectangle)
+            ctx.beginPath();
+            ctx.moveTo(cx - ftWidth, cy + hl - ftDepth);
+            ctx.lineTo(cx - ftWidth, cy + hl);
+            ctx.moveTo(cx + ftWidth, cy + hl - ftDepth);
+            ctx.lineTo(cx + ftWidth, cy + hl);
+            ctx.stroke();
+            
             // Free throw semicircle (facing up toward basket)
             ctx.beginPath();
             ctx.arc(cx, cy + hl - ftDepth, ftWidth, Math.PI, Math.PI * 2);
