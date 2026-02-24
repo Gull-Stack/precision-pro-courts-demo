@@ -293,10 +293,10 @@ permalink: /court-designer/
             <div class="control-section">
                 <span class="control-label">Sport Type</span>
                 <div class="sport-buttons">
-                    <button class="sport-btn" data-sport="pickleball"><span>🥒</span>Pickleball</button>
-                    <button class="sport-btn active" data-sport="tennis"><span>🎾</span>Tennis</button>
-                    <button class="sport-btn" data-sport="basketball"><span>🏀</span>Basketball</button>
-                    <button class="sport-btn" data-sport="multi"><span>🏅</span>Multi-Sport</button>
+                    <button class="sport-btn" data-sport="pickleball">Pickleball</button>
+                    <button class="sport-btn active" data-sport="tennis">Tennis</button>
+                    <button class="sport-btn" data-sport="basketball">Basketball</button>
+                    <button class="sport-btn" data-sport="multi">Multi-Sport</button>
                 </div>
             </div>
             
@@ -338,11 +338,11 @@ permalink: /court-designer/
             
             <div class="preset-section">
                 <span class="control-label">Quick Presets</span>
-                <button class="preset-btn" data-preset="classic">🏆 Comp Blue/Green</button>
-                <button class="preset-btn" data-preset="forest">🌲 Forest Green</button>
-                <button class="preset-btn" data-preset="lightblue">💙 Light Blue/Grey</button>
-                <button class="preset-btn" data-preset="coastal">🌊 Mixed Blue/Green</button>
-                <button class="preset-btn" data-preset="popular">⭐ Most Popular</button>
+                <button class="preset-btn" data-preset="classic">Comp Blue/Green</button>
+                <button class="preset-btn" data-preset="forest">Forest Green</button>
+                <button class="preset-btn" data-preset="lightblue">Light Blue/Grey</button>
+                <button class="preset-btn" data-preset="coastal">Mixed Blue/Green</button>
+                <button class="preset-btn" data-preset="popular">Most Popular</button>
             </div>
         </div>
         
@@ -351,10 +351,10 @@ permalink: /court-designer/
                 <span class="preview-title">Live Preview</span>
                 <div class="action-buttons">
                     <button class="action-btn share-btn" id="shareBtn">
-                        <span>📤</span> Share Photo
+                        Share Photo
                     </button>
                     <button class="action-btn download-btn" id="downloadBtn">
-                        <span>📥</span> Download PNG
+                        Download PNG
                     </button>
                 </div>
             </div>
@@ -362,7 +362,7 @@ permalink: /court-designer/
                 <canvas id="courtCanvas" width="330" height="660"></canvas>
             </div>
             <div class="ppc-credit">
-                <p>Designed with ❤️ by <a href="/">Precision Pro Courts</a> — Utah's Premier Court Builder</p>
+                <p>Designed by <a href="/">Precision Pro Courts</a> — Utah's Premier Court Builder</p>
             </div>
         </div>
     </div>
@@ -647,7 +647,7 @@ permalink: /court-designer/
                         // Show feedback
                         const shareBtn = document.getElementById('shareBtn');
                         const originalText = shareBtn.innerHTML;
-                        shareBtn.innerHTML = '<span>✅</span> Copied!';
+                        shareBtn.innerHTML = 'Copied!';
                         shareBtn.style.background = '#22c55e';
                         setTimeout(() => {
                             shareBtn.innerHTML = originalText;
