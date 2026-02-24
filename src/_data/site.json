@@ -6,8 +6,10 @@
   "email": "precisionprocourts@gmail.com",
   "phone": "",
   "address": {
-    "city": "Utah",
-    "state": "UT"
+    "street": "",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "zip": ""
   },
   "gaId": "",
   "serviceAreas": [
