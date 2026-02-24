@@ -696,11 +696,12 @@ permalink: /court-designer/
         ctx.fillStyle = state.surroundColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        // Subtle texture on surround
-        ctx.globalAlpha = 0.03;
-        for (let i = 0; i < 500; i++) {
+        // Gritty texture on surround
+        ctx.globalAlpha = 0.06;
+        for (let i = 0; i < 800; i++) {
             ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
-            ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 1);
+            const size = Math.random() > 0.7 ? 2 : 1;
+            ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, size, size);
         }
         ctx.globalAlpha = 1;
         
@@ -709,10 +710,12 @@ permalink: /court-designer/
         ctx.fillStyle = state.playColor;
         ctx.fillRect(courtOffX, courtOffY, dims.courtW * scale, dims.courtL * scale);
         
-        ctx.globalAlpha = 0.03;
-        for (let i = 0; i < 300; i++) {
+        // Enhanced gritty texture on court surface
+        ctx.globalAlpha = 0.08;
+        for (let i = 0; i < 600; i++) {
             ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
-            ctx.fillRect(courtOffX + Math.random() * dims.courtW * scale, courtOffY + Math.random() * dims.courtL * scale, 1, 1);
+            const size = Math.random() > 0.8 ? 2 : 1;
+            ctx.fillRect(courtOffX + Math.random() * dims.courtW * scale, courtOffY + Math.random() * dims.courtL * scale, size, size);
         }
         ctx.globalAlpha = 1;
         
@@ -766,12 +769,13 @@ permalink: /court-designer/
             ctx.fillRect(cx - hw, cy - kitchen, hw * 2, kitchen); // top kitchen
             ctx.fillRect(cx - hw, cy, hw * 2, kitchen); // bottom kitchen
             
-            // Add texture to kitchen
-            ctx.globalAlpha = 0.03;
-            for (let i = 0; i < 100; i++) {
+            // Add gritty texture to kitchen
+            ctx.globalAlpha = 0.08;
+            for (let i = 0; i < 150; i++) {
                 ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
-                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy - kitchen + Math.random() * kitchen, 1, 1);
-                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy + Math.random() * kitchen, 1, 1);
+                const size = Math.random() > 0.8 ? 2 : 1;
+                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy - kitchen + Math.random() * kitchen, size, size);
+                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy + Math.random() * kitchen, size, size);
             }
             ctx.globalAlpha = 1;
             
@@ -813,47 +817,43 @@ permalink: /court-designer/
             const threeCornerDist = 3 * scale; // corner 3 distance from sideline
             
             // TOP END
-            // Free throw lane (key)
-            ctx.strokeRect(cx - ftWidth, cy - hl, ftWidth * 2, ftDepth);
-            
             // Free throw semicircle (facing down toward basket)
             ctx.beginPath();
             ctx.arc(cx, cy - hl + ftDepth, ftWidth, 0, Math.PI);
             ctx.stroke();
             
-            // 3-point arc (facing down) - full arc to edges
+            // Regulation 3-point arc (19'9" high school)
+            const hsThreeRadius = 19.75 * scale; // High school 3-point distance
             ctx.beginPath();
-            ctx.arc(cx, cy - hl + basketDist, threeRadius, 0.1, Math.PI - 0.1);
+            ctx.arc(cx, cy - hl + basketDist, hsThreeRadius, Math.asin(14/19.75), Math.PI - Math.asin(14/19.75));
             ctx.stroke();
             
-            // 3-point corner lines (connect sideline to arc) - longer lines
+            // 3-point corner lines (regulation 5'3" from corners)
+            const cornerDist = 5.25 * scale;
             ctx.beginPath();
-            ctx.moveTo(cx - hw, cy - hl);
-            ctx.lineTo(cx - hw, cy - hl + 16 * scale);
-            ctx.moveTo(cx + hw, cy - hl);
-            ctx.lineTo(cx + hw, cy - hl + 16 * scale);
+            ctx.moveTo(cx - hw + cornerDist, cy - hl);
+            ctx.lineTo(cx - hw + cornerDist, cy - hl + basketDist - 6.25 * scale);
+            ctx.moveTo(cx + hw - cornerDist, cy - hl);
+            ctx.lineTo(cx + hw - cornerDist, cy - hl + basketDist - 6.25 * scale);
             ctx.stroke();
             
             // BOTTOM END
-            // Free throw lane (key)
-            ctx.strokeRect(cx - ftWidth, cy + hl - ftDepth, ftWidth * 2, ftDepth);
-            
             // Free throw semicircle (facing up toward basket)
             ctx.beginPath();
             ctx.arc(cx, cy + hl - ftDepth, ftWidth, Math.PI, Math.PI * 2);
             ctx.stroke();
             
-            // 3-point arc (facing up) - full arc to edges
+            // Regulation 3-point arc (19'9" high school)
             ctx.beginPath();
-            ctx.arc(cx, cy + hl - basketDist, threeRadius, Math.PI + 0.1, -0.1);
+            ctx.arc(cx, cy + hl - basketDist, hsThreeRadius, Math.PI + Math.asin(14/19.75), -Math.asin(14/19.75));
             ctx.stroke();
             
-            // 3-point corner lines - longer lines
+            // 3-point corner lines (regulation 5'3" from corners)
             ctx.beginPath();
-            ctx.moveTo(cx - hw, cy + hl);
-            ctx.lineTo(cx - hw, cy + hl - 16 * scale);
-            ctx.moveTo(cx + hw, cy + hl);
-            ctx.lineTo(cx + hw, cy + hl - 16 * scale);
+            ctx.moveTo(cx - hw + cornerDist, cy + hl);
+            ctx.lineTo(cx - hw + cornerDist, cy + hl - basketDist + 6.25 * scale);
+            ctx.moveTo(cx + hw - cornerDist, cy + hl);
+            ctx.lineTo(cx + hw - cornerDist, cy + hl - basketDist + 6.25 * scale);
             ctx.stroke();
         } else if (state.sport === 'multi') {
             // Multi-sport: Pickleball court with basketball half-court from sideline
@@ -866,12 +866,13 @@ permalink: /court-designer/
             ctx.fillRect(cx - pbW, cy - kitchen, pbW * 2, kitchen); // top kitchen
             ctx.fillRect(cx - pbW, cy, pbW * 2, kitchen); // bottom kitchen
             
-            // Add texture to kitchen
-            ctx.globalAlpha = 0.03;
-            for (let i = 0; i < 80; i++) {
+            // Add gritty texture to kitchen
+            ctx.globalAlpha = 0.08;
+            for (let i = 0; i < 120; i++) {
                 ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
-                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy - kitchen + Math.random() * kitchen, 1, 1);
-                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy + Math.random() * kitchen, 1, 1);
+                const size = Math.random() > 0.8 ? 2 : 1;
+                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy - kitchen + Math.random() * kitchen, size, size);
+                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy + Math.random() * kitchen, size, size);
             }
             ctx.globalAlpha = 1;
             
