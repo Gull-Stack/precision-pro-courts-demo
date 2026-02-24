@@ -405,18 +405,18 @@ permalink: /court-designer/
     ];
     
     const PRESETS = {
-        classic: { play: '#1e3a8a', kitchen: '#1e3a8a', surround: '#38613b', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Comp Green', bballLineName: 'Grey' },
-        forest: { play: '#355E3B', kitchen: '#355E3B', surround: '#2F4F2F', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Forest Green', bballLineName: 'Grey' },
-        lightblue: { play: '#42a5f5', kitchen: '#42a5f5', surround: '#9e9e9e', line: '#ffffff', bballLine: '#757575', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Grey', bballLineName: 'Dark Grey' },
-        coastal: { play: '#1e3a8a', kitchen: '#42a5f5', surround: '#38613b', line: '#ffffff', bballLine: '#9e9e9e', playName: 'Comp Blue', kitchenName: 'Light Blue', surroundName: 'Comp Green', bballLineName: 'Grey' },
-        popular: { play: '#1e3a8a', kitchen: '#1e3a8a', surround: '#9e9e9e', line: '#ffffff', bballLine: '#757575', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Grey', bballLineName: 'Dark Grey' },
+        classic: { play: '#3b7dbc', kitchen: '#3b7dbc', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Blue', kitchenName: 'Blue', surroundName: 'Comp Green', bballLineName: 'Medium Gray' },
+        forest: { play: '#355E3B', kitchen: '#355E3B', surround: '#2F4F2F', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Forest Green', bballLineName: 'Medium Gray' },
+        lightblue: { play: '#6eb5e0', kitchen: '#6eb5e0', surround: '#a1a1aa', line: '#ffffff', bballLine: '#4b4d4c', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Medium Gray', bballLineName: 'Dark Gray' },
+        coastal: { play: '#1a3366', kitchen: '#6eb5e0', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Navy Blue', kitchenName: 'Light Blue', surroundName: 'Comp Green', bballLineName: 'Medium Gray' },
+        popular: { play: '#3b7dbc', kitchen: '#3b7dbc', surround: '#4b4d4c', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Blue', kitchenName: 'Blue', surroundName: 'Dark Gray', bballLineName: 'Medium Gray' },
     };
     
     const COURT_DIMS = {
         tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120 },
         pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64 },
         basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100 },
-        multi: { courtW: 20, courtL: 44, totalW: 50, totalL: 54 }, // Pickleball + basketball overlay (no sidelines)
+        multi: { courtW: 20, courtL: 44, totalW: 37, totalL: 40 }, // Pickleball + basketball overlay (reduced sidelines by 25%)
     };
     
     let state = {
@@ -547,17 +547,91 @@ permalink: /court-designer/
         });
     });
     
+    // Create export image with color swatches
+    function createExportImage() {
+        const exportCanvas = document.createElement('canvas');
+        const exportCtx = exportCanvas.getContext('2d');
+        
+        // Make export canvas larger to accommodate color info
+        const padding = 80;
+        const swatchHeight = 120;
+        exportCanvas.width = canvas.width + (padding * 2);
+        exportCanvas.height = canvas.height + swatchHeight + (padding * 2);
+        
+        // White background
+        exportCtx.fillStyle = '#ffffff';
+        exportCtx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+        
+        // Draw court centered
+        exportCtx.drawImage(canvas, padding, padding);
+        
+        // Add color swatches at bottom
+        const swatchY = canvas.height + padding + 20;
+        const swatchSize = 40;
+        const swatchSpacing = 120;
+        let startX = (exportCanvas.width - (getActiveColors().length * swatchSpacing - 20)) / 2;
+        
+        exportCtx.font = 'bold 14px Inter, sans-serif';
+        exportCtx.textAlign = 'center';
+        
+        getActiveColors().forEach((colorInfo, index) => {
+            const x = startX + (index * swatchSpacing);
+            
+            // Draw swatch
+            exportCtx.fillStyle = colorInfo.hex;
+            exportCtx.fillRect(x, swatchY, swatchSize, swatchSize);
+            exportCtx.strokeStyle = '#333333';
+            exportCtx.lineWidth = 2;
+            exportCtx.strokeRect(x, swatchY, swatchSize, swatchSize);
+            
+            // Draw label
+            exportCtx.fillStyle = '#333333';
+            exportCtx.fillText(colorInfo.label, x + swatchSize/2, swatchY + swatchSize + 18);
+            exportCtx.fillText(colorInfo.name, x + swatchSize/2, swatchY + swatchSize + 35);
+        });
+        
+        return exportCanvas;
+    }
+    
+    // Get active colors based on sport
+    function getActiveColors() {
+        const colors = [
+            { label: 'Playing', name: getColorName(state.playColor), hex: state.playColor },
+            { label: 'Surround', name: getColorName(state.surroundColor), hex: state.surroundColor }
+        ];
+        
+        if (state.sport === 'pickleball' || state.sport === 'multi') {
+            colors.splice(1, 0, { label: 'Kitchen', name: getColorName(state.kitchenColor), hex: state.kitchenColor });
+        }
+        
+        colors.push({ label: 'Lines', name: getColorName(state.lineColor), hex: state.lineColor });
+        
+        if (state.sport === 'multi') {
+            colors.push({ label: 'B-Ball Lines', name: getColorName(state.bballLineColor), hex: state.bballLineColor });
+        }
+        
+        return colors;
+    }
+    
+    // Get color name from hex
+    function getColorName(hex) {
+        const found = COURT_COLORS.find(c => c.hex.toLowerCase() === hex.toLowerCase());
+        return found ? found.name : 'Custom';
+    }
+
     document.getElementById('downloadBtn').addEventListener('click', () => {
+        const exportCanvas = createExportImage();
         const link = document.createElement('a');
         link.download = `precision-pro-courts-${state.sport}-design.png`;
-        link.href = canvas.toDataURL('image/png');
+        link.href = exportCanvas.toDataURL('image/png');
         link.click();
     });
     
     // Share button functionality
     document.getElementById('shareBtn').addEventListener('click', async () => {
         try {
-            canvas.toBlob(async (blob) => {
+            const exportCanvas = createExportImage();
+            exportCanvas.toBlob(async (blob) => {
                 const file = new File([blob], `precision-pro-courts-${state.sport}-design.png`, { type: 'image/png' });
                 
                 if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -586,7 +660,7 @@ permalink: /court-designer/
                         // Final fallback: Download
                         const link = document.createElement('a');
                         link.download = `precision-pro-courts-${state.sport}-design.png`;
-                        link.href = canvas.toDataURL('image/png');
+                        link.href = exportCanvas.toDataURL('image/png');
                         link.click();
                     }
                 }
@@ -594,9 +668,10 @@ permalink: /court-designer/
         } catch (error) {
             console.error('Share failed:', error);
             // Fallback to download
+            const exportCanvas = createExportImage();
             const link = document.createElement('a');
             link.download = `precision-pro-courts-${state.sport}-design.png`;
-            link.href = canvas.toDataURL('image/png');
+            link.href = exportCanvas.toDataURL('image/png');
             link.click();
         }
     });
