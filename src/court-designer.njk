@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: "Court Designer | Precision Pro Courts"
+title: "Court Designer | Precision Pro Courts - Design Your Dream Court"
 description: "Design your perfect pickleball, tennis, or basketball court with our free interactive Court Designer. Choose colors, preview your design, and download a PNG."
 permalink: /court-designer/
 ---
@@ -26,8 +26,11 @@ permalink: /court-designer/
         font-size: 2.5rem; 
         font-weight: 700; 
         margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
         color: white;
-        text-align: center;
     }
     .page-header .subtitle { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
     
@@ -284,7 +287,7 @@ permalink: /court-designer/
 
 <div class="designer-container">
     <div class="page-header">
-        <h1>Court Designer</h1>
+        <h1>🎨 Court Designer</h1>
         <p class="subtitle">Design your dream court. Pick your colors. Download your vision.</p>
     </div>
     
@@ -293,10 +296,10 @@ permalink: /court-designer/
             <div class="control-section">
                 <span class="control-label">Sport Type</span>
                 <div class="sport-buttons">
-                    <button class="sport-btn" data-sport="pickleball">Pickleball</button>
-                    <button class="sport-btn active" data-sport="tennis">Tennis</button>
-                    <button class="sport-btn" data-sport="basketball">Basketball</button>
-                    <button class="sport-btn" data-sport="multi">Multi-Sport</button>
+                    <button class="sport-btn" data-sport="pickleball"><span>🥒</span>Pickleball</button>
+                    <button class="sport-btn active" data-sport="tennis"><span>🎾</span>Tennis</button>
+                    <button class="sport-btn" data-sport="basketball"><span>🏀</span>Basketball</button>
+                    <button class="sport-btn" data-sport="multi"><span>🏅</span>Multi-Sport</button>
                 </div>
             </div>
             
@@ -305,18 +308,18 @@ permalink: /court-designer/
                 <div class="color-section">
                     <div class="color-row" id="playRow" onclick="setColorTarget('play')">
                         <label>Playing:</label>
-                        <div class="color-preview" id="playColor" style="background: #1a3366;"></div>
-                        <span class="color-name" id="playColorName">Comp Blue</span>
+                        <div class="color-preview" id="playColor" style="background: #153056;"></div>
+                        <span class="color-name" id="playColorName">Competition Blue</span>
                     </div>
                     <div class="color-row kitchen-row" id="kitchenRow" onclick="setColorTarget('kitchen')">
                         <label>Kitchen:</label>
-                        <div class="color-preview" id="kitchenColor" style="background: #1a3366;"></div>
-                        <span class="color-name" id="kitchenColorName">Comp Blue</span>
+                        <div class="color-preview" id="kitchenColor" style="background: #153056;"></div>
+                        <span class="color-name" id="kitchenColorName">Competition Blue</span>
                     </div>
                     <div class="color-row" id="surroundRow" onclick="setColorTarget('surround')">
                         <label>Surround:</label>
-                        <div class="color-preview" id="surroundColor" style="background: #38613b;"></div>
-                        <span class="color-name" id="surroundColorName">Comp Green</span>
+                        <div class="color-preview" id="surroundColor" style="background: #38603e;"></div>
+                        <span class="color-name" id="surroundColorName">Competition Green</span>
                     </div>
                     <div class="color-row" id="lineRow" onclick="setColorTarget('line')">
                         <label>Lines:</label>
@@ -325,8 +328,8 @@ permalink: /court-designer/
                     </div>
                     <div class="color-row bball-lines-row" id="bballLineRow" onclick="setColorTarget('bballLine')">
                         <label>Bball Lines:</label>
-                        <div class="color-preview" id="bballLineColor" style="background: #a1a1aa;"></div>
-                        <span class="color-name" id="bballLineColorName">Medium Gray</span>
+                        <div class="color-preview" id="bballLineColor" style="background: #9e9e9e;"></div>
+                        <span class="color-name" id="bballLineColorName">Grey</span>
                     </div>
                 </div>
                 
@@ -338,11 +341,11 @@ permalink: /court-designer/
             
             <div class="preset-section">
                 <span class="control-label">Quick Presets</span>
-                <button class="preset-btn" data-preset="classic">Comp Blue/Green</button>
-                <button class="preset-btn" data-preset="forest">Forest Green</button>
-                <button class="preset-btn" data-preset="lightblue">Light Blue/Grey</button>
-                <button class="preset-btn" data-preset="coastal">Mixed Blue/Green</button>
-                <button class="preset-btn" data-preset="popular">Most Popular</button>
+                <button class="preset-btn" data-preset="classic">🏆 Comp Blue/Green</button>
+                <button class="preset-btn" data-preset="forest">🌲 Forest Green</button>
+                <button class="preset-btn" data-preset="lightblue">💙 Light Blue/Grey</button>
+                <button class="preset-btn" data-preset="coastal">🌊 Mixed Blue/Green</button>
+                <button class="preset-btn" data-preset="popular">⭐ Most Popular</button>
             </div>
         </div>
         
@@ -351,10 +354,10 @@ permalink: /court-designer/
                 <span class="preview-title">Live Preview</span>
                 <div class="action-buttons">
                     <button class="action-btn share-btn" id="shareBtn">
-                        Share Photo
+                        <span>📤</span> Share Photo
                     </button>
                     <button class="action-btn download-btn" id="downloadBtn">
-                        Download PNG
+                        <span>📥</span> Download PNG
                     </button>
                 </div>
             </div>
@@ -362,7 +365,7 @@ permalink: /court-designer/
                 <canvas id="courtCanvas" width="330" height="660"></canvas>
             </div>
             <div class="ppc-credit">
-                <p>Designed by <a href="/">Precision Pro Courts</a> — Utah's Premier Court Builder</p>
+                <p>Designed with ❤️ by <a href="/">Precision Pro Courts</a> — Utah's Premier Court Builder</p>
             </div>
         </div>
     </div>
@@ -377,51 +380,50 @@ permalink: /court-designer/
 </div>
 
 <script>
-    // AT Sports Colors (updated from https://atsports.com/color-options/ - removed Beige, Field Green, Frost Blue)
+    // Player's Choice Colors only (from old site)
     const COURT_COLORS = [
-        // Row 1 - Greens  
-        { name: 'Comp Green', hex: '#38613b' },
-        { name: 'Forest Green', hex: '#355E3B' },
-        { name: 'Dark Forest Green', hex: '#2F4F2F' },
-        { name: 'Sand', hex: '#c4a76c' },
-        // Row 2 - Grays & Navy
-        { name: 'Dark Gray', hex: '#4b4d4c' },
-        { name: 'Medium Gray', hex: '#a1a1aa' },
-        { name: 'Comp Blue', hex: '#1a3366' },
-        { name: 'Dark Blue', hex: '#2d4470' },
-        // Row 3 - Blues & Browns
-        { name: 'Blue', hex: '#3b7dbc' },
-        { name: 'Light Blue', hex: '#6eb5e0' },
-        { name: 'Brown', hex: '#6b5e41' },
+        // Row 1 - Greens
+        { name: 'Competition Green', hex: '#38603e' },
+        { name: 'Performance Green', hex: '#466a49' },
+        { name: 'Forest Green', hex: '#424a3b' },
+        { name: 'Sandstone', hex: '#8e7d6b' },
+        // Row 2 - Warm tones
+        { name: 'Terracotta', hex: '#9d684e' },
+        { name: 'Orange', hex: '#b45236' },
+        { name: 'Classic Red', hex: '#832e1a' },
+        { name: 'Black', hex: '#282828' },
+        // Row 3 - Blues
+        { name: 'Light Blue', hex: '#005490' },
+        { name: 'Standard Blue', hex: '#1a3e71' },
+        { name: 'Competition Blue', hex: '#153056' },
+        { name: 'Slate', hex: '#505457' },
+        // Row 4 - Gray & White
+        { name: 'Gray', hex: '#696c6f' },
         { name: 'White', hex: '#ffffff' },
-        // Row 4 - Reds & Orange
-        { name: 'Rust', hex: '#d17b45' },
-        { name: 'Crimson', hex: '#8b3534' },
-        { name: 'Orange', hex: '#e07b30' },
     ];
     
     const PRESETS = {
-        classic: { play: '#1a3366', kitchen: '#1a3366', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Comp Green', bballLineName: 'Medium Gray' },
-        forest: { play: '#355E3B', kitchen: '#355E3B', surround: '#2F4F2F', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Forest Green', kitchenName: 'Forest Green', surroundName: 'Dark Forest Green', bballLineName: 'Medium Gray' },
-        lightblue: { play: '#6eb5e0', kitchen: '#6eb5e0', surround: '#a1a1aa', line: '#ffffff', bballLine: '#4b4d4c', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Medium Gray', bballLineName: 'Dark Gray' },
-        coastal: { play: '#1a3366', kitchen: '#6eb5e0', surround: '#38613b', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Comp Blue', kitchenName: 'Light Blue', surroundName: 'Comp Green', bballLineName: 'Medium Gray' },
-        popular: { play: '#1a3366', kitchen: '#1a3366', surround: '#4b4d4c', line: '#ffffff', bballLine: '#a1a1aa', playName: 'Comp Blue', kitchenName: 'Comp Blue', surroundName: 'Dark Gray', bballLineName: 'Medium Gray' },
+        classic: { play: '#153056', kitchen: '#153056', surround: '#38603e', line: '#ffffff', bballLine: '#696c6f', playName: 'Competition Blue', kitchenName: 'Competition Blue', surroundName: 'Competition Green', bballLineName: 'Gray' },
+        forest: { play: '#466a49', kitchen: '#466a49', surround: '#424a3b', line: '#ffffff', bballLine: '#696c6f', playName: 'Performance Green', kitchenName: 'Performance Green', surroundName: 'Forest Green', bballLineName: 'Gray' },
+        lightblue: { play: '#005490', kitchen: '#005490', surround: '#696c6f', line: '#ffffff', bballLine: '#505457', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Gray', bballLineName: 'Slate' },
+        coastal: { play: '#153056', kitchen: '#005490', surround: '#38603e', line: '#ffffff', bballLine: '#696c6f', playName: 'Competition Blue', kitchenName: 'Light Blue', surroundName: 'Competition Green', bballLineName: 'Gray' },
+        popular: { play: '#1a3e71', kitchen: '#1a3e71', surround: '#505457', line: '#ffffff', bballLine: '#696c6f', playName: 'Standard Blue', kitchenName: 'Standard Blue', surroundName: 'Slate', bballLineName: 'Gray' },
     };
     
     const COURT_DIMS = {
         tennis: { courtW: 36, courtL: 78, totalW: 60, totalL: 120 },
         pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64 },
         basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100 },
-        multi: { courtW: 20, courtL: 44, totalW: 30, totalL: 50 }, // Pickleball + basketball overlay (tight fit, basketball centered)
+        multi: { courtW: 20, courtL: 44, totalW: 34, totalL: 54 }, // Pickleball + basketball overlay (no sidelines)
     };
     
     let state = {
         sport: 'tennis',
-        playColor: '#1a3366',
-        kitchenColor: '#1a3366',
-        surroundColor: '#38613b',
+        playColor: '#153056',
+        kitchenColor: '#153056',
+        surroundColor: '#38603e',
         lineColor: '#ffffff',
-        bballLineColor: '#a1a1aa',
+        bballLineColor: '#9e9e9e',
         activeColorTarget: null
     };
     
@@ -543,91 +545,17 @@ permalink: /court-designer/
         });
     });
     
-    // Create export image with color swatches
-    function createExportImage() {
-        const exportCanvas = document.createElement('canvas');
-        const exportCtx = exportCanvas.getContext('2d');
-        
-        // Make export canvas larger to accommodate color info
-        const padding = 80;
-        const swatchHeight = 120;
-        exportCanvas.width = canvas.width + (padding * 2);
-        exportCanvas.height = canvas.height + swatchHeight + (padding * 2);
-        
-        // White background
-        exportCtx.fillStyle = '#ffffff';
-        exportCtx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
-        
-        // Draw court centered
-        exportCtx.drawImage(canvas, padding, padding);
-        
-        // Add color swatches at bottom
-        const swatchY = canvas.height + padding + 20;
-        const swatchSize = 40;
-        const swatchSpacing = 120;
-        let startX = (exportCanvas.width - (getActiveColors().length * swatchSpacing - 20)) / 2;
-        
-        exportCtx.font = 'bold 14px Inter, sans-serif';
-        exportCtx.textAlign = 'center';
-        
-        getActiveColors().forEach((colorInfo, index) => {
-            const x = startX + (index * swatchSpacing);
-            
-            // Draw swatch
-            exportCtx.fillStyle = colorInfo.hex;
-            exportCtx.fillRect(x, swatchY, swatchSize, swatchSize);
-            exportCtx.strokeStyle = '#333333';
-            exportCtx.lineWidth = 2;
-            exportCtx.strokeRect(x, swatchY, swatchSize, swatchSize);
-            
-            // Draw label
-            exportCtx.fillStyle = '#333333';
-            exportCtx.fillText(colorInfo.label, x + swatchSize/2, swatchY + swatchSize + 18);
-            exportCtx.fillText(colorInfo.name, x + swatchSize/2, swatchY + swatchSize + 35);
-        });
-        
-        return exportCanvas;
-    }
-    
-    // Get active colors based on sport
-    function getActiveColors() {
-        const colors = [
-            { label: 'Playing', name: getColorName(state.playColor), hex: state.playColor },
-            { label: 'Surround', name: getColorName(state.surroundColor), hex: state.surroundColor }
-        ];
-        
-        if (state.sport === 'pickleball' || state.sport === 'multi') {
-            colors.splice(1, 0, { label: 'Kitchen', name: getColorName(state.kitchenColor), hex: state.kitchenColor });
-        }
-        
-        colors.push({ label: 'Lines', name: getColorName(state.lineColor), hex: state.lineColor });
-        
-        if (state.sport === 'multi') {
-            colors.push({ label: 'B-Ball Lines', name: getColorName(state.bballLineColor), hex: state.bballLineColor });
-        }
-        
-        return colors;
-    }
-    
-    // Get color name from hex
-    function getColorName(hex) {
-        const found = COURT_COLORS.find(c => c.hex.toLowerCase() === hex.toLowerCase());
-        return found ? found.name : 'Custom';
-    }
-
     document.getElementById('downloadBtn').addEventListener('click', () => {
-        const exportCanvas = createExportImage();
         const link = document.createElement('a');
         link.download = `precision-pro-courts-${state.sport}-design.png`;
-        link.href = exportCanvas.toDataURL('image/png');
+        link.href = canvas.toDataURL('image/png');
         link.click();
     });
     
     // Share button functionality
     document.getElementById('shareBtn').addEventListener('click', async () => {
         try {
-            const exportCanvas = createExportImage();
-            exportCanvas.toBlob(async (blob) => {
+            canvas.toBlob(async (blob) => {
                 const file = new File([blob], `precision-pro-courts-${state.sport}-design.png`, { type: 'image/png' });
                 
                 if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -646,7 +574,7 @@ permalink: /court-designer/
                         // Show feedback
                         const shareBtn = document.getElementById('shareBtn');
                         const originalText = shareBtn.innerHTML;
-                        shareBtn.innerHTML = 'Copied!';
+                        shareBtn.innerHTML = '<span>✅</span> Copied!';
                         shareBtn.style.background = '#22c55e';
                         setTimeout(() => {
                             shareBtn.innerHTML = originalText;
@@ -656,7 +584,7 @@ permalink: /court-designer/
                         // Final fallback: Download
                         const link = document.createElement('a');
                         link.download = `precision-pro-courts-${state.sport}-design.png`;
-                        link.href = exportCanvas.toDataURL('image/png');
+                        link.href = canvas.toDataURL('image/png');
                         link.click();
                     }
                 }
@@ -664,10 +592,9 @@ permalink: /court-designer/
         } catch (error) {
             console.error('Share failed:', error);
             // Fallback to download
-            const exportCanvas = createExportImage();
             const link = document.createElement('a');
             link.download = `precision-pro-courts-${state.sport}-design.png`;
-            link.href = exportCanvas.toDataURL('image/png');
+            link.href = canvas.toDataURL('image/png');
             link.click();
         }
     });
@@ -695,12 +622,11 @@ permalink: /court-designer/
         ctx.fillStyle = state.surroundColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        // Gritty texture on surround
-        ctx.globalAlpha = 0.06;
-        for (let i = 0; i < 800; i++) {
+        // Subtle texture on surround
+        ctx.globalAlpha = 0.03;
+        for (let i = 0; i < 500; i++) {
             ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
-            const size = Math.random() > 0.7 ? 2 : 1;
-            ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, size, size);
+            ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 1);
         }
         ctx.globalAlpha = 1;
         
@@ -709,12 +635,10 @@ permalink: /court-designer/
         ctx.fillStyle = state.playColor;
         ctx.fillRect(courtOffX, courtOffY, dims.courtW * scale, dims.courtL * scale);
         
-        // Enhanced gritty texture on court surface
-        ctx.globalAlpha = 0.08;
-        for (let i = 0; i < 600; i++) {
+        ctx.globalAlpha = 0.03;
+        for (let i = 0; i < 300; i++) {
             ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
-            const size = Math.random() > 0.8 ? 2 : 1;
-            ctx.fillRect(courtOffX + Math.random() * dims.courtW * scale, courtOffY + Math.random() * dims.courtL * scale, size, size);
+            ctx.fillRect(courtOffX + Math.random() * dims.courtW * scale, courtOffY + Math.random() * dims.courtL * scale, 1, 1);
         }
         ctx.globalAlpha = 1;
         
@@ -768,13 +692,12 @@ permalink: /court-designer/
             ctx.fillRect(cx - hw, cy - kitchen, hw * 2, kitchen); // top kitchen
             ctx.fillRect(cx - hw, cy, hw * 2, kitchen); // bottom kitchen
             
-            // Add gritty texture to kitchen
-            ctx.globalAlpha = 0.08;
-            for (let i = 0; i < 150; i++) {
+            // Add texture to kitchen
+            ctx.globalAlpha = 0.03;
+            for (let i = 0; i < 100; i++) {
                 ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
-                const size = Math.random() > 0.8 ? 2 : 1;
-                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy - kitchen + Math.random() * kitchen, size, size);
-                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy + Math.random() * kitchen, size, size);
+                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy - kitchen + Math.random() * kitchen, 1, 1);
+                ctx.fillRect(cx - hw + Math.random() * hw * 2, cy + Math.random() * kitchen, 1, 1);
             }
             ctx.globalAlpha = 1;
             
@@ -816,84 +739,57 @@ permalink: /court-designer/
             const threeCornerDist = 3 * scale; // corner 3 distance from sideline
             
             // TOP END
-            // Free throw lane lines (sides of the key, no rectangle)
-            ctx.beginPath();
-            ctx.moveTo(cx - ftWidth, cy - hl + ftDepth);
-            ctx.lineTo(cx - ftWidth, cy - hl);
-            ctx.moveTo(cx + ftWidth, cy - hl + ftDepth);
-            ctx.lineTo(cx + ftWidth, cy - hl);
-            ctx.stroke();
-            
-            // Free throw line (horizontal line at top of key)
-            ctx.beginPath();
-            ctx.moveTo(cx - ftWidth, cy - hl + ftDepth);
-            ctx.lineTo(cx + ftWidth, cy - hl + ftDepth);
-            ctx.stroke();
+            // Free throw lane (key)
+            ctx.strokeRect(cx - ftWidth, cy - hl, ftWidth * 2, ftDepth);
             
             // Free throw semicircle (facing down toward basket)
             ctx.beginPath();
             ctx.arc(cx, cy - hl + ftDepth, ftWidth, 0, Math.PI);
             ctx.stroke();
             
-            // Regulation 3-point calculations - proper math for smooth connections
-            const hsThreeRadius = 19.75 * scale;
-            const hsThreeCornerDist = 5.25 * scale; // 5'3" from corner
-            const cornerLineX = cx - hw + hsThreeCornerDist; // Position of corner line
-            const distFromCenter = Math.abs(cornerLineX - cx); // Distance from center to corner line
-            const startAngle = Math.acos(distFromCenter / hsThreeRadius); // Arc start angle
-            
-            // TOP COURT - 3-point arc and corner lines
-            const topArcCenterY = cy - hl + basketDist;
-            const topIntersectionY = topArcCenterY + Math.sqrt(hsThreeRadius * hsThreeRadius - distFromCenter * distFromCenter);
-            
-            // Top 3-point arc
+            // 3-point arc (facing down)
             ctx.beginPath();
-            ctx.arc(cx, topArcCenterY, hsThreeRadius, startAngle, Math.PI - startAngle);
+            ctx.arc(cx, cy - hl + basketDist, threeRadius, 0.41, Math.PI - 0.41);
             ctx.stroke();
             
-            // Top corner lines - meet arc smoothly
+            // 3-point corner lines (connect sideline to arc)
             ctx.beginPath();
-            ctx.moveTo(cx - hw + hsThreeCornerDist, cy - hl);
-            ctx.lineTo(cx - hw + hsThreeCornerDist, topIntersectionY);
-            ctx.moveTo(cx + hw - hsThreeCornerDist, cy - hl);
-            ctx.lineTo(cx + hw - hsThreeCornerDist, topIntersectionY);
+            ctx.moveTo(cx - hw + threeCornerDist, cy - hl);
+            ctx.lineTo(cx - hw + threeCornerDist, cy - hl + 14 * scale);
+            ctx.moveTo(cx + hw - threeCornerDist, cy - hl);
+            ctx.lineTo(cx + hw - threeCornerDist, cy - hl + 14 * scale);
+            ctx.stroke();
+            
+            // Restricted area (4ft radius facing down)
+            ctx.beginPath();
+            ctx.arc(cx, cy - hl + basketDist, 4 * scale, 0, Math.PI);
             ctx.stroke();
             
             // BOTTOM END
-            // Free throw lane lines (sides of the key, no rectangle)
-            ctx.beginPath();
-            ctx.moveTo(cx - ftWidth, cy + hl - ftDepth);
-            ctx.lineTo(cx - ftWidth, cy + hl);
-            ctx.moveTo(cx + ftWidth, cy + hl - ftDepth);
-            ctx.lineTo(cx + ftWidth, cy + hl);
-            ctx.stroke();
-            
-            // Free throw line (horizontal line at top of key)
-            ctx.beginPath();
-            ctx.moveTo(cx - ftWidth, cy + hl - ftDepth);
-            ctx.lineTo(cx + ftWidth, cy + hl - ftDepth);
-            ctx.stroke();
+            // Free throw lane (key)
+            ctx.strokeRect(cx - ftWidth, cy + hl - ftDepth, ftWidth * 2, ftDepth);
             
             // Free throw semicircle (facing up toward basket)
             ctx.beginPath();
             ctx.arc(cx, cy + hl - ftDepth, ftWidth, Math.PI, Math.PI * 2);
             ctx.stroke();
             
-            // BOTTOM COURT - 3-point arc and corner lines
-            const bottomArcCenterY = cy + hl - basketDist;
-            const bottomIntersectionY = bottomArcCenterY - Math.sqrt(hsThreeRadius * hsThreeRadius - distFromCenter * distFromCenter);
-            
-            // Bottom 3-point arc
+            // 3-point arc (facing up)
             ctx.beginPath();
-            ctx.arc(cx, bottomArcCenterY, hsThreeRadius, Math.PI + startAngle, -startAngle);
+            ctx.arc(cx, cy + hl - basketDist, threeRadius, Math.PI + 0.41, -0.41);
             ctx.stroke();
             
-            // Bottom corner lines - meet arc smoothly
+            // 3-point corner lines
             ctx.beginPath();
-            ctx.moveTo(cx - hw + hsThreeCornerDist, cy + hl);
-            ctx.lineTo(cx - hw + hsThreeCornerDist, bottomIntersectionY);
-            ctx.moveTo(cx + hw - hsThreeCornerDist, cy + hl);
-            ctx.lineTo(cx + hw - hsThreeCornerDist, bottomIntersectionY);
+            ctx.moveTo(cx - hw + threeCornerDist, cy + hl);
+            ctx.lineTo(cx - hw + threeCornerDist, cy + hl - 14 * scale);
+            ctx.moveTo(cx + hw - threeCornerDist, cy + hl);
+            ctx.lineTo(cx + hw - threeCornerDist, cy + hl - 14 * scale);
+            ctx.stroke();
+            
+            // Restricted area (4ft radius facing up)
+            ctx.beginPath();
+            ctx.arc(cx, cy + hl - basketDist, 4 * scale, Math.PI, Math.PI * 2);
             ctx.stroke();
         } else if (state.sport === 'multi') {
             // Multi-sport: Pickleball court with basketball half-court from sideline
@@ -906,13 +802,12 @@ permalink: /court-designer/
             ctx.fillRect(cx - pbW, cy - kitchen, pbW * 2, kitchen); // top kitchen
             ctx.fillRect(cx - pbW, cy, pbW * 2, kitchen); // bottom kitchen
             
-            // Add gritty texture to kitchen
-            ctx.globalAlpha = 0.08;
-            for (let i = 0; i < 120; i++) {
+            // Add texture to kitchen
+            ctx.globalAlpha = 0.03;
+            for (let i = 0; i < 80; i++) {
                 ctx.fillStyle = Math.random() > 0.5 ? '#ffffff' : '#000000';
-                const size = Math.random() > 0.8 ? 2 : 1;
-                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy - kitchen + Math.random() * kitchen, size, size);
-                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy + Math.random() * kitchen, size, size);
+                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy - kitchen + Math.random() * kitchen, 1, 1);
+                ctx.fillRect(cx - pbW + Math.random() * pbW * 2, cy + Math.random() * kitchen, 1, 1);
             }
             ctx.globalAlpha = 1;
             
@@ -947,20 +842,22 @@ permalink: /court-designer/
             ctx.lineTo(cx, cy + kitchen);
             ctx.stroke();
             
-            // Basketball half-court centered with pickleball court
+            // Basketball half-court from LEFT sideline (shifted right 35%)
             ctx.strokeStyle = state.bballLineColor;
             ctx.lineWidth = 4;
             
-            const basketX = offX; // Basket at left edge so 3-point arc starts from canvas edge
-            const threeRadius = 23.75 * scale; // 3-point arc radius  
+            const courtWidth = (offX + hw) - offX; // Total court width
+            const rightShift = 0; // Basket at left edge of canvas
+            const basketX = offX + rightShift; // Basket shifted 35% from left edge
+            const threeRadius = 23.75 * scale; // 3-point arc radius
             const ftDistance = 15 * scale; // Free throw line distance from basket
             
-            // 3-point arc (half circle, extends to near canvas edges)
+            // 3-point arc (half circle, shifted right)
             ctx.beginPath();
             ctx.arc(basketX, cy, threeRadius, -Math.PI * 0.5, Math.PI * 0.5);
             ctx.stroke();
             
-            // Free throw line (vertical line at proper distance from basket)
+            // Free throw line (vertical line, shifted right)
             ctx.beginPath();
             ctx.moveTo(basketX + ftDistance, cy - 6 * scale);
             ctx.lineTo(basketX + ftDistance, cy + 6 * scale);
