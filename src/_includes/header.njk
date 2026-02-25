@@ -5,7 +5,18 @@
     <ul class="nav-links" id="navLinks">
       <li><button class="mobile-close" id="mobileClose" aria-label="Close Menu">✕</button></li>
       <li><a href="{{ '/' | url }}"{% if page.url == "/" %} class="active"{% endif %}>Home</a></li>
-      <li><a href="{{ '/services/' | url }}"{% if page.url == "/services/" %} class="active"{% endif %}>Services</a></li>
+      <li class="nav-dropdown">
+        <a href="{{ '/services/' | url }}"{% if page.url.startsWith('/services/') %} class="active"{% endif %}>Services <span class="dropdown-arrow">▼</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ '/services/' | url }}">All Services</a></li>
+          <li><a href="{{ '/services/courts-full-builds/' | url }}">Courts & Full Builds</a></li>
+          <li><a href="{{ '/services/concrete-foundations/' | url }}">Concrete & Foundations</a></li>
+          <li><a href="{{ '/services/court-surfacing/' | url }}">Court Surfacing</a></li>
+          <li><a href="{{ '/services/indoor-courts/' | url }}">Indoor Courts</a></li>
+          <li><a href="{{ '/services/repairs-maintenance/' | url }}">Repairs & Maintenance</a></li>
+          <li><a href="{{ '/court-designer/' | url }}">Court Designer</a></li>
+        </ul>
+      </li>
       <li><a href="{{ '/gallery/' | url }}"{% if page.url == "/gallery/" %} class="active"{% endif %}>Gallery</a></li>
       <li><a href="{{ '/court-designer/' | url }}"{% if page.url == "/court-designer/" %} class="active"{% endif %}>Designer</a></li>
       <li><a href="{{ '/about/' | url }}"{% if page.url == "/about/" %} class="active"{% endif %}>About</a></li>

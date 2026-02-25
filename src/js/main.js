@@ -23,6 +23,26 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', closeMobileMenu);
 });
 
+// ── Mobile dropdown functionality ──
+document.querySelectorAll('.nav-dropdown > a').forEach(dropdownToggle => {
+  dropdownToggle.addEventListener('click', (e) => {
+    // Only prevent default and handle dropdown on mobile
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      const dropdown = dropdownToggle.parentElement;
+      const wasActive = dropdown.classList.contains('active');
+      
+      // Close all other dropdowns
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('active'));
+      
+      // Toggle current dropdown
+      if (!wasActive) {
+        dropdown.classList.add('active');
+      }
+    }
+  });
+});
+
 // ── Nav scroll effect ──
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
