@@ -295,6 +295,17 @@ section { padding: 6rem 0; }
 .reviews { background: var(--navy); color: white; }
 .reviews .section-subtitle { color: rgba(255,255,255,0.6); }
 .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.reviews-carousel { position: relative; overflow: hidden; margin: 0 -1rem; padding: 0 1rem; }
+.reviews-track {
+  display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 1rem 0 2rem; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+.reviews-track::-webkit-scrollbar { height: 6px; }
+.reviews-track::-webkit-scrollbar-track { background: transparent; }
+.reviews-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+.reviews-track .review-card { flex: 0 0 340px; scroll-snap-align: start; }
+@media (max-width: 480px) { .reviews-track .review-card { flex: 0 0 85vw; } }
 .review-card {
   background: var(--navy-light); border-radius: 16px; padding: 2rem;
   border: 1px solid rgba(255,255,255,0.06);
