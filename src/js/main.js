@@ -141,3 +141,5 @@ if (lightbox) {
     if (e.key === 'ArrowRight') navigateLightbox(1);
   });
 }
+
+// GA4 event tracking handled by ga4-events.js

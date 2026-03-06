@@ -21,4 +21,14 @@
       link_text: (a.textContent || "").trim().substring(0, 100), page_path: window.location.pathname
     });
   });
+  // Track LeadConnector embedded form submissions via postMessage
+  window.addEventListener("message", function(event) {
+    if (event.data && (event.data.type === "form:submit" || event.data.formSubmitted ||
+        (typeof event.data === "string" && event.data.indexOf("formSubmit") > -1))) {
+      track("form_submission", {
+        event_category: "Lead", event_label: "leadconnector_form",
+        form_id: "QiNfd2B4snaVOLualuZD", page_path: window.location.pathname
+      });
+    }
+  });
 })();
