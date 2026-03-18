@@ -342,7 +342,7 @@ permalink: /court-designer/
             <div class="preset-section">
                 <span class="control-label">Quick Presets</span>
                 <button class="preset-btn" data-preset="classic">🏆 Comp Blue/Green</button>
-                <button class="preset-btn" data-preset="forest">🌲 Forest Green</button>
+                <button class="preset-btn" data-preset="forest">🌲 Dark Green</button>
                 <button class="preset-btn" data-preset="lightblue">💙 Light Blue/Grey</button>
                 <button class="preset-btn" data-preset="coastal">🌊 Mixed Blue/Green</button>
                 <button class="preset-btn" data-preset="popular">⭐ Most Popular</button>
@@ -380,33 +380,41 @@ permalink: /court-designer/
 </div>
 
 <script>
-    // SportMaster ColorPlus palette (per Bryce 2026-03-16)
-    // Excludes: all blues, all greens except Comp & Performance, grey (except Dove Grey)
+    // PPC Color Palette (updated 2026-03-18)
+    // Acrytech staple colors (bulk) + SportMaster specialty colors (local)
     const COURT_COLORS = [
-        // Greens (only these two)
+        // Greens
         { name: 'Competition Green', hex: '#4A7B3F' },
-        { name: 'Performance Green', hex: '#6292A9' },
-        // Reds / Warm
-        { name: 'Red', hex: '#8B1A1A' },
-        { name: 'Brite Red', hex: '#CC0033' },
-        { name: 'Maroon', hex: '#5C1F2E' },
-        { name: 'Orange', hex: '#D06835' },
-        { name: 'Sandstone', hex: '#C2A882' },
-        { name: 'Brown', hex: '#6B4E3D' },
-        // Accent
-        { name: 'Tournament Purple', hex: '#5B2C6F' },
+        { name: 'Performance Green', hex: '#5A8A52' },
+        { name: 'Dark Green', hex: '#275E37' },
+        // Blues
+        { name: 'Competition Blue', hex: '#1A3366' },
+        { name: 'Light Blue', hex: '#3A6BB5' },
+        { name: 'Ice Blue', hex: '#CCD9E0' },
+        { name: 'Tournament Purple', hex: '#002663' },
+        // Warm tones
+        { name: 'Red', hex: '#8D3C1E' },
+        { name: 'Bright Red', hex: '#CC2A1A' },
+        { name: 'Maroon', hex: '#6E3219' },
+        { name: 'Orange', hex: '#FF6600' },
+        { name: 'Yellow', hex: '#FFDA33' },
+        { name: 'Sandstone', hex: '#B3A57A' },
+        { name: 'Beige', hex: '#867A6F' },
+        { name: 'Brown', hex: '#5F3316' },
         // Neutrals
-        { name: 'Dove Grey', hex: '#9BA3A1' },
+        { name: 'Slate', hex: '#5A6A72' },
+        { name: 'Grey', hex: '#8C8E8E' },
+        { name: 'Dove Grey', hex: '#B4B4B4' },
         { name: 'Black', hex: '#1A1A1A' },
         { name: 'White', hex: '#FFFFFF' },
     ];
     
     const PRESETS = {
-        classic: { play: '#4A7B3F', kitchen: '#4A7B3F', surround: '#6292A9', line: '#FFFFFF', bballLine: '#9BA3A1', playName: 'Competition Green', kitchenName: 'Competition Green', surroundName: 'Performance Green', bballLineName: 'Dove Grey' },
-        bold: { play: '#8B1A1A', kitchen: '#8B1A1A', surround: '#4A7B3F', line: '#FFFFFF', bballLine: '#9BA3A1', playName: 'Red', kitchenName: 'Red', surroundName: 'Competition Green', bballLineName: 'Dove Grey' },
-        neutral: { play: '#9BA3A1', kitchen: '#9BA3A1', surround: '#4A7B3F', line: '#FFFFFF', bballLine: '#1A1A1A', playName: 'Dove Grey', kitchenName: 'Dove Grey', surroundName: 'Competition Green', bballLineName: 'Black' },
-        royal: { play: '#5B2C6F', kitchen: '#5B2C6F', surround: '#4A7B3F', line: '#FFFFFF', bballLine: '#9BA3A1', playName: 'Tournament Purple', kitchenName: 'Tournament Purple', surroundName: 'Competition Green', bballLineName: 'Dove Grey' },
-        popular: { play: '#6292A9', kitchen: '#6292A9', surround: '#4A7B3F', line: '#FFFFFF', bballLine: '#9BA3A1', playName: 'Performance Green', kitchenName: 'Performance Green', surroundName: 'Competition Green', bballLineName: 'Dove Grey' },
+        classic: { play: '#1A3366', kitchen: '#1A3366', surround: '#4A7B3F', line: '#ffffff', bballLine: '#8C8E8E', playName: 'Competition Blue', kitchenName: 'Competition Blue', surroundName: 'Competition Green', bballLineName: 'Grey' },
+        forest: { play: '#5A8A52', kitchen: '#5A8A52', surround: '#275E37', line: '#ffffff', bballLine: '#8C8E8E', playName: 'Performance Green', kitchenName: 'Performance Green', surroundName: 'Dark Green', bballLineName: 'Grey' },
+        lightblue: { play: '#3A6BB5', kitchen: '#3A6BB5', surround: '#8C8E8E', line: '#ffffff', bballLine: '#5A6A72', playName: 'Light Blue', kitchenName: 'Light Blue', surroundName: 'Grey', bballLineName: 'Slate' },
+        coastal: { play: '#1A3366', kitchen: '#3A6BB5', surround: '#4A7B3F', line: '#ffffff', bballLine: '#8C8E8E', playName: 'Competition Blue', kitchenName: 'Light Blue', surroundName: 'Competition Green', bballLineName: 'Grey' },
+        popular: { play: '#1A3366', kitchen: '#1A3366', surround: '#5A6A72', line: '#ffffff', bballLine: '#8C8E8E', playName: 'Competition Blue', kitchenName: 'Competition Blue', surroundName: 'Slate', bballLineName: 'Grey' },
     };
     
     const COURT_DIMS = {
