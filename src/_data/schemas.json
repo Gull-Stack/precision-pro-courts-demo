@@ -1,0 +1,343 @@
+{
+  "services": {
+    "/services/pickleball/": {
+      "serviceType": "Pickleball Court Construction",
+      "name": "Pickleball Court Construction & Installation",
+      "description": "Professional pickleball court construction in Utah. Regulation 20'×44' courts with premium acrylic, cushioned, or textured surfaces. Residential and commercial."
+    },
+    "/services/tennis/": {
+      "serviceType": "Tennis Court Construction",
+      "name": "Tennis Court Construction & Installation",
+      "description": "Championship-quality tennis court construction in Utah. Cushioned and hard-court surfaces, regulation dimensions, professional line work, and premium net systems for residential and commercial sites."
+    },
+    "/services/basketball/": {
+      "serviceType": "Basketball Court Construction",
+      "name": "Basketball Court Construction & Installation",
+      "description": "Professional basketball court construction across Utah. Half-courts and full courts in regulation dimensions, premium surfaces, adjustable or fixed-height hoops, and durable line systems for homes, schools, and facilities."
+    },
+    "/services/multi-sport/": {
+      "serviceType": "Multi-Sport Court Construction",
+      "name": "Multi-Sport Court Design & Construction",
+      "description": "Custom multi-sport courts that combine pickleball, tennis, basketball, and more in a single playing area. Color-coded line systems and versatile net solutions designed for the way your family or facility actually plays."
+    },
+    "/services/resurfacing/": {
+      "serviceType": "Court Resurfacing",
+      "name": "Sport Court Resurfacing & Restoration",
+      "description": "Professional resurfacing of pickleball, tennis, and basketball courts in Utah. Crack repair, premium acrylic systems, color updates, and multi-sport line conversions at 30–50% the cost of new construction."
+    },
+    "/services/fencing/": {
+      "serviceType": "Sport Court Fencing",
+      "name": "Sport Court Fencing & Enclosures",
+      "description": "Professional court fencing across Utah — galvanized and vinyl-coated chain link, gates, windscreens, and ball containment systems for tennis, pickleball, basketball, and multi-sport courts."
+    },
+    "/services/coatings/": {
+      "serviceType": "Sport Court Coatings",
+      "name": "Sport Court Coatings & Color Surfacing",
+      "description": "Premium acrylic coating systems and color surfacing for sport courts in Utah. Multi-sport line work, custom logos, UV-resistant surfaces, and warrantied workmanship for new builds and recoats."
+    },
+    "/services/cushion-x/": {
+      "serviceType": "CushionX Cushioned Court System",
+      "name": "CushionX Cushioned Sport Court System",
+      "description": "CushionX cushioned court system installation across Utah — 4mm, 6mm, and 8mm options with Acrytech Flex coatings for tennis, pickleball, and multi-sport courts. Reduces joint impact while preserving ball response."
+    },
+    "/services/courts-full-builds/": {
+      "serviceType": "Full Sport Court Construction",
+      "name": "Full Sport Court Builds — Turnkey Construction",
+      "description": "Turnkey sport court construction from excavation to final lines. Site prep, base, concrete or post-tension foundations, surfacing, fencing, and equipment — managed end-to-end by Precision Pro Courts."
+    },
+    "/services/concrete-foundations/": {
+      "serviceType": "Sport Court Concrete Foundations",
+      "name": "Concrete Foundations for Sport Courts",
+      "description": "Engineered concrete foundations for tennis, pickleball, basketball, and multi-sport courts in Utah. Standard rebar-reinforced slabs and post-tension cable systems for crack-resistant, long-lasting court bases."
+    },
+    "/services/concrete-foundations/rebar-concrete/": {
+      "serviceType": "Rebar Concrete Court Foundations",
+      "name": "Rebar-Reinforced Concrete Court Foundations",
+      "description": "Traditional rebar-reinforced concrete foundations for sport courts. Cost-effective, proven slab construction with the right base prep, drainage, and reinforcement spacing for Utah's climate."
+    },
+    "/services/concrete-foundations/post-tension/": {
+      "serviceType": "Post-Tension Concrete Court Foundations",
+      "name": "Post-Tension Cable Concrete Court Foundations",
+      "description": "Post-tension concrete foundations for premium sport courts. Engineered cable systems deliver superior crack resistance, longer lifespan, and a more uniform playing surface than conventional rebar slabs."
+    },
+    "/services/court-surfacing/": {
+      "serviceType": "Sport Court Surfacing",
+      "name": "Sport Court Surfacing Systems",
+      "description": "Professional sport court surfacing — acrylic hard courts, cushioned systems, and color coatings — installed across Utah for new construction and resurfacing projects."
+    },
+    "/services/indoor-courts/": {
+      "serviceType": "Indoor Sport Court Construction",
+      "name": "Indoor Sport Court Construction",
+      "description": "Indoor pickleball, tennis, and multi-sport court construction across Utah. Surface systems engineered for indoor play with proper traction, ball response, and durability."
+    },
+    "/services/repairs-maintenance/": {
+      "serviceType": "Sport Court Repairs & Maintenance",
+      "name": "Sport Court Repairs & Maintenance",
+      "description": "Sport court repair and maintenance services across Utah — crack repair, line refresh, net and equipment service, drainage fixes, and recoating to extend court life."
+    }
+  },
+  "faqs": {
+    "/services/pickleball/": [
+      {
+        "q": "How much space do I need for a pickleball court?",
+        "a": "While the playing area is 20' × 44', we recommend a minimum total area of 30' × 60' to allow adequate out-of-bounds space. For optimal play, 34' × 64' provides comfortable clearance areas around the court."
+      },
+      {
+        "q": "Can I convert my tennis court to pickleball?",
+        "a": "Absolutely! Tennis courts can accommodate multiple pickleball courts. One tennis court can fit four pickleball courts. We can add pickleball lines while maintaining the tennis lines, or completely resurface for dedicated pickleball use."
+      },
+      {
+        "q": "What's the typical construction timeline?",
+        "a": "Most residential pickleball courts are completed in 5-7 business days after base preparation. This includes excavation, base installation, surface application, line marking, and net installation. Weather and site conditions may affect timing."
+      },
+      {
+        "q": "Do you handle permits and HOA approvals?",
+        "a": "Yes, we assist with the permit process and provide professional drawings and specifications needed for HOA or city approval. Our experience with local regulations helps ensure smooth approval processes."
+      },
+      {
+        "q": "What maintenance is required for pickleball courts?",
+        "a": "Pickleball courts require minimal maintenance. Regular cleaning, annual inspection for cracks, and periodic line refreshing (every 3-5 years) will keep your court in excellent condition. We offer maintenance programs for hassle-free upkeep."
+      }
+    ],
+    "/services/tennis/": [
+      {
+        "q": "How long does tennis court construction take?",
+        "a": "Typical residential tennis court construction takes 7-10 business days after excavation and base preparation. This includes surface installation, line marking, net installation, and final cleanup. Commercial projects may take 2-3 weeks depending on complexity."
+      },
+      {
+        "q": "What's the difference between cushioned and non-cushioned surfaces?",
+        "a": "Cushioned surfaces include shock-absorbing layers beneath the playing surface, reducing stress on players' joints and providing a more comfortable playing experience. Non-cushioned hard courts offer faster play and lower initial cost but may be less comfortable for extended play sessions."
+      },
+      {
+        "q": "Can I add pickleball lines to my tennis court?",
+        "a": "Absolutely! Tennis courts can accommodate multiple pickleball courts. We can add pickleball lines in contrasting colors while maintaining the tennis lines, creating a versatile multi-sport facility that maximizes your court's utility."
+      },
+      {
+        "q": "How often does a tennis court need resurfacing?",
+        "a": "With proper maintenance, tennis courts typically need resurfacing every 4-6 years. Factors like usage intensity, climate exposure, and maintenance quality affect the timeline. Regular cleaning and minor repairs can extend surface life significantly."
+      },
+      {
+        "q": "What permits are required for tennis court construction?",
+        "a": "Most municipalities require building permits for tennis court construction. We handle the permit application process and provide professional drawings and specifications. HOA approval may also be required in some communities."
+      }
+    ],
+    "/services/basketball/": [
+      {
+        "q": "How much space do I need for a basketball court?",
+        "a": "A regulation full court requires 94 feet × 50 feet, but most residential courts are half-courts ranging from 30 feet × 30 feet minimum to 50 feet × 40 feet for optimal play. We can design courts to fit your available space while maintaining proper proportions."
+      },
+      {
+        "q": "Can I install a basketball hoop on an existing driveway?",
+        "a": "Yes, if the driveway has adequate space and is in good condition. We can add court lines, install permanent hoops, and enhance the surface for better ball handling. Asphalt driveways may need resurfacing for optimal play."
+      },
+      {
+        "q": "What's the difference between adjustable and fixed-height hoops?",
+        "a": "Adjustable hoops allow height changes for players of different ages and skill levels, typically ranging from 7.5 to 10 feet. Fixed-height hoops are set at regulation 10 feet and offer greater stability and durability for serious play."
+      },
+      {
+        "q": "How do I maintain a basketball court?",
+        "a": "Regular maintenance includes cleaning debris, power washing, checking for cracks, and refreshing line markings every few years. Proper drainage and prompt crack repair prevent major issues and extend court life significantly."
+      },
+      {
+        "q": "Can I add other sports to my basketball court?",
+        "a": "Absolutely! Basketball courts work well with pickleball, volleyball, street hockey, and other sports. We can design multi-sport line configurations using different colors to clearly distinguish each sport's boundaries and rules."
+      }
+    ],
+    "/services/multi-sport/": [
+      {
+        "q": "How many sports can you fit on one court?",
+        "a": "This depends on court size and sport compatibility. A full basketball court can accommodate four pickleball courts, tennis and pickleball can share space efficiently, and most courts can handle 2-4 sports with proper line configuration and equipment planning."
+      },
+      {
+        "q": "Do different sports interfere with each other?",
+        "a": "With proper design, sports can coexist beautifully. We use color-coded line systems, strategic equipment placement, and clear visual separation to ensure each sport maintains its integrity and playability within the shared space."
+      },
+      {
+        "q": "Are multi-sport courts more expensive than single-sport courts?",
+        "a": "Multi-sport courts typically cost slightly more due to additional line marking and equipment, but they provide significantly more value per square foot. The cost per sport decreases dramatically compared to building separate courts for each activity."
+      },
+      {
+        "q": "How do you handle different net heights for different sports?",
+        "a": "We install versatile net systems that can be quickly adjusted for different sports, or provide separate net posts for sports requiring different heights. Portable and semi-permanent solutions are both available depending on your usage patterns."
+      },
+      {
+        "q": "Can I add sports to an existing court later?",
+        "a": "In most cases, yes! Existing courts can often accommodate additional sports with line marking, equipment installation, and minor modifications. We evaluate existing surfaces and provide recommendations for expansion possibilities."
+      }
+    ],
+    "/services/resurfacing/": [
+      {
+        "q": "How long does resurfacing last compared to new construction?",
+        "a": "Professional resurfacing typically lasts 5-8 years with proper maintenance, providing excellent value compared to new construction. The lifespan depends on usage, maintenance, and climate conditions, but resurfacing can extend total court life significantly."
+      },
+      {
+        "q": "Can you change court colors during resurfacing?",
+        "a": "Absolutely! Resurfacing is the perfect time to update your court's color scheme. We can completely change colors, add multi-sport line systems, or incorporate custom designs and logos into the new surface."
+      },
+      {
+        "q": "How much does resurfacing cost compared to new court construction?",
+        "a": "Resurfacing typically costs 30-50% less than new construction, making it an excellent value for courts with sound structural foundations. The exact savings depend on the extent of repairs needed and surface system selected."
+      },
+      {
+        "q": "Can you resurface in winter?",
+        "a": "Utah winters present challenges for resurfacing due to temperature and moisture conditions. We typically recommend spring through fall for optimal results, though mild winter days may allow for certain types of repair work."
+      },
+      {
+        "q": "How soon can I play on the resurfaced court?",
+        "a": "Most acrylic systems require 48-72 hours of cure time before light foot traffic, with full play recommended after 5-7 days. Weather conditions affect curing time, and we provide specific recommendations for each project."
+      }
+    ],
+    "/services/fencing/": [
+      {
+        "q": "What height fence do I need for my court?",
+        "a": "Most residential courts use 10-foot fencing for effective ball containment. Tennis courts may benefit from 12-foot heights, while pickleball courts can often use 8-10 feet. We assess your specific needs based on court size, usage, and local requirements."
+      },
+      {
+        "q": "Can I add fencing to an existing court?",
+        "a": "Absolutely! We frequently add fencing to existing courts that were built without enclosures. We carefully assess the site conditions and design fencing that complements your existing court while providing the containment and security you need."
+      },
+      {
+        "q": "Do I need permits for court fencing?",
+        "a": "Most communities require permits for fencing over 6 feet in height. We help navigate the permit process and provide professional drawings and specifications needed for approval. HOA approval may also be required in some areas."
+      },
+      {
+        "q": "How long does fence installation take?",
+        "a": "Most residential court fencing is completed in 3-5 business days, depending on fence height, gates, and accessories. Weather conditions and site access can affect timing, but we work efficiently to minimize disruption."
+      },
+      {
+        "q": "What's the difference between galvanized and vinyl-coated fencing?",
+        "a": "Galvanized fencing offers excellent durability at lower cost with a traditional silver appearance. Vinyl-coated fencing provides superior weather resistance, color options, and a more professional appearance at slightly higher cost."
+      }
+    ],
+    "/services/coatings/": [
+      {
+        "q": "How often should I recoat my court?",
+        "a": "Most courts need recoating every 4-6 years depending on usage, maintenance, and weather exposure. High-traffic commercial courts may need more frequent attention, while well-maintained residential courts can last longer between coatings."
+      },
+      {
+        "q": "Can you change the color of my existing court?",
+        "a": "Yes! Court recoating is the perfect time to update colors, add multi-sport lines, or create custom designs. We can completely transform your court's appearance while improving its performance characteristics."
+      },
+      {
+        "q": "What's the difference between regular paint and court coating systems?",
+        "a": "Court coating systems are specially formulated for sports surfaces with specific texture, durability, and performance requirements. Regular paint cannot provide the ball bounce, traction, and weather resistance needed for quality courts."
+      },
+      {
+        "q": "How long does the coating process take?",
+        "a": "Most coating projects take 3-5 days including preparation, application, and curing time. Weather conditions affect the timeline, and we schedule work during optimal conditions for best results."
+      },
+      {
+        "q": "Do you warranty your coating work?",
+        "a": "Yes, we provide warranties on both materials and workmanship. Warranty terms depend on the coating system selected and usage conditions. We stand behind our work and use only proven, high-quality products."
+      }
+    ],
+    "/services/cushion-x/": [
+      {
+        "q": "What sports is CushionX designed for?",
+        "a": "CushionX is built primarily for tennis, pickleball, and multi-sport courts, with applications for basketball and other cushioned athletic surfaces. It pairs cleanly with Acrytech Flex coatings for any sport-specific color or line configuration."
+      },
+      {
+        "q": "How do I know which thickness to choose?",
+        "a": "4mm delivers a firmer, faster feel; 6mm is our most-requested 'balanced' option; 8mm gives the most force reduction and is common on tennis and long-session pickleball courts. We'll recommend a thickness based on the sports you're playing, player preferences, and court use."
+      },
+      {
+        "q": "Can CushionX be installed over my existing court?",
+        "a": "Often, yes — provided the existing slab or asphalt base is structurally sound and properly sloped. We start with a free on-site evaluation to confirm the base is suitable and recommend any repair work needed before installation."
+      },
+      {
+        "q": "How long does installation take?",
+        "a": "A typical residential CushionX installation — including base prep, cushion application, coating, and line work — runs one to two weeks depending on scope and weather. The CushionX layer itself installs up to 3x faster than traditional cushioned systems."
+      },
+      {
+        "q": "What about the warranty?",
+        "a": "CushionX carries a 5-year manufacturer product warranty from AT Sports when the correct level is specified for the intended use and the system is installed to factory specification. We also back our workmanship separately. We'll review both warranties with you before the project starts."
+      }
+    ]
+  },
+  "counties": {
+    "/utah-county/": {
+      "name": "Utah County",
+      "locality": "Provo",
+      "region": "UT",
+      "country": "US",
+      "areaName": "Utah County, UT",
+      "lat": 40.2338,
+      "lng": -111.6585
+    },
+    "/salt-lake-county/": {
+      "name": "Salt Lake County",
+      "locality": "Salt Lake City",
+      "region": "UT",
+      "country": "US",
+      "areaName": "Salt Lake County, UT",
+      "lat": 40.7608,
+      "lng": -111.8910
+    },
+    "/davis-county/": {
+      "name": "Davis County",
+      "locality": "Farmington",
+      "region": "UT",
+      "country": "US",
+      "areaName": "Davis County, UT",
+      "lat": 40.9805,
+      "lng": -111.8874
+    },
+    "/weber-county/": {
+      "name": "Weber County",
+      "locality": "Ogden",
+      "region": "UT",
+      "country": "US",
+      "areaName": "Weber County, UT",
+      "lat": 41.2230,
+      "lng": -111.9738
+    },
+    "/washington-county/": {
+      "name": "Washington County",
+      "locality": "St. George",
+      "region": "UT",
+      "country": "US",
+      "areaName": "Washington County, UT",
+      "lat": 37.0965,
+      "lng": -113.5684
+    },
+    "/las-vegas/": {
+      "name": "Las Vegas",
+      "locality": "Las Vegas",
+      "region": "NV",
+      "country": "US",
+      "areaName": "Clark County, NV",
+      "lat": 36.1716,
+      "lng": -115.1391
+    }
+  },
+  "breadcrumbs": {
+    "/about/":                                            [{"name":"Home","url":"/"},{"name":"About","url":"/about/"}],
+    "/contact/":                                          [{"name":"Home","url":"/"},{"name":"Contact","url":"/contact/"}],
+    "/gallery/":                                          [{"name":"Home","url":"/"},{"name":"Gallery","url":"/gallery/"}],
+    "/court-designer/":                                   [{"name":"Home","url":"/"},{"name":"Court Designer","url":"/court-designer/"}],
+    "/services/":                                         [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"}],
+    "/services/pickleball/":                              [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Pickleball","url":"/services/pickleball/"}],
+    "/services/tennis/":                                  [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Tennis","url":"/services/tennis/"}],
+    "/services/basketball/":                              [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Basketball","url":"/services/basketball/"}],
+    "/services/multi-sport/":                             [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Multi-Sport","url":"/services/multi-sport/"}],
+    "/services/resurfacing/":                             [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Resurfacing","url":"/services/resurfacing/"}],
+    "/services/fencing/":                                 [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Fencing","url":"/services/fencing/"}],
+    "/services/coatings/":                                [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Coatings","url":"/services/coatings/"}],
+    "/services/cushion-x/":                               [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"CushionX","url":"/services/cushion-x/"}],
+    "/services/courts-full-builds/":                      [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Full Court Builds","url":"/services/courts-full-builds/"}],
+    "/services/concrete-foundations/":                    [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Concrete Foundations","url":"/services/concrete-foundations/"}],
+    "/services/concrete-foundations/rebar-concrete/":     [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Concrete Foundations","url":"/services/concrete-foundations/"},{"name":"Rebar Concrete","url":"/services/concrete-foundations/rebar-concrete/"}],
+    "/services/concrete-foundations/post-tension/":       [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Concrete Foundations","url":"/services/concrete-foundations/"},{"name":"Post-Tension","url":"/services/concrete-foundations/post-tension/"}],
+    "/services/court-surfacing/":                         [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Court Surfacing","url":"/services/court-surfacing/"}],
+    "/services/indoor-courts/":                           [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Indoor Courts","url":"/services/indoor-courts/"}],
+    "/services/repairs-maintenance/":                     [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Repairs & Maintenance","url":"/services/repairs-maintenance/"}],
+    "/utah-county/":                                      [{"name":"Home","url":"/"},{"name":"Utah County","url":"/utah-county/"}],
+    "/salt-lake-county/":                                 [{"name":"Home","url":"/"},{"name":"Salt Lake County","url":"/salt-lake-county/"}],
+    "/davis-county/":                                     [{"name":"Home","url":"/"},{"name":"Davis County","url":"/davis-county/"}],
+    "/weber-county/":                                     [{"name":"Home","url":"/"},{"name":"Weber County","url":"/weber-county/"}],
+    "/washington-county/":                                [{"name":"Home","url":"/"},{"name":"Washington County","url":"/washington-county/"}],
+    "/las-vegas/":                                        [{"name":"Home","url":"/"},{"name":"Las Vegas","url":"/las-vegas/"}],
+    "/privacy-policy/":                                   [{"name":"Home","url":"/"},{"name":"Privacy Policy","url":"/privacy-policy/"}],
+    "/terms-of-service/":                                 [{"name":"Home","url":"/"},{"name":"Terms of Service","url":"/terms-of-service/"}]
+  }
+}

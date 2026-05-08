@@ -1,7 +1,7 @@
 {
   "name": "Precision Pro Courts",
   "tagline": "Beautiful Courts. Affordable Prices.",
-  "description": "Utah's top-rated sport court construction & resurfacing. Pickleball, tennis, basketball courts built with precision.",
+  "description": "Utah's top-rated sport court construction & resurfacing. Pickleball, tennis, and basketball courts built with precision.",
   "url": "https://www.precisionprocourts.com",
   "email": "precisionprocourts@gmail.com",
   "phone": "",
@@ -11,13 +11,31 @@
     "state": "UT",
     "zip": ""
   },
+  "geo": {
+    "latitude": 40.7608,
+    "longitude": -111.8910
+  },
+  "image": "/assets/images/gallery/drone-aerial.jpg",
+  "logo": "/assets/images/logos/logo-white-lg.png",
+  "social": [
+    "https://www.instagram.com/precisionpro.courts/",
+    "https://www.facebook.com/precisionprocourts"
+  ],
+  "rating": {
+    "value": "5.0",
+    "count": "56",
+    "best": "5",
+    "worst": "1"
+  },
+  "priceRange": "$$",
   "gaId": "G-GKP6N4CMDM",
   "serviceAreas": [
-    "Utah County",
-    "Salt Lake County",
-    "Davis County",
-    "Weber County",
-    "Juab County",
-    "Washington County"
+    { "label": "Utah County", "name": "Utah County, UT" },
+    { "label": "Salt Lake County", "name": "Salt Lake County, UT" },
+    { "label": "Davis County", "name": "Davis County, UT" },
+    { "label": "Weber County", "name": "Weber County, UT" },
+    { "label": "Juab County", "name": "Juab County, UT" },
+    { "label": "Washington County", "name": "Washington County, UT" },
+    { "label": "Las Vegas", "name": "Clark County, NV" }
   ]
 }

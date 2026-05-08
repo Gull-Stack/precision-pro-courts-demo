@@ -81,7 +81,7 @@ headerStyle: inner
       <p>Get a free, no-obligation quote for your court project. We serve all of Washington County with specialized desert climate expertise.</p>
       <div class="cta-buttons">
         <a href="{{ '/contact/' | url }}" class="btn btn-primary">Get Free Quote</a>
-        <a href="tel:+1-555-COURTS" class="btn btn-outline">Call Us Today</a>
+        {% if site.phone %}<a href="tel:{{ site.phone }}" class="btn btn-outline">Call Us Today</a>{% else %}<a href="{{ "/contact/" | url }}" class="btn btn-outline">Call Us Today</a>{% endif %}
       </div>
     </div>
   </div>

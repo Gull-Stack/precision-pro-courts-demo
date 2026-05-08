@@ -39,36 +39,148 @@
   <meta name="twitter:description" content="{{ description | default(site.description) }}">
   
   {% block schema %}
+  {%- set county = schemas.counties[page.url] -%}
+  {%- set service = schemas.services[page.url] -%}
+  {%- set faqList = schemas.faqs[page.url] -%}
+  {%- set crumbs = schemas.breadcrumbs[page.url] -%}
+
+  {%- if county %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "{{ site.name }}",
-    "url": "{{ site.url }}",
-    "email": "{{ site.email }}",
-    "telephone": "{{ site.phone }}",
-    "description": "{{ site.description }}",
+    "@id": {{ (site.url + page.url + "#business") | dump | safe }},
+    "name": {{ (site.name + " — " + county.name) | dump | safe }},
+    "url": {{ (site.url + page.url) | dump | safe }},
+    "parentOrganization": { "@id": {{ (site.url + "/#business") | dump | safe }} },
+    "email": {{ site.email | dump | safe }},
+    "image": {{ (site.url + site.image) | dump | safe }},
+    "logo": {{ (site.url + site.logo) | dump | safe }},
+    "priceRange": {{ site.priceRange | dump | safe }},
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "{{ site.address.street }}",
-      "addressLocality": "{{ site.address.city }}",
-      "addressRegion": "{{ site.address.state }}",
-      "postalCode": "{{ site.address.zip }}",
-      "addressCountry": "US"
+      "addressLocality": {{ county.locality | dump | safe }},
+      "addressRegion": {{ county.region | dump | safe }},
+      "addressCountry": {{ county.country | dump | safe }}
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 40.7608,
-      "longitude": -111.8910
+      "latitude": {{ county.lat }},
+      "longitude": {{ county.lng }}
     },
-    "areaServed": [
-      {% for area in site.serviceAreas %}
-      {"@type": "AdministrativeArea", "name": "{{ area }}, UT"}{% if not loop.last %},{% endif %}
-      {% endfor %}
-    ],
-    "priceRange": "$$"
+    "areaServed": { "@type": "AdministrativeArea", "name": {{ county.areaName | dump | safe }} },
+    "sameAs": {{ site.social | dump | safe }},
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ site.rating.value | dump | safe }},
+      "reviewCount": {{ site.rating.count | dump | safe }},
+      "bestRating": {{ site.rating.best | dump | safe }},
+      "worstRating": {{ site.rating.worst | dump | safe }}
+    }
+    {%- if site.phone %},
+    "telephone": {{ site.phone | dump | safe }}
+    {%- endif %}
   }
   </script>
+  {%- else %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": {{ (site.url + "/#business") | dump | safe }},
+    "name": {{ site.name | dump | safe }},
+    "url": {{ site.url | dump | safe }},
+    "email": {{ site.email | dump | safe }},
+    "image": {{ (site.url + site.image) | dump | safe }},
+    "logo": {{ (site.url + site.logo) | dump | safe }},
+    "description": {{ site.description | dump | safe }},
+    "priceRange": {{ site.priceRange | dump | safe }},
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": {{ site.address.city | dump | safe }},
+      "addressRegion": {{ site.address.state | dump | safe }},
+      "addressCountry": "US"
+      {%- if site.address.street %},
+      "streetAddress": {{ site.address.street | dump | safe }}
+      {%- endif %}
+      {%- if site.address.zip %},
+      "postalCode": {{ site.address.zip | dump | safe }}
+      {%- endif %}
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": {{ site.geo.latitude }},
+      "longitude": {{ site.geo.longitude }}
+    },
+    "areaServed": [
+      {%- for area in site.serviceAreas %}
+      { "@type": "AdministrativeArea", "name": {{ area.name | dump | safe }} }{%- if not loop.last %},{% endif %}
+      {%- endfor %}
+    ],
+    "sameAs": {{ site.social | dump | safe }},
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ site.rating.value | dump | safe }},
+      "reviewCount": {{ site.rating.count | dump | safe }},
+      "bestRating": {{ site.rating.best | dump | safe }},
+      "worstRating": {{ site.rating.worst | dump | safe }}
+    }
+    {%- if site.phone %},
+    "telephone": {{ site.phone | dump | safe }}
+    {%- endif %}
+  }
+  </script>
+  {%- endif %}
+
+  {%- if crumbs %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {%- for crumb in crumbs %}
+      { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ crumb.name | dump | safe }}, "item": {{ (site.url + crumb.url) | dump | safe }} }{%- if not loop.last %},{% endif %}
+      {%- endfor %}
+    ]
+  }
+  </script>
+  {%- endif %}
+
+  {%- if service %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": {{ service.serviceType | dump | safe }},
+    "name": {{ service.name | dump | safe }},
+    "provider": { "@id": {{ (site.url + "/#business") | dump | safe }} },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Utah" },
+      { "@type": "AdministrativeArea", "name": "Clark County, NV" }
+    ],
+    "description": {{ service.description | dump | safe }},
+    "url": {{ (site.url + page.url) | dump | safe }}
+  }
+  </script>
+  {%- endif %}
+
+  {%- if faqList %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for item in faqList %}
+      {
+        "@type": "Question",
+        "name": {{ item.q | dump | safe }},
+        "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | dump | safe }} }
+      }{%- if not loop.last %},{% endif %}
+      {%- endfor %}
+    ]
+  }
+  </script>
+  {%- endif %}
   {% endblock %}
   
   <!-- Favicon -->
