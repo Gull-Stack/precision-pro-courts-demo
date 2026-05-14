@@ -107,10 +107,13 @@ if (lightbox) {
   const galleryItems = document.querySelectorAll('.gallery-item img');
   let currentIdx = 0;
 
+  const fullSrc = (img) => img.dataset.full || img.src;
+
   galleryItems.forEach((img, i) => {
-    img.parentElement.addEventListener('click', () => {
+    const item = img.closest('.gallery-item');
+    item.addEventListener('click', () => {
       currentIdx = i;
-      lbImg.src = img.src;
+      lbImg.src = fullSrc(img);
       lbImg.alt = img.alt;
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -131,7 +134,7 @@ if (lightbox) {
   }
   function navigateLightbox(dir) {
     currentIdx = (currentIdx + dir + galleryItems.length) % galleryItems.length;
-    lbImg.src = galleryItems[currentIdx].src;
+    lbImg.src = fullSrc(galleryItems[currentIdx]);
     lbImg.alt = galleryItems[currentIdx].alt;
   }
   document.addEventListener('keydown', (e) => {
