@@ -33,7 +33,7 @@
         <h4>Service Areas</h4>
         <ul>
           {% for area in site.serviceAreas %}
-          <li><a href="{{ '/contact/' | url }}#areas">{{ area.label }}</a></li>
+          <li><a href="{{ (area.url or '/contact/#areas') | url }}">{{ area.label }}</a></li>
           {% endfor %}
         </ul>
       </div>

@@ -1,7 +1,7 @@
 // ── Precision Pro Courts Chatbot ──
 (function() {
   const responses = {
-    quote: "We'd love to give you a free quote! You can:\n\n• Call/text us anytime\n• Email precisionprocourts@gmail.com\n• Fill out our <a href='contact.html'>contact form</a>\n\nWe'll get back to you within 24 hours with a detailed, no-obligation estimate!",
+    quote: "We'd love to give you a free quote! You can:\n\n• Call/text us anytime\n• Email Team@precisionprocourts.com\n• Fill out our <a href='contact.html'>contact form</a>\n\nWe'll get back to you within 24 hours with a detailed, no-obligation estimate!",
     sports: "We build courts for multiple sports!\n\n• <b>Pickleball</b> — America's fastest-growing sport\n• <b>Tennis</b> — New builds & resurfacing\n• <b>Basketball</b> — Custom sizes & colors\n• <b>Multi-Sport</b> — Combination courts\n• <b>Resurfacing</b> — Restore existing courts\n• <b>Fencing</b> — Court perimeter fencing\n\nVisit our <a href='services.html'>services page</a> for details!",
     areas: "We proudly serve these Utah counties:\n\n• Utah County\n• Salt Lake County\n• Davis County\n• Weber County\n• Juab County\n• Washington County\n\nFrom the Wasatch Front to St. George — we've got you covered!",
     cost: "Court costs vary based on type, size, surface, and features. We're known for <b>beautiful courts at affordable prices</b>.\n\nFor a personalized quote, <a href='contact.html'>contact us</a> — it's free and no-obligation!",
@@ -11,7 +11,7 @@
     customize: "Absolutely! We offer full customization:\n\n• Court colors (choose from dozens of options)\n• Logo integration\n• Custom line markings\n• Multi-sport configurations\n• Various surface textures\n\nOur design process lets you see your vision before we build!",
     permits: "Don't worry about permits — we handle everything!\n\nPermit requirements vary by city and county. Our full-service approach includes managing the entire permitting process for you.",
     process: "Building your dream court is easy!\n\n<b>Step 1:</b> Free Consultation — we assess your space & provide a quote\n<b>Step 2:</b> Custom Design — collaborate on layout, colors & features\n<b>Step 3:</b> Expert Build — professional installation with premium materials\n\nReady to start? <a href='contact.html'>Get your free quote!</a>",
-    fallback: "Great question! For the best answer, I'd recommend:\n\n• Email: precisionprocourts@gmail.com\n• <a href='contact.html'>Contact form</a>\n\nOur team typically responds within 24 hours! Is there anything else I can help with?"
+    fallback: "Great question! For the best answer, I'd recommend:\n\n• Email: Team@precisionprocourts.com\n• <a href='contact.html'>Contact form</a>\n\nOur team typically responds within 24 hours! Is there anything else I can help with?"
   };
 
   const patterns = [
