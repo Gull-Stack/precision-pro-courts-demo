@@ -265,6 +265,74 @@ permalink: /court-designer/
     }
     .cta-btn:hover { background: white; color: #1a2d52; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(86, 148, 255, 0.4); }
 
+    /* ===== Equipment / Build-out controls ===== */
+    .equip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+    .equip-btn {
+        background: rgba(255,255,255,0.08);
+        border: 2px solid transparent;
+        padding: 0.7rem 0.5rem;
+        border-radius: 10px;
+        cursor: pointer;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        justify-content: center;
+    }
+    .equip-btn:hover { background: rgba(255,255,255,0.12); }
+    .equip-btn.active {
+        border-color: #22c55e;
+        background: rgba(34, 197, 94, 0.18);
+        box-shadow: 0 0 16px rgba(34, 197, 94, 0.25);
+    }
+    .equip-btn .chk { font-size: 0.9rem; opacity: 0; transition: opacity 0.2s; }
+    .equip-btn.active .chk { opacity: 1; }
+
+    .equip-suboption { display: none; align-items: center; gap: 0.5rem; margin-top: 0.75rem; font-size: 0.8rem; color: rgba(255,255,255,0.8); }
+    .equip-suboption.show { display: flex; }
+    .subopt-btn {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: white; padding: 0.4rem 0.7rem; border-radius: 8px; cursor: pointer;
+        font-size: 0.75rem; font-weight: 600; transition: all 0.2s;
+    }
+    .subopt-btn.active { background: rgba(86,148,255,0.25); border-color: #5694ff; }
+
+    /* ===== Your Build summary ===== */
+    .build-summary { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .build-summary h3 { font-family:'Space Grotesk',sans-serif; font-size: 0.95rem; color: white; margin-bottom: 0.6rem; }
+    .build-summary ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; }
+    .build-summary li { font-size: 0.82rem; color: rgba(255,255,255,0.8); display: flex; justify-content: space-between; gap: 1rem; }
+    .build-summary li span:last-child { color: white; font-weight: 600; text-align: right; }
+    .build-summary .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+    .build-summary .chip { background: rgba(34,197,94,0.18); border: 1px solid rgba(34,197,94,0.4); color: #d7ffe4; font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 999px; }
+    .build-summary .chip.none { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.5); }
+
+    /* ===== Quote form ===== */
+    .quote-form { max-width: 640px; margin: 1.5rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; text-align: left; }
+    .quote-form .full { grid-column: 1 / -1; }
+    .quote-form input, .quote-form textarea {
+        width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 10px; padding: 0.85rem 1rem; color: white; font-size: 0.95rem; font-family: inherit;
+    }
+    .quote-form input::placeholder, .quote-form textarea::placeholder { color: rgba(255,255,255,0.5); }
+    .quote-form input:focus, .quote-form textarea:focus { outline: none; border-color: #5694ff; background: rgba(255,255,255,0.14); }
+    .quote-form textarea { min-height: 80px; resize: vertical; }
+    .quote-submit {
+        grid-column: 1 / -1; background: #22c55e; color: white; border: none; padding: 1rem;
+        border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.25s;
+        display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .quote-submit:hover { background: white; color: #16a34a; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(34,197,94,0.35); }
+    .quote-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .quote-status { grid-column: 1 / -1; text-align: center; font-size: 0.9rem; min-height: 1.2em; }
+    .quote-status.ok { color: #86efac; }
+    .quote-status.err { color: #fca5a5; }
+    @media (max-width: 600px) { .quote-form { grid-template-columns: 1fr; } .equip-grid { grid-template-columns: 1fr 1fr; } }
+
     /* Hide default footer styles for dark theme */
     footer { background: #1a2d52 !important; }
     
@@ -308,17 +376,17 @@ permalink: /court-designer/
                 <div class="color-section">
                     <div class="color-row" id="playRow" onclick="setColorTarget('play')">
                         <label>Playing:</label>
-                        <div class="color-preview" id="playColor" style="background: #153056;"></div>
+                        <div class="color-preview" id="playColor" style="background: #1A3366;"></div>
                         <span class="color-name" id="playColorName">Competition Blue</span>
                     </div>
                     <div class="color-row kitchen-row" id="kitchenRow" onclick="setColorTarget('kitchen')">
                         <label>Kitchen:</label>
-                        <div class="color-preview" id="kitchenColor" style="background: #153056;"></div>
+                        <div class="color-preview" id="kitchenColor" style="background: #1A3366;"></div>
                         <span class="color-name" id="kitchenColorName">Competition Blue</span>
                     </div>
                     <div class="color-row" id="surroundRow" onclick="setColorTarget('surround')">
                         <label>Surround:</label>
-                        <div class="color-preview" id="surroundColor" style="background: #38603e;"></div>
+                        <div class="color-preview" id="surroundColor" style="background: #4A7B3F;"></div>
                         <span class="color-name" id="surroundColorName">Competition Green</span>
                     </div>
                     <div class="color-row" id="lineRow" onclick="setColorTarget('line')">
@@ -328,7 +396,7 @@ permalink: /court-designer/
                     </div>
                     <div class="color-row bball-lines-row" id="bballLineRow" onclick="setColorTarget('bballLine')">
                         <label>Bball Lines:</label>
-                        <div class="color-preview" id="bballLineColor" style="background: #9e9e9e;"></div>
+                        <div class="color-preview" id="bballLineColor" style="background: #8C8E8E;"></div>
                         <span class="color-name" id="bballLineColorName">Grey</span>
                     </div>
                 </div>
@@ -347,8 +415,24 @@ permalink: /court-designer/
                 <button class="preset-btn" data-preset="coastal">🌊 Mixed Blue/Green</button>
                 <button class="preset-btn" data-preset="popular">⭐ Most Popular</button>
             </div>
+
+            <div class="control-section equipment-section" style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);">
+                <span class="control-label">Add to Your Build</span>
+                <div class="equip-grid">
+                    <button class="equip-btn active" data-equip="net"><span class="chk">✓</span>🥅 Net</button>
+                    <button class="equip-btn" data-equip="hoop"><span class="chk">✓</span>🏀 Hoop</button>
+                    <button class="equip-btn" data-equip="fence"><span class="chk">✓</span>🔲 Fencing</button>
+                    <button class="equip-btn" data-equip="lights"><span class="chk">✓</span>💡 Lights</button>
+                    <button class="equip-btn" data-equip="rebounder"><span class="chk">✓</span>🎯 Rebound Wall</button>
+                </div>
+                <div class="equip-suboption" id="hoopCountRow">
+                    <span>Hoops:</span>
+                    <button class="subopt-btn active" data-hoopcount="2">Both ends</button>
+                    <button class="subopt-btn" data-hoopcount="1">One end</button>
+                </div>
+            </div>
         </div>
-        
+
         <div class="preview-area">
             <div class="preview-header">
                 <span class="preview-title">Live Preview</span>
@@ -364,18 +448,38 @@ permalink: /court-designer/
             <div class="canvas-container">
                 <canvas id="courtCanvas" width="330" height="660"></canvas>
             </div>
+            <div class="build-summary">
+                <h3>Your Build</h3>
+                <ul>
+                    <li><span>Sport</span><span id="sumSport">Tennis</span></li>
+                    <li><span>Playing surface</span><span id="sumPlay">Competition Green</span></li>
+                    <li><span>Surround</span><span id="sumSurround">Competition Green</span></li>
+                    <li style="flex-direction:column;align-items:flex-start;gap:0.4rem;">
+                        <span>Add-ons</span>
+                        <div class="chips" id="sumEquip"></div>
+                    </li>
+                </ul>
+            </div>
             <div class="ppc-credit">
                 <p>Designed with ❤️ by <a href="/">Precision Pro Courts</a> — Utah's Premier Court Builder</p>
             </div>
         </div>
     </div>
-    
-    <div class="cta-section">
-        <h2>Love Your Design?</h2>
-        <p>Let's make it real. Get a free quote for your custom court installation.</p>
-        <a href="{{ '/contact/' | url }}" class="cta-btn">
-            Get a Free Quote →
-        </a>
+
+    <div class="cta-section" id="quoteSection">
+        <h2>Love Your Design? Let's Build It.</h2>
+        <p>Send us your design and we'll come back with a free, no-pressure quote for your exact court.</p>
+        <form class="quote-form" id="quoteForm">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone">
+            <input type="text" name="zip" placeholder="ZIP / City">
+            <textarea class="full" name="message" placeholder="Anything else we should know? (timeline, yard size, budget…)"></textarea>
+            <!-- honeypot -->
+            <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+            <button type="submit" class="quote-submit" id="quoteSubmit"><span>📐</span> Send My Design &amp; Get a Quote</button>
+            <div class="quote-status" id="quoteStatus"></div>
+        </form>
     </div>
 </div>
 
@@ -426,12 +530,14 @@ permalink: /court-designer/
     
     let state = {
         sport: 'tennis',
-        playColor: '#4A7B3F',
-        kitchenColor: '#4A7B3F',
-        surroundColor: '#6292A9',
+        playColor: '#1A3366',
+        kitchenColor: '#1A3366',
+        surroundColor: '#4A7B3F',
         lineColor: '#FFFFFF',
-        bballLineColor: '#9BA3A1',
-        activeColorTarget: null
+        bballLineColor: '#8C8E8E',
+        activeColorTarget: null,
+        equipment: { net: true, hoop: false, fence: false, lights: false, rebounder: false },
+        hoopCount: 2
     };
     
     const canvas = document.getElementById('courtCanvas');
@@ -526,6 +632,7 @@ permalink: /court-designer/
             btn.classList.add('active');
             state.sport = btn.dataset.sport;
             updateColorRowVisibility();
+            updateEquipVisibility();
             drawCourt();
         });
     });
@@ -552,6 +659,64 @@ permalink: /court-designer/
         });
     });
     
+    // Equipment toggles
+    document.querySelectorAll('.equip-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const key = btn.dataset.equip;
+            state.equipment[key] = !state.equipment[key];
+            btn.classList.toggle('active', state.equipment[key]);
+            document.getElementById('hoopCountRow').classList.toggle('show', state.equipment.hoop);
+            drawCourt();
+            updateBuildSummary();
+        });
+    });
+
+    document.querySelectorAll('.subopt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.subopt-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.hoopCount = parseInt(btn.dataset.hoopcount, 10);
+            drawCourt();
+            updateBuildSummary();
+        });
+    });
+
+    const EQUIP_LABELS = { net: 'Net', hoop: 'Basketball hoop', fence: 'Fencing', lights: 'Lights', rebounder: 'Rebound wall' };
+    // Net and rebound wall don't apply to a basketball-only court
+    function equipApplies(k) {
+        if ((k === 'net' || k === 'rebounder') && state.sport === 'basketball') return false;
+        return true;
+    }
+    function activeEquipment() {
+        return Object.keys(state.equipment).filter(k => state.equipment[k] && equipApplies(k));
+    }
+    function updateEquipVisibility() {
+        document.querySelectorAll('.equip-btn').forEach(b => {
+            b.style.display = equipApplies(b.dataset.equip) ? '' : 'none';
+        });
+    }
+    function updateBuildSummary() {
+        const sportName = { pickleball: 'Pickleball', tennis: 'Tennis', basketball: 'Basketball', multi: 'Multi-Sport' }[state.sport];
+        document.getElementById('sumSport').textContent = sportName;
+        document.getElementById('sumPlay').textContent = document.getElementById('playColorName').textContent;
+        document.getElementById('sumSurround').textContent = document.getElementById('surroundColorName').textContent;
+        const wrap = document.getElementById('sumEquip');
+        wrap.innerHTML = '';
+        const on = activeEquipment();
+        if (!on.length) {
+            wrap.innerHTML = '<span class="chip none">None yet</span>';
+        } else {
+            on.forEach(k => {
+                let label = EQUIP_LABELS[k];
+                if (k === 'hoop') label += state.hoopCount === 2 ? ' ×2' : ' ×1';
+                const chip = document.createElement('span');
+                chip.className = 'chip';
+                chip.textContent = label;
+                wrap.appendChild(chip);
+            });
+        }
+    }
+
     document.getElementById('downloadBtn').addEventListener('click', () => {
         const link = document.createElement('a');
         link.download = `precision-pro-courts-${state.sport}-design.png`;
@@ -871,6 +1036,9 @@ permalink: /court-designer/
             ctx.stroke();
         }
         
+        // Draw equipment / build-out add-ons on top of the court
+        drawEquipment(scale, cx, cy, hw, hl, courtOffX, courtOffY);
+
         // Draw logo in bottom left
         if (logoImg.complete && logoImg.naturalWidth > 0) {
             const logoHeight = 35;
@@ -885,9 +1053,204 @@ permalink: /court-designer/
         ctx.font = 'bold 13px Inter, sans-serif';
         ctx.textAlign = 'right';
         ctx.fillText('precisionprocourts.com', canvas.width - 15, canvas.height - 18);
+
+        if (typeof updateBuildSummary === 'function') updateBuildSummary();
     }
-    
+
+    // ===== Equipment / build-out renderer (top-down) =====
+    function drawEquipment(scale, cx, cy, hw, hl, courtOffX, courtOffY) {
+        const W = canvas.width, H = canvas.height;
+        const eq = state.equipment;
+        const margin = Math.max(5, W * 0.02);
+
+        // --- Lights: warm glow pools + poles at the four corners ---
+        if (eq.lights) {
+            const r = Math.min(W, H) * 0.34;
+            const corners = [[margin, margin], [W - margin, margin], [margin, H - margin], [W - margin, H - margin]];
+            corners.forEach(([x, y]) => {
+                const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+                g.addColorStop(0, 'rgba(255,246,196,0.40)');
+                g.addColorStop(0.5, 'rgba(255,240,170,0.14)');
+                g.addColorStop(1, 'rgba(255,240,170,0)');
+                ctx.fillStyle = g;
+                ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+            });
+        }
+
+        // --- Fencing: perimeter rail + posts (chain-link read) ---
+        if (eq.fence) {
+            ctx.save();
+            const x = margin, y = margin, w = W - margin * 2, h = H - margin * 2;
+            // mesh (faint inner dashes)
+            ctx.strokeStyle = 'rgba(210,214,220,0.28)';
+            ctx.lineWidth = Math.max(1, W * 0.0025);
+            ctx.setLineDash([3, 3]);
+            ctx.strokeRect(x, y, w, h);
+            // top rail
+            ctx.setLineDash([]);
+            ctx.strokeStyle = 'rgba(38,42,50,0.92)';
+            ctx.lineWidth = Math.max(2, W * 0.006);
+            ctx.strokeRect(x, y, w, h);
+            // posts
+            ctx.fillStyle = '#23272e';
+            const postR = Math.max(2.5, W * 0.009);
+            const nx = 4, ny = 6;
+            for (let i = 0; i <= nx; i++) {
+                const px = x + (w * i) / nx;
+                ctx.beginPath(); ctx.arc(px, y, postR, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath(); ctx.arc(px, y + h, postR, 0, Math.PI * 2); ctx.fill();
+            }
+            for (let i = 1; i < ny; i++) {
+                const py = y + (h * i) / ny;
+                ctx.beginPath(); ctx.arc(x, py, postR, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath(); ctx.arc(x + w, py, postR, 0, Math.PI * 2); ctx.fill();
+            }
+            ctx.restore();
+        }
+
+        // --- Rebound wall: slatted wall just outside the top baseline ---
+        if (eq.rebounder && state.sport !== 'basketball') {
+            const wallH = 1.6 * scale;
+            const y = courtOffY - wallH - 2;
+            const x0 = cx - hw, wWidth = hw * 2;
+            ctx.save();
+            ctx.fillStyle = '#1f3d2b';
+            ctx.fillRect(x0, y, wWidth, wallH);
+            ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+            ctx.lineWidth = 1;
+            const slats = 10;
+            for (let i = 1; i < slats; i++) {
+                const sx = x0 + (wWidth * i) / slats;
+                ctx.beginPath(); ctx.moveTo(sx, y); ctx.lineTo(sx, y + wallH); ctx.stroke();
+            }
+            ctx.strokeStyle = 'rgba(0,0,0,0.35)';
+            ctx.strokeRect(x0, y, wWidth, wallH);
+            ctx.restore();
+        }
+
+        // --- Net: mesh band across the center (racket/paddle sports) ---
+        if (eq.net && state.sport !== 'basketball') {
+            const ext = 1.0 * scale;               // posts a touch beyond sidelines
+            const x0 = cx - hw - ext, x1 = cx + hw + ext;
+            const bandH = Math.max(6, 0.9 * scale);
+            const yTop = cy - bandH / 2;
+            ctx.save();
+            // soft shadow band
+            ctx.fillStyle = 'rgba(15,15,15,0.16)';
+            ctx.fillRect(x0, yTop, x1 - x0, bandH);
+            // mesh
+            ctx.strokeStyle = 'rgba(255,255,255,0.75)';
+            ctx.lineWidth = 1;
+            for (let x = x0; x <= x1; x += 4) {
+                ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x, yTop + bandH); ctx.stroke();
+            }
+            // tape (top/bottom)
+            ctx.strokeStyle = 'rgba(20,20,20,0.65)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(x0, yTop); ctx.lineTo(x1, yTop);
+            ctx.moveTo(x0, yTop + bandH); ctx.lineTo(x1, yTop + bandH);
+            ctx.stroke();
+            // posts
+            ctx.fillStyle = '#23272e';
+            const postR = Math.max(3, 0.6 * scale);
+            ctx.beginPath(); ctx.arc(x0, cy, postR, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.arc(x1, cy, postR, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+        }
+
+        // --- Basketball hoop(s): top-down backboard + rim ---
+        if (eq.hoop) {
+            const bbHalf = 3 * scale;       // 6ft backboard
+            const rimR = 0.9 * scale;
+            const outside = 0.5 * scale;    // backboard sits just outside the baseline
+            const rimOffset = 1.3 * scale;  // rim center inside the baseline
+
+            const hoopH = (baseY, dir) => { // horizontal baseline; dir=+1 protrudes downward
+                const backY = baseY - dir * outside;
+                ctx.save();
+                ctx.strokeStyle = '#eef0f3'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+                ctx.beginPath(); ctx.moveTo(cx - bbHalf, backY); ctx.lineTo(cx + bbHalf, backY); ctx.stroke();
+                ctx.strokeStyle = '#ff6a00'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.arc(cx, baseY + dir * rimOffset, rimR, 0, Math.PI * 2); ctx.stroke();
+                ctx.strokeStyle = 'rgba(255,106,0,0.7)'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(cx, backY); ctx.lineTo(cx, baseY + dir * (rimOffset - rimR)); ctx.stroke();
+                ctx.restore();
+            };
+            const hoopV = (baseX, dir) => { // vertical baseline (multi); dir=+1 protrudes right
+                const backX = baseX - dir * outside;
+                ctx.save();
+                ctx.strokeStyle = '#eef0f3'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+                ctx.beginPath(); ctx.moveTo(backX, cy - bbHalf); ctx.lineTo(backX, cy + bbHalf); ctx.stroke();
+                ctx.strokeStyle = '#ff6a00'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.arc(baseX + dir * rimOffset, cy, rimR, 0, Math.PI * 2); ctx.stroke();
+                ctx.restore();
+            };
+
+            if (state.sport === 'multi') {
+                hoopV(courtOffX, +1);                       // single hoop at the left baseline
+            } else {
+                hoopH(courtOffY, +1);                        // top baseline
+                if (state.hoopCount === 2) hoopH(courtOffY + hl * 2, -1); // bottom baseline
+            }
+        }
+    }
+
+    // ===== Quote request: emails the full build spec + rendered design =====
+    document.getElementById('quoteForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const btn = document.getElementById('quoteSubmit');
+        const statusEl = document.getElementById('quoteStatus');
+        const original = btn.innerHTML;
+
+        if (form.company.value) return; // honeypot tripped — silently ignore
+
+        btn.disabled = true;
+        btn.innerHTML = '<span>⏳</span> Sending…';
+        statusEl.className = 'quote-status';
+        statusEl.textContent = '';
+
+        const equipOn = activeEquipment();
+        const design = {
+            sport: document.getElementById('sumSport').textContent,
+            playSurface: document.getElementById('playColorName').textContent,
+            kitchen: document.getElementById('kitchenColorName').textContent,
+            surround: document.getElementById('surroundColorName').textContent,
+            lines: document.getElementById('lineColorName').textContent,
+            addOns: equipOn.map(k => k === 'hoop' ? `${EQUIP_LABELS[k]} (${state.hoopCount === 2 ? 'both ends' : 'one end'})` : EQUIP_LABELS[k]),
+        };
+
+        try {
+            const res = await fetch('/api/quote', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: form.name.value,
+                    email: form.email.value,
+                    phone: form.phone.value,
+                    zip: form.zip.value,
+                    message: form.message.value,
+                    design,
+                    image: canvas.toDataURL('image/png'),
+                }),
+            });
+            if (!res.ok) throw new Error('Request failed');
+            statusEl.className = 'quote-status ok';
+            statusEl.textContent = '✅ Sent! We\'ll be in touch within 24 hours with your quote.';
+            form.reset();
+            btn.innerHTML = '<span>✅</span> Design Sent!';
+        } catch (err) {
+            statusEl.className = 'quote-status err';
+            statusEl.innerHTML = 'Something went wrong. Email us at <a href="mailto:team@precisionprocourts.com" style="color:#fca5a5;text-decoration:underline;">team@precisionprocourts.com</a> or call us.';
+            btn.disabled = false;
+            btn.innerHTML = original;
+        }
+    });
+
     // Initialize
     updateColorRowVisibility();
+    updateEquipVisibility();
     drawCourt();
+    updateBuildSummary();
 </script>
