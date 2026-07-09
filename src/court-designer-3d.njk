@@ -1,0 +1,791 @@
+---
+layout: base.njk
+title: "3D Court Designer | Precision Pro Courts - Design Your Court in 3D"
+description: "Design your dream pickleball, tennis or basketball court in full 3D. Add hoops, lights, fencing and nets, walk around your build, and get a free quote."
+permalink: /court-designer-3d/
+---
+
+<style>
+    body { background: linear-gradient(135deg, {{ designer3d.theme.pageGradientFrom }} 0%, {{ designer3d.theme.pageGradientTo }} 100%); }
+
+    .d3-container { max-width: 1500px; margin: 0 auto; padding: 2rem; padding-top: 100px; color: white; }
+    .d3-header { text-align: center; margin-bottom: 1.5rem; }
+    .d3-header h1 { font-family:'Space Grotesk',sans-serif; font-size: 2.5rem; font-weight: 700; color: white; }
+    .d3-header .beta { display:inline-block; background: {{ designer3d.theme.success }}; color:#04250f; font-size:0.65rem; font-weight:800; letter-spacing:0.1em; padding:0.25rem 0.6rem; border-radius:999px; vertical-align: middle; margin-left:0.5rem; text-transform:uppercase; }
+    .d3-header .subtitle { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-top: 0.25rem; }
+
+    .d3-grid { display: grid; grid-template-columns: 300px 1fr; gap: 1.5rem; }
+    @media (max-width: 968px) { .d3-grid { grid-template-columns: 1fr; } }
+
+    .d3-controls { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border-radius: 16px; padding: 1.25rem; border: 1px solid rgba(255,255,255,0.1); align-self: start; }
+    .ctl-label { font-weight:700; font-size:0.75rem; margin: 1.1rem 0 0.6rem; display:block; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 0.08em; }
+    .ctl-label:first-child { margin-top: 0; }
+
+    .sport-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:0.45rem; }
+    .sport-btn { background: rgba(255,255,255,0.08); border:2px solid transparent; padding:0.6rem 0.4rem; border-radius:10px; cursor:pointer; color:white; font-size:0.8rem; font-weight:600; transition:all .2s; }
+    .sport-btn.active { border-color: {{ designer3d.theme.accent }}; background: rgba(86,148,255,0.2); }
+
+    .color-row { display:flex; align-items:center; gap:0.6rem; padding:0.35rem 0.4rem; border-radius:8px; cursor:pointer; }
+    .color-row:hover { background: rgba(255,255,255,0.05); }
+    .color-row.active { background: rgba(86,148,255,0.15); }
+    .color-row label { font-size:0.8rem; width:64px; color:rgba(255,255,255,0.9); cursor:pointer; }
+    .color-chip { width:30px; height:30px; border-radius:7px; border:2px solid rgba(255,255,255,0.25); }
+    .color-row .cname { font-size:0.72rem; color:rgba(255,255,255,0.6); flex:1; }
+    .color-row.hidden { display:none; }
+
+    .pal { display:none; grid-template-columns: repeat(5,1fr); gap:7px; margin-top:0.5rem; }
+    .pal.show { display:grid; }
+    .pal .sw { aspect-ratio:1; border-radius:7px; cursor:pointer; border:2px solid rgba(255,255,255,0.15); }
+    .pal .sw:hover { transform: scale(1.1); border-color: white; }
+
+    .preset-btn { width:100%; background:rgba(255,255,255,0.08); border:none; padding:0.55rem 0.8rem; border-radius:8px; cursor:pointer; color:white; font-size:0.8rem; font-weight:500; margin-bottom:0.4rem; text-align:left; transition:all .2s; }
+    .preset-btn:hover { background:rgba(255,255,255,0.14); }
+
+    .equip-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.45rem; }
+    .equip-btn { background:rgba(255,255,255,0.08); border:2px solid transparent; padding:0.55rem 0.4rem; border-radius:10px; cursor:pointer; color:white; font-size:0.75rem; font-weight:600; transition:all .2s; display:flex; align-items:center; justify-content:center; gap:0.3rem; }
+    .equip-btn.active { border-color: {{ designer3d.theme.success }}; background: rgba(34,197,94,0.18); }
+    .equip-btn .chk { opacity:0; font-size:0.85rem; } .equip-btn.active .chk { opacity:1; }
+    .subopt { display:none; align-items:center; gap:0.4rem; margin-top:0.55rem; font-size:0.75rem; color:rgba(255,255,255,0.8); }
+    .subopt.show { display:flex; }
+    .subopt button { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; padding:0.3rem 0.55rem; border-radius:7px; cursor:pointer; font-size:0.7rem; font-weight:600; }
+    .subopt button.active { background: rgba(86,148,255,0.25); border-color: {{ designer3d.theme.accent }}; }
+
+    .d3-stage { background: rgba(0,0,0,0.3); border-radius:16px; border:1px solid rgba(255,255,255,0.1); overflow:hidden; position:relative; }
+    #stage3d { width:100%; height:62vh; min-height:420px; display:block; touch-action:none; }
+    .stage-bar { display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1rem; flex-wrap:wrap; gap:0.5rem; }
+    .stage-title { font-weight:700; font-family:'Space Grotesk',sans-serif; color:white; font-size:1rem; }
+    .stage-actions { display:flex; gap:0.5rem; flex-wrap:wrap; }
+    .abtn { background: {{ designer3d.theme.accent }}; color:white; border:none; padding:0.6rem 1rem; border-radius:10px; cursor:pointer; font-size:0.82rem; font-weight:600; display:flex; align-items:center; gap:0.4rem; transition:all .25s; }
+    .abtn:hover { background:white; color: {{ designer3d.theme.accentDark }}; }
+    .abtn.ghost { background:rgba(255,255,255,0.1); }
+    .abtn.ghost.on { background: rgba(255,218,51,0.25); color:#ffe58a; }
+    .cam-row { position:absolute; bottom:12px; left:12px; display:flex; gap:0.4rem; z-index:5; }
+    .cam-row button { background:rgba(10,16,30,0.65); border:1px solid rgba(255,255,255,0.2); color:white; padding:0.4rem 0.7rem; border-radius:8px; cursor:pointer; font-size:0.72rem; font-weight:600; backdrop-filter: blur(6px); }
+    .cam-row button:hover { background: rgba(86,148,255,0.5); }
+    .drag-hint { position:absolute; top:12px; right:14px; z-index:5; font-size:0.7rem; color:rgba(255,255,255,0.75); background:rgba(10,16,30,0.55); padding:0.35rem 0.65rem; border-radius:999px; backdrop-filter:blur(6px); pointer-events:none; }
+
+    .build-sum { padding: 1rem 1.25rem 1.25rem; border-top:1px solid rgba(255,255,255,0.1); }
+    .build-sum h3 { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; margin-bottom:0.5rem; color:white; }
+    .build-sum ul { list-style:none; margin:0; padding:0; display:grid; gap:0.3rem; }
+    .build-sum li { font-size:0.8rem; color:rgba(255,255,255,0.8); display:flex; justify-content:space-between; gap:1rem; }
+    .build-sum li span:last-child { color:white; font-weight:600; }
+    .chips { display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.3rem; }
+    .chip { background:rgba(34,197,94,0.18); border:1px solid rgba(34,197,94,0.4); color:#d7ffe4; font-size:0.7rem; font-weight:600; padding:0.18rem 0.5rem; border-radius:999px; }
+    .chip.none { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.12); color:rgba(255,255,255,0.5); }
+
+    .cta3 { text-align:center; margin-top:2.5rem; padding:2.5rem; background: linear-gradient(135deg, #3a5a9a 0%, {{ designer3d.theme.pageGradientTo }} 100%); border-radius:16px; border:1px solid rgba(255,255,255,0.1); }
+    .cta3 h2 { font-family:'Space Grotesk',sans-serif; font-size:1.75rem; margin-bottom:0.5rem; color:white; }
+    .cta3 p { color:rgba(255,255,255,0.7); margin-bottom:1.25rem; }
+    .qform { max-width:640px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; text-align:left; }
+    .qform .full { grid-column:1/-1; }
+    .qform input, .qform textarea { width:100%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:0.8rem 1rem; color:white; font-size:0.95rem; font-family:inherit; }
+    .qform input::placeholder, .qform textarea::placeholder { color:rgba(255,255,255,0.5); }
+    .qform input:focus, .qform textarea:focus { outline:none; border-color: {{ designer3d.theme.accent }}; }
+    .qform textarea { min-height:70px; resize:vertical; }
+    .qsubmit { grid-column:1/-1; background: {{ designer3d.theme.success }}; color:white; border:none; padding:1rem; border-radius:10px; font-size:1rem; font-weight:700; cursor:pointer; transition:all .25s; }
+    .qsubmit:hover { background:white; color:#16a34a; }
+    .qsubmit:disabled { opacity:0.6; cursor:not-allowed; }
+    .qstatus { grid-column:1/-1; text-align:center; font-size:0.9rem; min-height:1.2em; }
+    .qstatus.ok { color:#86efac; } .qstatus.err { color:#fca5a5; }
+
+    .link-2d { text-align:center; margin-top:1.25rem; }
+    .link-2d a { color: rgba(255,255,255,0.65); font-size:0.85rem; text-decoration:underline; }
+    footer { background: {{ designer3d.theme.accentDark }} !important; }
+    @media (max-width:600px){ .d3-container{padding:1rem;padding-top:110px;} #stage3d{height:48vh;} .qform{grid-template-columns:1fr;} }
+</style>
+
+<div class="d3-container">
+    <div class="d3-header">
+        <h1>🏟️ 3D Court Designer<span class="beta">Beta</span></h1>
+        <p class="subtitle">Build your whole setup — court, hoops, lights, fencing — and walk around it in 3D.</p>
+    </div>
+
+    <div class="d3-grid">
+        <div class="d3-controls">
+            <span class="ctl-label">Sport Type</span>
+            <div class="sport-grid">
+                <button class="sport-btn" data-sport="pickleball">🥒 Pickleball</button>
+                <button class="sport-btn active" data-sport="tennis">🎾 Tennis</button>
+                <button class="sport-btn" data-sport="basketball">🏀 Basketball</button>
+                <button class="sport-btn" data-sport="multi">🏅 Multi-Sport</button>
+            </div>
+
+            <span class="ctl-label">Court Colors</span>
+            <div class="color-row" data-target="play"><label>Playing</label><div class="color-chip" id="chip-play"></div><span class="cname" id="name-play"></span></div>
+            <div class="color-row hidden" id="row-kitchen" data-target="kitchen"><label>Kitchen</label><div class="color-chip" id="chip-kitchen"></div><span class="cname" id="name-kitchen"></span></div>
+            <div class="color-row" data-target="surround"><label>Surround</label><div class="color-chip" id="chip-surround"></div><span class="cname" id="name-surround"></span></div>
+            <div class="color-row" data-target="line"><label>Lines</label><div class="color-chip" id="chip-line"></div><span class="cname" id="name-line"></span></div>
+            <div class="pal" id="palette"></div>
+
+            <span class="ctl-label">Quick Presets</span>
+            <div id="presets"></div>
+
+            <span class="ctl-label">Add to Your Build</span>
+            <div class="equip-grid">
+                <button class="equip-btn active" data-eq="net"><span class="chk">✓</span>🥅 Net</button>
+                <button class="equip-btn" data-eq="hoop"><span class="chk">✓</span>🏀 Hoop</button>
+                <button class="equip-btn" data-eq="fence"><span class="chk">✓</span>🔲 Fencing</button>
+                <button class="equip-btn" data-eq="lights"><span class="chk">✓</span>💡 Lights</button>
+                <button class="equip-btn" data-eq="rebounder"><span class="chk">✓</span>🎯 Rebound Wall</button>
+            </div>
+            <div class="subopt" id="hoopOpt">
+                <span>Hoops:</span>
+                <button class="active" data-hoops="2">Both ends</button>
+                <button data-hoops="1">One end</button>
+            </div>
+        </div>
+
+        <div>
+            <div class="d3-stage">
+                <div class="stage-bar">
+                    <span class="stage-title">Live 3D Preview</span>
+                    <div class="stage-actions">
+                        <button class="abtn ghost" id="nightBtn">🌙 Night</button>
+                        <button class="abtn" id="shotBtn">📸 Download Photo</button>
+                    </div>
+                </div>
+                <div style="position:relative;">
+                    <canvas id="stage3d"></canvas>
+                    <div class="drag-hint">drag to orbit · scroll to zoom</div>
+                    <div class="cam-row">
+                        <button data-cam="corner">Corner</button>
+                        <button data-cam="baseline">Baseline</button>
+                        <button data-cam="side">Side</button>
+                        <button data-cam="top">Top</button>
+                    </div>
+                </div>
+                <div class="build-sum">
+                    <h3>Your Build</h3>
+                    <ul>
+                        <li><span>Sport</span><span id="sumSport">Tennis</span></li>
+                        <li><span>Playing surface</span><span id="sumPlay"></span></li>
+                        <li><span>Surround</span><span id="sumSurround"></span></li>
+                        <li style="flex-direction:column;align-items:flex-start;gap:0.35rem;"><span>Add-ons</span><div class="chips" id="sumEquip"></div></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="link-2d"><a href="{{ '/court-designer/' | url }}">Prefer the classic 2D designer? →</a></div>
+        </div>
+    </div>
+
+    <div class="cta3">
+        <h2>{{ designer3d.quote.heading }}</h2>
+        <p>{{ designer3d.quote.sub }}</p>
+        <form class="qform" id="qform">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone">
+            <input type="text" name="zip" placeholder="ZIP / City">
+            <textarea class="full" name="message" placeholder="Anything else we should know? (timeline, yard size, budget…)"></textarea>
+            <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+            <button type="submit" class="qsubmit" id="qsubmit">📐 Send My 3D Design &amp; Get a Quote</button>
+            <div class="qstatus" id="qstatus"></div>
+        </form>
+    </div>
+</div>
+
+<script type="importmap">{ "imports": { "three": "{{ '/js/vendor/three.module.js' | url }}" } }</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from '{{ "/js/vendor/OrbitControls.js" | url }}';
+
+// ===== White-label config (from src/_data/designer3d.json) =====
+const CFG = {{ designer3d | dump | safe }};
+
+// ===== Court dimensions (feet) — identical to the 2D designer =====
+const DIMS = {
+    tennis:     { courtW: 36, courtL: 78, totalW: 60, totalL: 120 },
+    pickleball: { courtW: 20, courtL: 44, totalW: 34, totalL: 64 },
+    basketball: { courtW: 50, courtL: 94, totalW: 60, totalL: 100 },
+    multi:      { courtW: 20, courtL: 44, totalW: 34, totalL: 54 },
+};
+
+const state = {
+    sport: 'tennis',
+    play: '#1A3366', playName: 'Competition Blue',
+    kitchen: '#1A3366', kitchenName: 'Competition Blue',
+    surround: '#4A7B3F', surroundName: 'Competition Green',
+    line: '#FFFFFF', lineName: 'White',
+    equipment: { net: true, hoop: false, fence: false, lights: false, rebounder: false },
+    hoopCount: 2,
+    night: false,
+    colorTarget: null,
+};
+
+// =====================================================================
+// Court surface texture — painted on a 2D canvas at PXFT px per foot,
+// mapped onto the slab top. Line geometry ported from the 2D designer.
+// =====================================================================
+const PXFT = 16;
+const texCanvas = document.createElement('canvas');
+function paintCourtTexture() {
+    const d = DIMS[state.sport];
+    texCanvas.width = d.totalW * PXFT;
+    texCanvas.height = d.totalL * PXFT;
+    const c = texCanvas.getContext('2d');
+    const W = texCanvas.width, H = texCanvas.height;
+    const ft = (v) => v * PXFT;
+
+    // surround
+    c.fillStyle = state.surround; c.fillRect(0, 0, W, H);
+    // subtle speckle
+    c.globalAlpha = 0.04;
+    for (let i = 0; i < 1200; i++) { c.fillStyle = Math.random() > .5 ? '#fff' : '#000'; c.fillRect(Math.random()*W, Math.random()*H, 2, 2); }
+    c.globalAlpha = 1;
+
+    const cx = W / 2, cy = H / 2;
+    const hw = ft(d.courtW) / 2, hl = ft(d.courtL) / 2;
+    const ox = cx - hw, oy = cy - hl;
+
+    // play area
+    c.fillStyle = state.play; c.fillRect(ox, oy, hw * 2, hl * 2);
+    c.globalAlpha = 0.04;
+    for (let i = 0; i < 700; i++) { c.fillStyle = Math.random() > .5 ? '#fff' : '#000'; c.fillRect(ox + Math.random()*hw*2, oy + Math.random()*hl*2, 2, 2); }
+    c.globalAlpha = 1;
+
+    c.strokeStyle = state.line; c.lineWidth = ft(0.33); c.lineCap = 'butt';
+    c.strokeRect(ox, oy, hw * 2, hl * 2);
+
+    if (state.sport === 'tennis') {
+        const sw = ft(27) / 2, sd = ft(21);
+        line(c, cx - sw, cy - hl, cx - sw, cy + hl);
+        line(c, cx + sw, cy - hl, cx + sw, cy + hl);
+        line(c, cx - hw, cy, cx + hw, cy);
+        line(c, cx - sw, cy - sd, cx + sw, cy - sd);
+        line(c, cx - sw, cy + sd, cx + sw, cy + sd);
+        line(c, cx, cy - sd, cx, cy + sd);
+        line(c, cx, cy - hl, cx, cy - hl + ft(1.5));
+        line(c, cx, cy + hl, cx, cy + hl - ft(1.5));
+    } else if (state.sport === 'pickleball' || state.sport === 'multi') {
+        const k = ft(7);
+        c.fillStyle = state.kitchen;
+        c.fillRect(cx - hw, cy - k, hw * 2, k * 2);
+        c.strokeStyle = state.line;
+        c.strokeRect(ox, oy, hw * 2, hl * 2);
+        line(c, cx - hw, cy, cx + hw, cy);
+        line(c, cx - hw, cy - k, cx + hw, cy - k);
+        line(c, cx - hw, cy + k, cx + hw, cy + k);
+        line(c, cx, cy - hl, cx, cy - k);
+        line(c, cx, cy + hl, cx, cy + k);
+        if (state.sport === 'multi') {
+            // half-court basketball painted from the left pad edge
+            c.strokeStyle = '#B4B4B4';
+            const bx = 0, r3 = ft(23.75);
+            arc(c, bx, cy, r3, -Math.PI/2, Math.PI/2);
+            line(c, bx + ft(15), cy - ft(6), bx + ft(15), cy + ft(6));
+        }
+    } else if (state.sport === 'basketball') {
+        line(c, cx - hw, cy, cx + hw, cy);
+        arc(c, cx, cy, ft(6), 0, Math.PI * 2);
+        for (const dir of [-1, 1]) {
+            const base = cy + dir * hl;
+            const key = ft(6), ftD = ft(19) * -dir, bDist = ft(5.25) * -dir;
+            c.strokeRect(cx - key, Math.min(base, base + ftD), key * 2, Math.abs(ftD));
+            arc(c, cx, base + ftD, key, dir < 0 ? 0 : Math.PI, dir < 0 ? Math.PI : Math.PI * 2);
+            const r3 = ft(23.75), cs = ft(3);
+            arc(c, cx, base + bDist, r3, dir < 0 ? 0.41 : Math.PI + 0.41, dir < 0 ? Math.PI - 0.41 : -0.41);
+            line(c, cx - hw + cs, base, cx - hw + cs, base - dir * ft(14));
+            line(c, cx + hw - cs, base, cx + hw - cs, base - dir * ft(14));
+            arc(c, cx, base + bDist, ft(4), dir < 0 ? 0 : Math.PI, dir < 0 ? Math.PI : Math.PI * 2);
+        }
+    }
+    function line(ctx, x1, y1, x2, y2) { ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); }
+    function arc(ctx, x, y, r, a1, a2) { ctx.beginPath(); ctx.arc(x, y, r, a1, a2); ctx.stroke(); }
+}
+
+// =====================================================================
+// Three.js scene
+// =====================================================================
+const canvas = document.getElementById('stage3d');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 2, 0.1, 2000);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+controls.maxPolarAngle = Math.PI / 2.05;
+controls.minDistance = 20;
+controls.maxDistance = 400;
+
+// Sky + fog + lights
+const hemi = new THREE.HemisphereLight(0xbfd8ff, 0x5a7247, 1.0);
+scene.add(hemi);
+const sun = new THREE.DirectionalLight(0xfff4e0, 2.2);
+sun.position.set(80, 120, 60);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.camera.left = -120; sun.shadow.camera.right = 120;
+sun.shadow.camera.top = 120; sun.shadow.camera.bottom = -120;
+scene.add(sun);
+
+// Grass
+const grass = new THREE.Mesh(
+    new THREE.CircleGeometry(500, 48),
+    new THREE.MeshLambertMaterial({ color: 0x6a8f4f })
+);
+grass.rotation.x = -Math.PI / 2; grass.position.y = -0.26; grass.receiveShadow = true;
+scene.add(grass);
+
+// Court slab + painted top
+const courtTex = new THREE.CanvasTexture(texCanvas);
+courtTex.anisotropy = 8; courtTex.colorSpace = THREE.SRGBColorSpace;
+let slab = null, topPlane = null;
+const equipRoot = new THREE.Group();
+scene.add(equipRoot);
+const spotGroup = new THREE.Group();
+scene.add(spotGroup);
+
+function rebuildCourt() {
+    const d = DIMS[state.sport];
+    paintCourtTexture();
+    courtTex.needsUpdate = true;
+    if (slab) { scene.remove(slab); slab.geometry.dispose(); }
+    if (topPlane) { scene.remove(topPlane); topPlane.geometry.dispose(); }
+    slab = new THREE.Mesh(
+        new THREE.BoxGeometry(d.totalW, 0.5, d.totalL),
+        new THREE.MeshLambertMaterial({ color: 0x9aa0a6 })
+    );
+    slab.position.y = -0.25; slab.receiveShadow = true; slab.castShadow = false;
+    scene.add(slab);
+    topPlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(d.totalW, d.totalL),
+        new THREE.MeshLambertMaterial({ map: courtTex })
+    );
+    topPlane.rotation.x = -Math.PI / 2;
+    topPlane.position.y = 0.01;
+    topPlane.receiveShadow = true;
+    scene.add(topPlane);
+}
+
+// ===== Equipment builders =====
+const POLE_MAT = new THREE.MeshStandardMaterial({ color: 0x23272e, roughness: 0.5, metalness: 0.6 });
+
+function meshNetTexture(cols, rows) {
+    const c = document.createElement('canvas'); c.width = 256; c.height = 128;
+    const x = c.getContext('2d');
+    x.clearRect(0,0,256,128);
+    x.strokeStyle = 'rgba(20,20,20,0.9)'; x.lineWidth = 2;
+    for (let i = 0; i <= cols; i++) { x.beginPath(); x.moveTo(i*256/cols,0); x.lineTo(i*256/cols,128); x.stroke(); }
+    for (let j = 0; j <= rows; j++) { x.beginPath(); x.moveTo(0,j*128/rows); x.lineTo(256,j*128/rows); x.stroke(); }
+    x.fillStyle = 'white'; x.fillRect(0,0,256,10); // top tape
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+}
+function chainlinkTexture() {
+    const c = document.createElement('canvas'); c.width = 128; c.height = 128;
+    const x = c.getContext('2d');
+    x.clearRect(0,0,128,128);
+    x.strokeStyle = 'rgba(30,32,36,0.85)'; x.lineWidth = 2;
+    for (let i = -128; i < 256; i += 16) {
+        x.beginPath(); x.moveTo(i, 0); x.lineTo(i + 128, 128); x.stroke();
+        x.beginPath(); x.moveTo(i + 128, 0); x.lineTo(i, 128); x.stroke();
+    }
+    const t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    return t;
+}
+const NET_TEX = meshNetTexture(40, 10);
+const CHAIN_TEX = chainlinkTexture();
+
+function buildNet(d) {
+    const g = new THREE.Group();
+    const w = d.courtW + 2, h = 3;
+    const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(w, h),
+        new THREE.MeshBasicMaterial({ map: NET_TEX, transparent: true, side: THREE.DoubleSide })
+    );
+    plane.position.y = h / 2 + 0.4;
+    g.add(plane);
+    for (const s of [-1, 1]) {
+        const post = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, h + 0.6, 12), POLE_MAT);
+        post.position.set(s * w / 2, (h + 0.6) / 2, 0);
+        post.castShadow = true;
+        g.add(post);
+    }
+    return g;
+}
+
+function buildHoop(d, zSign) {
+    // zSign: -1 = far baseline, +1 = near baseline; hoop faces the court
+    const g = new THREE.Group();
+    const poleH = 13;
+    const baseZ = zSign * (d.courtL / 2 + 2);
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, poleH, 14), POLE_MAT);
+    pole.position.set(0, poleH / 2, baseZ);
+    pole.castShadow = true;
+    g.add(pole);
+    const armLen = 3.5;
+    const arm = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.35, armLen), POLE_MAT);
+    arm.position.set(0, 11.5, baseZ - zSign * armLen / 2);
+    arm.castShadow = true;
+    g.add(arm);
+    const board = new THREE.Mesh(
+        new THREE.BoxGeometry(6, 3.5, 0.15),
+        new THREE.MeshPhysicalMaterial({ color: 0xffffff, transparent: true, opacity: 0.35, roughness: 0.1 })
+    );
+    board.position.set(0, 11.5, baseZ - zSign * armLen);
+    board.castShadow = true;
+    g.add(board);
+    const rim = new THREE.Mesh(
+        new THREE.TorusGeometry(0.75, 0.06, 10, 32),
+        new THREE.MeshStandardMaterial({ color: 0xff6a00, roughness: 0.4, metalness: 0.5 })
+    );
+    rim.rotation.x = Math.PI / 2;
+    rim.position.set(0, 10, baseZ - zSign * (armLen + 0.8));
+    g.add(rim);
+    const net = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.72, 0.45, 1.4, 12, 3, true),
+        new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.8 })
+    );
+    net.position.set(0, 9.3, baseZ - zSign * (armLen + 0.8));
+    g.add(net);
+    return g;
+}
+
+function buildHoopSide(d) {
+    // multi-sport: hoop at the left pad edge facing right (matches painted arc)
+    const g = buildHoop({ courtL: d.totalW - 4, courtW: d.courtW }, -1);
+    g.rotation.y = Math.PI / 2;
+    return g;
+}
+
+function buildFence(d) {
+    const g = new THREE.Group();
+    const w = d.totalW, l = d.totalL, h = 10;
+    const mat = new THREE.MeshLambertMaterial({ map: CHAIN_TEX.clone(), transparent: true, side: THREE.DoubleSide, alphaTest: 0.05 });
+    const walls = [
+        { w: w, x: 0, z: -l / 2, ry: 0 },
+        { w: w, x: 0, z:  l / 2, ry: 0 },
+        { w: l, x: -w / 2, z: 0, ry: Math.PI / 2 },
+        { w: l, x:  w / 2, z: 0, ry: Math.PI / 2 },
+    ];
+    for (const s of walls) {
+        const m = mat.clone();
+        m.map = CHAIN_TEX.clone();
+        m.map.repeat.set(s.w / 4, h / 4);
+        m.map.needsUpdate = true;
+        const wall = new THREE.Mesh(new THREE.PlaneGeometry(s.w, h), m);
+        wall.position.set(s.x, h / 2, s.z);
+        wall.rotation.y = s.ry;
+        g.add(wall);
+        // top rail
+        const rail = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, s.w, 8), POLE_MAT);
+        rail.rotation.z = Math.PI / 2;
+        rail.position.set(s.x, h, s.z);
+        rail.rotation.y = s.ry;
+        g.add(rail);
+        // posts
+        const n = Math.max(2, Math.round(s.w / 10));
+        for (let i = 0; i <= n; i++) {
+            const p = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, h, 10), POLE_MAT);
+            const off = -s.w / 2 + (s.w * i) / n;
+            p.position.set(s.ry === 0 ? s.x + off : s.x, h / 2, s.ry === 0 ? s.z : s.z + off);
+            p.castShadow = true;
+            g.add(p);
+        }
+    }
+    return g;
+}
+
+function buildLights(d) {
+    const g = new THREE.Group();
+    spotGroup.clear();
+    const w = d.totalW / 2 - 1.5, l = d.totalL / 2 - 1.5, h = 20;
+    for (const [sx, sz] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {
+        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.32, h, 12), POLE_MAT);
+        pole.position.set(sx * w, h / 2, sz * l);
+        pole.castShadow = true;
+        g.add(pole);
+        const head = new THREE.Mesh(
+            new THREE.BoxGeometry(1.7, 0.55, 0.85),
+            new THREE.MeshStandardMaterial({ color: 0x15181d, roughness: 0.6, emissive: 0xfff2b0, emissiveIntensity: state.night ? 2.5 : 0 })
+        );
+        head.position.set(sx * w, h + 0.45, sz * l);
+        head.lookAt(sx * w * 0.4, 2, sz * l * 0.4); // tilt down toward the court
+        g.add(head);
+        const spot = new THREE.SpotLight(0xfff0c0, state.night ? 900 : 0, 160, Math.PI / 4, 0.45, 1.1);
+        spot.position.copy(head.position);
+        spot.target.position.set(sx * w * 0.3, 0, sz * l * 0.3);
+        spotGroup.add(spot, spot.target);
+    }
+    return g;
+}
+
+function buildRebounder(d) {
+    const g = new THREE.Group();
+    const w = d.courtW, h = 10;
+    const wall = new THREE.Mesh(
+        new THREE.BoxGeometry(w, h, 0.5),
+        new THREE.MeshLambertMaterial({ color: 0x1f3d2b })
+    );
+    wall.position.set(0, h / 2, -(d.courtL / 2 + 4));
+    wall.castShadow = true; wall.receiveShadow = true;
+    g.add(wall);
+    // slat lines
+    const slatMat = new THREE.MeshBasicMaterial({ color: 0x2e5940 });
+    for (let i = 1; i < 8; i++) {
+        const s = new THREE.Mesh(new THREE.BoxGeometry(0.08, h, 0.52), slatMat);
+        s.position.set(-w / 2 + (w * i) / 8, h / 2, -(d.courtL / 2 + 4));
+        g.add(s);
+    }
+    return g;
+}
+
+function equipApplies(k) {
+    if ((k === 'net' || k === 'rebounder') && state.sport === 'basketball') return false;
+    return true;
+}
+function activeEquipment() {
+    return Object.keys(state.equipment).filter(k => state.equipment[k] && equipApplies(k));
+}
+
+function rebuildEquipment() {
+    equipRoot.clear();
+    spotGroup.clear();
+    const d = DIMS[state.sport];
+    const eq = state.equipment;
+    if (eq.net && equipApplies('net')) equipRoot.add(buildNet(d));
+    if (eq.hoop) {
+        if (state.sport === 'multi') equipRoot.add(buildHoopSide(d));
+        else if (state.sport === 'basketball' || state.sport === 'tennis' || state.sport === 'pickleball') {
+            equipRoot.add(buildHoop(d, -1));
+            if (state.hoopCount === 2) equipRoot.add(buildHoop(d, 1));
+        }
+    }
+    if (eq.fence) equipRoot.add(buildFence(d));
+    if (eq.lights) equipRoot.add(buildLights(d));
+    if (eq.rebounder && equipApplies('rebounder')) equipRoot.add(buildRebounder(d));
+}
+
+// ===== Day / night =====
+function applyDayNight() {
+    if (state.night) {
+        scene.background = new THREE.Color(0x0a1226);
+        scene.fog = new THREE.Fog(0x0a1226, 200, 600);
+        hemi.intensity = 0.15; sun.intensity = 0.05;
+    } else {
+        scene.background = new THREE.Color(0x9ec8f0);
+        scene.fog = new THREE.Fog(0x9ec8f0, 250, 700);
+        hemi.intensity = 1.0; sun.intensity = 2.2;
+    }
+    // lights heads/spots rebuild picks up night state
+    rebuildEquipment();
+    document.getElementById('nightBtn').classList.toggle('on', state.night);
+    document.getElementById('nightBtn').textContent = state.night ? '☀️ Day' : '🌙 Night';
+}
+
+// ===== Camera presets =====
+function setCam(view) {
+    const d = DIMS[state.sport];
+    // floor the framing size so small pads (pickleball/multi) still get a wide, flattering shot
+    const L = Math.max(d.totalL, 90), W = Math.max(d.totalW, 50);
+    const P = {
+        corner:   [W * 0.9, L * 0.42, L * 0.75],
+        baseline: [0, L * 0.32, L * 0.95],
+        side:     [W * 1.5, L * 0.28, 0],
+        top:      [0, L * 1.15, 0.01],
+    }[view];
+    camera.position.set(...P);
+    controls.target.set(0, 0, 0);
+    controls.update();
+}
+
+// ===== UI wiring =====
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => [...document.querySelectorAll(s)];
+
+// palette
+const pal = $('#palette');
+CFG.palette.forEach(col => {
+    const sw = document.createElement('div');
+    sw.className = 'sw'; sw.style.background = col.hex; sw.title = col.name;
+    sw.onclick = () => {
+        if (!state.colorTarget) return;
+        state[state.colorTarget] = col.hex;
+        state[state.colorTarget + 'Name'] = col.name;
+        syncChips(); rebuildCourt(); updateSummary();
+    };
+    pal.appendChild(sw);
+});
+$$('.color-row').forEach(r => r.onclick = () => {
+    state.colorTarget = r.dataset.target;
+    $$('.color-row').forEach(x => x.classList.remove('active'));
+    r.classList.add('active');
+    pal.classList.add('show');
+});
+function syncChips() {
+    for (const k of ['play', 'kitchen', 'surround', 'line']) {
+        $('#chip-' + k).style.background = state[k];
+        $('#name-' + k).textContent = state[k + 'Name'];
+    }
+}
+
+// presets
+const presetsBox = $('#presets');
+CFG.presets.forEach(p => {
+    const b = document.createElement('button');
+    b.className = 'preset-btn'; b.textContent = p.label;
+    b.onclick = () => {
+        state.play = p.play; state.playName = p.playName;
+        state.kitchen = p.kitchen; state.kitchenName = p.kitchenName;
+        state.surround = p.surround; state.surroundName = p.surroundName;
+        state.line = p.line; state.lineName = 'White';
+        syncChips(); rebuildCourt(); updateSummary();
+    };
+    presetsBox.appendChild(b);
+});
+
+// sports
+$$('.sport-btn').forEach(b => b.onclick = () => {
+    $$('.sport-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.sport = b.dataset.sport;
+    $('#row-kitchen').classList.toggle('hidden', !(state.sport === 'pickleball' || state.sport === 'multi'));
+    $$('.equip-btn').forEach(eb => eb.style.display = equipApplies(eb.dataset.eq) ? '' : 'none');
+    updateHoopOpt();
+    rebuildCourt(); rebuildEquipment(); updateSummary(); setCam('corner');
+});
+
+// equipment
+$$('.equip-btn').forEach(b => b.onclick = () => {
+    const k = b.dataset.eq;
+    state.equipment[k] = !state.equipment[k];
+    b.classList.toggle('active', state.equipment[k]);
+    updateHoopOpt();
+    rebuildEquipment(); updateSummary();
+});
+$$('#hoopOpt button').forEach(b => b.onclick = () => {
+    $$('#hoopOpt button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.hoopCount = +b.dataset.hoops;
+    rebuildEquipment(); updateSummary();
+});
+function updateHoopOpt() {
+    $('#hoopOpt').classList.toggle('show', state.equipment.hoop && state.sport !== 'multi');
+}
+
+// summary
+const EQL = { net: 'Net', hoop: 'Basketball hoop', fence: 'Fencing', lights: 'Lights', rebounder: 'Rebound wall' };
+function hoopLabel() {
+    if (state.sport === 'multi') return EQL.hoop;
+    return EQL.hoop + (state.hoopCount === 2 ? ' ×2' : ' ×1');
+}
+function updateSummary() {
+    $('#sumSport').textContent = { pickleball: 'Pickleball', tennis: 'Tennis', basketball: 'Basketball', multi: 'Multi-Sport' }[state.sport];
+    $('#sumPlay').textContent = state.playName;
+    $('#sumSurround').textContent = state.surroundName;
+    const box = $('#sumEquip'); box.innerHTML = '';
+    const on = activeEquipment();
+    if (!on.length) box.innerHTML = '<span class="chip none">None yet</span>';
+    else on.forEach(k => {
+        const c = document.createElement('span');
+        c.className = 'chip';
+        c.textContent = k === 'hoop' ? hoopLabel() : EQL[k];
+        box.appendChild(c);
+    });
+}
+
+// night + cams
+$('#nightBtn').onclick = () => { state.night = !state.night; applyDayNight(); };
+$$('.cam-row button').forEach(b => b.onclick = () => setCam(b.dataset.cam));
+
+// ===== Screenshot (render + brand watermark) =====
+function captureComposite() {
+    renderer.render(scene, camera); // fresh frame
+    const src = renderer.domElement;
+    const out = document.createElement('canvas');
+    const w = Math.min(1400, src.width);
+    const h = Math.round(src.height * (w / src.width));
+    out.width = w; out.height = h;
+    const c = out.getContext('2d');
+    c.drawImage(src, 0, 0, w, h);
+    c.fillStyle = 'rgba(255,255,255,0.55)';
+    c.font = 'bold 15px Inter, sans-serif';
+    c.textAlign = 'right';
+    c.fillText(CFG.brand.watermark, w - 16, h - 16);
+    c.textAlign = 'left';
+    c.fillText(CFG.brand.name + ' — 3D Court Designer', 16, h - 16);
+    return out;
+}
+$('#shotBtn').onclick = () => {
+    const link = document.createElement('a');
+    link.download = `${CFG.brand.name.toLowerCase().replace(/\s+/g, '-')}-3d-${state.sport}-design.png`;
+    link.href = captureComposite().toDataURL('image/png');
+    link.click();
+    if (typeof gtag === 'function') gtag('event', 'designer3d_download');
+};
+
+// ===== Quote =====
+$('#qform').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target, btn = $('#qsubmit'), st = $('#qstatus');
+    if (form.company.value) return;
+    btn.disabled = true; btn.textContent = '⏳ Sending…';
+    st.className = 'qstatus'; st.textContent = '';
+    const on = activeEquipment();
+    try {
+        const res = await fetch(CFG.quote.endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: form.name.value, email: form.email.value,
+                phone: form.phone.value, zip: form.zip.value,
+                message: (form.message.value ? form.message.value + '\n\n' : '') + '[Sent from the 3D Court Designer]',
+                design: {
+                    sport: $('#sumSport').textContent + ' (3D)',
+                    playSurface: state.playName,
+                    kitchen: state.kitchenName,
+                    surround: state.surroundName,
+                    lines: state.lineName,
+                    addOns: on.map(k => {
+                        if (k !== 'hoop') return EQL[k];
+                        if (state.sport === 'multi') return EQL.hoop + ' (half-court)';
+                        return EQL.hoop + ` (${state.hoopCount === 2 ? 'both ends' : 'one end'})`;
+                    }),
+                },
+                image: captureComposite().toDataURL('image/png'),
+            }),
+        });
+        if (!res.ok) throw new Error('bad status');
+        st.className = 'qstatus ok';
+        st.textContent = "✅ Sent! We'll be in touch within 24 hours with your quote.";
+        btn.textContent = '✅ Design Sent!';
+        form.reset();
+        if (typeof gtag === 'function') gtag('event', 'designer3d_quote');
+    } catch {
+        st.className = 'qstatus err';
+        st.innerHTML = `Something went wrong. Email us at <a href="mailto:${CFG.quote.fallbackEmail}" style="color:#fca5a5;text-decoration:underline;">${CFG.quote.fallbackEmail}</a>.`;
+        btn.disabled = false;
+        btn.textContent = '📐 Send My 3D Design & Get a Quote';
+    }
+});
+
+// ===== Resize + render loop =====
+function fitRenderer() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    renderer.setSize(rect.width, rect.height, false);
+    renderer.setPixelRatio(dpr);
+    camera.aspect = rect.width / rect.height;
+    camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', fitRenderer);
+
+(function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+})();
+
+// ===== Boot =====
+syncChips();
+rebuildCourt();
+rebuildEquipment();
+applyDayNight();
+updateSummary();
+fitRenderer();
+setCam('corner');
+window.__d3ready = true; // test hook
+</script>

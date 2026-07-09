@@ -1,0 +1,52 @@
+{
+  "_comment": "White-label config for the 3D Court Designer. To re-skin for a new client: change brand/theme/quote here + swap the logo file. Everything on /court-designer-3d/ reads from this.",
+  "brand": {
+    "name": "Precision Pro Courts",
+    "tagline": "Utah's Premier Court Builder",
+    "logoLight": "/assets/images/logos/logo-white-lg.png",
+    "siteUrl": "precisionprocourts.com",
+    "watermark": "precisionprocourts.com"
+  },
+  "theme": {
+    "accent": "#5694ff",
+    "accentDark": "#1a2d52",
+    "success": "#22c55e",
+    "pageGradientFrom": "#1a2d52",
+    "pageGradientTo": "#29457c"
+  },
+  "quote": {
+    "endpoint": "/api/quote",
+    "heading": "Love Your Design? Let's Build It.",
+    "sub": "Send us your 3D design and we'll come back with a free, no-pressure quote for your exact court.",
+    "fallbackEmail": "team@precisionprocourts.com"
+  },
+  "palette": [
+    { "name": "Competition Green", "hex": "#4A7B3F" },
+    { "name": "Performance Green", "hex": "#5A8A52" },
+    { "name": "Dark Green", "hex": "#275E37" },
+    { "name": "Competition Blue", "hex": "#1A3366" },
+    { "name": "Light Blue", "hex": "#3A6BB5" },
+    { "name": "Ice Blue", "hex": "#CCD9E0" },
+    { "name": "Tournament Purple", "hex": "#4B3F8C" },
+    { "name": "Red", "hex": "#8D3C1E" },
+    { "name": "Bright Red", "hex": "#CC2A1A" },
+    { "name": "Maroon", "hex": "#6E3219" },
+    { "name": "Orange", "hex": "#FF6600" },
+    { "name": "Yellow", "hex": "#FFDA33" },
+    { "name": "Sandstone", "hex": "#B3A57A" },
+    { "name": "Beige", "hex": "#867A6F" },
+    { "name": "Brown", "hex": "#5F3316" },
+    { "name": "Slate", "hex": "#5A6A72" },
+    { "name": "Grey", "hex": "#8C8E8E" },
+    { "name": "Dove Grey", "hex": "#B4B4B4" },
+    { "name": "Black", "hex": "#1A1A1A" },
+    { "name": "White", "hex": "#FFFFFF" }
+  ],
+  "presets": [
+    { "key": "classic", "label": "🏆 Comp Blue/Green", "play": "#1A3366", "kitchen": "#1A3366", "surround": "#4A7B3F", "line": "#FFFFFF", "playName": "Competition Blue", "kitchenName": "Competition Blue", "surroundName": "Competition Green" },
+    { "key": "forest", "label": "🌲 Dark Green", "play": "#5A8A52", "kitchen": "#5A8A52", "surround": "#275E37", "line": "#FFFFFF", "playName": "Performance Green", "kitchenName": "Performance Green", "surroundName": "Dark Green" },
+    { "key": "lightblue", "label": "💙 Light Blue/Grey", "play": "#3A6BB5", "kitchen": "#3A6BB5", "surround": "#8C8E8E", "line": "#FFFFFF", "playName": "Light Blue", "kitchenName": "Light Blue", "surroundName": "Grey" },
+    { "key": "coastal", "label": "🌊 Mixed Blue/Green", "play": "#1A3366", "kitchen": "#3A6BB5", "surround": "#4A7B3F", "line": "#FFFFFF", "playName": "Competition Blue", "kitchenName": "Light Blue", "surroundName": "Competition Green" },
+    { "key": "popular", "label": "⭐ Most Popular", "play": "#1A3366", "kitchen": "#1A3366", "surround": "#5A6A72", "line": "#FFFFFF", "playName": "Competition Blue", "kitchenName": "Competition Blue", "surroundName": "Slate" }
+  ]
+}
