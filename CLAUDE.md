@@ -46,8 +46,11 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
     tiles under a "Latest Projects (July 2026)" comment with descriptive alt text.
   - Mix: two-tone blue pickleball (commercial + backyard), concrete + acrylic
     basketball courts, BYU-logo courts, purple, green/grey + green/tan multi-sport.
-  - Verified locally: 55 existing + 12 new = 67 tiles, all load (450×600 thumbs),
-    zero image 404s, correct orientation.
+  - Verified locally: all load, zero image 404s, correct orientation.
+  - **+3 more added same day** (indoor garage navy court, green pergola/mountain
+    court, green white-fence court). These were HEIC with NO EXIF orientation tag —
+    came in upside-down; `sips` HEIC→JPG then Pillow `.rotate(180)` before resize
+    (see `scratchpad/ppc_gallery2.py`). **Gallery now 70 tiles total (15 new).**
 - **DEPLOYED & verified live** — commits `ce52204` (designer v2 + gallery) and
   `9ccc238` (multi-sport hoop fix: single half-court hoop, aligned to arc, no ×2)
   pushed to `main`. `/court-designer/` + gallery + `/api/quote` all live on
