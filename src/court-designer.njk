@@ -633,6 +633,7 @@ permalink: /court-designer/
             state.sport = btn.dataset.sport;
             updateColorRowVisibility();
             updateEquipVisibility();
+            updateHoopCountVisibility();
             drawCourt();
         });
     });
@@ -665,7 +666,7 @@ permalink: /court-designer/
             const key = btn.dataset.equip;
             state.equipment[key] = !state.equipment[key];
             btn.classList.toggle('active', state.equipment[key]);
-            document.getElementById('hoopCountRow').classList.toggle('show', state.equipment.hoop);
+            updateHoopCountVisibility();
             drawCourt();
             updateBuildSummary();
         });
@@ -695,6 +696,14 @@ permalink: /court-designer/
             b.style.display = equipApplies(b.dataset.equip) ? '' : 'none';
         });
     }
+    // Hoop count (both ends / one end) only applies to full-court sports, not the multi-sport half-court
+    function updateHoopCountVisibility() {
+        document.getElementById('hoopCountRow').classList.toggle('show', state.equipment.hoop && state.sport !== 'multi');
+    }
+    function hoopLabel() {
+        if (state.sport === 'multi') return EQUIP_LABELS.hoop;
+        return EQUIP_LABELS.hoop + (state.hoopCount === 2 ? ' ×2' : ' ×1');
+    }
     function updateBuildSummary() {
         const sportName = { pickleball: 'Pickleball', tennis: 'Tennis', basketball: 'Basketball', multi: 'Multi-Sport' }[state.sport];
         document.getElementById('sumSport').textContent = sportName;
@@ -707,8 +716,7 @@ permalink: /court-designer/
             wrap.innerHTML = '<span class="chip none">None yet</span>';
         } else {
             on.forEach(k => {
-                let label = EQUIP_LABELS[k];
-                if (k === 'hoop') label += state.hoopCount === 2 ? ' ×2' : ' ×1';
+                let label = k === 'hoop' ? hoopLabel() : EQUIP_LABELS[k];
                 const chip = document.createElement('span');
                 chip.className = 'chip';
                 chip.textContent = label;
@@ -1188,7 +1196,7 @@ permalink: /court-designer/
             };
 
             if (state.sport === 'multi') {
-                hoopV(courtOffX, +1);                       // single hoop at the left baseline
+                hoopV(6, +1);                                // single half-court hoop at the left wall (aligns with the basketball arc)
             } else {
                 hoopH(courtOffY, +1);                        // top baseline
                 if (state.hoopCount === 2) hoopH(courtOffY + hl * 2, -1); // bottom baseline
@@ -1218,7 +1226,11 @@ permalink: /court-designer/
             kitchen: document.getElementById('kitchenColorName').textContent,
             surround: document.getElementById('surroundColorName').textContent,
             lines: document.getElementById('lineColorName').textContent,
-            addOns: equipOn.map(k => k === 'hoop' ? `${EQUIP_LABELS[k]} (${state.hoopCount === 2 ? 'both ends' : 'one end'})` : EQUIP_LABELS[k]),
+            addOns: equipOn.map(k => {
+                if (k !== 'hoop') return EQUIP_LABELS[k];
+                if (state.sport === 'multi') return `${EQUIP_LABELS.hoop} (half-court)`;
+                return `${EQUIP_LABELS.hoop} (${state.hoopCount === 2 ? 'both ends' : 'one end'})`;
+            }),
         };
 
         try {
@@ -1251,6 +1263,7 @@ permalink: /court-designer/
     // Initialize
     updateColorRowVisibility();
     updateEquipVisibility();
+    updateHoopCountVisibility();
     drawCourt();
     updateBuildSummary();
 </script>
