@@ -48,10 +48,13 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
     basketball courts, BYU-logo courts, purple, green/grey + green/tan multi-sport.
   - Verified locally: 55 existing + 12 new = 67 tiles, all load (450×600 thumbs),
     zero image 404s, correct orientation.
+- **DEPLOYED & verified live** — commits `ce52204` (designer v2 + gallery) and
+  `9ccc238` (multi-sport hoop fix: single half-court hoop, aligned to arc, no ×2)
+  pushed to `main`. `/court-designer/` + gallery + `/api/quote` all live on
+  precisionprocourts.com. Notion PPC page (GullStack HQ → Sales Pipeline) updated.
 - **State / next up:**
-  - NOT yet deployed. Deploy = push to `main` (auto-prod on a live client site) —
-    awaiting Bryce's go. Both the Court Designer v2 AND the 12 gallery photos ship
-    together on that push.
+  - Quote-form email send runs only on Vercel (needs `SENDGRID_API_KEY`, already set);
+    no real test lead was sent (would hit the client inbox). Do one real submission
+    if delivery confirmation is wanted.
   - To re-run the gallery pipeline for future batches: `scratchpad/ppc_gallery.py`
     (edit the MAP dict; `sips` can't write WebP on this Mac, Pillow can).
-  - Update the PPC Notion page (GullStack HQ → client) once this ships.
