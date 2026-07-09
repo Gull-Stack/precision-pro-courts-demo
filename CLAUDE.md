@@ -16,6 +16,30 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ## Session Log
 
+### 2026-07-08 (late) — 3D Court Designer (beta) LIVE
+- **LIVE at precisionprocourts.com/court-designer-3d/** (commit `b6b69dc`). Full
+  three.js clone of the CourtBuild/CourTex concept, built same-day for the client
+  demo. 2D designer banners to it; 3D page links back.
+- **What it does:** real 3D court (slab + painted surface — line geometry ported
+  from the 2D tool), orbit/zoom, camera presets (corner/baseline/side/top),
+  sport switching (pickleball/tennis/basketball/multi), full color/preset system,
+  3D equipment (hoops w/ backboard+rim+net, net, chain-link fencing, light poles
+  with WORKING spotlights + 🌙 day/night toggle, rebound wall), watermarked PNG
+  download, quote form → existing `/api/quote` with spec + 3D render attached.
+- **WHITE-LABEL (the product angle):** everything brandable lives in
+  `src/_data/designer3d.json` — brand name/logo/watermark, theme colors, palette,
+  presets, quote endpoint/copy. To re-skin for a new client: copy the two files
+  (`court-designer-3d.njk` + `designer3d.json`) into their Eleventy site, swap the
+  JSON + logo, point `quote.endpoint` at their form handler. three.js r160 +
+  OrbitControls are vendored at `src/js/vendor/` (self-hosted, importmap maps
+  `three` → the module; html-minifier handles type=module fine).
+- Verified: all 4 sports render, equipment sport-aware (net/rebounder hide for
+  basketball; multi = single half-court hoop), night mode, mobile responsive,
+  zero console errors, quote payload verified via fetch-stub (1.5MB PNG, under
+  the API's ~6MB guard). Live URLs polled 200.
+- **Next:** show client; if they bite, pitch it to other Hard Court Marketing
+  prospects as a productized add-on.
+
 ### 2026-07-08 — Court Designer v2 (equipment/build-out layer) + quote flow
 - **Client asks (2):** (1) copy courtbuild.com / CourTex's "build the whole setup"
   designer — lights, hoop, fence — and make it ours; (2) add new projects to the
