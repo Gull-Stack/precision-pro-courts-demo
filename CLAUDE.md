@@ -7,14 +7,30 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 - Source: `src/` (Nunjucks). Build: `npm run build` → `_site/`. Serve: `npx @11ty/eleventy --serve`.
 - Serverless: `api/*.js` (Vercel Node functions, SendGrid). `SENDGRID_API_KEY` set on Vercel.
   These only run on Vercel — `eleventy --serve` does NOT execute `/api`.
-- Leads: `/contact/` uses a LeadConnector CRM iframe; `api/contact.js` is the
+- Leads: `/contact/` embeds the client's **Jobber work request form** (as of
+  2026-07-14; previously a stale LeadConnector iframe). `api/contact.js` is the
   SendGrid form handler (to team@precisionprocourts.com, cc bryce@gullstack.com,
-  from noreply@gullstack.com).
+  from noreply@gullstack.com). Note: `api/quote.js` (court designer) emails only —
+  it does NOT persist leads anywhere.
+- **NOTE: this repo is PUBLIC** (`Gull-Stack/precision-pro-courts-demo`). Keep
+  client strategy, pricing, and internal notes OUT of it. Those live in
+  `~/Documents/precision-pro-courts-jobber-teardown.md` (not tracked).
 - Gallery images: original `.jpg` in `src/assets/images/gallery/`, plus generated
   `thumbs/NAME.{webp,jpg}` (~600px) and `webp/NAME.webp` (full-res). No commit-tracked
   resize script — generate with Pillow (`sips` on this Mac can't write WebP).
 
 ## Session Log
+
+### 2026-07-14 — Contact form switched to Jobber
+- Client confirmed Jobber is their CRM of record. `/contact/` was still serving a
+  leftover **LeadConnector iframe internally titled "Solar Lead Form"** from the
+  original template. Replaced with the client's Jobber work request embed
+  (`src/contact.njk`, commit `ec7637c`). Verified live — iframe injects and renders.
+- Prep work for the upcoming client meeting (lead-management / CRM scope) is in
+  **`~/Documents/precision-pro-courts-jobber-teardown.md`**, deliberately kept out
+  of this repo because the repo is public.
+- Open: `api/quote.js` still emails leads and persists nothing — there is no system
+  of record for leads outside Jobber.
 
 ### 2026-07-08 (late) — 3D Court Designer (beta) LIVE
 - **LIVE at precisionprocourts.com/court-designer-3d/** (commit `b6b69dc`). Full
