@@ -78,7 +78,7 @@
       "worstRating": {{ site.rating.worst | dump | safe }}
     }
     {%- if site.phone %},
-    "telephone": {{ site.phone | dump | safe }}
+    "telephone": {{ (site.phoneTel or site.phone) | dump | safe }}
     {%- endif %}
   }
   </script>
@@ -126,7 +126,7 @@
       "worstRating": {{ site.rating.worst | dump | safe }}
     }
     {%- if site.phone %},
-    "telephone": {{ site.phone | dump | safe }}
+    "telephone": {{ (site.phoneTel or site.phone) | dump | safe }}
     {%- endif %}
   }
   </script>

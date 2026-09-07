@@ -14,12 +14,46 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   it does NOT persist leads anywhere.
 - **NOTE: this repo is PUBLIC** (`Gull-Stack/precision-pro-courts-demo`). Keep
   client strategy, pricing, and internal notes OUT of it. Those live in
-  `~/Documents/precision-pro-courts-jobber-teardown.md` (not tracked).
+  `~/Documents/_docs/playbooks/precision-pro-courts-jobber-teardown.md` (not tracked).
 - Gallery images: original `.jpg` in `src/assets/images/gallery/`, plus generated
   `thumbs/NAME.{webp,jpg}` (~600px) and `webp/NAME.webp` (full-res). No commit-tracked
   resize script — generate with Pillow (`sips` on this Mac can't write WebP).
 
 ## Session Log
+
+### 2026-09-07 — Phone number wired site-wide (waiting on the number itself)
+- Sam asked to get the phone number up on the website. The site had **no phone
+  anywhere** — `site.phone` was `""` and was only read by the six county-page
+  "Call Us Today" buttons and the LocalBusiness/schema blocks. Header, footer and
+  `/contact/` had no phone at all.
+- Built the full treatment, all gated on `{% if site.phone %}`, so it stays dark
+  until a real number is set:
+  - **Header** (`src/_includes/header.njk`): click-to-call item before the Free
+    Quote button, inline SVG handset (no emoji, per the house rule).
+  - **Footer** (`src/_includes/footer.njk`): number in the brand column, large and
+    tappable, plus the team@ email underneath (footer had neither before).
+  - **`/contact/`** (`src/contact.njk`): Phone is now the first sidebar item, above
+    Email.
+  - **CSS** (`src/css/styles.css`): `.nav-phone`, `.footer-phone`, `.footer-email`,
+    plus a mobile-drawer size bump for `.nav-phone`.
+- **New field `site.phoneTel`** in `src/_data/site.json`. `phone` is the display
+  string (`(801) 555-0134` shape), `phoneTel` is E.164 (`+18015550134`). Every
+  `tel:` href and both schema `telephone` values now read
+  `site.phoneTel or site.phone`. Setting those two fields lights up all 10+ spots.
+- Verified by build both ways: with the fields empty nothing renders (0 hits for
+  `nav-phone`/`footer-phone` in `_site/index.html`); with a test number every
+  surface rendered `tel:+1…` correctly. **The test number was removed** — do not
+  ship a placeholder.
+- **BLOCKED:** need the real number from Sam. It is not in the repo, not in Gmail,
+  not on the public site. Their Google Business Profile (under bryce@gullstack.com,
+  `business.google.com/u/1/locations`) is the authority — use the same number there
+  so the NAP matches, or the citation consistency works against the local ranking.
+- Also open from the same conversation: Sam offered to send proposal PDFs, and
+  confirmed Wednesday for a meeting. Wednesday is **2026-09-09** and no PPC event
+  exists on it. That day already holds Pivot Travel 10:00-10:45 MT and the
+  Jackalope demo 15:00-16:00 MT. Time still unset.
+- Pre-existing defect noted, not fixed: `/contact/` still uses emoji icons
+  (envelope, globe, stopwatch, pins) against the no-emoji-in-UI rule.
 
 ### 2026-07-14 — Contact form switched to Jobber
 - Client confirmed Jobber is their CRM of record. `/contact/` was still serving a
@@ -27,7 +61,7 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   original template. Replaced with the client's Jobber work request embed
   (`src/contact.njk`, commit `ec7637c`). Verified live — iframe injects and renders.
 - Prep work for the upcoming client meeting (lead-management / CRM scope) is in
-  **`~/Documents/precision-pro-courts-jobber-teardown.md`**, deliberately kept out
+  **`~/Documents/_docs/playbooks/precision-pro-courts-jobber-teardown.md`**, deliberately kept out
   of this repo because the repo is public.
 - Open: `api/quote.js` still emails leads and persists nothing — there is no system
   of record for leads outside Jobber.
@@ -94,7 +128,7 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 - **DEPLOYED & verified live** — commits `ce52204` (designer v2 + gallery) and
   `9ccc238` (multi-sport hoop fix: single half-court hoop, aligned to arc, no ×2)
   pushed to `main`. `/court-designer/` + gallery + `/api/quote` all live on
-  precisionprocourts.com. Notion PPC page (GullStack HQ → Sales Pipeline) updated.
+  precisionprocourts.com. Notion PPC page (GullStack Flight Deck → Sales Pipeline) updated.
 - **State / next up:**
   - Quote-form email send runs only on Vercel (needs `SENDGRID_API_KEY`, already set);
     no real test lead was sent (would hit the client inbox). Do one real submission

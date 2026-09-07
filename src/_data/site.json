@@ -5,6 +5,7 @@
   "url": "https://www.precisionprocourts.com",
   "email": "Team@precisionprocourts.com",
   "phone": "",
+  "phoneTel": "",
   "address": {
     "street": "",
     "city": "Salt Lake City",
@@ -13,7 +14,7 @@
   },
   "geo": {
     "latitude": 40.7608,
-    "longitude": -111.8910
+    "longitude": -111.891
   },
   "image": "/assets/images/gallery/drone-aerial.jpg",
   "logo": "/assets/images/logos/logo-white-lg.png",
@@ -30,12 +31,40 @@
   "priceRange": "$$",
   "gaId": "G-4FH3XE2VWD",
   "serviceAreas": [
-    { "label": "Utah County", "name": "Utah County, UT", "url": "/utah-county/" },
-    { "label": "Salt Lake County", "name": "Salt Lake County, UT", "url": "/salt-lake-county/" },
-    { "label": "Davis County", "name": "Davis County, UT", "url": "/davis-county/" },
-    { "label": "Weber County", "name": "Weber County, UT", "url": "/weber-county/" },
-    { "label": "Juab County", "name": "Juab County, UT", "url": "/contact/#areas" },
-    { "label": "Washington County", "name": "Washington County, UT", "url": "/washington-county/" },
-    { "label": "Las Vegas", "name": "Clark County, NV", "url": "/las-vegas/" }
+    {
+      "label": "Utah County",
+      "name": "Utah County, UT",
+      "url": "/utah-county/"
+    },
+    {
+      "label": "Salt Lake County",
+      "name": "Salt Lake County, UT",
+      "url": "/salt-lake-county/"
+    },
+    {
+      "label": "Davis County",
+      "name": "Davis County, UT",
+      "url": "/davis-county/"
+    },
+    {
+      "label": "Weber County",
+      "name": "Weber County, UT",
+      "url": "/weber-county/"
+    },
+    {
+      "label": "Juab County",
+      "name": "Juab County, UT",
+      "url": "/contact/#areas"
+    },
+    {
+      "label": "Washington County",
+      "name": "Washington County, UT",
+      "url": "/washington-county/"
+    },
+    {
+      "label": "Las Vegas",
+      "name": "Clark County, NV",
+      "url": "/las-vegas/"
+    }
   ]
 }
