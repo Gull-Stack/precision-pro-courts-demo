@@ -52,6 +52,14 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   84057**. `site.json` still says city `Salt Lake City` with SLC `geo` coordinates
   and empty street/zip, so the LocalBusiness schema contradicts the GBP listing.
   Fixing it means a real geocode for the Orem address — do not invent coordinates.
+- **Closing CTA band** on the home page now carries the phone as its first contact
+  item (it had email + website only). That band sits directly above the footer and
+  is the highest-intent spot on the page.
+- **Review count corrected 56 → 89.** The home page claimed "5.0 Stars — 56 Google
+  Reviews" and the schema `reviewCount` said 56. The GBP listing shows **89**. Both
+  hardcoded strings in `src/index.njk` and `site.rating.count` now say 89. Source is
+  the client's own GBP, screenshotted by Bryce 2026-09-07 — do not adjust this number
+  without re-reading the listing.
 - Also open from the same conversation: Sam offered to send proposal PDFs, and
   confirmed Wednesday for a meeting. Wednesday is **2026-09-09** and no PPC event
   exists on it. That day already holds Pivot Travel 10:00-10:45 MT and the
