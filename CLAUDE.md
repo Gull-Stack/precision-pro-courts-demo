@@ -44,10 +44,14 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   `nav-phone`/`footer-phone` in `_site/index.html`); with a test number every
   surface rendered `tel:+1…` correctly. **The test number was removed** — do not
   ship a placeholder.
-- **BLOCKED:** need the real number from Sam. It is not in the repo, not in Gmail,
-  not on the public site. Their Google Business Profile (under bryce@gullstack.com,
-  `business.google.com/u/1/locations`) is the authority — use the same number there
-  so the NAP matches, or the citation consistency works against the local ranking.
+- **Number set: `(801) 699-4625`** (`+18016994625`), taken from the client's Google
+  Business Profile so the NAP matches the listing. Bryce supplied it 2026-09-07.
+  It renders on **30 pages** — nav, footer, `/contact/`, every county CTA, and both
+  schema `telephone` values. Pushed to `main`, production deploy fired.
+- **NAP gap still open:** GBP lists the address as **253 N 1030 W St, Orem, UT
+  84057**. `site.json` still says city `Salt Lake City` with SLC `geo` coordinates
+  and empty street/zip, so the LocalBusiness schema contradicts the GBP listing.
+  Fixing it means a real geocode for the Orem address — do not invent coordinates.
 - Also open from the same conversation: Sam offered to send proposal PDFs, and
   confirmed Wednesday for a meeting. Wednesday is **2026-09-09** and no PPC event
   exists on it. That day already holds Pivot Travel 10:00-10:45 MT and the
