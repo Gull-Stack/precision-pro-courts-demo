@@ -55,6 +55,16 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 - **Closing CTA band** on the home page now carries the phone as its first contact
   item (it had email + website only). That band sits directly above the footer and
   is the highest-intent spot on the page.
+- **Nav breakpoint moved 768 → 1024 (real bug, pre-existing and made worse).** The
+  desktop nav needs **1009px** to fit on one line (logo 108 + links 837 + 64 padding,
+  measured in-page), but the hamburger only took over at **768px**. So the nav
+  overflowed on every viewport between 769 and 1008px — small laptops, iPad
+  landscape, split-screen. It already overflowed below ~849px before this session;
+  the phone item widened the gap. `styles.css` had the nav-drawer rules and the
+  page-layout rules sharing one `@media (max-width: 768px)` block — split into
+  `@media (max-width: 1024px)` for the nav and `@media (max-width: 768px)` for the
+  layout. **If anything is ever added to the nav, re-measure**; the desktop bar has
+  no room left.
 - **Review count corrected 56 → 89.** The home page claimed "5.0 Stars — 56 Google
   Reviews" and the schema `reviewCount` said 56. The GBP listing shows **89**. Both
   hardcoded strings in `src/index.njk` and `site.rating.count` now say 89. Source is

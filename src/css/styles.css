@@ -794,7 +794,7 @@ footer .footer-bottom p { font-size: 0.8rem; }
 .legal-content ul li { color: var(--gray-600); margin-bottom: 0.5rem; }
 
 /* ── MOBILE ── */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-links {
     display: none; 
     position: fixed; 
@@ -893,6 +893,9 @@ footer .footer-bottom p { font-size: 0.8rem; }
     height: 100%;
   }
   .mobile-toggle { display: block; }
+}
+
+@media (max-width: 768px) {
   .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
   .hero-stat .num { font-size: 2rem; }
   .process-steps { grid-template-columns: 1fr; }
