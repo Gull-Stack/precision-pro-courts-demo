@@ -48,6 +48,17 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   Business Profile so the NAP matches the listing. Bryce supplied it 2026-09-07.
   It renders on **30 pages** — nav, footer, `/contact/`, every county CTA, and both
   schema `telephone` values. Pushed to `main`, production deploy fired.
+- **TWO PHONE NUMBERS — unresolved.** A PPC estimate PDF (Jobber-generated,
+  2026-08-20) carries **801-699-3708** on its letterhead. The Google Business
+  Profile carries **(801) 699-4625**, which is what shipped to the site, and which
+  is also the number that texts Bryce (420 messages; 3708 has 8, last May 2026).
+  Both are real PPC lines. **Ask Sam which one belongs on the website**, then make
+  the site and the GBP listing agree — a site/GBP mismatch costs citation
+  consistency. Changing it is a one-line edit to `phone` + `phoneTel` in
+  `src/_data/site.json`.
+- **Address now double-confirmed:** the same estimate letterhead reads **253 North
+  1030 West Street, Orem, Utah 84057**, matching the GBP listing exactly. The
+  locality change from Salt Lake City to Orem is still Bryce's call — see below.
 - **NAP gap still open:** GBP lists the address as **253 N 1030 W St, Orem, UT
   84057**. `site.json` still says city `Salt Lake City` with SLC `geo` coordinates
   and empty street/zip, so the LocalBusiness schema contradicts the GBP listing.
