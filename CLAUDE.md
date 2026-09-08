@@ -56,8 +56,15 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   and site/GBP agreement is what citation consistency depends on. Do not "fix" this
   to the letterhead number without also changing GBP.
 - **Address now double-confirmed:** the same estimate letterhead reads **253 North
-  1030 West Street, Orem, Utah 84057**, matching the GBP listing exactly. The
-  locality change from Salt Lake City to Orem is still Bryce's call — see below.
+  1030 West Street, Orem, Utah 84057**, matching the GBP listing exactly. Asked Sam
+  2026-09-08 whether to put Orem on the site; awaiting his answer.
+- **Geocode is ready when he says yes.** From OpenStreetMap/Nominatim 2026-09-08:
+  **lat `40.3158291`, lon `-111.7213882`**. ⚠️ That is a **street-level** match on
+  North 1030 West Street (Nominatim returned `addresstype: road`, not a rooftop
+  match on the house number), so it is good to within the block, not to the
+  building. The exact pin lives on the GBP listing — read it from there if a precise
+  coordinate ever matters. The current `geo` in `site.json` is **Salt Lake City**
+  (40.7608, -111.8910) and is simply wrong once the locality changes.
 - **NAP gap still open:** GBP lists the address as **253 N 1030 W St, Orem, UT
   84057**. `site.json` still says city `Salt Lake City` with SLC `geo` coordinates
   and empty street/zip, so the LocalBusiness schema contradicts the GBP listing.
