@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Blue top-left triangle -->
+  <polygon points="0,0 64,0 0,64" fill="#2B4C7E"/>
+  <!-- Green bottom-right triangle -->
+  <polygon points="64,0 64,64 0,64" fill="#2D5A3D"/>
+  <!-- White P lettermark -->
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
+    font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="44" fill="white"
+    letter-spacing="-2">P</text>
+</svg>
