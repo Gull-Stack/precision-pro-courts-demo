@@ -32,9 +32,12 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   second `gtag('config')` for it. `ga4-events.js` and designer events go to both.
 - Build check: the new ID renders on 30 of 33 pages. The other 3 are meta-refresh
   redirect stubs with no tag of either kind.
-- Open: GA showed "No data received in past 48 hours" on that stream before this
-  deploy. Confirm Realtime shows a hit after the deploy lands. If only one property
-  is wanted long term, remove `G-4FH3XE2VWD` deliberately — do not drop it silently.
+- Pushed (`46cf03d`), live on production ~30s later. Verified: a Chrome visit to
+  the home page showed up in property 527364860 Realtime as 1 view of "Utah Sport
+  Court Builder | Precision Pro Courts". The stream had said "No data received in
+  past 48 hours" before this.
+- If only one property is wanted long term, remove `G-4FH3XE2VWD` deliberately —
+  do not drop it silently.
 
 ### 2026-09-07 — Phone number wired site-wide (waiting on the number itself)
 - Sam asked to get the phone number up on the website. The site had **no phone
