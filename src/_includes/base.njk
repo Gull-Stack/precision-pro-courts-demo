@@ -12,6 +12,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', '{{ site.gaId }}');
+    {% if site.gaIdClient %}gtag('config', '{{ site.gaIdClient }}');{% endif %}
   </script>
   {% endif %}
   

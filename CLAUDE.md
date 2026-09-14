@@ -2,7 +2,9 @@
 
 Eleventy (v3) static site. Live: **precisionprocourts.com** (Vercel, `gull-stack`
 scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
-`main` auto-deploys **production**). GA4: `G-4FH3XE2VWD`.
+`main` auto-deploys **production**). GA4 sends to TWO properties: `G-4FH3XE2VWD`
+(`site.gaId`, the original tag) and `G-GKP6N4CMDM` (`site.gaIdClient`, property
+527364860, stream "Precision Website", added 2026-09-14).
 
 - Source: `src/` (Nunjucks). Build: `npm run build` → `_site/`. Serve: `npx @11ty/eleventy --serve`.
 - Serverless: `api/*.js` (Vercel Node functions, SendGrid). `SENDGRID_API_KEY` set on Vercel.
@@ -20,6 +22,19 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   resize script — generate with Pillow (`sips` on this Mac can't write WebP).
 
 ## Session Log
+
+### 2026-09-14 — Second GA4 property added
+- Bryce asked to add GA4 property **527364860** (account 386761899, stream
+  "Precision Website", stream ID 13785077360) to the site. Its measurement ID is
+  **`G-GKP6N4CMDM`**, read from the stream details in GA admin.
+- The site already sent to **`G-4FH3XE2VWD`**, a different property. Kept it, so
+  its history keeps collecting. New field `site.gaIdClient`; `base.njk` fires a
+  second `gtag('config')` for it. `ga4-events.js` and designer events go to both.
+- Build check: the new ID renders on 30 of 33 pages. The other 3 are meta-refresh
+  redirect stubs with no tag of either kind.
+- Open: GA showed "No data received in past 48 hours" on that stream before this
+  deploy. Confirm Realtime shows a hit after the deploy lands. If only one property
+  is wanted long term, remove `G-4FH3XE2VWD` deliberately — do not drop it silently.
 
 ### 2026-09-07 — Phone number wired site-wide (waiting on the number itself)
 - Sam asked to get the phone number up on the website. The site had **no phone
