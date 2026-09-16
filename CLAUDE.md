@@ -23,6 +23,35 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ## Session Log
 
+### 2026-09-16 — Hero photo swapped, text-in bridge built
+- **Sam: "Can we change the main photo? There's a trash bag and leaf blower in the
+  picture."** He was right. `backyard-court.jpg` had an orange leaf blower, a black
+  bin bag and a paint tray along the bottom edge. The hero is now
+  `grey-blue-court.jpg` — angled blue/grey court above the valley, nothing in frame.
+  One line in `styles.css`. The same photo was ALSO a gallery tile showing the same
+  debris, so that tile is gone too (gallery 70 -> 69). Live and verified.
+- **Sam also asked for Vercel access** "to add photos and make small edits". Vercel
+  cannot do that — this is a static Eleventy build, so adding a photo is a commit,
+  and the Vercel dashboard only offers deploys, domains and env vars. A seat would
+  let him roll back production and still not let him add a photo. See `docs/notes.md`.
+- **Photos now reach the site by text, not by hand.** The mechanism runs off-repo
+  on Bryce's Mac; it commits here and pushes to `main` like any other change. Its
+  commits carry `Auto-published by ppc-text-bridge` in the body — **do not reword
+  that string**, the undo path matches on it. It runs `npm run build` before every
+  push, so a broken template never reaches production. Everything about how it
+  works, and what bites, is in
+  `~/Documents/_docs/playbooks/ppc-text-bridge.md` (not tracked — this repo is public).
+- Tested end to end against a throwaway clone with a real photo: hero case,
+  two-photo gallery case, text-only case, and undo. All four behaved.
+  **Not yet exercised on a live inbound message.**
+- Defect found and fixed in test: the first version used the client's own sentence
+  as the filename and alt text — `can-we-change-the-main-photo-on-our.jpg`.
+  Captions that read as requests or questions are now rejected for naming;
+  descriptive ones are still used.
+- **Left for Bryce:** load the launch agent — the sandbox blocks persistence
+  changes, so it is written but not running. Command is in the playbook.
+- Added `docs/notes.md` and `docs/roadmap.md`; the repo had neither.
+
 ### 2026-09-14 — Second GA4 property added
 - Bryce asked to add GA4 property **527364860** (account 386761899, stream
   "Precision Website", stream ID 13785077360) to the site. Its measurement ID is
