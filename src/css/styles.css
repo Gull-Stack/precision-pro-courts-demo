@@ -142,7 +142,7 @@ section { padding: 6rem 0; }
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
 .hero-bg-img {
   position: absolute; inset: -20px; z-index: 0;
-  background: url('/assets/images/gallery/backyard-court.jpg') center center / cover no-repeat;
+  background: url('/assets/images/gallery/grey-blue-court.jpg') center center / cover no-repeat;
   animation: kenBurns 25s ease-in-out infinite alternate;
 }
 @keyframes kenBurns {
