@@ -2,10 +2,15 @@
 
 ## Now
 
-- **Photo-by-text, first real one.** The path is built and tested against a
-  throwaway clone, but no live message has gone through it yet. The next photo the
-  client sends is the real proof — check the gallery and the deploy after it.
-  Runbook: `~/Documents/_docs/playbooks/ppc-text-bridge.md`.
+- **Photo-by-text — blocked on a restart.** The path is built and tested against a
+  throwaway clone, and the scheduler is running, but it cannot read its source yet:
+  macOS Full Disk Access is granted and does not take effect until Bryce reboots.
+  After the reboot, confirm it before promising the client anything, then let the
+  next photo he sends be the real proof. Runbook:
+  `~/Documents/_docs/playbooks/ppc-text-bridge.md`.
+- **The client has not been answered.** He asked two things on 16 Sept: the main
+  photo (fixed and live) and a Vercel seat (no — see `notes.md`). Neither reply
+  has been sent. The second reply depends on the item above being confirmed.
 - **Orem address.** `site.json` still says Salt Lake City with SLC coordinates.
   The Google Business Profile says 253 N 1030 W St, Orem, UT 84057. The
   LocalBusiness schema contradicts the listing until this changes. Sam was asked

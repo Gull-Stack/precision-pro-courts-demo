@@ -48,8 +48,13 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   as the filename and alt text — `can-we-change-the-main-photo-on-our.jpg`.
   Captions that read as requests or questions are now rejected for naming;
   descriptive ones are still used.
-- **Left for Bryce:** load the launch agent — the sandbox blocks persistence
-  changes, so it is written but not running. Command is in the playbook.
+- **Left for Bryce (17 Sept):** the agent is loaded and firing every 2 minutes,
+  but every run dies reading its source: `sqlite3.DatabaseError: authorization
+  denied`. That is macOS Full Disk Access, which is **per-binary** — and
+  `/usr/bin/python3` is a stub that execs Xcode's python, so both paths need the
+  grant. The grant is in place; it does not take effect until Bryce **restarts the
+  machine**. After the reboot, read `~/Library/Logs/ppc-text-bridge.log` before
+  telling the client it works. It fails safely: it never reached the repo.
 - Added `docs/notes.md` and `docs/roadmap.md`; the repo had neither.
 
 ### 2026-09-14 — Second GA4 property added
