@@ -23,6 +23,15 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ## Session Log
 
+### 2026-09-17 (night) — Six gallery photos from Kendall, added by hand
+- Kendall Burfeind emailed six photos on 14 Sep ("Website Gallery Photos"). Added as
+  full jpg + webp + 800px thumbs, tiles at the top of the grid on `/gallery/`, live
+  as of 788e91c and verified on production. Replied to Kendall.
+- The text bridge did not see these because they came by email, not text. Two of
+  the six are portrait iPhone shots; the grid handles them.
+- The charcoal basketball half-court shot has two workers and a bin bag on the lawn
+  edge. Kept because Kendall chose it; swap if Sam objects (see 16 Sep hero note).
+
 ### 2026-09-16 — Hero photo swapped, text-in bridge built
 - **Sam: "Can we change the main photo? There's a trash bag and leaf blower in the
   picture."** He was right. `backyard-court.jpg` had an orange leaf blower, a black
