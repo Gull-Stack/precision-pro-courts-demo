@@ -23,6 +23,14 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ## Session Log
 
+### 2026-09-18 — Warranty box removed, location headers fixed
+- Removed the yellow "Warranty notice" box from `/services/cushion-x/`. The
+  5-year warranty lines and the FAQ answer on that page stay.
+- Location pages (Utah, Salt Lake, Davis, Weber, Washington counties, Las Vegas)
+  used `<div class="page-header">`, a class with no CSS. The fixed nav covered
+  the H1 on phones. They now use `page-hero`, like About, Services and Contact.
+- `court-designer.njk` still uses `.page-header` but styles it inline. Leave it.
+
 ### 2026-09-17 (night) — Six gallery photos from Kendall, added by hand
 - Kendall Burfeind emailed six photos on 14 Sep ("Website Gallery Photos"). Added as
   full jpg + webp + 800px thumbs, tiles at the top of the grid on `/gallery/`, live
