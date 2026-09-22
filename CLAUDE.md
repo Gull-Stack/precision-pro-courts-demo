@@ -23,6 +23,17 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ## Session Log
 
+### 2026-09-22 — Green/orange multi-sport photo removed
+- Sam texted the photo with "Can we remove this photo from our website?" It was
+  `gallery/pickleball-basketball.jpg` (green/orange court, grey surround, orange
+  wood fence), matched to his screenshot by pixel comparison.
+- It was on four pages: gallery tile (75 -> 74), home "Custom & Multi-Sport" card,
+  Weber County, Utah County ("Provo multi-sport court"). The last three now use
+  `backyard-blue-green-multi-sport-court-basketball-pickleball-precision-pro-courts.jpg`.
+- All four files (jpg, webp, two thumbs) deleted. He gave no reason; don't re-add it.
+- Not the same file as `basketball-pickleball.jpg` (tan/green), which stays on the
+  service pages.
+
 ### 2026-09-18 — Warranty box removed, location headers fixed
 - Removed the yellow "Warranty notice" box from `/services/cushion-x/`. The
   5-year warranty lines and the FAQ answer on that page stay.
