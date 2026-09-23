@@ -981,3 +981,37 @@ footer .footer-bottom p { font-size: 0.8rem; }
 @media (min-width: 769px) {
   .sticky-cta-text span { display: inline; }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   ACCESSIBILITY (WCAG 2.1 AA contrast)
+   The brand blue #5694ff is only 2.8-3.0:1 on white and 3.2:1 on navy.
+   --blue is now a deeper blue for light grounds; navy/dark sections get a
+   lighter blue (--blue-on-dark). Buttons keep the bright brand blue fill
+   (--blue-brand) with a darker navy label.
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  --blue-brand: #5694ff;
+  --blue: #2563d6;          /* 5.2:1 on #f8f9fa, 5.5:1 under white text */
+  --blue-on-dark: #8eb7ff;  /* 4.6:1 on navy #29457c */
+  --btn-ink: #14264a;       /* 5.0:1 on #5694ff */
+  --blue-dark: #1d4fb0;     /* hover for white-on-blue buttons (was #4080e8, 3.6:1) */
+}
+.nav, .hero, .page-hero, .services-section, .process, .reviews, .cta-section, footer, .chatbot-header {
+  --blue: var(--blue-on-dark);
+}
+.services-section.on-light { --blue: #2563d6; background: #f8f9fa; color: var(--gray-800); }
+.services-section.on-light .text-center p { color: var(--gray-600); }
+
+.btn-primary { background: var(--blue-brand); border-color: var(--blue-brand); color: var(--btn-ink); }
+.btn-primary:hover { background: transparent; color: var(--blue); border-color: var(--blue); }
+.nav-cta-btn { background: var(--blue-brand); color: var(--btn-ink) !important; }
+.sticky-cta { background: var(--blue-brand); }
+.sticky-cta-text { color: var(--btn-ink); }
+.sticky-cta-text span { opacity: 1; }
+.review-avatar { background: #2563d6; }
+
+/* Footer text on navy: white 50% -> 75% */
+footer { color: rgba(255,255,255,0.75); }
+.footer-col ul a, .footer-email, .social-link { color: rgba(255,255,255,0.75); }
+/* Large hero text keeps the bright brand blue (large text needs 3:1) */
+.hero h1 .highlight, .hero-stat .num { color: var(--blue-brand); }
