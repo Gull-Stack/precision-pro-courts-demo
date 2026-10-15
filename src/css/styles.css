@@ -120,6 +120,50 @@ a { color: var(--blue); }
 }
 .submenu a { white-space: nowrap; }
 
+/* ── Services mega menu (desktop) ── */
+.dropdown-arrow { display: inline-block; width: 7px; height: 7px; margin-left: 0.15rem; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translate(-2px, -2px); transition: transform 0.25s ease; font-size: 0; }
+@media (min-width: 1025px) {
+  /* one baseline for every top-level item */
+  .nav-links > li:not(.mobile-brand) { display: flex; align-items: center; }
+  .nav-links > li > a { display: inline-flex; align-items: center; gap: 0.4rem; line-height: 1.2; }
+  .nav-dropdown:hover .dropdown-arrow, .nav-dropdown:focus-within .dropdown-arrow { transform: rotate(-135deg) translate(-2px, -2px); }
+
+  .nav-dropdown { position: static; }
+  .mega-menu {
+    position: absolute; top: 100%; left: 50%;
+    width: min(1040px, calc(100vw - 3rem));
+    transform: translate(-50%, -10px);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+    padding: 1.5rem; border-radius: 16px;
+    background: #fff; border: 1px solid rgba(10,22,40,0.08);
+    box-shadow: 0 24px 60px rgba(10,22,40,0.28);
+  }
+  .mega-menu::before { content: ''; position: absolute; left: 0; right: 0; top: -24px; height: 24px; }
+  .nav-dropdown:hover .mega-menu, .nav-dropdown:focus-within > .mega-menu { transform: translate(-50%, 0); }
+
+  .mega-col { display: flex; flex-direction: column; }
+  .mega-menu a.mega-card { display: block !important; padding: 0 !important; color: var(--navy); }
+  .mega-menu a.mega-card:hover { background: none; transform: none; }
+  .mega-img { display: block; overflow: hidden; border-radius: 12px; aspect-ratio: 16 / 10; background: var(--gray-100); }
+  .mega-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .mega-card:hover .mega-img img { transform: scale(1.06); }
+  .mega-title { display: block; margin-top: 0.85rem; font-family: var(--font-heading); font-weight: 700; font-size: 1.02rem; color: var(--navy); }
+  .mega-card:hover .mega-title { color: var(--blue); }
+  .mega-blurb { display: block; margin-top: 0.15rem; font-size: 0.8rem; color: var(--gray-600); font-weight: 400; }
+
+  .mega-menu .submenu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; border-radius: 0; background: none; padding: 0.6rem 0 0; margin: 0; min-width: 0; border-top: 1px solid var(--gray-100); margin-top: 0.75rem; }
+  .mega-menu .mega-overview { display: none; }
+  .mega-menu .submenu a { padding: 0.35rem 0 !important; font-size: 0.85rem; color: var(--gray-600); white-space: normal; }
+  .mega-menu .submenu a:hover { background: none; color: var(--blue); transform: translateX(3px); }
+  .mega-menu .dropdown-sub:hover > a { background: none; }
+
+  .mega-foot { grid-column: 1 / -1; display: flex; align-items: center; gap: 1.75rem; padding-top: 1.1rem; border-top: 1px solid var(--gray-100); }
+  .mega-foot a { display: inline-block !important; padding: 0 !important; font-size: 0.85rem; font-weight: 600 !important; color: var(--navy); }
+  .mega-foot a:hover { background: none; color: var(--blue); transform: none; }
+  .mega-foot .mega-foot-cta { margin-left: auto; background: var(--navy); color: #fff !important; padding: 0.6rem 1.1rem !important; border-radius: 8px; }
+  .mega-foot .mega-foot-cta:hover { background: var(--blue); color: var(--navy) !important; }
+}
+
 /* ── BUTTONS ── */
 .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; transition: all 0.3s; cursor: pointer; border: 2px solid transparent; }
 .btn-primary { background: var(--blue); color: var(--navy); border-color: var(--blue); }
@@ -881,6 +925,12 @@ footer .footer-bottom p { font-size: 0.8rem; }
   .nav-links .nav-phone { border: 1px solid rgba(255,255,255,0.25); color: var(--white) !important; }
   .nav-links .nav-cta-btn { background: var(--blue) !important; color: var(--navy) !important; font-weight: 700 !important; }
   .nav-links .nav-cta-btn:hover { background: var(--white) !important; color: var(--navy) !important; transform: none !important; }
+
+  /* Mega menu collapses to the accordion on phones */
+  .mega-img, .mega-blurb { display: none; }
+  .mega-card .mega-title { font: inherit; }
+  .mega-foot a { display: flex !important; }
+  .mega-foot-cta { display: none !important; }
 
   /* Podium's "Text us" bubble would cover Free Quote; hide it while the menu is open */
   body.menu-open #podium-website-widget { display: none !important; }
