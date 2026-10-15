@@ -7,14 +7,14 @@
   "phone": "(801) 699-4625",
   "phoneTel": "+18016994625",
   "address": {
-    "street": "",
-    "city": "Salt Lake City",
+    "street": "253 N 1030 W",
+    "city": "Orem",
     "state": "UT",
-    "zip": ""
+    "zip": "84057"
   },
   "geo": {
-    "latitude": 40.7608,
-    "longitude": -111.891
+    "latitude": 40.2969,
+    "longitude": -111.6946
   },
   "image": "/assets/images/gallery/drone-aerial.jpg",
   "logo": "/assets/images/logos/logo-white-lg.png",
@@ -28,6 +28,7 @@
     "best": "5",
     "worst": "1"
   },
+  "reviewsUrl": "https://g.page/r/CVmCNMIfxvhgEAE/review",
   "priceRange": "$$",
   "gaId": "G-4FH3XE2VWD",
   "gaIdClient": "G-GKP6N4CMDM",
