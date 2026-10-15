@@ -41,7 +41,7 @@ layout: base.njk
     "headline": {{ (heading + (": " + subheading if subheading else "")) | dump | safe }},
     "description": {{ description | dump | safe }},
     "datePublished": "{{ page.date.toISOString().slice(0, 10) }}",
-    "image": {{ (site.url + image) | dump | safe }},
+    {% if image %}"image": {{ (site.url + image) | dump | safe }},{% endif %}
     "mainEntityOfPage": {{ (site.url + page.url) | dump | safe }},
     "author": { "@type": "Organization", "name": {{ site.name | dump | safe }}, "url": {{ site.url | dump | safe }} },
     "publisher": { "@type": "Organization", "name": {{ site.name | dump | safe }}, "logo": { "@type": "ImageObject", "url": {{ (site.url + site.logo) | dump | safe }} } }

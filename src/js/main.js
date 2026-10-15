@@ -19,15 +19,19 @@ document.getElementById('mobileToggle').addEventListener('click', () => {
 document.getElementById('mobileClose').addEventListener('click', closeMobileMenu);
 
 // Close menu when clicking any navigation link
+// (except the Services toggle, which opens its list in the drawer)
 document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', closeMobileMenu);
+  a.addEventListener('click', () => {
+    if (a.matches('.nav-dropdown > a') && window.innerWidth <= 1024) return;
+    closeMobileMenu();
+  });
 });
 
 // ── Mobile dropdown functionality ──
 document.querySelectorAll('.nav-dropdown > a').forEach(dropdownToggle => {
   dropdownToggle.addEventListener('click', (e) => {
     // Only prevent default and handle dropdown on mobile
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024) {
       e.preventDefault();
       const dropdown = dropdownToggle.parentElement;
       const wasActive = dropdown.classList.contains('active');
