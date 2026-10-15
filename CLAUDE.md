@@ -42,6 +42,9 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   iOS treat the first tap as a hover. Now Court Surfacing and Concrete open on tap with an arrow
   (`.dropdown-sub.open`), and hover styles apply only at 1025px+ on devices that can hover
   (ebb8db9). Tested on production with an iPhone 13 emulator; Sam texted.
+- **Phone drawer redesigned** (Bryce: "that phone dropdown is ugly"): logo bar with close button,
+  left-aligned rows with dividers, chevron accordions, Call + Free Quote buttons at the bottom
+  (b1c4db7). All phone-only rules live in the one `/* ── MOBILE ── */` block; desktop unchanged.
 - Next: new posts are a markdown file plus photos (resize to 900px, jpg + webp).
 
 ### 2026-09-22 — Green/orange multi-sport photo removed
