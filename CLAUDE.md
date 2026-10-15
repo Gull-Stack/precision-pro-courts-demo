@@ -24,7 +24,7 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 ## Session Log
 
 ### 2026-10-15 (evening) — SEO/AEO cleanup + footer toy and map
-- **www is the one site.** `vercel.json` sends every `precisionprocourts.com/*` request to `www.` (308). Semrush showed Google ranking pages from both hosts, which split their strength. Canonicals were already www.
+- **www is the one site.** The apex domain `precisionprocourts.com` is set in Vercel (project domain settings) to redirect to `www.` with a 308. A `vercel.json` host rule did NOT fire on Vercel, so it was removed; keep this in domain settings. Semrush showed Google ranking pages from both hosts, which split their strength. Canonicals were already www.
 - **Star rating schema only on the homepage** (`base.njk`), where the Google reviews are shown. It was on all 31 pages, and Google ignores self-published ratings.
 - **Titles:** one pattern, "[service] in Utah | Precision Pro Courts". No more "PPC". County pages lead with "Pickleball Court Builder in ...", the keyword they already half-rank for.
 - **FAQ answers lead with the answer** (3 rewritten, page + `schemas.json`). **`/llms.txt`** (from `src/llms.njk`) lists facts, services, areas, case studies for AI tools.
