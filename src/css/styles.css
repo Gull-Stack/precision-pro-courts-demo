@@ -828,7 +828,7 @@ footer .footer-bottom p { font-size: 0.8rem; }
     left: 0; 
     width: 100vw;
     height: 100vh;
-    background: #0a1628;
+    background: linear-gradient(135deg, #0a1628 0%, #1a2d52 100%) fixed;
     flex-direction: column; 
     justify-content: safe center;
     align-items: center; 
@@ -866,7 +866,7 @@ footer .footer-bottom p { font-size: 0.8rem; }
   }
   
   .nav-links .mobile-close {
-    position: absolute;
+    position: fixed;
     top: 2rem;
     right: 2rem;
     background: rgba(255, 255, 255, 0.1);
