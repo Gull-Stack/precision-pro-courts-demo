@@ -44,7 +44,7 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   (ebb8db9). Tested on production with an iPhone 13 emulator; Sam texted.
 - **Phone drawer redesigned** (Bryce: "that phone dropdown is ugly"): logo bar with close button,
   left-aligned rows with dividers, chevron accordions, Call + Free Quote buttons at the bottom
-  (b1c4db7). All phone-only rules live in the one `/* ── MOBILE ── */` block; desktop unchanged.
+  (b1c4db7). The Podium "Text us" bubble hides while the menu is open (9d91878). All phone-only rules live in the one `/* ── MOBILE ── */` block; desktop unchanged.
 - Next: new posts are a markdown file plus photos (resize to 900px, jpg + webp).
 
 ### 2026-09-22 — Green/orange multi-sport photo removed
