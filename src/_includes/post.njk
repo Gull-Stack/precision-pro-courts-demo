@@ -1,0 +1,49 @@
+---
+layout: base.njk
+---
+
+  <section class="page-hero">
+    <div class="container">
+      {% if category %}<span class="section-label">{{ category }}{% if location %} · {{ location }}{% endif %}</span>{% endif %}
+      <h1>{{ heading }}</h1>
+      {% if subheading %}<p>{{ subheading }}</p>{% endif %}
+      <div class="breadcrumb"><a href="{{ '/' | url }}">Home</a> / <a href="{{ '/blog/' | url }}">Blog</a> / {{ heading }}</div>
+    </div>
+  </section>
+
+  <article class="post">
+    <div class="post-inner">
+      <p class="post-meta">By {{ site.name }} · <time datetime="{{ page.date.toISOString().slice(0, 10) }}">{{ page.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }) }}</time></p>
+      {% if image %}
+      <figure class="post-figure post-lead">
+        <img src="{{ image | url }}" alt="{{ imageAlt }}" width="900" height="1200" fetchpriority="high">
+      </figure>
+      {% endif %}
+      <div class="post-body">
+        {{ content | safe }}
+      </div>
+      <p class="post-back"><a href="{{ '/blog/' | url }}">← All posts</a></p>
+    </div>
+  </article>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="fade-up">Planning a Court?</h2>
+      <p class="fade-up">Tell us about your space and we'll get you a free quote.</p>
+      <a href="{{ '/contact/' | url }}" class="btn btn-primary fade-up">Get a Free Quote →</a>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ (heading + (": " + subheading if subheading else "")) | dump | safe }},
+    "description": {{ description | dump | safe }},
+    "datePublished": "{{ page.date.toISOString().slice(0, 10) }}",
+    "image": {{ (site.url + image) | dump | safe }},
+    "mainEntityOfPage": {{ (site.url + page.url) | dump | safe }},
+    "author": { "@type": "Organization", "name": {{ site.name | dump | safe }}, "url": {{ site.url | dump | safe }} },
+    "publisher": { "@type": "Organization", "name": {{ site.name | dump | safe }}, "logo": { "@type": "ImageObject", "url": {{ (site.url + site.logo) | dump | safe }} } }
+  }
+  </script>

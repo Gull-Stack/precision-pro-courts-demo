@@ -1,0 +1,33 @@
+---
+layout: base.njk
+title: "Court Building Blog & Case Studies | Precision Pro Courts"
+description: "Case studies and court-building advice from Precision Pro Courts: real Utah projects, what went wrong, and how we built them to last."
+permalink: /blog/
+---
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Blog & Case Studies</h1>
+      <p>Real Utah court projects, what we ran into, and how we built them to last.</p>
+      <div class="breadcrumb"><a href="{{ '/' | url }}">Home</a> / Blog</div>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <div class="container">
+      <div class="post-list">
+        {%- for post in collections.post | reverse %}
+        <a href="{{ post.url | url }}" class="post-card">
+          <img src="{{ post.data.image | url }}" alt="{{ post.data.imageAlt }}" width="900" height="1200" loading="lazy">
+          <div class="post-card-body">
+            <span class="section-label">{{ post.data.category }}{% if post.data.location %} · {{ post.data.location }}{% endif %}</span>
+            <h2>{{ post.data.heading }}</h2>
+            {% if post.data.subheading %}<p class="post-card-sub">{{ post.data.subheading }}</p>{% endif %}
+            <p>{{ post.data.description }}</p>
+            <span class="post-card-more">Read the case study →</span>
+          </div>
+        </a>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>

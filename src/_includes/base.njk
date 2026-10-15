@@ -29,9 +29,9 @@
   
   <meta property="og:title" content="{{ ogTitle | default(title) | default(site.name) }}">
   <meta property="og:description" content="{{ ogDescription | default(description) | default(site.description) }}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="{{ ogType | default('website') }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:image" content="{{ site.url }}{{ '/assets/images/gallery/drone-aerial.jpg' | url }}">
+  <meta property="og:image" content="{{ site.url }}{{ (ogImage or '/assets/images/gallery/drone-aerial.jpg') | url }}">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="{{ site.name }}">
   

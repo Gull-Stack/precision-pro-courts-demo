@@ -10,17 +10,28 @@
         <ul class="dropdown-menu">
           <li><a href="{{ '/services/' | url }}">All Services</a></li>
           <li><a href="{{ '/services/courts-full-builds/' | url }}">Courts & Full Builds</a></li>
-          <li><a href="{{ '/services/concrete-foundations/' | url }}">Concrete & Foundations</a></li>
-          <li><a href="{{ '/services/concrete-foundations/rebar-concrete/' | url }}" style="padding-left: 2rem; font-size: 0.85em;">↳ Rebar Concrete</a></li>
-          <li><a href="{{ '/services/concrete-foundations/post-tension/' | url }}" style="padding-left: 2rem; font-size: 0.85em;">↳ Post-Tension</a></li>
-          <li><a href="{{ '/services/court-surfacing/' | url }}">Court Surfacing</a></li>
-          <li><a href="{{ '/services/cushion-x/' | url }}">CushionX Cushioned Courts</a></li>
-          <li><a href="{{ '/services/indoor-courts/' | url }}">Indoor Courts</a></li>
-          <li><a href="{{ '/services/repairs-maintenance/' | url }}">Repairs & Maintenance</a></li>
+          <li class="dropdown-sub">
+            <a href="{{ '/services/court-surfacing/' | url }}">Court Surfacing <span class="sub-arrow" aria-hidden="true">›</span></a>
+            <ul class="submenu">
+              <li><a href="{{ '/services/court-surfacing/' | url }}">Court Surfacing Overview</a></li>
+              <li><a href="{{ '/services/cushion-x/' | url }}">CushionX Cushioned Courts</a></li>
+              <li><a href="{{ '/services/indoor-courts/' | url }}">Indoor Courts</a></li>
+              <li><a href="{{ '/services/repairs-maintenance/' | url }}">Repairs & Maintenance</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-sub">
+            <a href="{{ '/services/concrete-foundations/' | url }}">Concrete & Foundations <span class="sub-arrow" aria-hidden="true">›</span></a>
+            <ul class="submenu">
+              <li><a href="{{ '/services/concrete-foundations/' | url }}">Concrete Overview</a></li>
+              <li><a href="{{ '/services/concrete-foundations/rebar-concrete/' | url }}">Rebar Concrete</a></li>
+              <li><a href="{{ '/services/concrete-foundations/post-tension/' | url }}">Post-Tension</a></li>
+            </ul>
+          </li>
           <li><a href="{{ '/court-designer/' | url }}">Court Designer</a></li>
         </ul>
       </li>
       <li><a href="{{ '/gallery/' | url }}"{% if page.url == "/gallery/" %} class="active"{% endif %}>Gallery</a></li>
+      <li><a href="{{ '/blog/' | url }}"{% if page.url.startsWith('/blog/') %} class="active"{% endif %}>Blog</a></li>
       <li><a href="{{ '/court-designer/' | url }}"{% if page.url == "/court-designer/" %} class="active"{% endif %}>Designer</a></li>
       <li><a href="{{ '/about/' | url }}"{% if page.url == "/about/" %} class="active"{% endif %}>About</a></li>
       <li><a href="{{ '/contact/' | url }}"{% if page.url == "/contact/" %} class="active"{% endif %}>Contact</a></li>
