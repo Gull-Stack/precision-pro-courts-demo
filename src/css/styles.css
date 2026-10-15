@@ -151,7 +151,7 @@ a { color: var(--blue); }
   .mega-card:hover .mega-title { color: var(--blue); }
   .mega-blurb { display: block; margin-top: 0.15rem; font-size: 0.8rem; color: var(--gray-600); font-weight: 400; }
 
-  .mega-menu .submenu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; border-radius: 0; background: none; padding: 0.6rem 0 0; margin: 0; min-width: 0; border-top: 1px solid var(--gray-100); margin-top: 0.75rem; }
+  .mega-menu .submenu { position: static; opacity: 1; visibility: inherit; transform: none; box-shadow: none; border: none; border-radius: 0; background: none; padding: 0.6rem 0 0; margin: 0; min-width: 0; border-top: 1px solid var(--gray-100); margin-top: 0.75rem; }
   .mega-menu .mega-overview { display: none; }
   .mega-menu .submenu a { padding: 0.35rem 0 !important; font-size: 0.85rem; color: var(--gray-600); white-space: normal; }
   .mega-menu .submenu a:hover { background: none; color: var(--blue); transform: translateX(3px); }
