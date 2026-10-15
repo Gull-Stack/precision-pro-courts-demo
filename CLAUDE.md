@@ -37,6 +37,11 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
   could not scroll. Dropdown now toggles up to 1024px, drawer scrolls, close button pinned.
 - Kendall answered by email with both links; Sam texted. All three changes verified live.
 - `base.njk` now takes `ogImage` / `ogType` per page.
+- **Follow-up, same day:** Sam texted "not seeing the drop down menus on my phone." Cause: on
+  phones the sub-items rendered as one flat list with no arrows, and the hover rules could make
+  iOS treat the first tap as a hover. Now Court Surfacing and Concrete open on tap with an arrow
+  (`.dropdown-sub.open`), and hover styles apply only at 1025px+ on devices that can hover
+  (ebb8db9). Tested on production with an iPhone 13 emulator; Sam texted.
 - Next: new posts are a markdown file plus photos (resize to 900px, jpg + webp).
 
 ### 2026-09-22 — Green/orange multi-sport photo removed
