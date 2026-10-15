@@ -1,6 +1,7 @@
 # Precision Pro Courts — durable notes
 
 Client contact: **Sam Roberts**, owner. He texts. He does not email.
+Team: **Kendall Burfeind** (kendallburf@gmail.com) sends photos and blog posts by email. Sam and Ryan want a Blog / Case Studies section for organic SEO (6 Oct 2026).
 
 > This repo is PUBLIC. Keep client strategy, pricing, phone automation and other
 > internal notes out of it — those live in `~/Documents/_docs/playbooks/`.
@@ -31,3 +32,9 @@ Client contact: **Sam Roberts**, owner. He texts. He does not email.
   carry `Auto-published by ppc-text-bridge` in the body — **do not reword that
   string**, an undo path matches on it. Details in
   `~/Documents/_docs/playbooks/ppc-text-bridge.md`.
+
+- **15 Oct 2026 — blog lives in the repo.** Posts are `src/blog/posts/<slug>.md`, URL
+  `/blog/<slug>/`. Kendall supplies a .docx plus photos; keep her wording, fix only typos.
+- **15 Oct 2026 — CushionX certified installer.** Certificate from AT Sports, Inc. (signed by
+  Brad Carroll, President) is shown on the CushionX page. Do not remove without Sam's say-so.
+

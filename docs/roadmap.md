@@ -19,6 +19,10 @@
 
 ## Next
 
+- **Vinyl and wood flooring pages.** Sam plans to add them (13 Oct 2026). They go under the
+  Court Surfacing flyout in `header.njk`.
+- **More blog posts.** Kendall sends them by email. Each is one markdown file plus photos.
+
 - **Copy edits by text.** The bridge deliberately ignores text with no photo,
   because a wrong word on a live page is worse than a slow one. If Sam starts
   sending them often, the shape to build is a queue Bryce approves, not direct

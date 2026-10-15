@@ -23,6 +23,22 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ## Session Log
 
+### 2026-10-15 — CushionX certificate, Services flyouts, Blog + first case study
+- **Certificate** (Sam, text 15 Oct): AT Sports' "CushionX Certified Installer" certificate is a new
+  section on `/services/cushion-x/#certified-installer`. Image in `assets/images/certs/`, PDF in
+  `assets/docs/`. "Installed by" copy now says certified.
+- **Services menu** (Sam, text 13 Oct): Court Surfacing (CushionX, Indoor, Repairs) and Concrete
+  (Rebar, Post-Tension) are flyout submenus. Vinyl and wood flooring pages go under Court Surfacing.
+- **Blog** (Kendall Burfeind, email 6 Oct "PPC Blog Post Section"): `/blog/` index,
+  `src/_includes/post.njk` (BlogPosting JSON-LD), posts in `src/blog/posts/*.md` (tag `post`,
+  front matter: heading, subheading, category, location, image, imageAlt). Blog link in top nav.
+  First post: Lehi post-tension rebuild. One fix to her copy: "$25,000" lacked the $.
+- **Phone menu bug fixed** (predated today): tapping Services closed the drawer, and the drawer
+  could not scroll. Dropdown now toggles up to 1024px, drawer scrolls, close button pinned.
+- Kendall answered by email with both links; Sam texted. All three changes verified live.
+- `base.njk` now takes `ogImage` / `ogType` per page.
+- Next: new posts are a markdown file plus photos (resize to 900px, jpg + webp).
+
 ### 2026-09-22 — Green/orange multi-sport photo removed
 - Sam texted the photo with "Can we remove this photo from our website?" It was
   `gallery/pickleball-basketball.jpg` (green/orange court, grey surround, orange
