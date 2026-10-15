@@ -882,6 +882,9 @@ footer .footer-bottom p { font-size: 0.8rem; }
   .nav-links .nav-cta-btn { background: var(--blue) !important; color: var(--navy) !important; font-weight: 700 !important; }
   .nav-links .nav-cta-btn:hover { background: var(--white) !important; color: var(--navy) !important; transform: none !important; }
 
+  /* Podium's "Text us" bubble would cover Free Quote; hide it while the menu is open */
+  body.menu-open #podium-website-widget { display: none !important; }
+
   /* Prevent body scroll when menu is open */
   body.menu-open {
     overflow: hidden;
