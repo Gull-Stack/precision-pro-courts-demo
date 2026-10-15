@@ -45,6 +45,13 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 - **Phone drawer redesigned** (Bryce: "that phone dropdown is ugly"): logo bar with close button,
   left-aligned rows with dividers, chevron accordions, Call + Free Quote buttons at the bottom
   (b1c4db7). The Podium "Text us" bubble hides while the menu is open (9d91878). All phone-only rules live in the one `/* ── MOBILE ── */` block; desktop unchanged.
+- **Services mega menu** (Bryce: "pretty and beautiful with images"): desktop Services opens a
+  panel of four photo cards (Court Construction, Court Surfacing, Concrete & Foundations,
+  Fencing & Finishes), each with its links, plus a footer row (All Services, 3D designer, quote).
+  Card photos are 480x300 crops in `assets/images/menu/`. Phones keep the accordion. Nav items
+  now share one center line; the Services arrow and phone link sat high (Bryce flagged it).
+  Watch-out: the panel's link lists use `visibility: inherit`; `visible` makes the closed panel
+  catch clicks over the hero (QA gate caught it, a89c2ed).
 - Next: new posts are a markdown file plus photos (resize to 900px, jpg + webp).
 
 ### 2026-09-22 — Green/orange multi-sport photo removed
