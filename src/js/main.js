@@ -22,7 +22,7 @@ document.getElementById('mobileClose').addEventListener('click', closeMobileMenu
 // (except the Services toggle, which opens its list in the drawer)
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => {
-    if (a.matches('.nav-dropdown > a') && window.innerWidth <= 1024) return;
+    if ((a.matches('.nav-dropdown > a') || a.matches('.dropdown-sub > a')) && window.innerWidth <= 1024) return;
     closeMobileMenu();
   });
 });
@@ -44,6 +44,18 @@ document.querySelectorAll('.nav-dropdown > a').forEach(dropdownToggle => {
         dropdown.classList.add('active');
       }
     }
+  });
+});
+
+// ── Phone menu: tap Court Surfacing / Concrete to open their lists ──
+document.querySelectorAll('.dropdown-sub > a').forEach(subToggle => {
+  subToggle.addEventListener('click', (e) => {
+    if (window.innerWidth > 1024) return;
+    e.preventDefault();
+    const sub = subToggle.parentElement;
+    const wasOpen = sub.classList.contains('open');
+    document.querySelectorAll('.dropdown-sub').forEach(d => d.classList.remove('open'));
+    if (!wasOpen) sub.classList.add('open');
   });
 });
 
