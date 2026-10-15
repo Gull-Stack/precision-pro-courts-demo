@@ -1,0 +1,45 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.name }}
+
+> {{ site.name }} designs, builds and resurfaces backyard and commercial sport courts (pickleball, tennis, basketball and multi-sport) across Utah and Las Vegas. Rated {{ site.rating.value }} stars from {{ site.rating.count }} Google reviews.
+
+## Key facts
+
+- Service: new sport court construction, concrete slabs (post-tension and rebar), acrylic court surfacing and color coatings, CushionX cushioned surfaces, resurfacing, repairs, fencing, and indoor courts.
+- Service area: {% for area in site.serviceAreas %}{{ area.name }}{% if not loop.last %}; {% endif %}{% endfor %}.
+- Certified CushionX installer (certified by AT Sports, Inc., maker of CushionX). Certificate: {{ site.url }}/assets/docs/cushionx-certified-installer-precision-pro-courts.pdf
+- Coatings: Acrytech acrylic systems.
+- 500+ courts built. Licensed and insured in Utah.
+- Phone: {{ site.phone }}. Email: {{ site.email }}. Free quotes: {{ site.url }}/contact/
+- Free online court designer to try colors: {{ site.url }}/court-designer/
+
+## Services
+
+- [Pickleball Court Construction]({{ site.url }}/services/pickleball/)
+- [Tennis Court Construction]({{ site.url }}/services/tennis/)
+- [Basketball Court Construction]({{ site.url }}/services/basketball/)
+- [Multi-Sport Courts]({{ site.url }}/services/multi-sport/)
+- [Court Surfacing and Acrylic Coatings]({{ site.url }}/services/court-surfacing/)
+- [CushionX Cushioned Courts]({{ site.url }}/services/cushion-x/)
+- [Court Resurfacing]({{ site.url }}/services/resurfacing/)
+- [Repairs and Maintenance]({{ site.url }}/services/repairs-maintenance/)
+- [Indoor Courts]({{ site.url }}/services/indoor-courts/)
+- [Post-Tension Concrete]({{ site.url }}/services/concrete-foundations/post-tension/)
+- [Rebar Concrete]({{ site.url }}/services/concrete-foundations/rebar-concrete/)
+- [Court Fencing]({{ site.url }}/services/fencing/)
+
+## Service areas
+
+{% for area in site.serviceAreas %}{% if area.url and area.url.startsWith('/') and not area.url.startsWith('/contact') %}- [{{ area.label }}]({{ site.url }}{{ area.url }})
+{% endif %}{% endfor %}
+## Case studies
+
+{% for post in collections.post | reverse %}- [{{ post.data.heading }}{% if post.data.subheading %} ({{ post.data.subheading }}){% endif %}]({{ site.url }}{{ post.url }})
+{% endfor %}
+## Optional
+
+- [About]({{ site.url }}/about/)
+- [Project gallery]({{ site.url }}/gallery/)

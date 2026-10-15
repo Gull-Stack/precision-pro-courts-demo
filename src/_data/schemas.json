@@ -141,11 +141,11 @@
     "/services/multi-sport/": [
       {
         "q": "How many sports can you fit on one court?",
-        "a": "This depends on court size and sport compatibility. A full basketball court can accommodate four pickleball courts, tennis and pickleball can share space efficiently, and most courts can handle 2-4 sports with proper line configuration and equipment planning."
+        "a": "Most courts fit 2-4 sports. A full basketball court can accommodate four pickleball courts, tennis and pickleball can share space efficiently, and most courts can handle 2-4 sports with proper line configuration and equipment planning."
       },
       {
         "q": "Do different sports interfere with each other?",
-        "a": "With proper design, sports can coexist beautifully. We use color-coded line systems, strategic equipment placement, and clear visual separation to ensure each sport maintains its integrity and playability within the shared space."
+        "a": "No, not when the court is designed for it. We use color-coded line systems, strategic equipment placement, and clear visual separation to ensure each sport maintains its integrity and playability within the shared space."
       },
       {
         "q": "Are multi-sport courts more expensive than single-sport courts?",
@@ -175,7 +175,7 @@
       },
       {
         "q": "Can you resurface in winter?",
-        "a": "Utah winters present challenges for resurfacing due to temperature and moisture conditions. We typically recommend spring through fall for optimal results, though mild winter days may allow for certain types of repair work."
+        "a": "Usually not. Acrylic coatings need warm, dry weather to cure, so we resurface from spring through fall, though mild winter days may allow for certain types of repair work."
       },
       {
         "q": "How soon can I play on the resurfaced court?",

@@ -6,6 +6,17 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "precisionprocourts.com"
+        }
+      ],
+      "destination": "https://www.precisionprocourts.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/coatings",
       "destination": "/services/court-surfacing/",
       "permanent": true

@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: "Court Designer | Precision Pro Courts - Design Your Dream Court"
+title: "Court Designer: Pick Your Court Colors | Precision Pro Courts"
 description: "Design your perfect pickleball, tennis, or basketball court with our free interactive Court Designer. Choose colors, preview your design, and download a PNG."
 permalink: /court-designer/
 ---
@@ -1262,6 +1262,20 @@ permalink: /court-designer/
             btn.innerHTML = original;
         }
     });
+
+    // Colors handed over by the footer "Paint your court" toy: ?sport=pickleball&play=1A3366&kitchen=3A6BB5&surround=4A7B3F
+    (function applyUrlColors() {
+        const q = new URLSearchParams(location.search);
+        const sportBtn = q.get('sport') && document.querySelector(`.sport-btn[data-sport="${CSS.escape(q.get('sport'))}"]`);
+        if (sportBtn) sportBtn.click();
+        [['play', 'playColor'], ['kitchen', 'kitchenColor'], ['surround', 'surroundColor']].forEach(([param, id]) => {
+            const color = COURT_COLORS.find(c => c.hex.toLowerCase() === ('#' + (q.get(param) || '')).toLowerCase());
+            if (!color) return;
+            state[id] = color.hex;
+            document.getElementById(id).style.background = color.hex;
+            document.getElementById(id + 'Name').textContent = color.name;
+        });
+    })();
 
     // Initialize
     updateColorRowVisibility();

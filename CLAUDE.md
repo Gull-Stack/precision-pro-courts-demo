@@ -23,6 +23,15 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ## Session Log
 
+### 2026-10-15 (evening) — SEO/AEO cleanup + footer toy and map
+- **www is the one site.** `vercel.json` sends every `precisionprocourts.com/*` request to `www.` (308). Semrush showed Google ranking pages from both hosts, which split their strength. Canonicals were already www.
+- **Star rating schema only on the homepage** (`base.njk`), where the Google reviews are shown. It was on all 31 pages, and Google ignores self-published ratings.
+- **Titles:** one pattern, "[service] in Utah | Precision Pro Courts". No more "PPC". County pages lead with "Pickleball Court Builder in ...", the keyword they already half-rank for.
+- **FAQ answers lead with the answer** (3 rewritten, page + `schemas.json`). **`/llms.txt`** (from `src/llms.njk`) lists facts, services, areas, case studies for AI tools.
+- **Footer band:** "Paint Your Court" toy (pickleball court, designer palette, hands colors to `/court-designer/?sport=&play=&kitchen=&surround=`; designer now reads those params) and a "Where We Build" Utah map with pins linking to area pages. The Service Areas column moved into the map card.
+- **Waiting on Sam** (texted 15 Oct): price ranges for a cost page, Orem or SLC address, Google reviews link.
+- **Not done:** before/after slider on Resurfacing. No before/after photo pairs exist yet. About page's three reviews ("Mike T.", "Jennifer R.", "David L.") don't match the real Google reviews on the homepage; confirm they are real or swap them.
+
 ### 2026-10-15 (later) — Sam's round 2: fire pit photo, Coatings merged, Concrete & Accessories
 - **Fire pit photo gone.** `gallery/project-2.jpg` (patio + fire pit) was on 5 pages: Coatings, Resurfacing, Basketball, Tennis, Multi-Sport. Each now shows a real court photo. The file stays in assets but nothing references it; do not reuse it.
 - **Coatings & Color page merged into Court Surfacing** (Sam's call). New `#coatings` section plus the 5 coatings FAQs (visible + FAQ schema moved in `_data/schemas.json`). `src/services/coatings/` and the `src/coatings/` stub are deleted. `vercel.json` sends `/coatings` and `/services/coatings` (with and without slash) to `/services/court-surfacing/`.

@@ -1,6 +1,61 @@
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
+    <div class="footer-play">
+      <div class="paint-court" id="paintCourt">
+        <div class="paint-head">
+          <h4>Paint Your Court</h4>
+          <p>Tap a spot, then a color. Takes ten seconds.</p>
+        </div>
+        <svg class="paint-svg" viewBox="0 0 640 340" role="img" aria-label="Pickleball court you can color">
+          <rect class="pc-surround" data-part="surround" x="0" y="0" width="640" height="340" rx="14" fill="#4A7B3F"/>
+          <rect class="pc-court" data-part="play" x="100" y="70" width="150" height="200" fill="#1A3366"/>
+          <rect class="pc-court" data-part="play" x="390" y="70" width="150" height="200" fill="#1A3366"/>
+          <rect class="pc-kitchen" data-part="kitchen" x="250" y="70" width="140" height="200" fill="#3A6BB5"/>
+          <g fill="none" stroke="#fff" stroke-width="3" pointer-events="none">
+            <rect x="100" y="70" width="440" height="200"/>
+            <line x1="250" y1="70" x2="250" y2="270"/><line x1="390" y1="70" x2="390" y2="270"/>
+            <line x1="100" y1="170" x2="250" y2="170"/><line x1="390" y1="170" x2="540" y2="170"/>
+          </g>
+          <line x1="320" y1="58" x2="320" y2="282" stroke="#0a1628" stroke-width="5" stroke-linecap="round" pointer-events="none"/>
+        </svg>
+        <div class="paint-parts" role="group" aria-label="Part to paint">
+          <button type="button" class="active" data-part="play">Court <span id="pcName-play">Competition Blue</span></button>
+          <button type="button" data-part="kitchen">Kitchen <span id="pcName-kitchen">Light Blue</span></button>
+          <button type="button" data-part="surround">Surround <span id="pcName-surround">Competition Green</span></button>
+        </div>
+        <div class="paint-swatches" id="paintSwatches" role="group" aria-label="Colors"></div>
+        <div class="paint-actions">
+          <button type="button" class="paint-shuffle" id="paintShuffle">Surprise me</button>
+          <a href="{{ '/court-designer/' | url }}" class="paint-go" id="paintGo">Design it full size →</a>
+        </div>
+      </div>
+      <div class="area-map">
+        <h4>Where We Build</h4>
+        <svg class="area-svg" viewBox="0 0 210 254" role="img" aria-label="Map of Utah and Las Vegas service areas">
+          <path d="M44.6 7.9 H136.9 V47.6 H198.5 V206.4 H44.6 Z" class="am-state"/>
+          <text x="150" y="140" class="am-label">UTAH</text>
+          <text x="6" y="222" class="am-label">NV</text>
+          {%- set pins = [
+            {x: 108.6, y: 38.9, label: "Weber County", url: "/weber-county/"},
+            {x: 111.1, y: 48.4, label: "Davis County", url: "/davis-county/"},
+            {x: 111.1, y: 57.2, label: "Salt Lake County", url: "/salt-lake-county/"},
+            {x: 118.2, y: 78.2, label: "Utah County", url: "/utah-county/"},
+            {x: 112.6, y: 98.9, label: "Juab County", url: "/contact/#areas"},
+            {x: 59.1, y: 202.5, label: "Washington County (St. George)", url: "/washington-county/"},
+            {x: 11.1, y: 239.4, label: "Las Vegas", url: "/las-vegas/"}
+          ] %}
+          {%- for pin in pins %}
+          <a href="{{ pin.url | url }}" class="am-pin" aria-label="{{ pin.label }}"><title>{{ pin.label }}</title><circle cx="{{ pin.x }}" cy="{{ pin.y }}" r="9" class="am-pulse" style="animation-delay: {{ loop.index0 * 0.35 }}s"/><circle cx="{{ pin.x }}" cy="{{ pin.y }}" r="4.5"/></a>
+          {%- endfor %}
+        </svg>
+        <ul class="area-list">
+          {% for area in site.serviceAreas %}
+          <li><a href="{{ (area.url or '/contact/#areas') | url }}">{{ area.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
     <div class="footer-grid">
       <div class="footer-col">
         <h4>{{ site.name }}</h4>
@@ -29,14 +84,6 @@
           <li><a href="{{ '/contact/' | url }}">Contact</a></li>
           <li><a href="{{ '/privacy-policy/' | url }}">Privacy Policy</a></li>
           <li><a href="{{ '/terms-of-service/' | url }}">Terms of Service</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Service Areas</h4>
-        <ul>
-          {% for area in site.serviceAreas %}
-          <li><a href="{{ (area.url or '/contact/#areas') | url }}">{{ area.label }}</a></li>
-          {% endfor %}
         </ul>
       </div>
       <div class="footer-col">

@@ -70,14 +70,7 @@
       "longitude": {{ county.lng }}
     },
     "areaServed": { "@type": "AdministrativeArea", "name": {{ county.areaName | dump | safe }} },
-    "sameAs": {{ site.social | dump | safe }},
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": {{ site.rating.value | dump | safe }},
-      "reviewCount": {{ site.rating.count | dump | safe }},
-      "bestRating": {{ site.rating.best | dump | safe }},
-      "worstRating": {{ site.rating.worst | dump | safe }}
-    }
+    "sameAs": {{ site.social | dump | safe }}
     {%- if site.phone %},
     "telephone": {{ (site.phoneTel or site.phone) | dump | safe }}
     {%- endif %}
@@ -118,7 +111,8 @@
       { "@type": "AdministrativeArea", "name": {{ area.name | dump | safe }} }{%- if not loop.last %},{% endif %}
       {%- endfor %}
     ],
-    "sameAs": {{ site.social | dump | safe }},
+    "sameAs": {{ site.social | dump | safe }}
+    {%- if page.url == "/" %},
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": {{ site.rating.value | dump | safe }},
@@ -126,6 +120,7 @@
       "bestRating": {{ site.rating.best | dump | safe }},
       "worstRating": {{ site.rating.worst | dump | safe }}
     }
+    {%- endif %}
     {%- if site.phone %},
     "telephone": {{ (site.phoneTel or site.phone) | dump | safe }}
     {%- endif %}

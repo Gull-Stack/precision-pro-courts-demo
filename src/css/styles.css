@@ -733,7 +733,7 @@ footer {
   background: var(--navy); color: rgba(255,255,255,0.5); padding: 3rem 0 5rem;
   border-top: 1px solid rgba(255,255,255,0.05);
 }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
 .footer-col h4 { color: white; font-size: 1rem; margin-bottom: 1rem; }
 .footer-col p { font-size: 0.85rem; line-height: 1.7; }
 .footer-col ul { list-style: none; }
@@ -751,6 +751,41 @@ footer {
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
 .footer-logo { color: white; font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; }
 .footer-logo img { height: 30px; }
+
+/* ── Footer band: Paint Your Court toy + service-area map ── */
+.footer-play { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+.paint-court, .area-map { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 1.5rem; }
+.footer-play h4 { color: #fff; font-size: 1.1rem; margin-bottom: 0.25rem; }
+.paint-head p { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
+.paint-svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.35)); }
+.paint-svg [data-part] { cursor: pointer; transition: fill 0.35s ease; }
+.paint-parts { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 0.75rem; }
+.paint-parts button { font: inherit; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 0.45rem 0.9rem; cursor: pointer; }
+.paint-parts button span { font-weight: 400; opacity: 0.7; margin-left: 0.25rem; }
+.paint-parts button.active { color: #0a1628; background: #fff; border-color: #fff; }
+.paint-swatches { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.paint-swatches button { width: 30px; height: 30px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.25); cursor: pointer; padding: 0; transition: transform 0.15s; }
+.paint-swatches button:hover { transform: scale(1.12); }
+.paint-swatches button.active { border-color: #fff; box-shadow: 0 0 0 3px var(--blue); }
+.paint-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-top: 1.1rem; }
+.paint-shuffle { font: inherit; font-size: 0.85rem; font-weight: 600; color: #fff; background: none; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 0.6rem 1rem; cursor: pointer; }
+.paint-shuffle:hover { border-color: #fff; }
+.paint-go { font-size: 0.85rem; font-weight: 700; color: #0a1628; background: var(--blue); border-radius: 8px; padding: 0.65rem 1.1rem; text-decoration: none; }
+.paint-go:hover { background: #fff; }
+.area-map { display: flex; flex-direction: column; }
+.area-svg { width: 100%; max-width: 240px; height: auto; margin: 0.75rem auto 0.5rem; display: block; overflow: visible; }
+.am-state { fill: rgba(86,148,255,0.12); stroke: rgba(86,148,255,0.55); stroke-width: 1.5; stroke-linejoin: round; }
+.am-label { fill: rgba(255,255,255,0.3); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; }
+.am-pin circle { fill: var(--blue); }
+.am-pin .am-pulse { fill: var(--blue); opacity: 0.35; transform-box: fill-box; transform-origin: center; animation: am-pulse 2.4s ease-out infinite; }
+.am-pin:hover circle, .am-pin:focus circle { fill: #fff; }
+@keyframes am-pulse { 0% { transform: scale(0.5); opacity: 0.6; } 100% { transform: scale(1.8); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .am-pin .am-pulse { animation: none; } .paint-svg [data-part] { transition: none; } }
+.area-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1rem; margin-top: auto; }
+.area-list a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.85rem; }
+.area-list a:hover { color: var(--blue); }
+@media (max-width: 900px) { .footer-play { grid-template-columns: 1fr; } .area-svg { max-width: 190px; } }
+
 footer .footer-bottom p { font-size: 0.8rem; }
 
 /* ── STICKY CTA BAR ── */

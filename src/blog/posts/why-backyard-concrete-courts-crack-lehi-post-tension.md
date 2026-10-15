@@ -1,5 +1,5 @@
 ---
-title: "Why Do Backyard Concrete Courts Crack? (Case Study: Lehi, Utah Post-Tension Rebuild) | Precision Pro Courts"
+title: "Why Backyard Concrete Courts Crack: Lehi Case Study | Precision Pro Courts"
 heading: "Why Do Backyard Concrete Courts Crack?"
 subheading: "Case Study: Lehi, Utah Post-Tension Rebuild"
 description: "A two-year-old backyard court in Lehi, Utah was cracking and shifting. Here's why standard concrete fails on Utah sports courts, and how we rebuilt it with post-tension concrete."
