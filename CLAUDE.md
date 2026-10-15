@@ -23,6 +23,12 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ## Session Log
 
+### 2026-10-15 (later) — Sam's round 2: fire pit photo, Coatings merged, Concrete & Accessories
+- **Fire pit photo gone.** `gallery/project-2.jpg` (patio + fire pit) was on 5 pages: Coatings, Resurfacing, Basketball, Tennis, Multi-Sport. Each now shows a real court photo. The file stays in assets but nothing references it; do not reuse it.
+- **Coatings & Color page merged into Court Surfacing** (Sam's call). New `#coatings` section plus the 5 coatings FAQs (visible + FAQ schema moved in `_data/schemas.json`). `src/services/coatings/` and the `src/coatings/` stub are deleted. `vercel.json` sends `/coatings` and `/services/coatings` (with and without slash) to `/services/court-surfacing/`.
+- **Menu is 3 columns now.** "Fencing & Finishes" and "Concrete & Foundations" became one **Concrete & Accessories** column: Post-Tension, Rebar, Court Fencing (Sam's order). Panel is 860px wide. `menu/fencing-finishes.*` deleted. Footer "Coatings" link now says Court Surfacing.
+- Open: vinyl and wood flooring pages still go under Court Surfacing when Sam sends them.
+
 ### 2026-10-15 — CushionX certificate, Services flyouts, Blog + first case study
 - **Certificate** (Sam, text 15 Oct): AT Sports' "CushionX Certified Installer" certificate is a new
   section on `/services/cushion-x/#certified-installer`. Image in `assets/images/certs/`, PDF in

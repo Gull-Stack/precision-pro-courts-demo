@@ -131,9 +131,9 @@ a { color: var(--blue); }
   .nav-dropdown { position: static; }
   .mega-menu {
     position: absolute; top: 100%; left: 50%;
-    width: min(1040px, calc(100vw - 3rem));
+    width: min(860px, calc(100vw - 3rem));
     transform: translate(-50%, -10px);
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
     padding: 1.5rem; border-radius: 16px;
     background: #fff; border: 1px solid rgba(10,22,40,0.08);
     box-shadow: 0 24px 60px rgba(10,22,40,0.28);

@@ -7,12 +7,22 @@
   "redirects": [
     {
       "source": "/coatings",
-      "destination": "/services/coatings",
+      "destination": "/services/court-surfacing/",
       "permanent": true
     },
     {
       "source": "/coatings/",
-      "destination": "/services/coatings/",
+      "destination": "/services/court-surfacing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/coatings",
+      "destination": "/services/court-surfacing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/coatings/",
+      "destination": "/services/court-surfacing/",
       "permanent": true
     },
     {

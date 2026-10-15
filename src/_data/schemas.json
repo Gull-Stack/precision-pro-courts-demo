@@ -30,11 +30,6 @@
       "name": "Sport Court Fencing & Enclosures",
       "description": "Professional court fencing across Utah — galvanized and vinyl-coated chain link, gates, windscreens, and ball containment systems for tennis, pickleball, basketball, and multi-sport courts."
     },
-    "/services/coatings/": {
-      "serviceType": "Sport Court Coatings",
-      "name": "Sport Court Coatings & Color Surfacing",
-      "description": "Premium acrylic coating systems and color surfacing for sport courts in Utah. Multi-sport line work, custom logos, UV-resistant surfaces, and warrantied workmanship for new builds and recoats."
-    },
     "/services/cushion-x/": {
       "serviceType": "CushionX Cushioned Court System",
       "name": "CushionX Cushioned Sport Court System",
@@ -209,7 +204,7 @@
         "a": "Galvanized fencing offers excellent durability at lower cost with a traditional silver appearance. Vinyl-coated fencing provides superior weather resistance, color options, and a more professional appearance at slightly higher cost."
       }
     ],
-    "/services/coatings/": [
+    "/services/court-surfacing/": [
       {
         "q": "How often should I recoat my court?",
         "a": "Most courts need recoating every 4-6 years depending on usage, maintenance, and weather exposure. High-traffic commercial courts may need more frequent attention, while well-maintained residential courts can last longer between coatings."
@@ -322,7 +317,6 @@
     "/services/multi-sport/":                             [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Multi-Sport","url":"/services/multi-sport/"}],
     "/services/resurfacing/":                             [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Resurfacing","url":"/services/resurfacing/"}],
     "/services/fencing/":                                 [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Fencing","url":"/services/fencing/"}],
-    "/services/coatings/":                                [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Coatings","url":"/services/coatings/"}],
     "/services/cushion-x/":                               [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"CushionX","url":"/services/cushion-x/"}],
     "/services/courts-full-builds/":                      [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Full Court Builds","url":"/services/courts-full-builds/"}],
     "/services/concrete-foundations/":                    [{"name":"Home","url":"/"},{"name":"Services","url":"/services/"},{"name":"Concrete Foundations","url":"/services/concrete-foundations/"}],
