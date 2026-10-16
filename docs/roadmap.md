@@ -11,13 +11,16 @@
 - **The client has not been answered.** He asked two things on 16 Sept: the main
   photo (fixed and live) and a Vercel seat (no — see `notes.md`). Neither reply
   has been sent. The second reply depends on the item above being confirmed.
-- **Orem address.** `site.json` still says Salt Lake City with SLC coordinates.
-  The Google Business Profile says 253 N 1030 W St, Orem, UT 84057. The
-  LocalBusiness schema contradicts the listing until this changes. Sam was asked
-  8 Sept 2026 and has not answered. Street-level geocode is ready in the session
-  log; the rooftop pin is on the GBP listing.
+- **Cost page — waiting on Sam.** Asked 15 Oct 2026 for rough price ranges: backyard
+  pickleball, half-court basketball, resurfacing. Build a cost page plus FAQ schema
+  when they arrive. AI search tools get asked this constantly and no local builder answers it.
+- **About page reviews.** "Mike T.", "Jennifer R." and "David L." look like
+  placeholders and do not match the real Google reviews. Bryce to confirm; swap in
+  real Google reviews if they are not real.
 
 ## Next
+
+- **Before/after slider.** Needs before and after photos of the same court. None exist yet.
 
 - **Vinyl and wood flooring pages.** Sam plans to add them (13 Oct 2026). They go under the
   Court Surfacing flyout in `header.njk`.

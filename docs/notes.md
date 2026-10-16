@@ -1,6 +1,8 @@
 # Precision Pro Courts — durable notes
 
 Client contact: **Sam Roberts**, owner. He texts. He does not email.
+Office address (Sam confirmed by text 15 Oct 2026): **253 N 1030 W, Orem, UT 84057**. Google reviews link: https://g.page/r/CVmCNMIfxvhgEAE/review (`site.reviewsUrl`).
+apex precisionprocourts.com 308s to www through Vercel domain settings, not vercel.json (the `has: host` rule never fired).
 Team: **Kendall Burfeind** (kendallburf@gmail.com) sends photos and blog posts by email. Sam and Ryan want a Blog / Case Studies section for organic SEO (6 Oct 2026).
 
 > This repo is PUBLIC. Keep client strategy, pricing, phone automation and other

@@ -25,10 +25,10 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ### 2026-10-15 (night) — Sam sent the address + reviews link
 - Sam (text, 16:07): office is 253 North 1030 West, Orem, UT. This settles the Orem vs SLC question open since 8 Sept.
-- `site.json`: address set to 253 N 1030 W, Orem, UT 84057 (zip and geo inferred from Orem, not from Sam). New `reviewsUrl` = https://g.page/r/CVmCNMIfxvhgEAE/review.
+- `site.json`: address set to 253 N 1030 W, Orem, UT 84057 (zip confirmed by the GBP listing and the estimate letterhead; geo = the 8 Sept Nominatim street-level match 40.3158291, -111.7213882). New `reviewsUrl` = https://g.page/r/CVmCNMIfxvhgEAE/review.
 - Address now shows in the LocalBusiness schema, footer, contact page and llms.txt. The homepage "See All 89 Reviews" badge links to `reviewsUrl`.
 - Commit be3b729, live and checked on www. Replied to Sam (delivered).
-- Still open: Sam's price ranges (backyard pickleball, half-court basketball, resurfacing) for the cost page. Confirm the zip 84057 with Sam if Google flags a mismatch.
+- Still open: Sam's price ranges (backyard pickleball, half-court basketball, resurfacing) for the cost page. Sam sent a screenshot of the footer Paint Your Court toy at 17:31: "This on the home page is awesome. Love it". Bryce replied from his phone.
 
 ### 2026-10-15 (evening) — SEO/AEO cleanup + footer toy and map
 - **www is the one site.** The apex domain `precisionprocourts.com` is set in Vercel (project domain settings) to redirect to `www.` with a 308. A `vercel.json` host rule did NOT fire on Vercel, so it was removed; keep this in domain settings. Semrush showed Google ranking pages from both hosts, which split their strength. Canonicals were already www.
