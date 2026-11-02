@@ -23,6 +23,14 @@ scope, GitHub integration on `Gull-Stack/precision-pro-courts-demo` → push to
 
 ## Session Log
 
+### 2026-11-02 — /pricing/ page live from Sam's ranges
+- Sam texted his price ranges on 26 Oct (16:26). Nobody answered for a week. They answer the cost-page ask from 15 Oct.
+- New `/pricing/` (`src/pricing/index.njk`, numbers in `src/_data/pricing.json`): concrete (rebar vs post-tension) and acrylic surfacing for 30x60 pickleball, 30x50 and 30x30 basketball half courts, plus Sam's disclaimer word for word.
+- 5 FAQs in `schemas.json` (visible + FAQPage schema). The first FAQ adds concrete + surfacing into a full-court total ($23,000–$32,500 rebar, $37,500–$43,500 post-tension). Sam did not state that total; it is his two ranges summed.
+- Linked from the Services mega menu footer row, the site footer, and `llms.txt`. Not in the top nav: the desktop bar has no room (see 7 Sep).
+- Commit bff9c67, live and checked on www. Texted Sam the link 11:07, delivered.
+- Next: if Sam sends fencing, lighting or CushionX ranges, add rows to `pricing.json`.
+
 ### 2026-10-15 (night) — Sam sent the address + reviews link
 - Sam (text, 16:07): office is 253 North 1030 West, Orem, UT. This settles the Orem vs SLC question open since 8 Sept.
 - `site.json`: address set to 253 N 1030 W, Orem, UT 84057 (zip confirmed by the GBP listing and the estimate letterhead; geo = the 8 Sept Nominatim street-level match 40.3158291, -111.7213882). New `reviewsUrl` = https://g.page/r/CVmCNMIfxvhgEAE/review.

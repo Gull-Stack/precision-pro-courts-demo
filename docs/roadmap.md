@@ -11,9 +11,8 @@
 - **The client has not been answered.** He asked two things on 16 Sept: the main
   photo (fixed and live) and a Vercel seat (no — see `notes.md`). Neither reply
   has been sent. The second reply depends on the item above being confirmed.
-- **Cost page — waiting on Sam.** Asked 15 Oct 2026 for rough price ranges: backyard
-  pickleball, half-court basketball, resurfacing. Build a cost page plus FAQ schema
-  when they arrive. AI search tools get asked this constantly and no local builder answers it.
+- **Cost page — LIVE 2 Nov 2026** at `/pricing/`. Next: fencing, lighting and CushionX
+  ranges if Sam sends them (rows in `src/_data/pricing.json`).
 - **About page reviews.** "Mike T.", "Jennifer R." and "David L." look like
   placeholders and do not match the real Google reviews. Bryce to confirm; swap in
   real Google reviews if they are not real.
