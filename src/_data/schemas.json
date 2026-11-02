@@ -247,6 +247,28 @@
         "q": "What about the warranty?",
         "a": "CushionX carries a 5-year manufacturer product warranty from AT Sports when the correct level is specified for the intended use and the system is installed to factory specification. We also back our workmanship separately. We'll review both warranties with you before the project starts."
       }
+    ],
+    "/pricing/": [
+      {
+        "q": "How much does a backyard pickleball court cost in Utah?",
+        "a": "A new 30' × 60' pickleball court costs about $23,000–$32,500 with rebar concrete, or $37,500–$43,500 with post-tension concrete. That is concrete ($16,000–$24,000 rebar, $30,500–$35,000 post-tension) plus acrylic surfacing and lines ($7,000–$8,500). Fencing, lighting and accessories are priced separately."
+      },
+      {
+        "q": "How much does a basketball half court cost?",
+        "a": "A 30' × 50' half court runs $13,000–$20,000 for rebar concrete or $25,000–$30,000 for post-tension, plus $5,800–$7,100 for acrylic surfacing and lines. A smaller 30' × 30' half court runs $8,000–$12,000 rebar or $15,000–$18,000 post-tension, plus $3,500–$4,500 for surfacing."
+      },
+      {
+        "q": "How much does it cost to resurface an existing court?",
+        "a": "Acrylic surfacing with new game lines on an existing slab costs $7,000–$8,500 for a 30' × 60' pickleball court, $5,800–$7,100 for a 30' × 50' basketball court, and $3,500–$4,500 for a 30' × 30' basketball court. Courts with heavy cracking may need repair work first, priced after a site visit."
+      },
+      {
+        "q": "Why does post-tension concrete cost more than rebar?",
+        "a": "Post-tension slabs use steel cables tensioned after the pour, which holds the slab in compression and greatly reduces cracking through Utah freeze-thaw cycles. It takes more material and labor, so it costs more up front, and it is the longer-lasting choice for a court."
+      },
+      {
+        "q": "What is included in the concrete price?",
+        "a": "Basic site preparation, a compacted gravel base, and the concrete installation. Site conditions, access, and extra prep such as excavation or retaining work can change the price. Fencing, lighting, and accessories are priced separately."
+      }
     ]
   },
   "counties": {
@@ -306,6 +328,7 @@
     }
   },
   "breadcrumbs": {
+    "/pricing/":                                          [{"name":"Home","url":"/"},{"name":"Court Pricing","url":"/pricing/"}],
     "/about/":                                            [{"name":"Home","url":"/"},{"name":"About","url":"/about/"}],
     "/contact/":                                          [{"name":"Home","url":"/"},{"name":"Contact","url":"/contact/"}],
     "/gallery/":                                          [{"name":"Home","url":"/"},{"name":"Gallery","url":"/gallery/"}],

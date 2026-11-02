@@ -1,0 +1,87 @@
+---
+layout: base.njk
+title: "Sport Court Cost in Utah: Pickleball & Basketball Pricing | Precision Pro Courts"
+description: "What a pickleball or basketball court costs in Utah. Concrete (rebar or post-tension) and acrylic surfacing price ranges for 30x60, 30x50 and 30x30 courts."
+permalink: /pricing/
+---
+{%- macro money(r) -%}${{ r[0].toLocaleString('en-US') }}–${{ r[1].toLocaleString('en-US') }}{%- endmacro -%}
+
+<style>
+  .price-wrap { max-width: 980px; margin: 0 auto; }
+  .price-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; overflow: hidden; margin: 1.25rem 0 0.5rem; font-variant-numeric: tabular-nums; }
+  .price-table th, .price-table td { padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid var(--gray-100); }
+  .price-table thead th { background: var(--navy); color: var(--white); font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .price-table tbody tr:last-child td { border-bottom: 0; }
+  .price-table td:first-child { font-weight: 600; }
+  .price-table .size { display: block; font-weight: 400; color: var(--gray-600); font-size: 0.9rem; }
+  .price-note { color: var(--gray-600); font-size: 0.95rem; margin: 0 0 2.5rem; }
+  .price-disclaimer { background: var(--gray-50); border-left: 4px solid var(--blue); padding: 1.1rem 1.25rem; border-radius: 6px; color: var(--gray-600); margin-top: 1rem; }
+  .price-faq details { border-bottom: 1px solid var(--gray-200); padding: 1rem 0; }
+  .price-faq summary { font-family: var(--font-heading); font-weight: 600; cursor: pointer; font-size: 1.05rem; }
+  .price-faq p { margin: 0.75rem 0 0; color: var(--gray-600); }
+  @media (max-width: 640px) {
+    .price-table thead { display: none; }
+    .price-table, .price-table tbody, .price-table tr, .price-table td { display: block; width: 100%; }
+    .price-table tr { border-bottom: 1px solid var(--gray-200); padding: 0.5rem 0; }
+    .price-table td { border: 0; padding: 0.35rem 1rem; display: flex; justify-content: space-between; gap: 1rem; }
+    .price-table td[data-label]::before { content: attr(data-label); color: var(--gray-600); font-weight: 400; }
+    .price-table td:first-child { display: block; }
+  }
+</style>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Court Pricing</h1>
+      <p>Straight answers on what a new court or a resurface costs in Utah.</p>
+      <div class="breadcrumb"><a href="{{ '/' | url }}">Home</a> / Court Pricing</div>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <div class="container price-wrap">
+      <span class="section-label">Concrete</span>
+      <h2>Concrete Pricing</h2>
+      <p>Includes basic site preparation, compacted gravel base, and concrete installation.</p>
+      <table class="price-table">
+        <thead><tr><th>Court</th><th><a href="{{ '/services/concrete-foundations/rebar-concrete/' | url }}" style="color:inherit">Rebar</a></th><th><a href="{{ '/services/concrete-foundations/post-tension/' | url }}" style="color:inherit">Post-Tension</a></th></tr></thead>
+        <tbody>
+        {%- for c in pricing.courts %}
+          <tr><td>{{ c.name }}<span class="size">{{ c.size }}</span></td><td data-label="Rebar">{{ money(c.rebar) }}</td><td data-label="Post-Tension">{{ money(c.pt) }}</td></tr>
+        {%- endfor %}
+        </tbody>
+      </table>
+      <p class="price-note">Post-tension costs more up front and resists cracking far better through Utah freeze-thaw. <a href="{{ '/services/concrete-foundations/' | url }}">Compare the two →</a></p>
+
+      <span class="section-label">Surfacing</span>
+      <h2>Acrylic Surfacing Pricing</h2>
+      <p>Includes standard acrylic coatings and game lines for new or existing courts.</p>
+      <table class="price-table">
+        <thead><tr><th>Court</th><th>Acrylic Surfacing</th></tr></thead>
+        <tbody>
+        {%- for c in pricing.courts %}
+          <tr><td>{{ c.name }}<span class="size">{{ c.size }}</span></td><td data-label="Surfacing">{{ money(c.acrylic) }}</td></tr>
+        {%- endfor %}
+        </tbody>
+      </table>
+      <p class="price-note">Resurfacing an existing court? This is the line that applies. <a href="{{ '/services/court-surfacing/' | url }}">About our surfacing →</a></p>
+
+      <div class="price-disclaimer">
+        <strong>Pricing disclaimer.</strong> Prices are general estimates and may vary based on site conditions, accessibility, surface preparation, and project requirements. Additional services such as fencing, lighting, and accessories are priced separately.
+      </div>
+
+      <div style="margin: 2rem 0 0;">
+        <a href="{{ '/contact/' | url }}" class="btn btn-primary">Get Your Exact Quote →</a>
+        <a href="{{ '/court-designer/' | url }}" class="btn btn-outline">Design Your Court →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-block" style="background: var(--gray-50);">
+    <div class="container price-wrap price-faq">
+      <span class="section-label">FAQ</span>
+      <h2>Court Cost Questions</h2>
+      {%- for item in schemas.faqs['/pricing/'] %}
+      <details{% if loop.first %} open{% endif %}><summary>{{ item.q }}</summary><p>{{ item.a }}</p></details>
+      {%- endfor %}
+    </div>
+  </section>

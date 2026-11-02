@@ -1,0 +1,7 @@
+{
+  "courts": [
+    { "name": "Pickleball Court", "size": "30' × 60'", "rebar": [16000, 24000], "pt": [30500, 35000], "acrylic": [7000, 8500] },
+    { "name": "Basketball Half Court", "size": "30' × 50'", "rebar": [13000, 20000], "pt": [25000, 30000], "acrylic": [5800, 7100] },
+    { "name": "Basketball Half Court", "size": "30' × 30'", "rebar": [8000, 12000], "pt": [15000, 18000], "acrylic": [3500, 4500] }
+  ]
+}
